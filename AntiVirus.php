@@ -1,13 +1,10 @@
 <?php
 	include("./head.html");
-	
 	$filename = $_POST['filename'];
-	
-	
 ?>
-
-		<title>ANTIVIRUS</title>
-	</head>
+	<!-- Version Github -->
+	<title>ANTIVIRUS</title>
+</head>
 	<body>
 		<img src="head.png"/>
 		<table><tr><td align="right" width="50px"><img src="img/LOGO%20Flamme.svg" height="50px"></td>
