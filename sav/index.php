@@ -1,11 +1,10 @@
 <?php
-	//test de github
 	include("../head1.html");
 ?>		
-		
-		<title>BTS CIRA Rouvi&egrave;re</title>
-	</head>
-	<body>
+	<!-- test de github -->	
+	<title>BTS CIRA Rouvi&egrave;re</title>
+</head>
+<body>
 		<img src="../head.png"/>
 		<table><tr><td><p class="titre">Fichier(s) Sauvegardé(s)</p></td></tr></table>
 
