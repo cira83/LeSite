@@ -77,7 +77,10 @@
 	}
 	//Déplace le fichier
 	$repcible = "./files/$classe/_Copies/Aclasser/"; echo("<!-- $repcible -->");
-	if(!file_exists($repcible)) mkdir($repcible);
+	if(!file_exists($repcible)) {
+		mkdir($repcible);
+		chmod("$repcible",0777);
+	}
 	
 	//rename("$chemin$nomFichier", "$chemin$elv $nomFichier");
 		
