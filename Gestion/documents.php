@@ -50,11 +50,13 @@
 				foreach($listeD as $name){
 					$part = explode(".", $name);
 					if($name=="index.htm") $part=0;
-					if($part[1]) echo("\n<li><a href=\"$filename_of_elv/$name\" class=\"no-under\">$name</a></li>");
-					if($nb_ligne>0) fprintf($fp,"\n$name,$filename_of_elv/$name");
-					else {
-						$nb_ligne++;
-						fprintf($fp,"$name,$filename_of_elv/$name");
+					if($part[1]) {
+						echo("\n<li><a href=\"$filename_of_elv/$name\" class=\"no-under\">$name</a></li>");
+						if($nb_ligne>0) fprintf($fp,"\n$name,$filename_of_elv/$name");
+						else {
+							$nb_ligne++;
+							fprintf($fp,"$name,$filename_of_elv/$name");
+						}
 					}
 				}
 				echo("</ul>");
