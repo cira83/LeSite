@@ -52,7 +52,7 @@
 	//on vérifie que le champ est bien rempli:
 	if(!empty($_FILES["fichier_choisi"]["name"])){
 		//nom du fichier choisi:
-		$nomFichier = $_FILES["fichier_choisi"]["name"] ;
+		$nomFichier = $_FILES["fichier_choisi"]["name"] ; echo("<!-- $nomFichier -->");
 		//nom temporaire sur le serveur:
 		$nomTemporaire = $_FILES["fichier_choisi"]["tmp_name"] ;
 		//type du fichier choisi:
