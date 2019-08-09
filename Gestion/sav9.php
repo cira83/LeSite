@@ -14,7 +14,7 @@
 	</head>
 	<body>
 		<img src="head.png"/>
-		<table><tr><td><p class="titre">Fichier(s) Sauvegardé(s)</p></td></tr></table>
+		<table><tr><td><p class="titre">$classe - Fichier(s) Sauvegardé(s)</p></td></tr></table>
 
 <!-- Liste des fichiers sauvegardés -->
 <?php
@@ -44,16 +44,7 @@
 	}
 	echo("</p><p>$nbfichier fichier(s) sauvegard&eacute;(s) </p>");
 	
-?>
-
-<!-- ./sav8_form.php -->
-<?php 
-	$chemin = $repertoire_TP;
-	if($password_OK) include("./sav8_form.php"); 
-?>
-
-<!-- ../foot2.html -->		
-<?php
+	include("./sav8_form.html");
 	include("../foot2.html");
 ?>	
 
