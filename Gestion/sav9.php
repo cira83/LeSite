@@ -20,7 +20,7 @@
 
 <!-- Liste des fichiers sauvegardés -->
 <?php
-	$repertoire_TP = "./files/$classe/_Sujets2TP/Copies/"; 	
+	$repertoire_TP = "./files/$classe/_Copies/Aclasser/"; 	
 	if(!file_exists($repertoire_TP)){
 		mkdir($repertoire_TP);
 		echo("Création de $repertoire_TP");
