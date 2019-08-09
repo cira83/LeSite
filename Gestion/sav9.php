@@ -43,10 +43,15 @@
     	$i++;
 	}
 	echo("</p><p>$nbfichier fichier(s) sauvegard&eacute;(s) </p>");
-	
-	include("./sav8_form.html");
-	echo("<hr/>");	
-	
+?>
+<!-- sav8_form.html -->
+<hr/>
+<table><form name="envoie fichier" enctype="multipart/form-data" method="post" action="./sav9.php">
+<tr><td align="left"><input name="fichier_choisi" type="file"></td><td><input name="formulaire" type="hidden" value="OK"</td>
+<td align="right"><input name="bouton" value="Envoyer le fichier" type="submit"></td></tr>
+</form></table>
+<!-- /sav8_form.html -->
+<?php
 	echo("<!-- CODE SAUVEGARDE -->");
 	$chemin = "./temporaire/" ;
 	//on vérifie que le champ est bien rempli:
