@@ -49,6 +49,7 @@
 		if(copy($nomTemporaire, $chemin.$nomFichier)){
 			$Message = "Votre fichier $nomFichier est sauvegard&eacute;." ;
 			chmod("$chemin$nomFichier",0777);
+			rename("$chemin$nomFichier", "$chemin$elv $nomFichier");
 		}
 		else $Message = "La sauvegarde a &eacute;chou&eacute; !!" ;
 	}
