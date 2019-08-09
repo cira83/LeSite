@@ -1,6 +1,7 @@
 <!-- Formulaire de sauvegarde -->
 <hr/>
 <?php
+	include("sav8_form.html");
 	$form_rep = $_POST['formulaire'];
 	
 	//on vérifie que le champ est bien rempli:
@@ -35,12 +36,11 @@
 		else echo "Format non-autorisé <br/>";
 
 	}
-	else $Message = "Vous n'avez pas encore choisi de fichier <br/>";
+	else $Message = "<p>Vous n'avez pas encore choisi de fichier !!!</p>";
+
+	echo("<!-- $nomTemporaire, $chemin.$nomFichier -->");
 	
 	if($form_rep=="OK") echo($Message);
-	else {
-		include("sav8_form.html");
-	}
 ?>
 <!-- Fin Formulaire de sauvegarde -->
 	
