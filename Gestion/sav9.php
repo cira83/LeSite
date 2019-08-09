@@ -45,6 +45,31 @@
 	echo("</p><p>$nbfichier fichier(s) sauvegard&eacute;(s) </p>");
 	
 	include("./sav8_form.html");
+	echo("<hr/>");	
+	
+	$chemin = "./" ;
+	//on vérifie que le champ est bien rempli:
+	if(!empty($_FILES["fichier_choisi"]["name"])){
+		//nom du fichier choisi:
+		$nomFichier = $_FILES["fichier_choisi"]["name"] ;
+		//nom temporaire sur le serveur:
+		$nomTemporaire = $_FILES["fichier_choisi"]["tmp_name"] ;
+		//type du fichier choisi:
+		$typeFichier = $_FILES["fichier_choisi"]["type"] ;
+		//poids en octets du fichier choisit:
+		$poidsFichier = $_FILES["fichier_choisi"]["size"] ;
+		//code de l'erreur si jamais il y en a une:
+		$codeErreur = $_FILES["fichier_choisi"]["error"] ;
+	
+		if(copy($nomTemporaire, $chemin.$nomFichier)){
+			$Message = "Votre fichier $nomFichier est sauvegard&eacute;." ;
+			chmod("$chemin$nomFichier",0777);
+		}
+		else $Message = "La sauvegarde a &eacute;chou&eacute; !!" ;
+	}
+	else $Message = "Vous n'avez pas choisit de fichier !!";	
+		
+		
 	include("../foot2.html");
 ?>	
 
