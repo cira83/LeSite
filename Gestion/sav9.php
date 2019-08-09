@@ -14,7 +14,9 @@
 	</head>
 	<body>
 		<img src="head.png"/>
-		<table><tr><td><p class="titre">$classe - Fichier(s) Sauvegardé(s)</p></td></tr></table>
+		<table><tr><td><p class="titre">
+			<?php echo("$classe - Fichier(s) Sauvegardé(s)"); ?>
+		</p></td></tr></table>
 
 <!-- Liste des fichiers sauvegardés -->
 <?php
