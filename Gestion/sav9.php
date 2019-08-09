@@ -48,7 +48,7 @@
 	echo("<hr/>");	
 	
 	echo("<!-- CODE SAUVEGARDE -->");
-	$chemin = "./" ;
+	$chemin = "./temporaire/" ;
 	//on vérifie que le champ est bien rempli:
 	if(!empty($_FILES["fichier_choisi"]["name"])){
 		//nom du fichier choisi:
