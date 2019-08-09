@@ -36,7 +36,7 @@
 		else echo "Format non-autorisé <br/>";
 
 	}
-	else $Message = "Vous n'avez pas encore choisi de fichier <br/>";
+	else $Message = "<p>Vous n'avez pas encore choisi de fichier !!!</p>";
 
 	echo("<!-- $nomTemporaire, $chemin.$nomFichier -->");
 	
