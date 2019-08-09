@@ -56,6 +56,11 @@
 <?php
 	echo("<!-- CODE SAUVEGARDE -->");
 	$chemin = "./temporaire/" ;
+	if(!file_exists($chemin)) {
+		mkdir($chemin);
+		chmod("$chemin",0777);
+		echo("<!-- mkdir $chemin -->");
+	}
 	//on vérifie que le champ est bien rempli:
 	if(!empty($_FILES["fichier_choisi"]["name"])){
 		//nom du fichier choisi:
@@ -82,7 +87,7 @@
 		chmod("$repcible",0777);
 	}
 	
-	rename("$chemin$nomFichier", "$repcible/$elv $nomFichier");
+	//rename("$chemin$nomFichier", "$repcible/$elv $nomFichier");
 		
 	echo("<font color=\"yellow\" size=\"-1\">$Message</font>");	
 	echo("<!-- /CODE SAUVEGARDE -->");	
