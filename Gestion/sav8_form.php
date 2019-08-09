@@ -40,9 +40,8 @@
 	echo("<!-- $nomTemporaire, $chemin.$nomFichier -->");
 	
 	if($form_rep=="OK") echo($Message);
-	else {
-		include("sav8_form.html");
-	}
+
+	include("sav8_form.html");
 ?>
 <!-- Fin Formulaire de sauvegarde -->
 	
