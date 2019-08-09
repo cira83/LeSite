@@ -23,7 +23,7 @@
 	$repertoire_TP = "./files/$classe/_Copies/Aclasser/"; 	
 	if(!file_exists($repertoire_TP)){
 		mkdir($repertoire_TP);
-		echo("Création de $repertoire_TP");
+		echo("<!-- mkdir $repertoire_TP -->");
 	}
 	
 	
@@ -55,7 +55,7 @@
 <!-- /sav8_form.html -->
 <?php
 	echo("<!-- CODE SAUVEGARDE -->");
-	$chemin = "./temporaire/" ;
+	$chemin = $repertoire_TP ;
 	if(!file_exists($chemin)) {
 		mkdir($chemin);
 		chmod("$chemin",0777);
@@ -80,14 +80,6 @@
 		}
 		else $Message = "La sauvegarde a &eacute;chou&eacute; !!" ;
 	}
-	//Déplace le fichier
-	$repcible = "./files/$classe/_Copies/Aclasser/"; echo("<!-- $repcible -->");
-	if(!file_exists($repcible)) {
-		mkdir($repcible);
-		chmod("$repcible",0777);
-	}
-	
-	//rename("$chemin$nomFichier", "$repcible/$elv $nomFichier");
 		
 	echo("<font color=\"yellow\" size=\"-1\">$Message</font>");	
 	echo("<!-- /CODE SAUVEGARDE -->");	
