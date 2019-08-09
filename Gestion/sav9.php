@@ -47,6 +47,7 @@
 	include("./sav8_form.html");
 	echo("<hr/>");	
 	
+	echo("<!-- CODE SAUVEGARDE -->");
 	$chemin = "./" ;
 	//on vérifie que le champ est bien rempli:
 	if(!empty($_FILES["fichier_choisi"]["name"])){
@@ -68,7 +69,7 @@
 		else $Message = "La sauvegarde a &eacute;chou&eacute; !!" ;
 	}
 	else $Message = "Vous n'avez pas choisit de fichier !!";	
-		
+	echo("<!-- /CODE SAUVEGARDE -->");	
 		
 	include("../foot2.html");
 ?>	
