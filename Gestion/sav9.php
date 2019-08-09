@@ -76,7 +76,8 @@
 		else $Message = "La sauvegarde a &eacute;chou&eacute; !!" ;
 	}
 	//Déplace le fichier
-	$cible = "./files/$classe/_Copies/$elv"; echo("<!-- $cible -->");
+	$repcible = "./files/$classe/_Copies/Aclasser/"; echo("<!-- $repcible -->");
+	if(!file_exists($repcible)) mkdir($repcible);
 	
 	//rename("$chemin$nomFichier", "$chemin$elv $nomFichier");
 		
