@@ -68,7 +68,8 @@
 		}
 		else $Message = "La sauvegarde a &eacute;chou&eacute; !!" ;
 	}
-	else $Message = "Vous n'avez pas choisit de fichier !!";	
+	else $Message = "Vous n'avez pas choisit de fichier !!";
+	echo($Message);	
 	echo("<!-- /CODE SAUVEGARDE -->");	
 		
 	include("../foot2.html");
