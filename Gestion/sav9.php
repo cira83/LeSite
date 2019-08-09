@@ -75,7 +75,11 @@
 		}
 		else $Message = "La sauvegarde a &eacute;chou&eacute; !!" ;
 	}
+	//Déplace le fichier
+	$cible = "./files/$classe/_Copies/$elv"; echo("<!-- $cible -->");
 	
+	//rename("$chemin$nomFichier", "$chemin$elv $nomFichier");
+		
 	echo("<font color=\"yellow\" size=\"-1\">$Message</font>");	
 	echo("<!-- /CODE SAUVEGARDE -->");	
 		
