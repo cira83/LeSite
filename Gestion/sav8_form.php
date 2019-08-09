@@ -1,6 +1,7 @@
 <!-- Formulaire de sauvegarde -->
 <hr/>
 <?php
+	echo("<!-- sav8_form.php -->");
 	$form_rep = $_POST['formulaire'];
 	
 	//on vérifie que le champ est bien rempli:
