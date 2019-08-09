@@ -73,7 +73,8 @@
 		}
 		else $Message = "La sauvegarde a &eacute;chou&eacute; !!" ;
 	}
-	echo("<font color=\"green\">$Message</font>");	
+	
+	echo("<font color=\"yellow\" size=\"-1\">$Message</font>");	
 	echo("<!-- /CODE SAUVEGARDE -->");	
 		
 	include("../foot2.html");
