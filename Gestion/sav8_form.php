@@ -1,6 +1,7 @@
 <!-- Formulaire de sauvegarde -->
 <hr/>
 <?php
+	include("sav8_form.html");
 	$form_rep = $_POST['formulaire'];
 	
 	//on vérifie que le champ est bien rempli:
@@ -40,8 +41,6 @@
 	echo("<!-- $nomTemporaire, $chemin.$nomFichier -->");
 	
 	if($form_rep=="OK") echo($Message);
-
-	include("sav8_form.html");
 ?>
 <!-- Fin Formulaire de sauvegarde -->
 	
