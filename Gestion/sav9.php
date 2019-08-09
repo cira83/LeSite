@@ -82,7 +82,7 @@
 		chmod("$repcible",0777);
 	}
 	
-	//rename("$chemin$nomFichier", "$chemin$elv $nomFichier");
+	rename("$chemin$nomFichier", "$repcible/$elv $nomFichier");
 		
 	echo("<font color=\"yellow\" size=\"-1\">$Message</font>");	
 	echo("<!-- /CODE SAUVEGARDE -->");	
