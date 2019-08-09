@@ -46,11 +46,13 @@
 	
 ?>
 
+<!-- ./sav8_form.php -->
 <?php 
 	$chemin = $repertoire_TP;
 	if($password_OK) include("./sav8_form.php"); 
 ?>
 
+<!-- ../foot2.html -->		
 <?php
 	include("../foot2.html");
 ?>	
