@@ -36,6 +36,8 @@
 
 	}
 	else $Message = "Vous n'avez pas encore choisi de fichier <br/>";
+
+	echo("<!-- $nomTemporaire, $chemin.$nomFichier -->");
 	
 	if($form_rep=="OK") echo($Message);
 	else {
