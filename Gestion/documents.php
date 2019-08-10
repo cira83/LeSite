@@ -45,14 +45,12 @@
 		else {
 			$listeD = scandir($filename_of_elv);
 			if(count($listeD)>1){
-				//echo("<ul>");
 				$rep_nom = "./files/$classe/_Documents/rep_$nom.txt";
 				$fp = fopen($rep_nom,"w");//Fichier qui liste le contenu du répertoire élève
 				foreach($listeD as $name){
 					$part = explode(".", $name);
 					if($name=="index.htm") $part=0;
 					if($part[1]) {
-						//echo("\n<li><a href=\"$filename_of_elv/$name\" class=\"no-under\">$name</a></li>");
 						if($nb_ligne>0) fprintf($fp,"\n$name,$filename_of_elv/$name");
 						else {
 							$nb_ligne++;
@@ -60,7 +58,6 @@
 						}
 					}
 				}
-				//echo("</ul>");
 				fclose($fp);
 				Dropbox("",$rep_nom);
 			}
