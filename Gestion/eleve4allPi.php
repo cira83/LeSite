@@ -1,0 +1,113 @@
+<?php
+
+	//LISTE LES MATIERES ET EPREUVES
+	$repertoire = "./files/$classe"; 	
+	$matieres = scandir($repertoire);
+	sort($matieres);
+	
+	
+	//les apréciations
+	$file_eleve2016 = fopen("./files/$classe.txt", "r");
+	while(!feof($file_eleve2016)){
+		$ligne122016 = fgets($file_eleve2016);
+		$content122016 = explode(":", $ligne122016);
+		if($content122016[0]==$nom){
+			if($content122016[9]) $apres122016 = $content122016[9];
+			if($content122016[10]) $apres122016 = $content122016[10];
+		}
+		if($apres122016) {
+			echo("<table><tr><td bgcolor=\"yellow\" width=\"100px\">Appréciation</td><td align=\"left\">$apres122016</td></tr></table>");
+		}
+		$apres122016="";
+	};
+	fclose($file_eleve2016);
+	
+	//les absences 14 novembre
+	$lesabsences = lesabsences2($classe,$nom,$tableaudesappels);
+	echo($lesabsences);
+	
+	for($i=0;$i<count($matieres);$i++){
+		$lamatiere = $matieres[$i];
+		if(estfichier($lamatiere)) {
+			echo("<table>");
+			$periode = periode($lamatiere);
+			$coefmat = coefmat($lamatiere);
+			//LISTE DES EPREUVES
+			$repertoire = "./files/$classe/$lamatiere";
+			$epreuves = scandir($repertoire);
+			sort($epreuves);
+			for($j=0;$j<count($epreuves);$j++){
+				$lepreuve = $epreuves[$j];
+				$part = explode(".", $lepreuve);
+				if(estfichier($lepreuve)) {
+					//Ouverture du fichier de l'epreuve
+					$fichier = $files."$classe/$lamatiere/$lepreuve"; 
+					$fp = fopen($fichier, "r");
+					$Description = "Historique:";
+					$lanote = ""; $lecoef=""; $liens=""; $Description=""; $commentaire="";
+					while (!feof($fp)){//On ne prend que la dernière ligne avec $nom dedans
+						$ligne = fgets($fp);
+						$data = explode(":", $ligne);
+						$nom2 = $data[0];//le nom des participants
+						$note = $data[1];
+						$coef = $data[2]; if($coef=="") $coef=1;
+						if(dansgroupe($nom2,$nom)) {
+							$lanote = $note;
+							$lecoef = $coef;
+							$commentaire = $data[6];
+							$liens = lescopies2($nom2,$classe,$lepreuve,$repertoire_copies);
+							if($data[3]=="Non Fait") $liens="<img src=\"./icon/absent.gif\"/>";	//On vire la copie si le copain la fait seule						
+							$Description .= "\n$lanote / $data[4]";
+						}
+					}
+					fclose($fp);
+					if($liens=="") $liens = lescopies2($nom,$classe,$lepreuve,$repertoire_copies);//Au cas où la copie est dans son répertoire
+					$somme_note += $lanote*$lecoef;
+					
+					$fichier = $files."$classe/$lamatiere/_$lepreuve";
+					$file_image = str_replace("txt", "png", $fichier);
+					$notesclasse = "<img src=\"$file_image\"/>";//Version RaspberryPI
+
+					$legraphe = "<img src=\"graphe_elv.php?filename=$file_image&note=$lanote\"/>";
+										
+					if($lanote!="") $somme_coef += $lecoef;//Ne prendre que les coefs de copies notées
+					echo("<tr><td $tabeprw><a title=\"$Description\">$part[0]</a></td>");
+					
+					echo("<td $tabnotw>$lanote ($lecoef)</td><td><font size=\"-2\" color=\"blue\">$commentaire</font> $liens</td><td $tabgphw>$notesclasse</td></tr>");
+					$lanote = "";
+					$lecoef = "";
+				}
+			}
+			if($somme_coef>0) $lamoyenne = number_format($somme_note/$somme_coef,2); else $lamoyenne = "";
+			$somme_sem[$periode-1] += $lamoyenne*$coefmat ;
+			if($lamoyenne != "") $somme_coef_sem[$periode-1] += $coefmat ;
+			$somme_note = 0;
+			$somme_coef = 0;
+
+			echo("</table>");
+			
+			
+			//Moyenne dans la matière
+			$file_image = $files."$classe/_$lamatiere.png";
+			$notesclasse = "<img src=\"$file_image\"/>";//Version RaspberryPI
+			$legraphe = "<img src=\"graphe_elv.php?filename=$file_image&note=$lamoyenne\"/>";
+			echo("<table>");
+			if($lamoyenne != "") echo("<tr><td>La moyenne de <b>$lamatiere</b> est $lamoyenne ($coefmat) <br/>qui compte pour le semestre $periode </td><td $tabgphw>$notesclasse</td></tr>");
+			else echo("<tr><td>Pas de moyenne en $lamatiere</td></tr>");
+			echo("</table>");
+		}
+	}
+	echo("<br/>");
+	for($i=0;$i<count($somme_coef_sem);$i++){
+		if($somme_coef_sem[$i]>0) {
+			$lamoyennesem = number_format($somme_sem[$i]/$somme_coef_sem[$i],2);
+			$semestre = $i + 1;
+			//Moyenne du semestre
+			$graphe = $files."$classe/_Semestre $semestre.png";
+			//$image_semestre = "</td><td><img src=\"$graphe\" />";
+			$image_semestre = "</td><td>Non disponible";
+			echo("<table><tr><td>La moyenne du semestre $semestre est de $lamoyennesem ($somme_coef_sem[$i])$image_semestre</td></tr></table>\n");
+		}
+	}
+	echo("<br/>");	
+?>

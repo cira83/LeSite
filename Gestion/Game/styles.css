@@ -1,0 +1,43 @@
+body {
+	background-color: #d5d5d5;
+	color: #424242;
+	font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+table {
+	text-align: center;
+	background-color: #c0c0c0;
+	border-style: dotted;
+	border-width: 1px;
+	width: 781px;
+}
+
+
+
+table.C100 {
+	text-align: center;
+	background-color: #c0c0c0;
+	border-style: dotted;
+	border-width: 1px;
+	width: 95%;
+}
+
+a {
+	color: #011892;
+	font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+table.question{
+	width: 781px;
+	background-color: #d5d5d5;
+	border-width: 0px;
+}
+
+table.vide{
+	width: 1150px;
+	height: 500px;
+}
+
+table.accueil{
+	width: 781px;
+}
