@@ -52,7 +52,7 @@
 			$nomFichier_propre = strtolower($nomFichier);
 			$nomFichier_propre = str_replace("php", "txt", $nomFichier_propre);
 			$Message = "Votre fichier $nomFichier_propre est sauvegard&eacute;." ;
-			rename("$chemin$nomFichier", "$chemin$elv $nomFichier");
+			rename("$chemin$nomFichier", "$chemin$elv $nomFichier_propre");
 		}
 		else $Message = "La sauvegarde a &eacute;chou&eacute; !!" ;
 	}
