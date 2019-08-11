@@ -47,8 +47,11 @@
 		$codeErreur = $_FILES["fichier_choisi"]["error"] ;
 	
 		if(copy($nomTemporaire, $chemin.$nomFichier)){
-			$Message = "Votre fichier $nomFichier est sauvegard&eacute;." ;
 			chmod("$chemin$nomFichier",0777);
+			//remplace les php
+			$nomFichier_propre = strtolower($nomFichier);
+			$nomFichier_propre = str_replace("php", "txt", $nomFichier_propre);
+			$Message = "Votre fichier $nomFichier_propre est sauvegard&eacute;." ;
 			rename("$chemin$nomFichier", "$chemin$elv $nomFichier");
 		}
 		else $Message = "La sauvegarde a &eacute;chou&eacute; !!" ;
