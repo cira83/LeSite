@@ -96,7 +96,7 @@ function redirect_epreuve(lacible){
 	
 	<td><a href="./files.php" title="Fichiers des élèves"><img src="./icon/finder.jpg" height="15px" style="border:solid 4px #fff"></a></td>	
 	<td><a href="./DSZone.php" title="DS Perso"><img src="./icon/quest.jpg" height="15px" style="border:solid 4px #fff"></a></td>
-	<td><a href="./sujet2TP.php" title="Les sujets de TP" target="_blank"><img src="./icon/main.png" height="15px" style="border:solid 4px #fff"></a></td>
+	<td><a href="./sujet2TP.php" title="Les sujets de TP"><img src="./icon/main.png" height="15px" style="border:solid 4px #fff"></a></td>
 	<!-- <td><a href="./tp.php" title="Sujets de TP" target="_blank"><img src="./icon/tp.jpg" height="15px" style="border:solid 4px #fff"></a></td> -->
 	
 <?php
