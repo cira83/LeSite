@@ -97,6 +97,7 @@ function redirect_epreuve(lacible){
 	<td><a href="./files.php" title="Fichiers des élèves"><img src="./icon/finder.jpg" height="15px" style="border:solid 4px #fff"></a></td>	
 	<td><a href="./DSZone.php" title="DS Perso"><img src="./icon/quest.jpg" height="15px" style="border:solid 4px #fff"></a></td>
 	<td><a href="./tp.php" title="Sujets de TP" target="_blank"><img src="./icon/tp.jpg" height="15px" style="border:solid 4px #fff"></a></td>
+	<td><a href="./sujet2TP.php" title="Tous les sujets de TP" target="_blank"><img src="./icon/main.png" height="15px" style="border:solid 4px #fff"></a></td>
 <?php
 	if($nom_doc=="Professeur") 
 		echo("<td><a href=\"./doclasse.php\" title=\"Document $nom_doc\"><img src=\"./icon/doc.jpg\" height=\"15px\" style=\"border:solid 4px #fff\"></a></td>");
