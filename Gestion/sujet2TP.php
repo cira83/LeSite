@@ -12,10 +12,10 @@
 	foreach($liste2 as $tp) {
 		$part = explode(".", $tp);
 		if($part[1]) {
-			if($pass) fprintf($fp, "\n$tp,$tp");
+			if($pass) fprintf($fp, "\n$tp,$Dir_TP/$tp");
 			else {
 				$pass++;
-				fprintf($fp, "\n$tp,$Dir_TP$tp");
+				fprintf($fp, "$tp,$Dir_TP/$tp");
 			}
 		}
 	}
