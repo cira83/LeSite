@@ -253,13 +253,13 @@
 			$listedesnonfait .= "<a href=\"$lien\">".$nom."</a> ";
 		}
 	}
-
+*/
 	echo($line1);	
 	echo("</table>");
 	
 	$action44 = "./epreuve.php?action=45&mat=$mat&epr=$epr";
 	$menu_elv = menu_deroulant($leleve,"elv");
-*/
+
 ?>	
 	<!-- 04-04 Ligne importation des notes -->
 	<!-- <table><form name="envoie fichier" enctype="multipart/form-data" method="post" action="<?php echo "$action44";?>">
