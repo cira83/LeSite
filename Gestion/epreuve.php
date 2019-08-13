@@ -171,7 +171,7 @@
 	
 	//afficheliste($listeofname);
 	sort($listeofname); //Classes les noms dans l'ordre alphabétique
-/*	
+
 	$j = 0;
 	$n = 0;
 	echo("<table>");
@@ -253,7 +253,7 @@
 			$listedesnonfait .= "<a href=\"$lien\">".$nom."</a> ";
 		}
 	}
-*/
+
 	echo($line1);	
 	echo("</table>");
 	
