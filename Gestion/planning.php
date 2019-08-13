@@ -24,10 +24,12 @@
 		echo("<!-- TP list file : $filename -->");
 		if(file_exists($filename)) {
 			$fp = fopen($filename, "r");
+			$i = 0;
 			while(!feof($fp)) {
 				$ligne = fgets($fp);
 				$part = explode(",", $ligne);
 				$listeTPactifs[$i] = $part;
+				$i++;
 			}
 			fclose($fp);
 		}
