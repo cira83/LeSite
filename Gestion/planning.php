@@ -20,10 +20,19 @@
 	//$deroulant2 : liste des epreuves name=epr
 	
 	function tp_actif() {
-			$listeTPactifs[0]="0";
-			$listeTPactifs[1]="1";
+		$filename = "./files/$classe/_Sujets2TP/liste.txt";
+		if(file_exists($filename)) {
+			$fp = fopen($filename, "r");
+			while(!feof($fp){
+				$ligne = fgets($fp);
+				$part = explode(",", $ligne);
+				$listeTPactifs[$i] = $part;
+			}
+			fclose($fp);
+		}
+		else $listeTPactifs[0] = "No active TP";
 			
-			return $listeTPactifs;	
+		return $listeTPactifs;	
 	}
 	
 	$tp_actif = menu_deroulant(tp_actif(),"epr","??");
@@ -232,12 +241,6 @@
 			$Zone_image = "2 fichier $filename2 inexistant !!!";
 		}
 		echo("$Zone_image");
-		
-		
-		
-		
-		
-		
 		
 		
 		echo("<form method=\"post\" action=\"./planning.php?action=2\">");
