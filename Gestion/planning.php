@@ -36,7 +36,7 @@
 		return $listeTPactifs;	
 	}
 	
-	$tp_actif = menu_deroulant(tp_actif(),"epr","??");
+	$tp_actif = menu_deroulant(tp_actif($classe),"epr","??");
 	
 
 	function tab_activite($classe,$ladate,$lepreuve1){
@@ -65,7 +65,7 @@
 			$case = explode(":", $ligne_planning[$i]);
 			$deroulant = menu_deroulant($tableaudesepreuves,"epr$i",$case[0]);
 			//Verif 
-			$deroulant = menu_deroulant(tp_actif(),"epr$i",$case[0]);
+			$deroulant = menu_deroulant(tp_actif($classe),"epr$i",$case[0]);
 
 			//Recherche du fichier
 			for($l=0;$l<count($lepreuve1);$l++){
