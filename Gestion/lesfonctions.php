@@ -346,16 +346,21 @@
 	
 	
 	function menu_deroulant($liste,$nom,$selected){ //Crée un menu deroulant avec la liste $liste et de nom $nom
+		echo("<!-- lesfonctions.php/menu_deroulant -->");
+		
 		$lemenu = "<SELECT name=\"$nom\">";
 		$lemenu .= "<OPTION>----</OPTION>";
-		for($i=0;$i<count($liste);$i++){
-			$drap = true;
-			if($selected==$liste[$i]) {
-				$lemenu .= "<OPTION selected>$liste[$i]</OPTION>";
-				$drap = false;
-			}else $lemenu .= "<OPTION>$liste[$i]</OPTION>";
+		if($liste[0]){
+			for($i=0;$i<count($liste);$i++){
+				$drap = true;
+				if($selected==$liste[$i]) {
+					$lemenu .= "<OPTION selected>$liste[$i]</OPTION>";
+					$drap = false;
+				}else $lemenu .= "<OPTION>$liste[$i]</OPTION>";
+			}
 		}
-		//if($drap) $lemenu .= "<OPTION $selected selected>";
+		else echo("<!-- lesfonctions.php/menu_deroulant - liste vide -->");
+ 		//if($drap) $lemenu .= "<OPTION $selected selected>";
 		$lemenu .= "</SELECT>";
 		return $lemenu;
 	}
