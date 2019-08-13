@@ -11,7 +11,7 @@
 	$fp = fopen($file, "w");
 	foreach($liste2 as $tp) {
 		$part = explode(".", $tp);
-		if($part[1]) {
+		if($part[1]&$part[0]) {
 			if($pass) fprintf($fp, "\n$tp,$Dir_TP/$tp");
 			else {
 				$pass++;
