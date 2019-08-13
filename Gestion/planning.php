@@ -28,7 +28,7 @@
 			while(!feof($fp)) {
 				$ligne = fgets($fp);
 				$part = explode(",", $ligne);
-				$listeTPactifs[$i] = $part;
+				$listeTPactifs[$i] = $part[0];
 				$i++;
 			}
 			fclose($fp);
