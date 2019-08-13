@@ -28,8 +28,10 @@
 			while(!feof($fp)) {
 				$ligne = fgets($fp);
 				$part = explode(",", $ligne);
-				$listeTPactifs[$i] = $part[0];
-				$i++;
+				if($part[0][0]!="[") {
+					$listeTPactifs[$i] = $part[0];
+					$i++;
+				}
 			}
 			fclose($fp);
 		}
