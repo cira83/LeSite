@@ -258,7 +258,7 @@
 	echo("</table>");
 	
 	$action44 = "./epreuve.php?action=45&mat=$mat&epr=$epr";
-	//$menu_elv = menu_deroulant($leleve,"elv");
+	$menu_elv = menu_deroulant($leleve,"elv");
 
 ?>	
 	<!-- 04-04 Ligne importation des notes -->
