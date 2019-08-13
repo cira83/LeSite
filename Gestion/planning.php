@@ -43,8 +43,8 @@
 		$ligne1 = 0;
 		for($i=0;$i<count($ligne_planning);$i++){
 			$case = explode(":", $ligne_planning[$i]);
-			//$deroulant = menu_deroulant($tableaudesepreuves,"epr$i",$case[0]);
-			$deroulant = menu_deroulant(listedesTP("./files/$classe/_Sujets2TP/liste2.txt"),"epr$i",$case[0]);
+			$deroulant = menu_deroulant($tableaudesepreuves,"epr$i",$case[0]);
+			//$deroulant = menu_deroulant(listedesTP("./files/$classe/_Sujets2TP/liste2.txt"),"epr$i",$case[0]);
 
 			//Recherche du fichier
 			for($l=0;$l<count($lepreuve1);$l++){
