@@ -47,7 +47,8 @@
 			//Verif 
 			$listeTPactifs[0]="0";
 			$listeTPactifs[1]="1";
-			$deroulant = menu_deroulant($listeTPactifs,"epr$i",$case[0]);
+			$deroulant_actifs = menu_deroulant($listeTPactifs,"epr$i",$case[0]);
+			$deroulant = $deroulant_actifs;
 
 			//Recherche du fichier
 			for($l=0;$l<count($lepreuve1);$l++){
@@ -233,7 +234,7 @@
 		
 		
 		echo("<form method=\"post\" action=\"./planning.php?action=2\">");
-		echo("<table><tr><td>Ajouter une activit&eacute;e ?? : $deroulant2");
+		echo("<table><tr><td>Ajouter une activit&eacute;e : $deroulant_actifs");
 		$ladate=str_replace("_","/",$ladate);
 		echo("<input type=\"hidden\" name=\"ladate\" value=\"$ladate\">");
 		submit();
