@@ -51,7 +51,7 @@
 		if(file_exists($filename)) {
 			$fp = fopen($filename,"r");
 			$i = 0;
-			while (feof($fp)){
+			while (!feof($fp)){
 				$ligne_planning[$i] = fgets($fp);
 				$i++;
 			}
