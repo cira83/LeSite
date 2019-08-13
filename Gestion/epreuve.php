@@ -280,7 +280,6 @@
 	</form></table>
 
 <?php
-/*
 	if($somme_coef>0) {
 		$moyenne = number_format($somme_note/$somme_coef,2); //
 		echo("<p>Moyenne de la classe : $moyenne ($somme_coef notes pour $nb2copies copies rendues)</p>");
@@ -319,5 +318,4 @@
 	$tabEpreuves = tabEpreuves($classe,$mat);
 	echo($tabEpreuves);
 	include("./bas.php");
-*/
 ?>
