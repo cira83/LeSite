@@ -21,6 +21,7 @@
 	
 	function tp_actif() {
 		$filename = "./files/$classe/_Sujets2TP/liste.txt";
+		echo("<!-- TP list file : $filename -->");
 		if(file_exists($filename)) {
 			$fp = fopen($filename, "r");
 			while(!feof($fp)) {
