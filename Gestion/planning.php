@@ -18,6 +18,13 @@
 	}
 	
 	//$deroulant2 : liste des epreuves name=epr
+	
+	function tp_actif() {
+			$listeTPactifs[0]="0";
+			$listeTPactifs[1]="1";
+			
+			return $listeTPactifs;	
+	}
 
 	function tab_activite($classe,$ladate,$lepreuve1){
 		for($l=0;$l<count($lepreuve1);$l++){
@@ -45,10 +52,7 @@
 			$case = explode(":", $ligne_planning[$i]);
 			$deroulant = menu_deroulant($tableaudesepreuves,"epr$i",$case[0]);
 			//Verif 
-			$listeTPactifs[0]="0";
-			$listeTPactifs[1]="1";
-			$deroulant_actifs = menu_deroulant($listeTPactifs,"epr$i",$case[0]);
-			$deroulant = $deroulant_actifs;
+			$deroulant = menu_deroulant(tp_actif(),"epr$i",$case[0]);
 
 			//Recherche du fichier
 			for($l=0;$l<count($lepreuve1);$l++){
@@ -234,7 +238,7 @@
 		
 		
 		echo("<form method=\"post\" action=\"./planning.php?action=2\">");
-		echo("<table><tr><td>Ajouter une activit&eacute;e : $deroulant_actifs");
+		echo("<table><tr><td>Ajouter une activit&eacute;e : $deroulant2");
 		$ladate=str_replace("_","/",$ladate);
 		echo("<input type=\"hidden\" name=\"ladate\" value=\"$ladate\">");
 		submit();
