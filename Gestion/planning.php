@@ -233,7 +233,7 @@
 		
 		
 		echo("<form method=\"post\" action=\"./planning.php?action=2\">");
-		echo("<table><tr><td>Ajouter une activit&eacute;e : $deroulant2");
+		echo("<table><tr><td>Ajouter une activit&eacute;e ?? : $deroulant2");
 		$ladate=str_replace("_","/",$ladate);
 		echo("<input type=\"hidden\" name=\"ladate\" value=\"$ladate\">");
 		submit();
