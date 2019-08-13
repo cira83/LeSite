@@ -258,7 +258,7 @@
 	echo("</table>");
 	
 	$action44 = "./epreuve.php?action=45&mat=$mat&epr=$epr";
-	if($leleve) $menu_elv = menu_deroulant($leleve,"elv");
+	// desactivé le 13/08/2019 -> $menu_elv = menu_deroulant($leleve,"elv");
 
 ?>	
 	<!-- 04-04 Ligne importation des notes -->
