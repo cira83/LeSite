@@ -23,7 +23,7 @@
 		$filename = "./files/$classe/_Sujets2TP/liste.txt";
 		if(file_exists($filename)) {
 			$fp = fopen($filename, "r");
-			while(!feof($fp){
+			while(!feof($fp)) {
 				$ligne = fgets($fp);
 				$part = explode(",", $ligne);
 				$listeTPactifs[$i] = $part;
