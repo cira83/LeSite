@@ -19,7 +19,7 @@
 	
 	//$deroulant2 : liste des epreuves name=epr
 	
-	function tp_actif() {
+	function tp_actif($classe) {
 		$filename = "./files/$classe/_Sujets2TP/liste.txt";
 		echo("<!-- TP list file : $filename -->");
 		if(file_exists($filename)) {
