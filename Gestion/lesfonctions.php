@@ -45,6 +45,16 @@
 	$leleve Liste des élèves de la classe
 */
 	
+	function listedesTP($filename) {
+		if(file_exists($filename)) {
+			$fp = fopen($filename, "r"); 
+			fclose($fp);
+		}
+		else echo("lesfonction.php/listedesTP - $filename ??");
+		return $tab;
+	}
+	
+	
 	function ftp_pi($filename){
 		echo("Copie de $filename via FTP sur Pi");		
 	}
