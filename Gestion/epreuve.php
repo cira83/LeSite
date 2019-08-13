@@ -314,7 +314,7 @@
 	echo("</center>");
 	
 	//les epreuves 3 janvier 2017
-	$tabEpreuves = tabEpreuves($classe,$mat);
+	//$tabEpreuves = tabEpreuves($classe,$mat);
 	echo($tabEpreuves);
 	include("./bas.php");
 ?>
