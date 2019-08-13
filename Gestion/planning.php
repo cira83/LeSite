@@ -25,6 +25,9 @@
 			
 			return $listeTPactifs;	
 	}
+	
+	$tp_actif = menu_deroulant(tp_actif(),"epr","??");
+	
 
 	function tab_activite($classe,$ladate,$lepreuve1){
 		for($l=0;$l<count($lepreuve1);$l++){
@@ -238,7 +241,7 @@
 		
 		
 		echo("<form method=\"post\" action=\"./planning.php?action=2\">");
-		echo("<table><tr><td>Ajouter une activit&eacute;e : $deroulant2");
+		echo("<table><tr><td>Ajouter une activit&eacute;e : $tp_actif");
 		$ladate=str_replace("_","/",$ladate);
 		echo("<input type=\"hidden\" name=\"ladate\" value=\"$ladate\">");
 		submit();
