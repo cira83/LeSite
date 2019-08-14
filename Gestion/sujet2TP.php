@@ -28,7 +28,14 @@
 	if($action==1) {
 		$rep = $_GET[mat];
 		echo("Création des épreuves de TP dans $rep.");
-		$rep_new_TP = "./files/$classe/$rep/"; echo $rep_new_TP;
+		$rep_new_TP = "./files/$classe/$rep/"; //echo $rep_new_TP;
+		foreach($sujet2tp as $filename) {
+			if(!file_exists("$rep_new_TP$sujet2tp")) {
+				$fp = fopen("$rep_new_TP$sujet2tp", "w");
+				fprintf($fp, "----::1:")
+				fclose($fp);
+			}
+		}
 	}
 	
 ?>	
