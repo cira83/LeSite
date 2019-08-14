@@ -11,7 +11,7 @@
 	$action = $_GET[action];
 	if($action==1) {
 		$rep = $_GET[mat];
-		echo("Création des épreuves de TP dans $rep.");
+		echo("<p>Création des épreuves de TP dans $rep.<br>");
 		$rep_new_TP = "./files/$classe/$rep/"; //echo $rep_new_TP;
 		$fp = fopen("$Dir_TP/liste.txt", "r");
 		while(!feof($fp)){
@@ -19,6 +19,7 @@
 			$filename = explode(",", $ligne);
 			$newfile = "$rep_new_TP$filename[0].txt";
 			if(!file_exists($newfile)&($filename[0][0]!="[")) {
+				echo("$newfile<br/>");
 				$fp2 = fopen($newfile, "w");
 				fprintf($fp2, "----::1:");
 				fclose($fp2);
@@ -30,6 +31,7 @@
 			
 		}
 		fclose($fp);
+		echo("</p>");
 	}
 
 ?>	
