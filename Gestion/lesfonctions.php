@@ -38,11 +38,14 @@
 	function plan_sort($plannings){//Ajouté le 6 decembre 2017 pour ranger les plannings
 	function ftp_pi($filename){//Sauvegarde vers Pi via ftp
 	
-	$tableaudesepreuves[$i] // Le tableau de toutes les epreuves
+	$tableaudesepreuves Tableau de toutes les epreuves
 	$lepreuve1[$k] = $epreuves[$j].".".$matieres[$i].".";
-	$tableaudesmatieres
-	$tableaudesTP
+	$tableaudesmatieres Tableau des matières
 	$leleve Liste des élèves de la classe
+	$tableaudesTP Tableau des copies à ranger
+	
+	$deroulant3 Menu déroulant des élèves - onchange=addelv
+	$listedesclasses Menu déroulant des classes - onchange=newclasse
 */
 	
 
