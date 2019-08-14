@@ -126,8 +126,8 @@ function nonfait() {
 	document.getElementById('date').value = "<?php echo($nonfait);?>";
 }
 function addelv(valeur){
-	alert(valeur);
-	document.getElementById('nom').value = valeur;
+	actuelle = document.getElementById('nom').value;
+	document.getElementById('nom').value = actuelle + valeur;
 }
 </script>
 <?php
