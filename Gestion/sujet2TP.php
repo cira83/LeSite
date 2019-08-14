@@ -21,6 +21,13 @@
 	}
 	fclose($fp);
 	
+	echo("<!-- Nouvelles Epreuves -->");
+	echo("<table><tr><td>");
+	
+	echo("</td></tr></table>");
+	
+	
+	
 	Dropbox("$classe - Tous les sujets",$file);
 	
 	include("./bas.php");
