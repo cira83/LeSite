@@ -30,8 +30,9 @@
 		echo("Création des épreuves de TP dans $rep.");
 		$rep_new_TP = "./files/$classe/$rep/"; //echo $rep_new_TP;
 		foreach($sujet2tp as $filename) {
-			if(!file_exists("$rep_new_TP$sujet2tp")) {
-				$fp = fopen("$rep_new_TP$sujet2tp", "w");
+			$newfile = "$rep_new_TP$filename";
+			if(!file_exists($newfile)) {
+				$fp = fopen($newfile, "w");
 				fprintf($fp, "----::1:");
 				fclose($fp);
 			}
