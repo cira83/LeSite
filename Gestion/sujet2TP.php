@@ -32,7 +32,7 @@
 		foreach($sujet2tp as $filename) {
 			if(!file_exists("$rep_new_TP$sujet2tp")) {
 				$fp = fopen("$rep_new_TP$sujet2tp", "w");
-				fprintf($fp, "----::1:")
+				fprintf($fp, "----::1:");
 				fclose($fp);
 			}
 		}
