@@ -18,7 +18,7 @@
 			$ligne = fgets($fp);
 			$filename = explode(",", $ligne);
 			$newfile = "$rep_new_TP$filename[0].txt";
-			if(!file_exists($newfile)) {
+			if(!file_exists($newfile)&($filename[0][0]!="[")) {
 				$fp2 = fopen($newfile, "w");
 				fprintf($fp2, "----::1:");
 				fclose($fp2);
