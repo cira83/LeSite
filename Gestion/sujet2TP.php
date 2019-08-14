@@ -21,6 +21,8 @@
 	}
 	fclose($fp);
 	
+	
+	//$deroulant1 = <SELECT name="mat">
 	$action = $_GET[action];
 	echo $action;
 	
@@ -28,6 +30,9 @@
 <!-- Nouvelles Epreuves -->
 <form action="sujet2TP.php" method="get">
 <table><tr><td>
+<?php
+	echo($deroulant1);
+?>
 <input type="hidden" value="1" name="action">
 <input type="submit">
 </td></tr></table>
