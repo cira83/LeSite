@@ -14,7 +14,7 @@
 		echo("Création des épreuves de TP dans $rep.");
 		$rep_new_TP = "./files/$classe/$rep/"; //echo $rep_new_TP;
 		$fp = fopen("$Dir_TP/liste.txt", "r");
-		while(!feof($fp){
+		while(!feof($fp)){
 			$ligne = fgets($fp);
 			$filename = explode(",", $ligne);
 			$newfile = "$rep_new_TP$filename[0].txt";
