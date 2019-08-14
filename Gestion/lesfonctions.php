@@ -518,9 +518,13 @@
 			$part = explode(":", $lesdates[$i]);
 			if($part[0]>70) $part[0]=str_replace("7", "0", $part[0]);
 			$theme = "class=\"present\"";
-			if(($part[0]==$part_ladate[1])&&($part[1]==$part_ladate[0])) $theme = "class=\"absent\"";
+			$txt_color = "black";
+			if(($part[0]==$part_ladate[1])&&($part[1]==$part_ladate[0])) {
+				$theme = "class=\"absent\"";
+				$txt_color = "orange";
+			}
 			$ligne1 .= "<td $theme>$part[0]</td>";//les mois
-			$ligne2 .= "<td $theme><a href=\"planning.php?action=3&ladate=$part[1]/$part[0]\"><font color=\"orange\">$part[1]</font></a></td>";//les jours
+			$ligne2 .= "<td $theme><a href=\"planning.php?action=3&ladate=$part[1]/$part[0]\"><font color=\"$txt_color\">$part[1]</font></a></td>";//les jours
 		}
 		
 		$ligne1 .= "</tr>";
