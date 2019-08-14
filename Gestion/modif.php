@@ -125,6 +125,9 @@ function newvalue(lavaleur){
 function nonfait() {
 	document.getElementById('date').value = "<?php echo($nonfait);?>";
 }
+function addelv(valeur){
+	alert(valeur);
+}
 </script>
 <?php
 		$action54 = "./modif.php?action=54&mat=$mat&epr=$epr&nom=$nom";
