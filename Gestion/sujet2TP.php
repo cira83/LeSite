@@ -20,15 +20,14 @@
 		}
 	}
 	fclose($fp);
-	
-	echo("<!-- Nouvelles Epreuves -->");
-	echo("<table><tr><td>");
-	
-	echo("</td></tr></table>");
-	
-	
-	
+?>	
+<!-- Nouvelles Epreuves -->
+<form action="sujet2TP.php?action=1" method="get">
+<table><tr><td>
+<input type="submit">
+</td></tr></table>
+</form>
+<?php	
 	Dropbox("$classe - Tous les sujets",$file);
-	
 	include("./bas.php");
 ?>
