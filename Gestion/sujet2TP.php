@@ -24,7 +24,10 @@
 	
 	//$deroulant1 = <SELECT name="mat">
 	$action = $_GET[action];
-	echo $action;
+	if($action==1) {
+		$rep = $_GET[mat];
+		echo("Création des épreuves de TP dans $rep.");
+	}
 	
 ?>	
 <!-- Nouvelles Epreuves -->
