@@ -24,7 +24,7 @@
 				fclose($fp2);
 				$newfile = "$rep_new_TP"."_link$filename[0].txt";
 				$fp2 = fopen($newfile, "w");
-				fprintf($fp2, $filename[1]);
+				fprintf($fp2, "$filename[1]\n");
 				fclose($fp2);
 			}
 			
