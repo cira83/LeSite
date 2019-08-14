@@ -20,10 +20,15 @@
 		}
 	}
 	fclose($fp);
+	
+	$action = $_GET[action];
+	echo $action;
+	
 ?>	
 <!-- Nouvelles Epreuves -->
-<form action="sujet2TP.php?action=1" method="get">
+<form action="sujet2TP.php" method="get">
 <table><tr><td>
+<input type="hidden" value="1" name="action">
 <input type="submit">
 </td></tr></table>
 </form>
