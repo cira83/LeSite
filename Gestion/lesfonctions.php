@@ -683,7 +683,7 @@
 	}
 
 	//LISTE DES ELEVES DE LA CLASSE
-	$deroulant3 = "<SELECT name=\"elv\" id=\"elv\"><OPTION>----</OPTION>";
+	$deroulant3 = "<SELECT name=\"elv\" id=\"elv\" onchange=\"addelv(this.value);\"><OPTION>----</OPTION>";
 	$listedeseleves = "&Eacute;l&egrave;ves : ";
 	$laclassefile = "./files/$classe.txt";
 	$fichierdenom = fopen($laclassefile, "r"); 
