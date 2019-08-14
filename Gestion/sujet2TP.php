@@ -14,6 +14,7 @@
 		if($part[1]&$part[0]) {
 			if($pass) fprintf($fp, "\n$tp,$Dir_TP/$tp");
 			else {
+				$sujet2tp[$pass] = $tp;
 				$pass++;
 				fprintf($fp, "$tp,$Dir_TP/$tp");
 			}
@@ -27,6 +28,7 @@
 	if($action==1) {
 		$rep = $_GET[mat];
 		echo("Création des épreuves de TP dans $rep.");
+		$rep_new_TP = "./files/$classe/$rep/"; echo $rep_new_TP;
 	}
 	
 ?>	
