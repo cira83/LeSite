@@ -103,7 +103,7 @@
 	echo("$laphoto");
 	echo("<br/>[Repertoire] Mati&egrave;re :<input type=\"txt\" name=\"mat\" value=\"$mat\">");
 	echo("<br/>[Fichier] Epreuve :<input type=\"txt\" name=\"epr\" value=\"$epr\">");
-	echo("<br/>[0] Nom :<input type=\"txt\" name=\"nom\" value=\"$nom\">");
+	echo("<br/>[0] Nom :<input type=\"txt\" name=\"nom\" value=\"$nom\"> + $deroulant3");
 	echo("<br/>[1] Note :<input type=\"txt\" name=\"note\" value=\"$note\" id=\"note\">");
 	echo("<br/>[2] Coef :<input type=\"txt\" name=\"coef\" value=\"$coef\">");
 	echo("<br/>[3] Date :<input type=\"txt\" name=\"date\" value=\"$date_heure\" id=\"date\">");
@@ -113,7 +113,7 @@
 	echo("<br/>[6] Remarque :<input type=\"txt\" name=\"rq\" value=\"$rq\">");
 	echo("\n<input type=\"hidden\" name=\"epreuve\" value=\"$epreuve[0]\">");
 	echo("\n<input type=\"hidden\" name=\"mat\" value=\"$mat\">");
-	echo("<br/><input type=\"reset\"> - <input type=\"submit\" value=\"Enregistrer\"> - $deroulant3");
+	echo("<br/><input type=\"reset\"> - <input type=\"submit\" value=\"Enregistrer\">");
 	echo("</form></td><td>$histo</td></tr></table>");
 ?>
 <!-- script -->
