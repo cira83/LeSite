@@ -4,8 +4,41 @@
 	include("./haut.php");
 	include("../Dropbox.php");
 
-	Dropbox("$classe - Les sujets du moment","$Dir_TP/liste.txt");
 	
+	Dropbox("$classe - Les sujets du moment","$Dir_TP/liste.txt");
+
+//$deroulant1 = <SELECT name="mat">
+	$action = $_GET[action];
+	if($action==1) {
+		$rep = $_GET[mat];
+		echo("Création des épreuves de TP dans $rep.");
+		$rep_new_TP = "./files/$classe/$rep/"; //echo $rep_new_TP;
+		$fp = fopen("$Dir_TP/liste.txt", "r");
+		while(!feof($fp){
+			$ligne = fgets($fp);
+			$filename = explode(",", $ligne);
+			$newfile = "$rep_new_TP$filename[0].txt";
+			if(!file_exists($newfile)) {
+				$fp2 = fopen($newfile, "w");
+				fprintf($fp2, "----::1:");
+				fclose($fp2);
+			}
+		}
+		fclose($fp);
+	}
+
+?>	
+<!-- Nouvelles Epreuves -->
+<form action="sujet2TP.php" method="get">
+<table><tr><td>
+<?php
+	echo($deroulant1);
+?>
+<input type="hidden" value="1" name="action">
+<input type="submit">
+</td></tr></table>
+</form>
+<?php				
 	$liste2 = scandir($Dir_TP);
 	$file = "$Dir_TP/allfiles.txt";
 	$fp = fopen($file, "w");
@@ -21,36 +54,6 @@
 		}
 	}
 	fclose($fp);
-	
-	
-	//$deroulant1 = <SELECT name="mat">
-	$action = $_GET[action];
-	if($action==1) {
-		$rep = $_GET[mat];
-		echo("Création des épreuves de TP dans $rep.");
-		$rep_new_TP = "./files/$classe/$rep/"; //echo $rep_new_TP;
-		foreach($sujet2tp as $filename) {
-			$newfile = "$rep_new_TP$filename.txt";
-			if(!file_exists($newfile)) {
-				$fp = fopen($newfile, "w");
-				fprintf($fp, "----::1:");
-				fclose($fp);
-			}
-		}
-	}
-	
-?>	
-<!-- Nouvelles Epreuves -->
-<form action="sujet2TP.php" method="get">
-<table><tr><td>
-<?php
-	echo($deroulant1);
-?>
-<input type="hidden" value="1" name="action">
-<input type="submit">
-</td></tr></table>
-</form>
-<?php	
 	Dropbox("$classe - Tous les sujets",$file);
 	include("./bas.php");
 ?>
