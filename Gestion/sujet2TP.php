@@ -37,14 +37,17 @@
 ?>	
 <!-- Nouvelles Epreuves -->
 <form action="sujet2TP.php" method="get">
-<table><tr><td>
+<table><tr>
+	<td>Création des épreuves de TP :
+	</td>
+	<td>
 <?php
 	echo($deroulant1);
 ?>
-<input type="hidden" value="1" name="action">
-<input type="submit">
-</td></tr></table>
-</form>
+	<input type="hidden" value="1" name="action">
+	<input type="submit">
+	</td></tr></table>
+	</form>
 <?php				
 	$liste2 = scandir($Dir_TP);
 	$file = "$Dir_TP/allfiles.txt";
