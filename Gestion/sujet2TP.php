@@ -39,8 +39,6 @@
 <form action="sujet2TP.php" method="get">
 <table><tr>
 	<td>Création des épreuves de TP :
-	</td>
-	<td>
 <?php
 	echo($deroulant1);
 ?>
