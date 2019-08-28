@@ -7,6 +7,7 @@
 	$menu_cause .= "<option value=\"0 Correction\">Correction</option>";
 	$menu_cause .= "<option value=\"-0.5 Telephone\">-0,5 Telephone</option>";
 	$menu_cause .= "<option value=\"-1 Retard\">-1 Retard</option>";
+	$menu_cause .= "<option value=\"-1 WC\">-1 WC</option>";
 	$menu_cause .= "<option value=\"-1 Cahier\">-1 Cahier</option>";
 	$menu_cause .= "<option value=\"-1 Rangement TP\">-1 Rangement TP</option>";
 	$menu_cause .= "<option value=\"+2 Tableau*\">+2 Tableau*</option>";
