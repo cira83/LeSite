@@ -55,7 +55,7 @@ function redirect_epreuve(lacible){
 			?>
 		</td>
 		<td><a href="./ranger.php">Ranger</a></td>
-		<td rowspan=2><a href="./bts.php"><img src="icon/laureat.png" height="45px"/> </td>
+		<!-- <td rowspan=2><a href="./bts.php"><img src="icon/laureat.png" height="45px"/> </td> -->
 	</tr>
 	<tr>
 		<td><?php echo($menu_mat);?></td>
