@@ -135,9 +135,9 @@ function precedent_suivant($liste2nom,$nom){
 	$champs = champs("Tel",$tel);
 	echo("\n[4] Tel. : $champs<br/>");
 	$champs = champs("Mail",$mail);
-	echo("\n[5] <a href=\"mailto:$mail\">Mail</a> : $champs<br/></td><td align=\"left\">");
+	echo("\n[5] <a href=\"mailto:$mail\">Mail</a> : $champs<br/>");
 	$champs = champs("Bac",$origine);
-	echo("\n[6] Bac : $champs<br/>");
+	echo("\n[6] Bac : $champs<br/><a href=\"./Candidatures/$nom.pdf\">Informations</a></td><td align=\"left\">");
 	
 	$champs = champs("Lycee",$lycee);
 	echo("\n[13] Lyc&eacute;e : $champs<br/>");	
