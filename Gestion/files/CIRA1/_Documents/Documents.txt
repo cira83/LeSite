@@ -24,3 +24,5 @@ Fiche 6 - PI,https://www.dropbox.com/s/rwow6mtqim37y0n/Fiche%206.pdf?dl=0
 Fiche 7 - PID,https://www.dropbox.com/s/2tkoma2l2o9hrip/Fiche%207.pdf?dl=0
 Fiche 8 - Laplace,https://www.dropbox.com/s/9nz4790d5z68ah6/Fiche%208.pdf?dl=0
 Fiche 9 - Réglages,https://www.dropbox.com/s/im6lf9kw12mhjrm/Fiche%209.pdf?dl=0
+[Présentations
+Accueil de rentrée,https://www.dropbox.com/s/k90mgeuawfz7onm/Jour%201.pptx?dl=0
