@@ -546,7 +546,7 @@
 		for($i=0;$i<count($lesdates);$i++){
 			$part = explode("/", $lesdates[$i]);
 			if($part[0]<10) $part[0]="0$part[0]";
-			if($part[1]<7) $part[1]="7$part[1]";
+			if($part[1]<6) $part[1]="7$part[1]";
 			
 			$lesdates[$i]="$part[1]:$part[0]";
 		}
