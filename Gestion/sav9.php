@@ -1,7 +1,7 @@
 <?php
 	include("./security.php");
 	include("../head1.html");
-	echo("<title>SAUVEGARDE $classe</title>");
+	echo("<title>SAUVEGARDE $elv</title>");
 ?>		
 	<script type="text/javascript">
 	function login(){
