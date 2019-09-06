@@ -111,7 +111,7 @@
 	echo($tableau);
 	
 	$progression_svg = "./files/$classe/_$classe.svg";
-	if(file_exists($progression_svg)) echo("<img src=\"$progression_svg\" width=\"790px\"/>"); 
+	if(file_exists($progression_svg)) echo("<a href=\"$progression_svg\" target=\"_blank\"><img src=\"$progression_svg\" width=\"790px\"/></a>"); 
 	else echo("<font color=\"blue\" size=\"-1\">Le fichier $progression_svg n'existe pas</font>");
 	$action44 = "./cahier.php?action=44";
 ?>
