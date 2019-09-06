@@ -56,7 +56,7 @@
 	
 	//Figure de la progression Octobre 2017
 	$figure = "./files/$classe/_$classe.svg";
-	if(file_exists($figure)) echo("<img src=\"$figure\" width=\"790px\"/>");
+	if(file_exists($figure)) echo("<a href=\"$figure\" target=\"_blank\"><img src=\"$figure\" width=\"790px\"/></a>");
 
 	
 	$i=0;
