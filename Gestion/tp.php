@@ -1,7 +1,9 @@
 ﻿<?php
 	include("../head1.html");
 	include("../Dropbox.php");
-	$classe = $_COOKIE["laclasse"];
+	
+	if($_COOKIE["laclasse"]) $classe = $_COOKIE["laclasse"];
+	else $classe="CIRA1";
 	
 	if($B800) echo("<title>B800 - TP $classe</title>"); 
 	else echo("<title>TP $classe</title>"); 
