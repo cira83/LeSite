@@ -106,7 +106,7 @@
 	echo("<br/>[Fichier] Epreuve :<input type=\"txt\" name=\"epr\" value=\"$epr\">");
 	echo("<br/>[0] Nom :<input type=\"txt\" name=\"nom\" value=\"$nom\" id=\"nom\"> + $deroulant3");
 	echo("<br/>[1] Note :<input type=\"txt\" name=\"note\" value=\"$note\" id=\"note\" size=\"7\"> [4] Cause :$menu_cause");
-	echo("<br/>[2] Coef :<input type=\"txt\" name=\"coef\" value=\"$coef\">");
+	echo("<br/>[2] Coef :<input type=\"txt\" name=\"coef\" value=\"$coef\" size=\"3\">");
 	echo("<br/>[3] Date :<input type=\"txt\" name=\"date\" value=\"$date_heure\" id=\"date\">");
 	echo("<input type=\"button\" value = \"$nonfait\" onclick = \"nonfait();\">");
 	//echo("<br/>[4] Cause :$menu_cause");
