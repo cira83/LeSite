@@ -105,11 +105,11 @@
 	echo("<br/>[Repertoire] Mati&egrave;re :<input type=\"txt\" name=\"mat\" value=\"$mat\">");
 	echo("<br/>[Fichier] Epreuve :<input type=\"txt\" name=\"epr\" value=\"$epr\">");
 	echo("<br/>[0] Nom :<input type=\"txt\" name=\"nom\" value=\"$nom\" id=\"nom\"> + $deroulant3");
-	echo("<br/>[1] Note :<input type=\"txt\" name=\"note\" value=\"$note\" id=\"note\">");
+	echo("<br/>[1] Note :<input type=\"txt\" name=\"note\" value=\"$note\" id=\"note\" size=\"40\"> [4] Cause :$menu_cause");
 	echo("<br/>[2] Coef :<input type=\"txt\" name=\"coef\" value=\"$coef\">");
 	echo("<br/>[3] Date :<input type=\"txt\" name=\"date\" value=\"$date_heure\" id=\"date\">");
 	echo("<input type=\"button\" value = \"$nonfait\" onclick = \"nonfait();\">");
-	echo("<br/>[4] Cause :$menu_cause");
+	//echo("<br/>[4] Cause :$menu_cause");
 	//echo("<br/>[5] <a href=\"$url\">URL</a> :<input type=\"txt\" name=\"url\" value=\"$url\" size=\"50\">"); Plus d'actualité le 5 avril 2016
 	echo("<br/>[6] Remarque :<input type=\"txt\" name=\"rq\" value=\"$rq\">");
 	echo("\n<input type=\"hidden\" name=\"epreuve\" value=\"$epreuve[0]\">");
