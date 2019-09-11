@@ -192,7 +192,7 @@
 		fclose($fp);
 		
 		$labeldate = str_replace("_", "/", $lanouvelle);
-		echo("<h2>Planning du $labeldate</h2>");	
+		echo("<h2>Planning du $labeldate ($action)</h2>");	
 		$letableau = tab_activite($classe,$lanouvelle,$lepreuve1);
 		echo($letableau);
 	}
