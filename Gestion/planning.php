@@ -16,8 +16,6 @@
 		$nom19 = $_GET[nom];
 		echo("<!-- Ajout de :$nom19: dans $file19 -->");
 		
-		
-		$action = 3;
 	}
 	
 	// Création Repertoire _Plannings  
