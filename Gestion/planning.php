@@ -86,7 +86,7 @@
 																			//11 septembre
 			$repertoire_copies = "./files/$classe/_Copies";
 			$lescopies = lescopies2($case[1],$classe,$case[0],$repertoire_copies);
-			$lanoteobtenue = note2copie($case[1],$classe,$case[0],$matiere10);//
+			$lanoteobtenue = note2copie($case[1],$classe,$case[0],$matiere10,$ladate);//
 			$photo = photobord($case[1],"#fff");
 			if($lescopies) {
 				$photo = photobord($case[1],"#090");//Si copie rendue

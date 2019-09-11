@@ -205,11 +205,11 @@
 		//return("$epreuve");
 	}
 	
-	function note2copie($nom2,$classe,$epreuve,$matiere){
+	function note2copie($nom2,$classe,$epreuve,$matiere,$ladate){
 		$resultat = "----";
 		$fichieralire = "./files/$classe/$matiere/$epreuve.txt";
 		if(file_exists($fichieralire)){
-			$resultat = "<a href=\"./planning.php?action=19&file=$fichieralire&nom=$nom2\">Créer la copie</a>";
+			$resultat = "<a href=\"./planning.php?action=19&file=$fichieralire&nom=$nom2&action=3&ladate=$ladate\">Créer la copie</a>";
 			$fp = fopen($fichieralire, "r");
 			while(!feof($fp)){
 				$ligne = fgets($fp);
