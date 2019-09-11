@@ -16,6 +16,11 @@
 		$nom19 = $_GET[nom];
 		echo("<!-- Ajout de :$nom19: dans $file19 -->");
 		
+		if(file_exists($file19)) {
+			$fp19 = fopen($file19,"a");
+			fprintf($fp19, "\n$nom19::1:");
+			fclose($fp19);
+		}
 	}
 	
 	// Création Repertoire _Plannings  
