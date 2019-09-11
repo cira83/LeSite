@@ -10,7 +10,7 @@
 	}
 	
 	
-	if($action=="19"){
+	if($action==19){
 		affiche("Action 19");
 		$file19 = $_GET[file];
 		$nom19 = $_GET[nom];
