@@ -245,7 +245,7 @@
 		else {
 			$Zone_image = "2 fichier $filename2 inexistant !!!";
 		}
-		echo("$Zone_image");
+		if(!strstr($Zone_image, "copie")) echo("$Zone_image");
 		
 		
 		echo("<form method=\"post\" action=\"./planning.php?action=2\">");
