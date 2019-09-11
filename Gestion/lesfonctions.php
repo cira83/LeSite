@@ -209,7 +209,7 @@
 		$resultat = "----";
 		$fichieralire = "./files/$classe/$matiere/$epreuve.txt";
 		if(file_exists($fichieralire)){
-			$resultat = "Copie non trouvée";
+			$resultat = "<a href=\"./planning.php?action=19&file=$fichieralire&nom=$nom2\">Créer la copie</a>";
 			$fp = fopen($fichieralire, "r");
 			while(!feof($fp)){
 				$ligne = fgets($fp);
