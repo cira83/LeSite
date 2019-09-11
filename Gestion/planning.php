@@ -10,6 +10,15 @@
 	}
 	
 	
+	if($action=="19"){
+		affiche("Action 19");
+		$file19 = $_GET[file];
+		$nom19 = $_GET[nom];
+		echo("<!-- Ajout de :$nom19: dans $file19 -->");
+		
+		$action = 3;
+	}
+	
 	// Création Repertoire _Plannings  
 	$lerepertoire =  "./files/$classe/_Plannings";
 	if(!file_exists($lerepertoire)){
