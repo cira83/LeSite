@@ -21,6 +21,7 @@
 			fprintf($fp19, "\n$nom19::1:");
 			fclose($fp19);
 		}
+		$action = 3;
 	}
 	
 	// Création Repertoire _Plannings  
