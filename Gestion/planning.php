@@ -196,7 +196,7 @@
 		fclose($fp);
 		
 		$labeldate = str_replace("_", "/", $lanouvelle);
-		echo("<h2>Planning du $labeldate ($action)</h2>");	
+		echo("<h2>Planning du $labeldate</h2>");	
 		$letableau = tab_activite($classe,$lanouvelle,$lepreuve1);
 		echo($letableau);
 	}
@@ -217,13 +217,13 @@
 	}
 
 	if($action==1){	
-		echo("<h2>Planning du $ladate ($action)</h2>");	
+		echo("<h2>Planning du $ladate</h2>");	
 		$letableau = tab_activite($classe,$ladate,$lepreuve1);
 		echo($letableau);
 	}
 
 	if($action==2)  {
-		echo("<h2>Planning du $ladate ($action)</h2>");
+		echo("<h2>Planning du $ladate</h2>");
 		$laligne1 = $_POST[epr].":";
 		if(!file_exists($filename)) {
 			$fp = fopen($filename,"w");
@@ -242,7 +242,7 @@
 	if($action==3)  {
 		if($ladate=="") $ladate = $_GET[ladate];
 		$labeldate = str_replace("_", "/", $ladate);
-		echo("<h2>Planning du $labeldate ($action)</h2>");
+		echo("<h2>Planning du $labeldate</h2>");
 		$letableau = tab_activite($classe,$ladate,$lepreuve1);
 		echo($letableau);	
 	}
