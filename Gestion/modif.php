@@ -112,7 +112,7 @@
 	//echo("<br/>[4] Cause :$menu_cause");
 	//echo("<br/>[5] <a href=\"$url\">URL</a> :<input type=\"txt\" name=\"url\" value=\"$url\" size=\"50\">"); Plus d'actualité le 5 avril 2016
 	echo("<br/>[6] Remarque :<input type=\"txt\" name=\"rq\" value=\"$rq\">");
-	echo("<br/><input type=\"reset\">");
+	echo("<br/><br/><input type=\"reset\">");
 	echo("\n<input type=\"hidden\" name=\"epreuve\" value=\"$epreuve[0]\">");
 	echo("\n<input type=\"hidden\" name=\"mat\" value=\"$mat\">");
 	echo("</td><td>$histo");
