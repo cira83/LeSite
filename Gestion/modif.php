@@ -114,8 +114,9 @@
 	echo("<br/>[6] Remarque :<input type=\"txt\" name=\"rq\" value=\"$rq\">");
 	echo("\n<input type=\"hidden\" name=\"epreuve\" value=\"$epreuve[0]\">");
 	echo("\n<input type=\"hidden\" name=\"mat\" value=\"$mat\">");
+	echo("</form></td><td>$histo");
 	echo("<br/><input type=\"reset\"> - <input type=\"submit\" value=\"Enregistrer\" style=\"height:150px\" >");
-	echo("</form></td><td>$histo</td></tr></table>");
+	echo("</td></tr></table>");
 ?>
 <!-- script -->
 <script type="text/javascript">
