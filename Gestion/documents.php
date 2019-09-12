@@ -59,6 +59,7 @@
 					}
 				}
 				fclose($fp);
+				chmod($rep_nom,0777);
 				Dropbox("",$rep_nom);
 			}
 		}
