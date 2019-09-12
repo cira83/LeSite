@@ -56,6 +56,17 @@
 		fclose($handle);
 	}
 	
+	//Suppression des copies non-fait
+	$fp2019 = fopen($fichier, "r");
+	while (!feof($fp2019)){
+		$ligne = fgets($fp2019);
+		$data = explode(":", $ligne);
+		if($data[3]!="Non Fait") $propre .= $ligne;
+		else $sale .= $ligne;
+	}	
+	fclose($fp2019);
+	echo("<!--\n$ligne-->");
+	
 	//Ajout des nouvelles informations dans le fichier
 	if($modif=="oui"){
 		$newnote = str_replace(",", ".", $_POST[note]);
