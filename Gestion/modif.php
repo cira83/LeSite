@@ -116,7 +116,7 @@
 	echo("\n<input type=\"hidden\" name=\"mat\" value=\"$mat\">");
 	echo("</form></td><td>$histo");
 	echo("<br/><input type=\"reset\"> - <input type=\"submit\" value=\"Enregistrer\" style=\"height:150px\" >");
-	echo("<br/><img src=\"./icon/valider.png\"/>");
+	echo("<br/><input type=\"image\" src=\"./icon/valider.png\"alt=\"Submit Form\" />");
 	echo("</td></tr></table>");
 ?>
 <!-- script -->
