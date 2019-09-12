@@ -272,7 +272,7 @@
 	-->
 	<!-- 04-04 Ligne importation de fichiers -->
 	<table><form name="envoie fichier" enctype="multipart/form-data" method="post" action="<?php echo "$action44";?>">
-		<tr><td>Rangement du fichier corrigé (ciblé)</td>
+		<tr><td>Rangement du fichier avec un nom valide</td>
 		<td><input name="fichier_choisi" type="file"></td>
 		<td><input name="bouton" value="Envoyer le fichier corrig&eacute;" type="submit">
 		</td>
