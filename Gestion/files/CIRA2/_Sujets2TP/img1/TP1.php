@@ -26,7 +26,7 @@
 <h2>IV. Performances et optimisation (5pt)</h2>
 <ol>
 <li>Programmer votre régulateur pour assurer le fonctionnement de la régulation.(1pt)</li>
-<li>Mesurer les performances de votre régulation en réponse à un échelon de consigne de 10%. On mesurera le temps de réponse à 10%, la valeur du premier dépassement et la précision relative. (1.5pt)</li>
+<li>Mesurer les performances de votre régulation en réponse à un échelon de consigne de 10%. On mesurera le temps de réponse à 10%, la valeur du premier dépassement et l'erreur statique. (1.5pt)</li>
 <li>Améliorer votre réglage pour réduire au maximum la valeur du temps de réponse. On donnera le nom et la valeur des paramètres modifiés. (1pt)</li>
 <li>Mesurer à nouveau les performances de votre régulation, comparer les avec celles obtenues à la question précédente. (1.5pt)</li>
 </ol>
