@@ -21,6 +21,11 @@ Attendus du stage,https://docs.google.com/presentation/d/e/2PACX-1vSx4fWL6td_fQ-
 Fiche à rendre à la rentrée,https://www.dropbox.com/s/3sn5f53wy59phen/CONTENU%20SCIENTIFIQUE%20ET%20TECHNIQUE.pdf?dl=0
 [Présentations
 Accueil CIRA,https://www.dropbox.com/s/68cnpcoutp75n8n/Jour%201.pptx?dl=0
+[Fiches d'exercices
+Fiche 1,https://www.dropbox.com/s/wpgdvuiuejj6k4j/Fiche%201.pdf?dl=0
+Fiche 2,https://www.dropbox.com/s/dflt7xto4e07cao/Fiche%202.pdf?dl=0
+Fiche 3,https://www.dropbox.com/s/vm8nbqjk7p0evkk/Fiche%203.pdf?dl=0
+Fiche 4,https://www.dropbox.com/s/kjivem43idy9d9p/Fiche%204.pdf?dl=0
 [DS
 DS1 2019,https://www.dropbox.com/s/0vmmd9dpc65ouch/DS1%202019.pdf?dl=0
 DS1 2020,https://www.dropbox.com/s/8a7zzn4p3bxt6ov/DS1%202020.pdf?dl=0
