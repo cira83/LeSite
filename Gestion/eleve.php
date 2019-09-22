@@ -138,7 +138,7 @@ function precedent_suivant($liste2nom,$nom){
 	if(file_exists("./Candidatures/$nom.pdf"))
 		echo("\n[5] <a href=\"mailto:$mail\">Mail</a> : $champs<br/><a href=\"./Candidatures/$nom.pdf\">[X]</a> Fiche Parcoursup</td><td align=\"left\">");
 	else 
-		echo("\n[5] <a href=\"mailto:$mail\">Mail</a> : $champs<br/>");
+		echo("\n[5] <a href=\"mailto:$mail\">Mail</a> : $champs<br/></td><td align=\"left\">");
 	$champs = champs("Bac",$origine);
 	echo("\n[6] Bac : $champs<br/>");
 	
