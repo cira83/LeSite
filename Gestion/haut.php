@@ -76,7 +76,7 @@
 			echo("<table>");
 		?>	
 		<tr>
-			<td><a href="./index.php" title="Appel"><img src="./icon/tab.jpg" height="15px" style="border:solid 4px #fff"></a></td>
+			<td><a href="./index.php" title="Appel"><img src="./icon/home.png" height="15px" style="border:solid 4px #fff"></a></td>
 			<td><?php echo($listedesclasses);?></td>
 		<?php
 			if(!$passwordOK){
