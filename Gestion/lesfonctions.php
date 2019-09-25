@@ -161,19 +161,19 @@
 	}
 
 	function password($nom,$password,$classe){
-		$reponse = false;
+		$reponse = 0;
 		$filename = "./files/$classe.txt";
 		$fp = fopen($filename, "r");
 		if($fp){
 			while(!feof($fp)){
 				$ligne = fgets($fp);
 				$content = explode(":", $ligne);
-				if(($nom==$content[0])&&($password==$content[3])) $reponse = true;
+				if(($nom==$content[0])&&($password==$content[3])) $reponse = 1;
 			}
 		}
 		fclose($fp);
 		
-		if($password=="GHRtE9b7") $reponse = true;//$password_prof2018 dans lesvariables.php - A modifier dans clef_prof.php aussi
+		if($password=="GHRtE9b7") $reponse = 2;//$password_prof2018 dans lesvariables.php - A modifier dans clef_prof.php aussi
 		
 		return $reponse;
 	}

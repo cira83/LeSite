@@ -63,8 +63,7 @@
 							$commentaire = $data[6];
 							$liens = lescopies2($nom2,$classe,$lepreuve,$repertoire_copies);
 							if($data[3]=="Non Fait") $liens="<img src=\"./icon/absent.gif\"/>";	//On vire la copie si le copain la fait seul						
-							if($Description)  $Description.= "\n$lanote / $data[4]";
-							else $Description.= "$lanote / $data[4]";
+							if($lanote) $Description .= "\n$lanote le $data[3] ($data[4])";
 						}
 					}
 					fclose($fp);
@@ -83,8 +82,11 @@
 					if(file_exists("B800.txt")) $legraphe = "<img src=\"$file_image\"/>"; //Pour RaspberryPu seulement
 										
 					if($lanote!="") $somme_coef += $lecoef;//Ne prendre que les coefs de copies notées
-					echo("<tr><td $tabeprw><a title=\"$Description\">$part[0]</a></td>");
-					echo("<td $tabnotw>$lanote ($lecoef)</td><td><font size=\"-2\" color=\"blue\">$commentaire</font> $liens</td><td $tabgphw>$legraphe</td></tr>");
+					
+					$linkmodif = "./modif.php?mat=$lamatiere&epr=$lepreuve&nom=$nom";
+					if($passwordOK==2) echo("<tr><td $tabeprw><a href=\"$linkmodif\">$part[0]</a></td>");
+					else echo("<tr><td $tabeprw>$part[0]</td>");
+					echo("<td $tabnotw><a title=\"$Description\">$lanote ($lecoef)</a></td><td><font size=\"-2\" color=\"blue\">$commentaire</font> $liens</td><td $tabgphw>$legraphe</td></tr>");
 					$lanote = "";
 					$lecoef = "";
 				}

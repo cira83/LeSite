@@ -16,7 +16,7 @@
 	$file2delete = "Pas de fichier &agrave; supprimer";
 
 	include("./lesfonctions.php");
-	$passwordOK = password($nom,$password,$classe);
+	$passwordOK = password($nom,$password,$classe);//=1 eleve, =2 prof
 	
 	//Ajouter le 8 septembre 2016
 	if(!$passwordOK){
@@ -75,7 +75,9 @@
 		<?php
 			echo("<table>");
 		?>	
-		<tr><td><?php echo($listedesclasses);?></td>
+		<tr>
+			<td><a href="./index.php" title="Appel"><img src="./icon/home.png" height="15px" style="border:solid 4px #fff"></a></td>
+			<td><?php echo($listedesclasses);?></td>
 		<?php
 			if(!$passwordOK){
 				echo("<td><input type=\"text\" name=\"nom\" id=\"nom\" size=\"8\"><input type=\"password\" name=\"pwd\" id=\"pwd\" size=\"8\"></td>");
