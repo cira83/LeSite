@@ -16,7 +16,7 @@
 	$file2delete = "Pas de fichier &agrave; supprimer";
 
 	include("./lesfonctions.php");
-	$passwordOK = password($nom,$password,$classe);
+	$passwordOK = password($nom,$password,$classe);//=1 eleve, =2 prof
 	
 	//Ajouter le 8 septembre 2016
 	if(!$passwordOK){
