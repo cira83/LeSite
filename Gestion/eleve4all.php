@@ -36,7 +36,6 @@
 			echo("\n<table width=\"781px\" class=\"notes\">");//pleine 
 			$periode = periode($lamatiere);
 			$coefmat = coefmat($lamatiere);
-			
 			//LISTE DES EPREUVES
 			$repertoire = "./files/$classe/$lamatiere";
 			$epreuves = scandir($repertoire);
@@ -48,8 +47,8 @@
 					//Ouverture du fichier de l'epreuve
 					$fichier = $files."$classe/$lamatiere/$lepreuve"; 
 					$fp = fopen($fichier, "r");
-					//$Description = "Historique:";
-					$lanote = ""; $lecoef=""; $liens=""; $Description="1"; $commentaire="";
+					$Description = "Historique:";
+					$lanote = ""; $lecoef=""; $liens=""; $Description=""; $commentaire="";
 					while (!feof($fp)){//On ne prend que la dernière ligne avec $nom dedans
 						$ligne = fgets($fp);
 						$data = explode(":", $ligne);
@@ -64,10 +63,8 @@
 							$commentaire = $data[6];
 							$liens = lescopies2($nom2,$classe,$lepreuve,$repertoire_copies);
 							if($data[3]=="Non Fait") $liens="<img src=\"./icon/absent.gif\"/>";	//On vire la copie si le copain la fait seul						
-							if($lanote) {
-								if($Description=="1") $Description = "$lanote le $data[3] ($data[4])";
-								else $Description .= "\n$lanote le $data[3] ($data[4])";
-							}
+							if($lanote) $Description .= "\n$lanote le $data[3] ($data[4])";
+						}
 					}
 					fclose($fp);
 					if($lenonfait=="Non Fait"){//10-01-2019
