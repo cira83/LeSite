@@ -64,6 +64,7 @@
 							$liens = lescopies2($nom2,$classe,$lepreuve,$repertoire_copies);
 							if($data[3]=="Non Fait") $liens="<img src=\"./icon/absent.gif\"/>";	//On vire la copie si le copain la fait seul						
 							if($lanote) $Description .= "\n$lanote le $data[3] ($data[4])";
+							$nom3=$nom2;
 						}
 					}
 					fclose($fp);
@@ -83,7 +84,7 @@
 										
 					if($lanote!="") $somme_coef += $lecoef;//Ne prendre que les coefs de copies notées
 					
-					$linkmodif = "./modif.php?mat=$lamatiere&epr=$lepreuve&nom=$nom2";
+					$linkmodif = "./modif.php?mat=$lamatiere&epr=$lepreuve&nom=$nom3";
 					if($passwordOK==2) echo("<tr><td $tabeprw><a href=\"$linkmodif\">$part[0]</a></td>");
 					else echo("<tr><td $tabeprw>$part[0]</td>");
 					echo("<td $tabnotw><a title=\"$Description\">$lanote ($lecoef)</a></td><td><font size=\"-2\" color=\"blue\">$commentaire</font> $liens</td><td $tabgphw>$legraphe</td></tr>");
