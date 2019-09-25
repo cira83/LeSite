@@ -63,7 +63,8 @@
 							$commentaire = $data[6];
 							$liens = lescopies2($nom2,$classe,$lepreuve,$repertoire_copies);
 							if($data[3]=="Non Fait") $liens="<img src=\"./icon/absent.gif\"/>";	//On vire la copie si le copain la fait seul						
-							$Description .= "\n$lanote / $data[4]";
+							if($Description)  $Description.= "\n$lanote / $data[4]";
+							else $Description.= "$lanote / $data[4]";
 						}
 					}
 					fclose($fp);
