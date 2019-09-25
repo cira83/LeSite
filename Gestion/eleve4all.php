@@ -82,7 +82,9 @@
 					if(file_exists("B800.txt")) $legraphe = "<img src=\"$file_image\"/>"; //Pour RaspberryPu seulement
 										
 					if($lanote!="") $somme_coef += $lecoef;//Ne prendre que les coefs de copies notées
-					if($passwordOK==2) echo("<tr><td $tabeprw><a title=\"$Description\" href=\"./index.php\">$part[0]</a></td>");
+					
+					$linkmodif = "./modif.php?mat=$lamatiere&epr=$lepreuve&nom=$nom";
+					if($passwordOK==2) echo("<tr><td $tabeprw><a title=\"$Description\" href=\"$linkmodif\">$part[0]</a></td>");
 					else echo("<tr><td $tabeprw><a title=\"$Description\">$part[0]</a></td>");
 					echo("<td $tabnotw>$lanote ($lecoef)</td><td><font size=\"-2\" color=\"blue\">$commentaire</font> $liens</td><td $tabgphw>$legraphe</td></tr>");
 					$lanote = "";
