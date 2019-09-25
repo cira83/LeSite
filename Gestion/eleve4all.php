@@ -36,6 +36,7 @@
 			echo("\n<table width=\"781px\" class=\"notes\">");//pleine 
 			$periode = periode($lamatiere);
 			$coefmat = coefmat($lamatiere);
+			
 			//LISTE DES EPREUVES
 			$repertoire = "./files/$classe/$lamatiere";
 			$epreuves = scandir($repertoire);
