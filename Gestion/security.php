@@ -139,7 +139,8 @@
 		$date_heure = date("d/m/y G:i");
 		$logfilename = $repertoire."$classe/_logindeseleves.txt";
 		$fp = fopen($logfilename, "a");
-		fwrite($fp, "\n<td>$elv</td><td>$ip_client [$nbDssaies]</td><td>$info_pwd</td><td>$date_heure</td>");
+		if($prof_login) fwrite($fp, "\n<td>$elv</td><td>$ip_client [$nbDssaies]</td><td>Prof Login</td><td>$date_heure</td>");
+		else fwrite($fp, "\n<td>$elv</td><td>$ip_client [$nbDssaies]</td><td>$info_pwd</td><td>$date_heure</td>");
 		fclose($fp);
 		$write = "MaJ";
 	}
