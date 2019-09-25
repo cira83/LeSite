@@ -83,7 +83,7 @@
 										
 					if($lanote!="") $somme_coef += $lecoef;//Ne prendre que les coefs de copies notées
 					
-					$linkmodif = "./modif.php?mat=$lamatiere&epr=$lepreuve&nom=$nom";
+					$linkmodif = "./modif.php?mat=$lamatiere&epr=$lepreuve&nom=$nom2";
 					if($passwordOK==2) echo("<tr><td $tabeprw><a href=\"$linkmodif\">$part[0]</a></td>");
 					else echo("<tr><td $tabeprw>$part[0]</td>");
 					echo("<td $tabnotw><a title=\"$Description\">$lanote ($lecoef)</a></td><td><font size=\"-2\" color=\"blue\">$commentaire</font> $liens</td><td $tabgphw>$legraphe</td></tr>");
