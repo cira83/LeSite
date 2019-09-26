@@ -48,7 +48,7 @@
 					$fichier = $files."$classe/$lamatiere/$lepreuve"; 
 					$fp = fopen($fichier, "r");
 					$Description = "Historique:";
-					$lanote = ""; $lecoef=""; $liens=""; $Description=""; $commentaire="";
+					$lanote = ""; $lecoef=""; $liens=""; $Description=""; $commentaire="";$nom3=$nom;
 					while (!feof($fp)){//On ne prend que la dernière ligne avec $nom dedans
 						$ligne = fgets($fp);
 						$data = explode(":", $ligne);
