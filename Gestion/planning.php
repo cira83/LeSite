@@ -109,7 +109,8 @@
 			$tableau .= "<td><a href=\"$lien\">$case[0]</a><br/>$deroulant<br/>";//Nom de l'epreuve
 			$tableau .= "<a href=\"$lien2\">$case[1]</a><br/>$deroulant2<br/>";//Nom des participants
 			$tableau .= "$lescopies<br/>$lanoteobtenue<br/>";//lien vers copie
-			$tableau .= "<img src=\"./icon/note.png\" height=\"15px\" style=\"border:solid 4px #fff\"></td>";
+			$linkmodif = "./modif.php?mat=$data1[2]&epr=$case[0].txt&nom=$case[1]";
+			$tableau .= "<a href=\"$linkmodif\" title=\"Note\"><img src=\"./icon/note.png\" height=\"15px\" style=\"border:solid 4px #fff\"></a></td>";
 			
 			if($liste_des_notes) $liste_des_notes .= ":$lanoteobtenue";
 			else $liste_des_notes = "$lanoteobtenue";
