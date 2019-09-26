@@ -108,7 +108,8 @@
 			if($ligne1==0) $tableau .= "<tr>";
 			$tableau .= "<td><a href=\"$lien\">$case[0]</a><br/>$deroulant<br/>";//Nom de l'epreuve
 			$tableau .= "<a href=\"$lien2\">$case[1]</a><br/>$deroulant2<br/>";//Nom des participants
-			$tableau .= "$lescopies<br/>$lanoteobtenue</td>";//lien vers copie
+			$tableau .= "$lescopies<br/>$lanoteobtenue<br/>";//lien vers copie
+			$tableau .= "<img src=\"./icon/note.png\" height=\"15px\" style=\"border:solid 4px #fff\"></td>";
 			
 			if($liste_des_notes) $liste_des_notes .= ":$lanoteobtenue";
 			else $liste_des_notes = "$lanoteobtenue";
