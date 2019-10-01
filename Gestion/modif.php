@@ -10,10 +10,11 @@
 	$menu_cause .= "<option value=\"-1 WC\">-1 WC</option>";
 	$menu_cause .= "<option value=\"-1 Cahier\">-1 Cahier</option>";
 	$menu_cause .= "<option value=\"-1 Rangement TP\">-1 Rangement TP</option>";
-	$menu_cause .= "<option value=\"+2 Tableau*\">+2 Tableau*</option>";
-	$menu_cause .= "<option value=\"+1 Tableau\">+1 Tableau</option>";
-	$menu_cause .= "<option value=\"+0.5 Tableau\">+0,5 Tableau</option>";
+
 	$menu_cause .= "<option value=\"+0.25 Tableau\">+0,25 Tableau</option>";
+	$menu_cause .= "<option value=\"+0.5 Tableau\">+0,5 Tableau</option>";
+	$menu_cause .= "<option value=\"+1 Tableau\">+1 Tableau</option>";	
+	$menu_cause .= "<option value=\"+2 Tableau\">+2 Tableau*</option>";
 	$menu_cause .= "</select>";
 	
 	$nom = $_GET[nom];
