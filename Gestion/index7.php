@@ -18,7 +18,7 @@
 		<img src="head.png"/>
 
 <?php
-	$sujet2TP="./files/$classe/_Sujets2TP"; //echo($sujet2TP);
+	$sujet2TP="./files/$classe/_Sujets2TP/"; //echo($sujet2TP);
 	if(!file_exists($sujet2TP)) $sujet2TP="";
 	$doc="./files/$classe/_Documents";
 	$class_cook = $_COOKIE["laclasse"];
