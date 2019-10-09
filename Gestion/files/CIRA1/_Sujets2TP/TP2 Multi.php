@@ -5,7 +5,7 @@
 
 <h1>I. Compréhension</h1>
 <ol>
-	<li>Compléter le schéma ci-dessus pour faire apparaître la boucle de régulation.</li>
+	<li>Compléter le schéma ci-dessus pour faire apparaître la boucle de régulation de température. L'organe de réglage sera FV2.</li>
 	<li>Proposez un schéma fonctionnel de la régulation. Faire apparaître, FV2, la température de l'eau froide et l'échangeur thermique.</li>
 	<li>Rappeler la signification des indications fournies par le régulateur. Placer ces indications sur le schéma fonctionnel.</li>
 	<li>Quelle différence faites-vous entre un fonctionnement en boucle ouverte et un fonctionnement en boucle fermée.</li>
