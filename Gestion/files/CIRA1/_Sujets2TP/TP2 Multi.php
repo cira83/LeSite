@@ -10,13 +10,13 @@
 	<li>Rappeler la signification des indications fournies par le régulateur. Placer ces indications sur le schéma fonctionnel.</li>
 	<li>Quelle différence faites-vous entre un fonctionnement en boucle ouverte et un fonctionnement en boucle fermée.</li>
 	<li>Quels sont les principaux paramètres à régler sur iTools et leur valeur respective, pour obtenir une régulation proportionnelle avec une bande proportionnelle de 10 % ?</li>
+	<li>Régler le débit d'eau froide avec une commande de 100%. Relever la valeur de ce débit.</li>
 </ol>
 
 <h1>II. Prédéterminations et vérifications</h1>
 <ol>
 	<li>Relever Tf, la température de l'eau froide. Expliquez comment vous avez procédé.</li>
-	<li>On suppose que Tc-Tf=Ke(Qf)&times;Qc, avec Tc la grandeur réglée, Qc le débit d'eau chaude et Qf le débit d'eau froide. Mesurer Ke(Qf<sub>max</sub>).</li>
-	<li>On suppose que Qc = Kv&times;Y. Mesurer Kv.</li>
+	<li>On suppose que Tc-Tf=Ke&times;Y, avec Tc la grandeur réglée, Y la commande de la vanne FV2. Mesurer Ke.</li>
 	<li>Prédéterminer graphiquement la valeur de la température en régime permanent pour Xp=40% et W=40&deg;C à l'aide des valeurs obtenus aux questions précédentes.</li>
 	<li>Vérifiez ce point de fonctionnement dans la pratique.</li>
 	<li>Prédéterminer graphiquement la valeur de la température en régime permanent pour Xp=20% et W=40&deg;C.</li>
