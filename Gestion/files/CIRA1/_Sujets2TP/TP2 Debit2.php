@@ -1,13 +1,10 @@
 <?php 
 	include("./Settings/haut.php");
 ?>
-<p>On donne le schéma bloc suivant, représentant la régulation de débit.</p>
-<img src="img2/01.gif"/>
-
-<p>On donne ci-dessus la caractéristique théorique débit en fonction de la commande de la vanne de la maquette de régulation de débit.</p>
-<img src="img2/02.gif"/>
 
 <h1>I. Rappels sur le schéma fonctionnel</h1>
+<p>On donne le schéma bloc suivant, représentant la régulation de débit.</p>
+<img src="img2/01.gif"/>
 <ol>
 	<li>Mettre en évidence sur ce schéma fonctionnel les éléments suivants :</li>
 	<ul>
@@ -18,18 +15,20 @@
 		<li>L'entrée X du régulateur ;</li>
 		<li>La vanne de régulation.</li>
 	</ul>
-	<li>Quel doit être le sens d'action du régulateur. Placer alors les opérateurs arithmétiques correspondants sur le schéma fonctionnel.</li>
+	<li>Quel doit être le sens d'action du régulateur. Justifiez votre réponse.</li>
 </ol>
 
 <h1>II. Prédéterminations</h1>
+<p>On donne ci-dessus la caractéristique théorique débit en fonction de la commande de la vanne de la maquette de régulation de débit.</p>
+<img src="img2/02.gif"/>
 <ol>
-	<li>Mesurer les valeurs de Qmax, Y1 et Y2 de la maquette pour un fonctionnement sans perturbation.</li>
-	<li>Même question avec un fonctionnement avec perturbations.</li>
-<p class="orange">On suppose à présent que le point de fonctionnement est compris entre dans l'intervalle [Y1,Y2], quel que soit le fonctionnement (avec et sans perturbation).</p>
-	<li>Déterminer la valeur de K<sub>1</sub> pour le point de fonctionnement considéré, pour un système sans perturbation.</li>
-	<li>Même question pour K<sub>2</sub>, pour un système avec perturbation.</li>
+	<li>Mesurer Qmax, Y1 et Y2 pour un fonctionnement sans perturbation. On donnera la méthode utilisée et des copies d'écran.</li>
+	<li>Même question pour un fonctionnement avec perturbations.</li>
+<p class="orange">On choisi une consigne <b>W</b> = Qmax/2.</p>
+	<li>Déterminer la valeur du gain K pour le point de fonctionnement considéré (<b class="orange">W</b>), pour un système sans perturbation.</li>
+	<li>Même question pour un système avec perturbation.</li>
 	<li>Rappeler la relation entre le gain du régulateur A et la bande proportionnelle Xp du régulateur.</li>
-	<li>Déterminer la valeur du débit Q pour une consigne W en fonction de A et K et Y1.</li>
+	<li>Déterminer la valeur algébrique du débit Q pour une consigne <b class="orange">W</b> en fonction de A et K et Y1.</li>
 </ol>
 
 
@@ -37,7 +36,7 @@
 <ol>
 	<li>Régler l'affichage du régulateur en %. On précisera la procédure utilisée.</li>
 	<li>Régler le régulateur pour un fonctionnement en régulation proportionnelle. On n'oubliera pas d'annuler les actions intégrale et dérivée.</li>
-	<li>Régler la consigne à Qmax/3. Placer le régulateur en mode automatique. On précisera la méthode utilisée.</li>
+	<li>Régler la consigne à <b class="orange">W</b>. Placer le régulateur en mode automatique. On précisera la méthode utilisée.</li>
 </ol>
 
 <h1>IV. La bande proportionnelle et l'erreur statique</h1>

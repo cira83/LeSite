@@ -39,8 +39,8 @@ x28.value=eval(x0.value)+0.28*eval(xinf.value-x0.value);
 onclick='Tc.value=eval(5.5*(t2.value-t1.value));
 Rc.value=eval(2.8*(t1.value-t0.value)-1.8*(t2.value-t0.value));'/>
 </p>
-<p>&tau;=<input type="text" name="Tc" value="" /> </p>
 <p>T=<input type="text" name="Rc" value="" /></p>
+<p>&tau;=<input type="text" name="Tc" value="" /> </p>
 </td>
 </tr>
 <tr>
