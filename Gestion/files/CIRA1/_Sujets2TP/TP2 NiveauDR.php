@@ -18,7 +18,6 @@
 
 	<li>Procéder au réglage du transmetteur pour qu'il affiche la mesure du niveau dans le réservoir supérieur.</li>
 	<li>Tracer la caractéristique de votre transmetteur de niveau (mesure en % en fonction du niveau réel en %).</li>
-	<li>Quelle est la classe de mesure du capteur de niveau LT (Plus grande erreur possible / Pleine échelle) ?</li>
 </ol>
 
 <h1>II. Régulation de niveau</h1>
