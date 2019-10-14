@@ -76,7 +76,7 @@
 	}
 ?>
 
-<p class="Liste"><a href="https://ecc.orion.education.fr/inscrinetpro/inscription?&amp;Ucod_dom=BTS&amp;Uaca_dep=A23" target="_blank"><font color="orange">Inscription au BTS |</font></a></p>
+<p class="Liste"><a href="https://ecc.orion.education.fr/inscrinetpro/inscription?&amp;Ucod_dom=BTS&amp;Uaca_dep=A23" target="_blank"><font color="orange">Inscription au BTS</font></a></p>
 
 <?php
 	if($prof_login){
