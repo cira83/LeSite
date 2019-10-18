@@ -24,7 +24,7 @@
 <ol>
 	<li>Mesurer X<sub>max</sub>, Y1 et Y2 pour un fonctionnement sans perturbation. On donnera la méthode utilisée et des copies d'écran.</li>
 	<li>Même question pour un fonctionnement avec perturbations.</li>
-<p class="orange">On choisi une consigne <b>W</b> égale à Qmax avec perturbation divisé par 2.</p>
+<p class="orange">On choisi une consigne <b>W</b> égale à Xmax avec perturbation divisé par 2.</p>
 	<li>Déterminer la valeur du gain K du schéma fonctionnel pour le point de fonctionnement considéré (<b class="orange">W</b>), pour un système sans perturbation.</li>
 	<li>Même question pour un système avec perturbation.</li>
 	<li>Rappeler la relation entre le gain du régulateur A et la bande proportionnelle Xp du régulateur.</li>
