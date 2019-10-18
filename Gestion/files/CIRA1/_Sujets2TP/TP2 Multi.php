@@ -7,17 +7,23 @@
 <ol>
 	<li>Compléter le schéma ci-dessus pour faire apparaître la boucle de régulation de température. L'organe de réglage sera FV2.</li>
 	<li>Proposez un schéma fonctionnel de la régulation. Faire apparaître, FV2, la température de l'eau froide et l'échangeur thermique.</li>
-	<li>Rappeler la signification des indications fournies par le régulateur. Placer ces indications sur le schéma fonctionnel.</li>
+	<img src="img2/2604-500x500.jpg" width="150px"/>
+	<li>Rappeler la signification des indications fournies par le régulateur ci-dessus.</li>
+	<li>Placer ces indications sur le schéma fonctionnel.</li>
 	<li>Quelle différence faites-vous entre un fonctionnement en boucle ouverte et un fonctionnement en boucle fermée.</li>
-	<li>Quels sont les principaux paramètres à régler sur iTools et leur valeur respective, pour obtenir une régulation proportionnelle avec une bande proportionnelle de 10 % ?</li>
-	<li>Régler le débit d'eau froide avec une commande de 100%. Relever la valeur de ce débit.</li>
+	<li>Quels sont les principaux paramètres à régler sur iTools et leur valeur respective, pour obtenir une régulation proportionnelle avec une bande proportionnelle de 10 % ?
+	<a href="../../../doclasse.php" class="no-under" target="_blank">On s'aidera du document sur les paramètres des régulateurs.</a>
+	</li>
+	<li>Régler le débit d'eau froide avec une commande de 100%. Relever la valeur du débit affiché sur le débitmètre.</li>
 </ol>
 
 <h1>II. Prédéterminations et vérifications</h1>
 <ol>
-	<li>Relever Tf, la température de l'eau froide. Expliquez comment vous avez procédé.</li>
-	<li>On suppose que Tc-Tf=Ke&times;Y, avec Tc la grandeur réglée, Y la commande de la vanne FV2. Mesurer Ke.</li>
-	<li>Prédéterminer graphiquement la valeur de la température en régime permanent pour Xp=40% et W=40&deg;C à l'aide des valeurs obtenus aux questions précédentes.</li>
+	<li>Relever T<sub>0</sub>, la température de l'eau froide. Expliquez comment vous avez procédé.</li>
+	<p class="orange">On suppose que T-T<sub>0</sub>=K&times;Y, avec T la mesure de la température et Y la commande de la vanne FV2.</p><li>Mesurer K.</li>
+	<li>Prédéterminer graphiquement la valeur de la température en régime permanent pour Xp=40% et W=40&deg;C à l'aide de la valeur obtenue de K à la question précédente.</li>
+<p class="orange">Rappel du cours :</p>
+<img src="img2/Point2Fonctionnement.png" width="300px"/><br/>
 	<li>Vérifiez ce point de fonctionnement dans la pratique.</li>
 	<li>Prédéterminer graphiquement la valeur de la température en régime permanent pour Xp=20% et W=40&deg;C.</li>
 	<li>Vérifiez ce point de fonctionnement dans la pratique.</li>
@@ -27,11 +33,7 @@
 <h1>III. Instabilité</h1>
 <ol>
 	<li>Déterminer la valeur minimale Xp<sub>min</sub> de la bande proportionnelle qui correspond à un fonctionnement stable (W=40&deg;C).</li>
-	<li>Relever la réponse indicielle pour une régulation proportionnelle avec XP = 2&times;Xp<sub>min</sub>.</li>
-	<li>Le système est-il stable ?</li>
-	<li>Donner la valeur du dépassement en %.</li>
-	<li>Donner le temps de réponse à ± 10 %.</li>
-	<li>Conclure sur l’influence de la bande proportionnelle sur la stabilité du système.</li>
+	<li>Mesurer la valeur de la période d'oscillation.</li>
 </ol>
 
 
