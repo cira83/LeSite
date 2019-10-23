@@ -6,16 +6,14 @@
 <h1>I. Caractéristiques statiques</h1>
 <ol>
 	<li>Donner et réaliser le câblage pneumatique définie sur le schéma TI ci-dessus.</li>
-	<li>Donner la référence et rappeler le type du capteur FT1 (2 fils ou 4 fils).</li>
-	<li>Expliquer le fonctionnement du capteur FT1.</li>
-	<li>Donner la référence et rappeler le type du capteur FT2 (2 fils ou 4 fils).</li>
+	<li>Expliquer le principe de fonctionnement du capteur FT1.<a href="../../../doclasse.php" class="no-under" target="_blank">On s'aidera de la documentation disponible.</a></li>
 	<li>Expliquer le fonctionnement du capteur FT2.</li>
-	<li>Donner et procéder au câblage électrique des deux capteurs sur les entrée 1 et 2 du régulateur.</li>
+	<li>Donner et procéder au câblage électrique des deux capteurs sur les entrées 1 et 2 du régulateur. (FT1 sur entrée 1, FT2 sur entrée 2)</li>
 	<li>Ouvrir la vanne de réglage FV1 au maximum. Régler FV2, pour que le débit maximal soit mesurable par les deux capteurs. On donnera la valeur de ce débit en Nm<sup>3</sup>/h.</li>
 
 	<li>Relever la mesure de débit en fonction de la commande de la vanne, pour le capteur FT1.</li>
 	<li>Même question pour le capteur FT2.</li>
-	<li>Tracer ces deux caractéristiques sur le même graphique.</li>
+	<li>Tracer les deux caractéristiques sur le même graphique.</li>
 	<li>Quelle caractéristique est la plus linéaire ?</li>
 	
 </ol>

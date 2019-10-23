@@ -3,13 +3,13 @@
 ?>
 <img src="img2/1.jpg"/>
 <ol>
-	<li>Placer sur le schéma TI, la mesure x et la commande y.</li>
+	<li>Placer sur le schéma TI, la mesure X et la commande Y.</li>
 	<li>Donner puis réaliser le câblage pneumatique correspondant au schéma TI ci-dessus.</li>
 	<li>Dans la régulation étudiée, donner la grandeur réglée, la grandeur réglante, une grandeur perturbatrice et l’organe de réglage.</li>
 	<li>Donner le schéma de câblage électrique correspondant au bon fonctionnement de la régulation.</li>
-	<li>Régler le régulateur pour un affichage en %. On donnera le nom des paramètres modifiés.</li>
+	<li>Régler le régulateur pour un affichage en %. On donnera le nom des paramètres modifiés. <a href="../../../doclasse.php" class="no-under" target="_blank">On s'aidera du document sur les paramètres des régulateurs.</a></li>
 	<li>Commander la vanne avec un courant de 12 mA. On donnera le nom des paramètres modifiés, ainsi que leur valeur respective.</li>
-	<li>Régler le système pour avoir une mesure de 50%. On ne modifiera pas le réglage du régulateur.</li>
+	<li>Régler le système pour avoir une mesure de 50%.</li>
 	<li>Quelle est la valeur de la pression dans le réservoir en kPa ? En déduire l’étendue de mesure du capteur en kPa.</li>
 	<li>Déterminer le sens d’action du régulateur. On donnera la méthode utilisée.</li>
 	<li>Régler le paramètre correspondant dans le régulateur. On donnera son nom.</li>
@@ -36,9 +36,9 @@
 	</tr>
 	</table></center>
 	
-	<li>En déduire l’influence de la bande proportionnelle la <b class="jaune">précision</b> (mesurer à l'aide de l'erreur statique).</li>
-	<li>En déduire l’influence de la bande proportionnelle la <b class="jaune">rapidité</b> (mesurer à l'aide du temps de réponse).</li>
-	<li>En déduire l’influence de la bande proportionnelle la <b class="jaune">stabilité</b> (mesurer à l'aide du premier dépassement).</li>
+	<li>En déduire l’influence de la bande proportionnelle la <b class="jaune">précision</b> (mesurée à l'aide de l'erreur statique).</li>
+	<li>En déduire l’influence de la bande proportionnelle la <b class="jaune">rapidité</b> (mesurée à l'aide du temps de réponse).</li>
+	<li>En déduire l’influence de la bande proportionnelle la <b class="jaune">stabilité</b> (mesurée à l'aide du premier dépassement).</li>
 	<li>Déterminer la valeur de la bande proportionnelle pour un système en limite d’instabilité.</li>
 	<li>Enregistrer le régime permanent obtenu. On donnera la valeur de la bande proportionnelle, ainsi que la période du signal obtenu.</li>
 </ol>
