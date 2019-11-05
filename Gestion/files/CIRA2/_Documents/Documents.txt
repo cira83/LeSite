@@ -16,6 +16,8 @@ Transmetteurs FUJI,./Doc_Tech/Transmetteurs%20FUJI.pdf
 Régulation,https://www.dropbox.com/s/le0kbpasu2yoxs4/Regulation%20Industrielle.pdf?dl=0
 Se souvenir,https://www.dropbox.com/s/apyoq2wcgw0vg29/Se%20Souvenir.pdf?dl=0
 Eurotherm Suite,https://www.dropbox.com/s/x1hm1in5zpzh7j4/Eurothem%20Suite.pdf?dl=0
+Capteurs - Rappels,https://www.dropbox.com/s/o4tescm6eyqs8vs/Capteurs%20et%20transmetteurs.pdf?dl=0
+Capteurs de température,https://www.dropbox.com/s/p2888mcxedk20nv/Capteurs%20de%20temp%C3%A9rature.pdf?dl=0
 [Stage
 Attendus du stage,https://docs.google.com/presentation/d/e/2PACX-1vSx4fWL6td_fQ-ICTS5049biv27Q-ty5zN5YV1VuPeo3fpFlnK2y_LRcGgEzXOcsJdsm2Na3nEDXMrg/pub?start=false&loop=false&delayms=3000
 Fiche à rendre à la rentrée,https://www.dropbox.com/s/3sn5f53wy59phen/CONTENU%20SCIENTIFIQUE%20ET%20TECHNIQUE.pdf?dl=0
