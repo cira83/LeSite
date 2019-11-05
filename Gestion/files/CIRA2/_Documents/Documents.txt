@@ -36,3 +36,6 @@ DS3 2018,https://www.dropbox.com/s/v5fm0snnltef6pa/DS3%202018.pdf?dl=0
 DS2 2019,https://www.dropbox.com/s/r6k1t4ezns9sj9e/DS2%202019.pdf?dl=0
 DS2 2020,https://www.dropbox.com/s/hya44h68qr83ouu/DS2%202020.pdf?dl=0
 DS2 2020 Correction,https://www.dropbox.com/s/ddz0n5sjhop8jwj/DS2%202020.pptx?dl=0
+DS3 2019,https://www.dropbox.com/s/yh8v60i2u62cszp/DS3%202019.pdf?dl=0
+DS3 2020,https://www.dropbox.com/s/46gnwupid9t06yh/DS3%202020.pdf?dl=0
+DS3 2020 Correction,https://www.dropbox.com/s/cty5098h8h1ez8z/DS3%202020.pptx?dl=0
