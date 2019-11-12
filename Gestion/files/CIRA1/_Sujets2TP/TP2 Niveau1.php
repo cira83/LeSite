@@ -42,7 +42,7 @@
 
 	<li>En régime permanent (mesure X constante), quelle est la valeur du Qout ?</li>
 	<li>En déduire la commande de la vanne Y si celle-ci est NF.</li>
-	<li>Quelle est alors la valeur de l’erreur statique pour les deux bandes proportionnelles ?</li>
+	<li>Quelle est alors la valeur de l’erreur statique pour les bandes suivantes (10%, 20 %) ?</li>
 
 <center><h2>En pratique</h2></center>
 <p class="orange">Vanne LV1 fermée, remplir le réservoir jusqu’à 100 %.</p>
