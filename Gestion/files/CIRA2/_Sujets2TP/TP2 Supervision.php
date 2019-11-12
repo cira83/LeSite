@@ -2,7 +2,7 @@
 
 <font color="red" size="+1"><p><u>Important :</u> Pour ce TP vous devez utiliser l'Eycon pour simuler un process.</p></font>
 
-<h2>I. Création du process virtuel (3pts)</h2>
+<h2>I. Création du process virtuel (1pt)</h2>
 <ol>
 <li>Ajouter un bloc SIM sur votre programme, il simulera le fonctionnement d'un procédé réel. Donner lui un nom.</li>
 <li>Procéder à son paramètrage en respectant les valeurs suivantes :</li>
@@ -35,7 +35,7 @@
 </ol>
 <center><img src="img2018/superpression2.jpg"/></center>
 
-<h2>V. Boutons (Bonus 2pts)</h2>
+<h2>V. Boutons (2pts)</h2>
 <ol>
 <li>Créer deux boutons, un pour passer le régulateur en mode AUTO, un autre pour passer le régulateur en mode MANU. Un voyant sur chaque bouton indiquera le mode selectionné.</li>
 </ol>
