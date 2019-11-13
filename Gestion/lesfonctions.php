@@ -37,6 +37,7 @@
 	function prenom2{$nom,$classe}{//Ajoutée le 10 novembre 2017 pour fournir le prénom
 	function plan_sort($plannings){//Ajouté le 6 decembre 2017 pour ranger les plannings
 	function ftp_pi($filename){//Sauvegarde vers Pi via ftp
+	function coefmat($nom){//Donne le coef de la matière TP 1 et Cours 1
 	
 	$tableaudesepreuves Tableau de toutes les epreuves
 	$lepreuve1[$k] = $epreuves[$j].".".$matieres[$i].".";
@@ -433,7 +434,7 @@
 		$coef = 1;
 		$texte = strtolower("_$nom");
 		$pos = strpos($texte,"oral"); if($pos) $coef = 1; //Coef pour l'oral
-		$pos = strpos($texte,"instrum"); if($pos) $coef = 0; //Coef pour ne pas tenir compte de l'instrum en CIRA2
+		//$pos = strpos($texte,"instrum"); if($pos) $coef = 0; //Coef pour ne pas tenir compte de l'instrum en CIRA2
 		return($coef);
 	}
 	
