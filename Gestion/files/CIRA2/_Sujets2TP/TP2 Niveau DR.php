@@ -2,7 +2,7 @@
 
 <br/>
 <font color="red" size="+1"><p><u>Important :</u> Pour ce TP vous devez utiliser le régulateur T2550_02.</p></font>
-<h2>I. Régulation de niveau  (14 pts)</h2>
+<h2>I. Régulation de niveau  (12 pts)</h2>
 
 <center><p><img src="./img2018/niveau_2.png" width="55%"></p></center>
 <table class="dedans"><tr align="left"><td><font color="lightskyblue"><u>Cahier des charges :</u> On se propose de réaliser une régulation de niveau du réservoir du bas. L'organe de réglage sera la pompe P1. La vanne V2 sera contrôlée manuellement, on devra régler le transmetteur de niveau.</font></td></tr>
@@ -16,7 +16,7 @@
 </ol>
 
 <hr/>
-<h2>II. Profil de consigne  (6 pts)</a></h2>
+<h2>II. Profil de consigne  (8 pts)</a></h2>
 
 <center><p><img src="./img2018/profil1.png"></p></center>
 <table class="dedans"><tr align="left"><td><font color="lightskyblue"><u>Cahier des charges :</u> À présent, la consigne sera controlée par le régulateur. Elle devra suivre le profil ci-dessus, après un appui sur un bouton poussoir de votre choix.</font></td></tr>
