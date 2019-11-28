@@ -23,7 +23,7 @@
 <!-- Fin CdC -->	
 <li>Rappeler le fonctionnement d'une boucle de re&#769;gulation paralle&#768;le.</li>
 <li>Programmer le r&eacute;gulateur pour obtenir le fonctionnement en r&eacute;gulation parrall&egrave;le conformément au schéma TI ci-dessus.</li>
-<li>Re&#769;gler les boucles de re&#769;gulation, en utilisant la me&#769;thode de <a href="./Reglages/Ziegler.html"  target="_blank">Ziegler & Nichols</a>. On choisira un correcteur PI pour chaque boucle.</li>
+<li>Régler la boucle de niveau en utilisant la méthode de <a href="./Reglages/Ziegler.html"  target="_blank">Ziegler & Nichols</a>. On choisira un correcteur PI.</li>
 <li>Enregistrer l'influence d'une variation du de&#769;bit de sortie sur le niveau.</li>
 <li>Expliquez l'inte&#769;re&#770;t d'une re&#769;gulation paralle&#768;le <u>en vous aidant de vos enregistrements</u>. Citez un autre exemple pratique.</li>
 </ol>
