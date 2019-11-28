@@ -1,7 +1,4 @@
 <?php
-	include("./lesfonctions.php");
-	
-	
 	header ("Content-type: text/plain");//Pour le faire considérer par le système comme un fichier texte et non html
 	
 	$sem = $_GET[sem];
