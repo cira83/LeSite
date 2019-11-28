@@ -4,6 +4,7 @@
 	$sem = $_GET[sem];
 	$classe = $_GET[classe];
 
+	$txt_output = "$classe Semestre $sem";
 	
 	
 	
