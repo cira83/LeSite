@@ -23,10 +23,9 @@
 	}
 	
 	
-	//echo($txt_output);
+	echo($txt_output);
 	
-	//header("Content-Type: application/csv-tab-delimited-table");
-	header("Content-disposition: attachment; filename=$part[0]_" . date("d_m").".txt");
-	print $txt_output;
-	exit;
+	//header("Content-disposition: attachment; filename=$part[0]_" . date("d_m").".txt");
+	//print $txt_output;
+	//exit;
 ?>
