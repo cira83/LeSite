@@ -156,7 +156,8 @@
 	$texte_noms = liste2texte($leleve);
 	$filesave = "./files/$classe/_Semestre 1.txt";
 	$graphe1 = "<a href=\"./geo.php?nomfichier=$filesave\">";
-	$graphe1 .= "<img src=\"./graphe.php?notes=$texte_notes&filename=$filesave&noms=$texte_noms\"/></a>!!";
+	$graphe1 .= "<img src=\"./graphe.php?notes=$texte_notes&filename=$filesave&noms=$texte_noms\"/></a>";
+	$graphe1 .= "<img src=\"./icon/backup.gif\" width=\"49px\" style=\"border:solid 1px #000000;\">";
 	
 	//$graphe2 = barregraphe($notes2,$sup,"./files/$classe/_Semestre 2.txt",$leleve);
 	$texte_notes = liste2texte($notes2);
