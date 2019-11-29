@@ -1,47 +1,64 @@
 <?php 
 	include("./Settings/haut.php");
 ?>
-<center><p><img src="./img3/niveau_2.jpg" width="55%"></p></center>
+<center><p><img src="img2020/NiveauDR2.jpg " width="55%"></p></center>
 
-<h1>I. Réglage du transmetteur de niveau</h1>
+<h1>I. Réglage du transmetteur</h1>
 <ol>
-	<li>Proposer un câblage électrique permettant le fonctionnement de la boucle de régulation et la communication avec un modem Hart. On rappelle qu'une résistance de 250 &Omega; est branchée en parallèle sur l'entrée mesure du régulateur.</li>
-	<li>Valider le fonctionnement de la communication avec le transmetteur. On fournira une copie d'écran des réglages du transmetteur.</li>
-	<li>Procéder au réglage du transmetteur pour qu'il affiche la mesure du niveau dans le réservoir inférieur. On détaillera la procédure utilisée.</li>
-	<li>Tracer la caractéristique de votre transmetteur de niveau (mesure en % en fonction du niveau réel en %, au moins 5 mesures).</li>
+	<li>Procéder au réglage du transmetteur de pression, pour avoir la relation suivante entre la mesure de pression X et le niveau L2. On donnera la procédure utilisée.</li>
+	<img src="img2020/L1.jpg"/>
+	<li>Compléter le schéma suivant représentant la relation entre L1 et X.</li>
+	<img src="img2020/L2.jpg"/>
+	<li>Compléter le schéma suivant représentant le relation entre les niveaux L1 et L2.</li>
+	<img src="img2020/L3.jpg"/>
+	<li>En déduire le relation mathématique entre L1 et L2.</li>
 </ol>
 
-<h1>II. Régulation de niveau</h1>
+<h1>II. Boucle ouverte</h1>
+<p class="bleu">Remplir le réservoir R2 au maximum, puis fermer la vanne V1.</p>
 <ol>
-	<li>Régler les vannes manuelles afin d'avoir un niveau de 50% pour une commande de 50%.</li>
-	<li>Relever la réponse indicielle du procédé pour une commande variant de 50% à 60%.</li>
-	<li>Déduire de la courbe précédente le sens d'action du procédé. On fera un raisonnement complet.</li>
-	<li>Déterminer le modèle de Broïda de votre procédé. On fera apparaitre toutes les constructions nécessaires.</li>
-	<li>Á l'aide du logiciel <a href="../EasyRegPhp/">EasyReg</a>, déterminer le gain A du correcteur PI (on prendra Ti = &tau;) afin d'obtenir un temps de réponse le plus court possible, sans dépassement.</li>
-	<li>Relever le temps de réponse à &pm;5%, ainsi que l'erreur statique de la réponse théorique.</li>
-	<li>Programmer votre régulateur conformément au correcteur choisi. On donnera les paramètres modifiés ainsi que leur valeur respective.</li>
-	<li>Relever la réponse à un échelon de consigne de 50% à 60%.</li>
-	<li>Relever le temps de réponse à &pm;5%, ainsi que l'erreur statique de la réponse réelle.</li>
-	<li>Comparer les temps de réponse théorique et réel et expliquer leur différence si il y a lieu.</li>
+	<li>Calculer la commande en % correspondant à un courant de 9 mA. On notera cette valeur Y9 .</li>
+	<li>Relever la réponse du système à une augmentation de commande de 0 à Y9 . On donnera l'évolution des niveaux L1 et L2 des deux réservoirs.</li>
+	<li>Le procédé est-il stable ou instable ?</li>
+	<li>Le procédé est-il intégrateur ?</li>
+	<li>Mesurer le temps de réponse à &pm;10 %.</li>
 </ol>
 
-<h1>III. Alarme</h1>
-<p>Afin de répondre aux questions suivantes, vous pouvez consulter <a href="img3/Manuel%202204%20et%202208.pdf">la documentation constructeur</a> du régulateur.</p>
-<p>La maquette est équipée :<ul><li>D'un voyant vert LV;</li><li>D'un voyant rouge LR;</li><li>D'un bouton poussoir d'acquittement BP.</li></ul></p> 
-<p>Le cahier des charges impose le fonctionnement suivant :</p>
-<table class="blanc" >
-	<tr><td><font color="yellow">Niveau</font></td><td><font color="yellow">LV</font></td><td><font color="yellow">LR</font></td></tr>
-	<tr><td>&le;80%</td><td>1</td><td>0 si alarme acquittée</td></tr>
-	<tr><td>&gt;80%</td><td>0</td><td>1</td></tr>
-</table>
-
-
-<ol>
-	<li>Donner les équations logiques de LR et LV en fonction de &le;80%, &ge;80% et BP.</li>
-	<li>Proposer un schéma de câblage électrique des voyants LR et LV et de BP. On s'aidera de la documentation sur le régulateur.</li>
-	<li>Programmer le régulateur pour avoir un fonctionnement d'alarme correspondant au tableau ci-dessus. On donnera le nom et la valeur des paramètres modifiés.</li>
+<h1>III. Régulation du niveau L2</h1>
+<p class="bleu">Remplir le réservoir R2 au maximum, puis fermer la vanne V1.</p>
+<ol> 
+	<li>Régler le régulateur pour afﬁcher le niveau L2. On donnera les valeurs de VALL et VALH.</li>
+	<li>Déterminer le sens d'action du régulateur.</li>
+	<li>Procéder au réglage de celui-ci, avec les valeurs ci-dessous.</li>
+<center><table class="blanc">
+	<tr align="center">
+	<td class="blanc">Xp=10%</td>
+	<td class="blanc">Y0=0%</td>
+	<td class="blanc">Ti=30s</td>
+	<td class="blanc">Td=0s</td>
+</table></center>
+	<li>Relever la réponse indicielle en boucle fermée du système. La consigne passera de 100 à 50%.</li>
+	<li>Donner la valeur de l'erreur statique.</li>
+	<li>Mesurer le temps de réponse à &pm;10 %.</li>
 </ol>
 
+<h1>III. Régulation du niveau L1</h1>
+<p class="bleu">Remplir le réservoir R2 au maximum, puis fermer la vanne V1.</p>
+<ol> 
+	<li>Régler le régulateur pour afﬁcher le niveau L1. On donnera les valeurs de VALL et VALH.</li>
+	<li>Déterminer le sens d'action du régulateur.</li>
+	<li>Procéder au réglage de celui-ci, avec les valeurs ci-dessous.</li>
+<center><table class="blanc">
+	<tr align="center">
+	<td class="blanc">Xp=10%</td>
+	<td class="blanc">Y0=0%</td>
+	<td class="blanc">Ti=30s</td>
+	<td class="blanc">Td=0s</td>
+</table></center>
+	<li>Relever la réponse indicielle en boucle fermée du système. La consigne passera de 100 à 50%.</li>
+	<li>Donner la valeur de l'erreur statique.</li>
+	<li>Mesurer le temps de réponse à &pm;10 %.</li>
+</ol>
 
 
 

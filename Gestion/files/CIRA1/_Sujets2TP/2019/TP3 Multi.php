@@ -21,6 +21,7 @@
 <ol>
 	<li>Proposer un schéma électrique permettant la régulation de température conformément au schéma TI.</li>
 	<li>Régler la bande proportionnelle afin d'obtenir un système stable avec un dépassement inférieur à 20%.</li>
+	<li><s>Régler le régulateur pour un fonctionnement sans erreur statique en modifiant la valeur du décalage de bande.</s></li>
 	<li>Relever la réponse indicielle pour une consigne passant de 35&deg;C à 40&deg;C.</li>
 	<li>Donner la valeur de l'erreur statique, du temps de réponse à 10% et celle du premier dépassement.</li>
 	<li>Relever l'évolution de la température pour une consigne de débit passant de &frac34;Q<sub>max</sub> à &frac12;Q<sub>max</sub>.</li>
