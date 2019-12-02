@@ -5,7 +5,7 @@
 
 <h1>I. Régulation de température Mentor</h1>
 <img src="img2/mentor.jpg" width="700p"/>
-<p class="orange">La maquette Mentor ci-dessus représentée a fait l'objet l'an dernier d'un projet CIRA de réparation. Vos camarades ont procédé au remplacement du convertisseur électrique. Un défaut électrique nous empêche de la faire fonctionner correctement. Je vous propose d'ajouter une mesure de température afin d'améliorer ses performances en boucle fermée.</p>
+<p class="bleu">La maquette Mentor ci-dessus représentée a fait l'objet l'an dernier d'un projet CIRA de réparation. Vos camarades ont procédé au remplacement du convertisseur électrique. Un défaut électrique nous empêche de la faire fonctionner correctement. Je vous propose d'ajouter une mesure de température afin d'améliorer ses performances en boucle fermée.</p>
 
 <ol>
 	<li>À partir du schéma TI ci-dessus, proposer un schéma fonctionnel de la boucle de régulation où apparaît la perturbation de température.</li>
@@ -20,7 +20,7 @@
 
 
 <h1>II. Mesure de température</h1>
-<p class="orange">Pour mesurer la température on utilise un capteur de température PT100 associé à un transmetteur <a href="PDF/dTRANS_T01CorFr.pdf">JUMO type 707011</a>. Pour programmer et vérifier le transmetteur vous disposez d'une alimentation +15v/0V/-15V, d'un ordinateur, d'un calibrateur de boucle, d'une série de 4 boites à décades. </p>
+<p class="bleu">Pour mesurer la température on utilise un capteur de température PT100 associé à un transmetteur <a href="PDF/dTRANS_T01CorFr.pdf" class="orange">JUMO type 707011</a>. Pour programmer et vérifier le transmetteur vous disposez d'une alimentation +15v/0V/-15V, d'un ordinateur, d'un calibrateur de boucle, d'une série de 4 boites à décades. </p>
 
 <ol>
 	<li>Quelle est la signification du nom PT100 ?</li>
