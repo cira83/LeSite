@@ -12,11 +12,10 @@
 	<li>Rappeler dans un tableau le nom et la fonction des différents éléments repérés sur le schéma TI.</li>
 	<li>Faire le lien entre le nom des transmetteurs sur le bornier et ceux sur le schéma TI.</li>
 	<li>Sur quelle maquette avez-vous déjà rencontré cette instrumentation ?</li>
-	<li>Le débit mesuré par FIT2 s'exprime en Nm<sup>3</sup>/h. Quelle est cette unité ? Est-ce un débit massique ou volumique ?</li>
+	<li>Le débit mesuré par FIT1 s'exprime en Nm<sup>3</sup>/h. Quelle est cette unité ? Est-ce un débit massique ou volumique ?</li>
 	<li>Rappeler le principe de fonctionnement des trois transmetteurs, ainsi que leur étendue de mesure. On s'aidera de la documentation disponible.</li>
 	<li>Compléter le schéma de câblage électrique de chaque transmetteur. Les transmetteurs intelligents devront pouvoir communiquer via un modem Hart et les mesures s'afficher sur le régulateur. La mesure de FIT2 sera connectée sur l'entrée An_Input.</li>
 	<li>Paramètrer le transmetteur FIT2 à l'aide de <i>Fuji Hart Explorer</i> pour qu'il mesure la différence de pression &Delta;P en kPa sur sa pleine échelle.</li>
-	<li>Régler le régulateur pour que la mesure de FIT2 s'affiche en kPa.</li>
 	<li>Ouvrir (2) au maximum (sans démonter), puis régler (7) pour avoir un débit de 20 Nm<sup>3</sup>/h.</li>
 </ol>
 
