@@ -80,7 +80,7 @@
 	</tr>
 
 </table></center>
-	<li>Quelle est la plus grande erreur mesurée ? À quoi est-elle due ?</li>
+	<li>Quelle est la plus grande erreur mesurée ?</li>
 	<li>Proposer un câblage permettant d'afficher la mesure de la température fournie par le transmetteur sur le régulateur 2604.</li>
 	<li>Faire afficher la température de la salle sur le régulateur. Quelle est sa valeur ?</li>
 </ol>

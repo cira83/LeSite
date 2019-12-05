@@ -17,7 +17,7 @@
 	<td class="blanc">Td=0s</td>
 	<td class="blanc">X=50%</td>
 </table></center>
-	<li>Mettre le régulateur en mode automatique, puis faire varier W de 0% à 100%. Mesurer les valeurs correspondantes de Y.</li>
+	<li>Mettre le régulateur en mode automatique, puis faire varier W de 50% à 60%. Mesurer les valeurs correspondantes de Y.</li>
 	<li>Même question avec Xp = 50 %.</li>
 	<li>Représenter les courbes Y = f (W)</li>
 	<li>En déduire l'ampliﬁcation du régulateur ∆Y/∆W dans les deux expériences précédentes et la comparer avec la valeur théorique A = 100/Xp .</li>

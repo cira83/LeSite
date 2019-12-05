@@ -42,7 +42,7 @@
 	<li>Mesurer le temps de réponse à &pm;10 %.</li>
 </ol>
 
-<h1>III. Régulation du niveau L1</h1>
+<h1>IV. Régulation du niveau L1</h1>
 <p class="bleu">Remplir le réservoir R2 au maximum, puis fermer la vanne V1.</p>
 <ol> 
 	<li>Régler le régulateur pour afﬁcher le niveau L1. On donnera les valeurs de VALL et VALH.</li>
