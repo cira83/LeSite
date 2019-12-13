@@ -7,10 +7,11 @@
 <ol>
 	<li>Quels sont les éléments d’une chaîne de régulation ?</li>
 	<li>Quel est le rôle du régulateur dans cette chaîne ?</li>
-	<li>Donner la réponse d'un régulateur à action proportionnelle de gain de valeur 2 à un échelon de mesure de 20% à 40%. Le régulateur est configuré en sens inverse, les actions intégrale et dérivée sont supprimées, la consigne reste constante et Y à t=0s est égale à 0.</li>
+	<li>Donner la réponse d'un régulateur à action proportionnelle de gain de valeur 2 à un échelon de mesure de 20% à 40%. Le régulateur est configuré en sens direct, les actions intégrale et dérivée sont supprimées, la consigne reste constante et Y à t=0s est égale à 0.</li>
 	<li>Régler le régulateur avec les réglages suivants, donner le nom et la valeur des paramètres modiﬁés.</li>
 <center><table class="blanc">
 	<tr align="center">
+	<td class="blanc">Sens d'action inverse</td>
 	<td class="blanc">Xp=30%</td>
 	<td class="blanc">Y0=0%</td>
 	<td class="blanc">Ti=&infin;</td>
