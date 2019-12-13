@@ -27,6 +27,7 @@
 		<tr>
 			<td><p class="titre"><?php echo($titre);?></p></td>
 			<td><p class="titre"><?php echo($classe);?></p></td>
+			<td><a href="./Ticket.php?sujet=<?php echo($titre);?>"><img src="../../../icon/Ticket.png" height="50px"/></a></td>
 		</tr>
 	</table>
 <!--- fin de l'entête - Fichier haut.php-->
