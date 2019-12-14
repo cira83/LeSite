@@ -1,11 +1,31 @@
-<?php 
-	include("./Settings/haut.php");
+<?php
+	include("../head1.html");
+	include("../Dropbox.php");
+
+	if($_COOKIE["laclasse"]) $classe = $_COOKIE["laclasse"];
+	else $classe = "CIRA1";
 	
+	if($_COOKIE["nom"]) $elv = $_COOKIE["nom"];
+	else $elv = "inconnu";
+	
+	if($B800) echo("<title>B800 - Tickets $classe</title>"); 
+	else echo("<title>Tickets $classe</title>"); 
+		
+?>	
+<!-- fin head -->
+<title>Tickets <?php echo($classe);?></title>
+	</head>
+	<body>
+		<img src="../../../../head.png"/>
+		<table><tr><td><p class="titre">Tickets <?php echo("$classe - $elv");?></p></td></tr></table>
+
+<?php 	
 	$tp = $_GET["sujet"]; //echo($sujet);
 	$drap = $_POST["drap"];
 	$del = $_POST["del"];
 	$indication = $_POST["indications"];
-	$tickets_file = "tickets.txt";
+	$tickets_file = "./files/$classe/_tickets.txt";
+	$tickets_rep = "./files/$classe/";
 	$code_erase = "2020";//Pour supprimer un ticket
 	
 	if($drap) {
@@ -21,7 +41,7 @@
 			fclose($fp);
 			if(!$flag12) {
 				$fp = fopen($tickets_file, "a");
-				fprintf($fp, "\n$tp:$indication:");
+				fprintf($fp, "\n$tp:$indication:$elv:");
 				fclose($fp);
 				echo("<p>Votre ticket est enregistré</p>");
 			}
@@ -29,20 +49,33 @@
 		}
 		else {
 			$fp = fopen($tickets_file, "w");
-			fprintf($fp, "$tp:$indication:");
+			fprintf($fp, "$tp:$indication:$elv:");
 			fclose($fp);					
 			echo("<p>Votre ticket est enregistré</p>");	
 		}
 	}
 	
-	if($del==$code_erase) {
+	if($del==$code_erase) {//supprime le Ticket - inscrit l'intervention dans le fichier _Nom du TP.txt
+		$filedutp = "$tickets_rep"."_$tp.txt"; echo($filedutp);
+		if(file_exists($filedutp)) {
+			$fp2 = fopen($filedutp, "a");
+			fprintf($fp2, "\n");
+		}
+		else $fp2 = fopen($filedutp, "w");
+		fclose($fp2);
+
 		if(file_exists($tickets_file)) {
 			$fp = fopen($tickets_file, "r");
 				while(!feof($fp)){
 					$ligne = fgets($fp);
-					if(!strpos("_$ligne", $tp)) {
+					if(!strpos("_$ligne", $tp)) {//cherche le TP dans la liste des tickets
 						$ligne = rtrim($ligne);
 						if($content)  $content.= "\n$ligne"; else $content= "$ligne";
+					} 
+					else { // le ticket existe
+						$fp2 = fopen($filedutp, "a");
+						fprintf($fp2, "$ligne");
+						fclose($fp2);
 					}
 				}
 			fclose($fp);
@@ -80,7 +113,7 @@
 	<tr class="orange">
 		<td>Sujet de TP</td>
 		<td>Indications</td>
-		<td>Suppression</td>
+		<td>Code</td>
 	</tr>
 <?php
 	if(file_exists($tickets_file))	{

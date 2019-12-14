@@ -3,7 +3,7 @@
 	include("../head1.html");
 	if($password_OK) echo("<title>$classe - $elv</title>");
 	else echo("<title>$classe</title>");
-
+	setcookie("nom", $elv);
 ?>		
 		<script type="text/javascript">
 		function login(){
@@ -18,7 +18,7 @@
 		<img src="head.png"/>
 
 <?php
-	$sujet2TP="./files/$classe/_Sujets2TP/"; //echo($sujet2TP);
+	$sujet2TP="./files/$classe/_Sujets2TP"; //echo($sujet2TP);
 	if(!file_exists($sujet2TP)) $sujet2TP="";
 	$doc="./files/$classe/_Documents";
 	$class_cook = $_COOKIE["laclasse"];
@@ -46,7 +46,7 @@
 	
 	if($sujet2TP) {
 		if($password_OK){
-			if($TP_du_jour) echo("<p class=\"liste\"><a href=\"$sujet2TP$TP_du_jour.php\" class=\"no-under-orange\">Mon TP du jour ($TP_du_jour)</a></p>");
+			if($TP_du_jour) echo("<p class=\"liste\"><a href=\"$sujet2TP/$TP_du_jour.php\" class=\"no-under-orange\">Mon TP du jour ($TP_du_jour)</a></p>");
 			echo("<p class=\"liste\"><a href=\"./tp.php\" class=\"no-under\">Sujets de TP</a></p>");
 			echo("<p class=\"liste\"><a href=\"./sav9.php\" class=\"no-under\">Rendre un fichier</a></p>");
 			echo("<p class=\"liste\"><a href=\"./documents.php\" class=\"no-under\">Mes documents</a></p>");
@@ -76,7 +76,7 @@
 	}
 ?>
 
-<p class="Liste"><a href="https://ecc.orion.education.fr/inscrinetpro/inscription?&amp;Ucod_dom=BTS&amp;Uaca_dep=A23" target="_blank"><font color="orange">Inscription au BTS</font></a></p>
+<!-- <p class="Liste"><a href="https://ecc.orion.education.fr/inscrinetbts/inscription?Unom_schema=t1a230119f&Uuad_pre=A23&Uind_tel=I" target="_blank"><font color="orange">Inscription au BTS |</font></a> Identification : 0831616F</p> -->
 
 <?php
 	if($prof_login){
