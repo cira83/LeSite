@@ -3,7 +3,9 @@
 	include("../../../../head4.html");
 	$classe = $_COOKIE["laclasse"];
 	
-	$nom=$_SERVER['SCRIPT_NAME'];
+	$nom = $_GET["name"];
+	if(!$nom) $nom=$_SERVER['SCRIPT_NAME'];
+	
 	$txt = explode("/",$nom);
 	$k = count($txt);
 	$j = explode(".",$txt[$k-1]);
