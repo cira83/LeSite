@@ -1,6 +1,9 @@
 <?php
 	include("./security.php");
 	include("../head1.html");
+	
+	
+	if($_COOKIE["nom"]) $elv = $_COOKIE["nom"]; 
 	echo("<title>SAUVEGARDE $elv</title>");
 ?>		
 	<script type="text/javascript">
@@ -15,7 +18,7 @@
 	<body>
 		<img src="head.png"/>
 		<table><tr><td><p class="titre">
-			<?php echo("$classe - Fichier(s) Sauvegardé(s)"); ?>
+			<?php echo("$classe - $elv - Sauvegarde"); ?>
 		</p></td></tr></table>
 
 <!-- Liste des fichiers sauvegardés -->

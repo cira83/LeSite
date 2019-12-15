@@ -20,6 +20,8 @@
 		}
 		fclose($fp);
 	
+	
+		$drap = 1;//on force l'affichage vers la sauvegarde
 		if($drap){
 			$sauvegarde="<center><a href=\"../../../sav9.php\" class=\"pied\">Rendre votre TP</a></center>";
 		}
