@@ -1,5 +1,20 @@
 <?php 
 	include("./haut.php");
+
+	function nombre2icket($epr,$classe,$participants){
+		$filename = "./files/$classe/_$epr";
+		if(file_exists($filename)) {
+			$nom = explode(" ", $participants);
+			$fp = fopen($filename, "r");
+			while(!feof($fp)){
+				$ligne=fgets($fp);
+				foreach($nom as $elv) if(strpos($ligne, $elv)) $nb++;
+			}
+			fclose($fp);
+			if($nb) $result = " <a href=\"$filename\">|$nb</a>";
+		}
+		return($result);
+	}
 	
 	$mat = $_GET[mat];
 	$epr = $_GET[epr];
@@ -196,6 +211,11 @@
 		$lien = "./modif.php?mat=$mat&epr=$epr&nom=$nom";
 		if($date0212!=$nonfait){
 			$listedesparticipants .= $nom.":";//Necessaire à la création de nouvelles copies
+			
+			
+			//GESTION DES TICKETS
+			$nb2tickets = nombre2icket($epr,$classe,$nom);
+			
 			$somme_note += $note; 
 			if($note!="") {
 				$somme_coef++;//ne prendre que les copies notées
@@ -238,11 +258,11 @@
 			
 
 			if($j<=4){//Modif le 27/09/2016
-				$line1 .= "<td>$photo<br/>$lien_copies<a href=\"$lien\">$nom $note ($coef)</a></td>";
+				$line1 .= "<td>$photo<br/>$lien_copies<a href=\"$lien\">$nom $note ($coef)</a>$nb2tickets</td>";
 				//$line2 .= "<td bgcolor=\"$bgcolor\">$lien_copies<a href=\"$lien\">$nom $note ($coef)</a></td>";
 			}
 			else {
-				$line1 .= "<td>$photo<br/>$lien_copies<a href=\"$lien\">$nom $note ($coef)</a></td></tr></table>\n";
+				$line1 .= "<td>$photo<br/>$lien_copies<a href=\"$lien\">$nom $note ($coef)</a>$nb2tickets</td></tr></table>\n";
 				//$line2 .= "<td bgcolor=\"$bgcolor\">$lien_copies<a href=\"$lien\">$nom $note ($coef)</a></td></tr>\n";
 				//$line1 .= $line2;
 				//$line2 = "";
