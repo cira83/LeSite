@@ -20,7 +20,8 @@
 		<table><tr><td><p class="titre">Tickets <?php echo("$classe - $elv");?></p></td></tr></table>
 
 <?php 	
-	$tp = $_GET["sujet"]; //echo($sujet);
+	$tp = $_GET["sujet"]; // nom du ticket à ajouter
+	$target = $_POST["target"]; // nom du ticket à supprimer
 	$drap = $_POST["drap"];
 	$del = $_POST["del"];
 	$indication = $_POST["indications"];
@@ -56,7 +57,7 @@
 	}
 	
 	if($del==$code_erase) {//supprime le Ticket - inscrit l'intervention dans le fichier _Nom du TP.txt
-		$filedutp = "$tickets_rep"."_$tp.txt"; echo($filedutp);
+		$filedutp = "$tickets_rep"."_$target.txt"; //echo($filedutp);
 		if(file_exists($filedutp)) {
 			$fp2 = fopen($filedutp, "a");
 			fprintf($fp2, "\n");
@@ -68,7 +69,7 @@
 			$fp = fopen($tickets_file, "r");
 				while(!feof($fp)){
 					$ligne = fgets($fp);
-					if(!strpos("_$ligne", $tp)) {//cherche le TP dans la liste des tickets
+					if(!strpos("_$ligne", $target)) {//cherche le TP dans la liste des tickets
 						$ligne = rtrim($ligne);
 						if($content)  $content.= "\n$ligne"; else $content= "$ligne";
 					} 
@@ -112,6 +113,7 @@
 <table>
 	<tr class="orange">
 		<td>Sujet de TP</td>
+		<td>Requérant</td>
 		<td>Indications</td>
 		<td>Code</td>
 	</tr>
@@ -121,8 +123,8 @@
 		while(!feof($fp)){
 			$ligne = fgets($fp);
 			$part = explode(":", $ligne);
-			$contenu .= "<form method=\"post\" action=\"Ticket.php?sujet=$part[0]\">";
-			$contenu .= "<tr><td>$part[0]</td><td>$part[1]</td><td><input type=\"text\" name=\"del\"></td></tr></form>";
+			$contenu .= "<form method=\"post\" action=\"Ticket.php?sujet=$tp\">";
+			$contenu .= "<tr><td>$part[0]</td><td>$part[2]</td><td>$part[1]</td><td><input type=\"text\" name=\"del\"><input type=\"hidden\" name=\"target\" value=\"$part[0]\"></td></tr></form>";
 		}
 		fclose($fp);
 		echo("$contenu");
