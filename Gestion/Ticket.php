@@ -27,7 +27,7 @@
 	$indication = $_POST["indications"];
 	$tickets_file = "./files/$classe/_tickets.txt";
 	$tickets_rep = "./files/$classe/";
-	$code_erase = "2020";//Pour supprimer un ticket
+	$code_erase = "b7wd5c";//Pour supprimer un ticket
 	
 	if($drap) {
 		if(file_exists($tickets_file)) {
@@ -109,7 +109,7 @@
 			$ligne = fgets($fp);
 			$part = explode(":", $ligne);
 			$contenu .= "<form method=\"post\" action=\"Ticket.php?sujet=$tp\">";
-			$contenu .= "<tr><td>$part[0]</td><td>$part[2]</td><td>$part[1]</td><td><input type=\"text\" name=\"del\"><input type=\"hidden\" name=\"target\" value=\"$part[0]\"></td></tr></form>";
+			$contenu .= "<tr><td>$part[0]</td><td>$part[2]</td><td>$part[1]</td><td><input type=\"password\" name=\"del\"><input type=\"hidden\" name=\"target\" value=\"$part[0]\"></td></tr></form>";
 		}
 		fclose($fp);
 		echo("$contenu");
