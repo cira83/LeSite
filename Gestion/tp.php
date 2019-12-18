@@ -9,7 +9,8 @@
 	
 	if($B800) echo("<title>B800 - TP $classe</title>"); 
 	else echo("<title>TP $classe</title>"); 
-		
+	
+	$elv = $_GET["elv"];
 ?>	
 <!-- fin head -->
 <title>TP <?php echo($classe);?></title>
@@ -20,7 +21,7 @@
 
 <?php
 
-	Dropbox("Liste des TP disponibles :","./files/$classe/_Sujets2TP/liste.txt");//Liste des documents nom,adresse web	
+	Dropbox_link("Liste des TP disponibles :","./files/$classe/_Sujets2TP/liste.txt","elv=$elv");//Liste des documents nom,adresse web	
 
 
 	include("../foot2.html");

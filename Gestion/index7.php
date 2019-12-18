@@ -47,8 +47,7 @@
 	
 	if($sujet2TP) {
 		if($password_OK){
-			if($TP_du_jour) echo("<p class=\"liste\"><a href=\"$sujet2TP/$TP_du_jour.php\" class=\"no-under-orange\">Mon TP du jour ($TP_du_jour)</a></p>");
-			echo("<p class=\"liste\"><a href=\"./tp.php\" class=\"no-under\">Sujets de TP</a></p>");
+			echo("<p class=\"liste\"><a href=\"./tp.php?elv=$elv\" class=\"no-under\">Sujets de TP</a></p>");
 			echo("<p class=\"liste\"><a href=\"./sav9.php\" class=\"no-under\">Rendre un fichier</a></p>");
 			echo("<p class=\"liste\"><a href=\"./documents.php\" class=\"no-under\">Mes documents</a></p>");
 			echo("<p class=\"liste\"><a href=\"./info4elv.php\" class=\"no-under\">Mes Notes</a></p>");

@@ -2,11 +2,14 @@
 	include("../head1.html");
 	include("../Dropbox.php");
 
+	$code_erase = "GHRtE9b7";//Pour supprimer un ticket
+
 	if($_COOKIE["laclasse"]) $classe = $_COOKIE["laclasse"];
 	else $classe = "CIRA1";
 	
-	if($_COOKIE["nom"]) $elv = $_COOKIE["nom"];
-	else $elv = "inconnu";
+	
+	$elv = $_GET["elv"];
+	if(!$elv) $elv = $_COOKIE["nom"];
 	
 	if($B800) echo("<title>B800 - Tickets $classe</title>"); 
 	else echo("<title>Tickets $classe</title>"); 
@@ -17,7 +20,7 @@
 	</head>
 	<body>
 		<img src="../../../../head.png"/>
-		<table><tr><td><p class="titre">Tickets <?php echo("$classe - $elv");?></p></td></tr></table>
+		<table><tr><td><p class="titre">Tickets <?php echo("$classe");?></p></td></tr></table>
 
 <?php 	
 	$tp = $_GET["sujet"]; // nom du ticket à ajouter
@@ -27,7 +30,7 @@
 	$indication = $_POST["indications"];
 	$tickets_file = "./files/$classe/_tickets.txt";
 	$tickets_rep = "./files/$classe/";
-	$code_erase = "b7wd5c";//Pour supprimer un ticket
+
 	
 	if($drap) {
 		if(file_exists($tickets_file)) {
