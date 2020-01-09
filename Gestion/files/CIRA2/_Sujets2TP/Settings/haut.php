@@ -21,6 +21,11 @@
 	if($_COOKIE["nom"]) $elv = $_COOKIE["nom"];
 	else $elv = $_GET["elv"];
 	
+	function easyreg(){
+		echo("<a href=\"./EasyRegPhp\" target=\"_blank\">EASYREG</a>");
+	}
+
+
 ?>		
 	
 
