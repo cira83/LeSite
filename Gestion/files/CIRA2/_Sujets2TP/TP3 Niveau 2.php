@@ -13,8 +13,6 @@
 <li>Un autre bouton devra permettre de vidanger la cuve.</li>
 </ul>
 
-<ul>
 <p>Réaliser la programmation du régulateur afin de répondre au cahier des charges ci-dessus. On fournira toutes les informations nécessaires à la compréhension de votre démarche et plusieurs enregistrements permettant de valider son fonctionnement.</p>
-</ul>
 
 <?php include("./Settings/bas.php");?>	
