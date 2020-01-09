@@ -45,7 +45,7 @@
 	<td class="blanc">Xp=30%</td>
 	<td class="blanc">Ti=30s</td>
 	<td class="blanc">Td=0s</td>
-	<td class="blanc">X=50%</td>
+	<td class="blanc">W=50%</td>
 </table></center>	
 	<li>Amener le procédé au point de fonctionnement, régulateur en manuel.</li>
 	<li>Passer le régulateur en automatique, puis réaliser un échelon de consigne (10 %) et enregistrer l'évolution de la mesure.</li>
@@ -55,7 +55,7 @@
 	<td class="blanc">Xp=30%</td>
 	<td class="blanc">Ti=10s</td>
 	<td class="blanc">Td=0s</td>
-	<td class="blanc">X=50%</td>
+	<td class="blanc">W=50%</td>
 </table></center>	
 	<li>Comparer les deux enregistrements et en déduire le réglage le plus adapté.</li>
 </ol>
