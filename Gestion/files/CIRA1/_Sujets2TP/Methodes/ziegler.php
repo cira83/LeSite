@@ -2,7 +2,7 @@
 
 <h1>II. Réglage de la boucle</h1>
 <ol>
-<li>Déterminer les réglages de votre régulateur à l'aide de la méthode de <font color="yellow">Ziegler et Nichols</font>. On complétera la fiche fournie et on fournira un enregistrement des mesures qui ont permis de régler la boucle.</li>
+<li>Déterminer les réglages de votre régulateur à l'aide de la méthode de <font color="yellow">Ziegler et Nichols</font>. On complétera la fiche fournie et on fournira un enregistrement des mesures qui a permis de régler la boucle.</li>
 <li>Donner alors la fonction de transfert C(p).</li>
 <li>Commande à 50% à t=0, représenter l'allure de la commande Y en réponse à un échelon de mesure de 4% jusqu'à sa saturation.</li> 
 </ol>

@@ -8,10 +8,9 @@
 </ol>
 
 
-
 <h1>III. Performances</h1>
 <ol>
-<li>Mesurer les performances de votre réglage. Tous les calculs et constructions devront apparaître sur l'enregistrement utilisé. (temps de réponse à +/-10%, erreur statique et dépassement.</li>
+<li>Mesurer les performances de votre réglage. Tous les calculs et constructions devront apparaître sur l'enregistrement utilisé. (Temps de réponse à +/-10%, erreur statique et dépassement)</li>
 </ol>
 
 </ol>
