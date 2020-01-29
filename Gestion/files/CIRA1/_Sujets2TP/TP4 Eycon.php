@@ -24,7 +24,7 @@
 	<li>Relever la commande du régulateur en réponse à un signal d'erreur correspondant au signal 1. On n'agira que sur la mesure x.</li>
 	<li>Exprimer la réponse obtenue y<sub>1</sub>(t) en fonction de s<sub>1</sub>(t) et s<sub>2</sub>(t).</li>
     <li>Justifier la réponse Y<sub>1</sub>(p) obtenue en utilisant la transformée de Laplace.</li>
-	<li>Régler le PID pour une régulation avec un gain A=2 et un décalage de bande Y<sub>0</sub>=0. On donnera le nom des paramètres modifiés ainsi que leur valeur respective.</li>
+	<li>Régler le PID pour une régulation avec un gain A=2 et un décalage de bande FF_PID=0. On donnera le nom des paramètres modifiés ainsi que leur valeur respective.</li>
 	<li>Relever la commande du régulateur en réponse à un signal d'erreur correspondant au signal 1. On n'agira que sur la mesure x.</li>
 	<li>Exprimer la réponse obtenue y<sub>2</sub>(t) en fonction de s<sub>1</sub>(t) et s<sub>2</sub>(t).</li>
     <li>Justifier la réponse Y<sub>2</sub>(p) obtenue en utilisant la transformée de Laplace.</li>
