@@ -21,11 +21,11 @@
 <h1>II. Régulation proportionnelle</h1>
 <ol>
 	<li>Régler le PID pour une régulation avec un gain A=1 et un décalage de bande Y<sub>0</sub>=0. On donnera le nom des paramètres modifiés ainsi que leur valeur respective.</li>
-	<li>Relever la commande du régulateur en réponse à un signal d'erreur correspondant au signal 1. On n'agira que sur la mesure x.</li>
+	<li>Relever la commande du régulateur en réponse à un signal d'erreur correspondant au signal 1. On n'agira que sur la mesure x, y(0) = 0%.</li>
 	<li>Exprimer la réponse obtenue y<sub>1</sub>(t) en fonction de s<sub>1</sub>(t) et s<sub>2</sub>(t).</li>
     <li>Justifier la réponse Y<sub>1</sub>(p) obtenue en utilisant la transformée de Laplace.</li>
 	<li>Régler le PID pour une régulation avec un gain A=2 et un décalage de bande FF_PID=0. On donnera le nom des paramètres modifiés ainsi que leur valeur respective.</li>
-	<li>Relever la commande du régulateur en réponse à un signal d'erreur correspondant au signal 1. On n'agira que sur la mesure x.</li>
+	<li>Relever la commande du régulateur en réponse à un signal d'erreur correspondant au signal 1. On n'agira que sur la mesure x, y(0) = 0%.</li>
 	<li>Exprimer la réponse obtenue y<sub>2</sub>(t) en fonction de s<sub>1</sub>(t) et s<sub>2</sub>(t).</li>
     <li>Justifier la réponse Y<sub>2</sub>(p) obtenue en utilisant la transformée de Laplace.</li>
 </ol>
@@ -33,11 +33,11 @@
 <h1>III. Régulation proportionnelle intégrale</h1>
 <ol>
 	<li>Régler le PID pour une régulation avec un gain A=1 et un temps intégral ti=10s.</li>
-	<li>Relever la commande du régulateur en réponse à un signal d'erreur correspondant au signal 1. On n'agira que sur la mesure x.</li>
+	<li>Relever la commande du régulateur en réponse à un signal d'erreur correspondant au signal 1. On n'agira que sur la mesure x, y(0) = 0%.</li>
 	<li>Exprimer la réponse obtenue y<sub>3</sub>(t) en fonction de s<sub>1</sub>(t) et s<sub>2</sub>(t).</li>
     <li>Justifier la réponse Y<sub>3</sub>(p) obtenue en utilisant la transformée de Laplace.</li>
 	<li>Régler le PID pour une régulation avec un gain A=2 et un temps intégral ti=10s.</li>
-	<li>Relever la commande du régulateur en réponse à un signal d'erreur correspondant au signal 1. On n'agira que sur la mesure x.</li>
+	<li>Relever la commande du régulateur en réponse à un signal d'erreur correspondant au signal 1. On n'agira que sur la mesure x, y(0) = 0%.</li>
 	<li>Quelle est la structure du régulateur PI ? Justifier votre réponse.</li>
 	<li>Quelle peut être la structure du régulateur PID ?</li>
 	<li>Exprimer la réponse obtenue y<sub>4</sub>(t) en fonction de s<sub>1</sub>(t) et s<sub>2</sub>(t).</li>
@@ -47,7 +47,7 @@
 <h1>IV. Régulation proportionnelle intégrale dérivée</h1>
 <ol>
 	<li>Régler le PID pour une régulation avec un gain A=2 et un temps intégral ti=10s et un temps dérivé td=10s.</li>
-	<li>Relever la commande du régulateur en réponse à un signal d'erreur correspondant au signal 1. On n'agira que sur la mesure x.</li>
+	<li>Relever la commande du régulateur en réponse à un signal d'erreur correspondant au signal 1. On n'agira que sur la mesure x, y(0) = 0%.</li>
 	<li>Justifier pourquoi la réponse Y<sub>4</sub>(p) obtenue n'est pas une composition de S<sub>1</sub>(p) et S<sub>2</sub>(p) en utilisant la transformée de Laplace.</li>
 	<li>Déduire de y<sub>4</sub>(t) la structure du régulateur. On fera apparaître toutes les constructions.</li>
 </ol>
