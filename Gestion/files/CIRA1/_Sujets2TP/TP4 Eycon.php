@@ -52,12 +52,6 @@
 	<li>Déduire de y<sub>4</sub>(t) la structure du régulateur. On fera apparaître toutes les constructions.</li>
 </ol>
 
-<h1>V. Alarme</h1>
-<ol>
-	<li>Programmez votre supervision afin que le voyant rouge passe au rouge clignotant si la mesure du régulateur dépasse 80%.</li>
-	<li>Programmez votre supervision afin que le voyant vert passe au vert clignotant si la mesure du régulateur passe en dessous de 20%.</li>
-</ol>
-
 
 <?php
 
