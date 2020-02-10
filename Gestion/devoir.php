@@ -396,7 +396,7 @@
 		
 	}
 	
-	echo("<table><tr><td><a href=\"./index7.php\">Accueil</a></td>");
+	echo("<table><tr>");
 	for($i=0;$i<$nb2pages+1;$i++){
 		$pagenumber2 = $i+1;
 		$color = "";
