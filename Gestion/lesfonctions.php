@@ -49,7 +49,21 @@
 	$listedesclasses Menu déroulant des classes - onchange=newclasse
 */
 	
-
+	function info_sujet($file){
+		if(file_exists($file)) {
+			$fp = fopen($file, "r");
+			$i = 0;
+			while(!feof($fp)){
+				$ligne[$i]=fgets($fp);
+				$i++;
+			}
+			fclose($fp);
+		}
+		$info_sujet = "";	
+		if($ligne[0]) $info_sujet .= "<td><a href=\"$ligne[0]\"><img src=\"./icon/docx2.png\"  height=\"20px\"></a></td>";
+		if($ligne[1]) $info_sujet .= "<td><a href=\"$ligne[1]\"><img src=\"./icon/pptx2.png\"  height=\"20px\"></a></td>";
+		return $info_sujet;
+	}
 	
 	
 	function ftp_pi($filename){

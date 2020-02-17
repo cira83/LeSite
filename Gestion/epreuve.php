@@ -50,8 +50,16 @@
 	
 	
 	//-- Entête de la page ---------------------------------------------------------------------
-	$info_sujet = "<td width=\"25px\"><a href=\"./info_sujet.php?file=$nomdufichierlien\" title=\"Infos sujet\"><img src=\"./icon/info_rond.png\" height=\"20px\"></a>";	
-	tableau("<b>$mat</b></td><td><a href=\"$fichier\">$epr</a>$info_sujet");
+	
+		
+	echo("<!-- v1 -->\n");
+	$info_sujet = info_sujet($nomdufichierlien);	
+	//if($ligne[0]) $info_sujet .= "<td><a href=\"$ligne[0]\"><img src=\"./icon/docx2.png\"  height=\"20px\"></a></td>";
+	//if($ligne[1]) $info_sujet .= "<td><a href=\"$ligne[1]\"><img src=\"./icon/pptx2.png\"  height=\"20px\"></a></td>";
+	
+	$info_sujet .= "<td width=\"25px\"><a href=\"./info_sujet.php?file=$nomdufichierlien\" title=\"Infos sujet\"><img src=\"./icon/info_rond.png\" height=\"20px\"></a>";
+	
+	tableau("<b>$mat</b></td><td><a href=\"$fichier\">$epr</a> $info_sujet");
 	
 	
 	//Création du fichier si il n'existe pas
