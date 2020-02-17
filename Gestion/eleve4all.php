@@ -90,20 +90,8 @@
 					
 					//modif du 17/02/2020
 					$link_info = $files."$classe/$lamatiere/_link$lepreuve";
-					if(file_exists($link_info)){
-					$fp2020 = fopen($link_info, "r");
-						$i2020 = 0;
-						while(!feof($fp2020)){
-							$ligne2020[$i2020]=fgets($fp2020);
-							$i2020++;
-						}
-						fclose($fp2020);
-						while($i2020<3) {
-							$ligne2020[$i2020]="-";
-							$i2020++;
-						}
-					}
-					if($ligne2020[2] == "on") {
+					$danger = info_sujet_ouvert($link_info);
+					if($danger == "on") {
 						$lien_vers_doc = info_sujet($link_info);
 						$correction = "$lien_vers_doc";
 					}

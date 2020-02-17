@@ -50,10 +50,9 @@
 	
 	
 	//-- Entête de la page ---------------------------------------------------------------------
-	
-		
-	echo("<!-- v1 -->\n");
-	$info_sujet = "<td width=\"50px\">".info_sujet($nomdufichierlien)."</td>";	
+	$danger = info_sujet_ouvert($nomdufichierlien);
+	if($danger=="on") $info_sujet = "<td width=\"25px\"><img src=\"./icon/danger.png\" height=\"20px\"></td>";
+	$info_sujet .= "<td width=\"50px\">".info_sujet($nomdufichierlien)."</td>";	
 	
 	$info_sujet .= "<td width=\"25px\"><a href=\"./info_sujet.php?file=$nomdufichierlien\" title=\"Infos sujet\"><img src=\"./icon/info_rond.png\" height=\"20px\"></a>";
 	

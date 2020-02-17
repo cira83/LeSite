@@ -60,9 +60,22 @@
 			fclose($fp);
 		}
 		$info_sujet = "";	
-		if($ligne[0]) $info_sujet .= "<a href=\"$ligne[0]\"><img src=\"./icon/docx2.png\"  height=\"20px\"></a>";
-		if($ligne[1]) $info_sujet .= " <a href=\"$ligne[1]\"><img src=\"./icon/pptx2.png\"  height=\"20px\"></a>";
+		if($ligne[0]) $info_sujet .= "<a href=\"$ligne[0]\" target=\"_blank\"><img src=\"./icon/docx2.png\"  height=\"20px\"></a>";
+		if($ligne[1]) $info_sujet .= " <a href=\"$ligne[1]\" target=\"_blank\"><img src=\"./icon/pptx2.png\"  height=\"20px\"></a>";
 		return $info_sujet;
+	}
+
+	function info_sujet_ouvert($file){
+		if(file_exists($file)) {
+			$fp = fopen($file, "r");
+			$i = 0;
+			while(!feof($fp)){
+				$ligne[$i]=fgets($fp);
+				$i++;
+			}
+			fclose($fp);
+		}
+		return $ligne[2];
 	}
 	
 	
