@@ -60,8 +60,8 @@
 			fclose($fp);
 		}
 		$info_sujet = "";	
-		if($ligne[0]) $info_sujet .= "<td><a href=\"$ligne[0]\"><img src=\"./icon/docx2.png\"  height=\"20px\"></a></td>";
-		if($ligne[1]) $info_sujet .= "<td><a href=\"$ligne[1]\"><img src=\"./icon/pptx2.png\"  height=\"20px\"></a></td>";
+		if($ligne[0]) $info_sujet .= "<a href=\"$ligne[0]\"><img src=\"./icon/docx2.png\"  height=\"20px\"></a>";
+		if($ligne[1]) $info_sujet .= " <a href=\"$ligne[1]\"><img src=\"./icon/pptx2.png\"  height=\"20px\"></a>";
 		return $info_sujet;
 	}
 	
