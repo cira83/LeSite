@@ -50,13 +50,8 @@
 	
 	
 	//-- Entête de la page ---------------------------------------------------------------------
-	if(file_exists($nomdufichierlien)){
-		$fp12 = fopen($nomdufichierlien, "r");
-		$sujet_lien = fgets($fp12);
-		fclose($fp12);
-		tableau("<b>$mat</b></td><td><a href=\"$fichier\">$epr</a></td><td><a href=\"$sujet_lien\" target=\"_blank\">Le sujet</a>");
-	}
-	else tableau("<b>$mat</b></td><td><a href=\"$fichier\">$epr</a>");
+	$info_sujet = "<td width=\"25px\"><a href=\"./info_sujet.php?file=$nomdufichierlien\" title=\"Infos sujet\"><img src=\"./icon/info_rond.png\" height=\"20px\"></a>";	
+	tableau("<b>$mat</b></td><td><a href=\"$fichier\">$epr</a>$info_sujet");
 	
 	
 	//Création du fichier si il n'existe pas
