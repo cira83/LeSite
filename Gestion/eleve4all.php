@@ -89,7 +89,8 @@
 					else echo("<tr><td $tabeprw>$part[0]</td>");
 					
 					//modif du 17/02/2020
-					$link_info = $files."$classe/$lamatiere/_link$lepreuve";					if(file_exists($link_info)){
+					$link_info = $files."$classe/$lamatiere/_link$lepreuve";
+					if(file_exists($link_info)){
 					$fp2020 = fopen($link_info, "r");
 						$i2020 = 0;
 						while(!feof($fp2020)){
@@ -97,11 +98,16 @@
 							$i2020++;
 						}
 						fclose($fp2020);
+						while($i<3) {
+							$ligne2020[$i2020]="-";
+							$i2020++;
+						}
 					}
 					if($ligne2020[2] == "on") {
 						$lien_vers_doc = info_sujet($link_info);
 						$correction = "$lien_vers_doc";
 					}
+					else $correction = "";
 					$liens .= $correction;
 					echo("<td $tabnotw><a title=\"$Description\">$lanote ($lecoef)</a></td><td><font size=\"-2\" color=\"blue\">$commentaire</font> $liens</td><td $tabgphw>$legraphe</td></tr>");
 					$lanote = "";
