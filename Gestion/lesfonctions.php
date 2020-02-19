@@ -38,6 +38,8 @@
 	function plan_sort($plannings){//Ajouté le 6 decembre 2017 pour ranger les plannings
 	function ftp_pi($filename){//Sauvegarde vers Pi via ftp
 	function coefmat($nom){//Donne le coef de la matière TP 1 et Cours 1
+	function info_sujet($file){//Lien vers le sujet et sa correction
+	function info_sujet_ouvert($file){//Informations disponibles pour les élèves ?
 	
 	$tableaudesepreuves Tableau de toutes les epreuves
 	$lepreuve1[$k] = $epreuves[$j].".".$matieres[$i].".";
@@ -49,7 +51,7 @@
 	$listedesclasses Menu déroulant des classes - onchange=newclasse
 */
 	
-	function info_sujet($file){
+	function info_sujet($file){//Lien vers le sujet et sa correction
 		if(file_exists($file)) {
 			$fp = fopen($file, "r");
 			$i = 0;
@@ -60,12 +62,12 @@
 			fclose($fp);
 		}
 		$info_sujet = "";	
-		if($ligne[0]) $info_sujet .= "<a href=\"$ligne[0]\" target=\"_blank\"><img src=\"./icon/docx2.png\"  height=\"20px\"></a>";
-		if($ligne[1]) $info_sujet .= " <a href=\"$ligne[1]\" target=\"_blank\"><img src=\"./icon/pptx2.png\"  height=\"20px\"></a>";
+		if(strlen($ligne[0])>5) $info_sujet .= "<a href=\"$ligne[0]\" target=\"_blank\"><img src=\"./icon/docx2.png\"  height=\"20px\"></a>";
+		if(strlen($ligne[1])>5) $info_sujet .= " <a href=\"$ligne[1]\" target=\"_blank\"><img src=\"./icon/pptx2.png\"  height=\"20px\"></a>";
 		return $info_sujet;
 	}
 
-	function info_sujet_ouvert($file){
+	function info_sujet_ouvert($file){//Informations disponibles pour les élèves ?
 		if(file_exists($file)) {
 			$fp = fopen($file, "r");
 			$i = 0;

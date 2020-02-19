@@ -12,7 +12,6 @@
 <form action="./epreuve.php" method="post">
 		<p>Matière : <?php echo($partiel_list)?> - 
 		Epreuve : <input type="text" name="epreuve" size="20"> - 
-		Lien : <input type="text" name="lien" size="20">
 	<input type="submit" value="Cr&eacute;ation des copies">
 	<input type="hidden" value="<?php echo($listedesparticipants); ?>" name="laliste"></p>
 </form>

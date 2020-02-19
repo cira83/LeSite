@@ -30,13 +30,7 @@
 	if($mat=="") $mat=$_POST[mat];
 	$lien_sujet = $_POST[lien];//Lien http vers le sujet -- modif du 21 novembre 2017
 	$nomdufichierlien = "$files$classe/$mat/_link$epr";
-	if($lien_sujet){
-		if(!file_exists($nomdufichierlien)){
-			$fp12 = fopen($nomdufichierlien, "w");
-			fprintf($fp12,"$lien_sujet");
-			fclose($fp12);
-		}
-	}
+
 	//FTP 
 	$ftp_filename = $nomdufichierlien;
 	
