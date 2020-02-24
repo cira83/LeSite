@@ -4,7 +4,7 @@
 
 <center><img src="./img3/eycon.jpg" /></center>
 <p>Dans ce TP vous aller utiliser un superviseur Eycon 10, un appareil qui se programme avec Lintools, logiciel que vous utiliserez pleinement en CIRA 2.</p>
-<p>Pour la mise en service et les dernières questions, veuillez consulter la documentation sur <a href="Eycon%2010.php">l'EYCON 10</a>.</p>
+<p>Pour la mise en service et les dernières questions, veuillez consulter la documentation sur <a href="Eycon%2010.php" target="_blank">l'EYCON 10</a>.</p>
 <p>L'Eycon est programmé afin de simuler un procédé (process), ce qui vous permets de travailler sans maquette réelle.</p>
 
 
