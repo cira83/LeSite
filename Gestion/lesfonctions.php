@@ -62,8 +62,8 @@
 			fclose($fp);
 		}
 		$info_sujet = "";	
-		if(strlen($ligne[0])>5) $info_sujet .= "<a href=\"$ligne[0]\" target=\"_blank\"><img src=\"./icon/docx2.png\"  height=\"20px\"></a>";
-		if(strlen($ligne[1])>5) $info_sujet .= " <a href=\"$ligne[1]\" target=\"_blank\"><img src=\"./icon/pptx2.png\"  height=\"20px\"></a>";
+		if(strlen($ligne[0])>5) $info_sujet .= "<a href=\"$ligne[0]\" target=\"_blank\"><img src=\"./icon/docx2.png\"  height=\"20px\" title=\"Sujet\"></a>";
+		if(strlen($ligne[1])>5) $info_sujet .= " <a href=\"$ligne[1]\" target=\"_blank\"><img src=\"./icon/pptx2.png\"  height=\"20px\" title=\"Correction\"></a>";
 		return $info_sujet;
 	}
 
