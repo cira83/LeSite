@@ -29,7 +29,7 @@
 	<li>Programmer votre régulateur conformément au correcteur déterminé. On donnera les paramètres modifiés ainsi que leur valeur respective.</li>
 	<li>Relever la réponse à un échelon de consigne de 50% à 60%.</li>
 	<li>Déduire de cette réponse les performances réelles (temps de réponse à &pm;5%, erreur statique et premier dépassement) de votre régulation.</li>
-	<li>Comparer les performances théoriques et réelles et expliquer leur différence si il y a lieu.</li>
+	<li>Comparer les performances théoriques et réelles et expliquer les différences si il y a lieu.</li>
 </ol>
 
 
