@@ -1,0 +1,16 @@
+/Gestion/index.php
+/Gestion/index.php
+/Gestion/index.php
+/Gestion/index.php
+/Gestion/index.php
+/Gestion/index.php
+/Gestion/bts.php
+/Gestion/index.php
+/Gestion/files.php
+/Gestion/index.php
+/Gestion/index.php
+/Gestion/index.php
+/Gestion/listedeslog.php
+/Gestion/index.php
+/Gestion/eleve.php?nom=Roux
+/Gestion/eleve.php?nom=Keller
