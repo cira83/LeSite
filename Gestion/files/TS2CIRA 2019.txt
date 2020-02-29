@@ -1,0 +1,15 @@
+Agostino:Killian:15/09/1997:frxzd44ag: 06 19 36 67 69: agostino.killiann@outlook.fr:SIN - AB (1):8,5 [42]:non:::non:OUI:
+Andre:Charles:22/08/1998:87p5haym2:0750952941: charlesadr@hotmail.com:BP EN P (1):6 [14]:non:::non:OUI:
+Bellemere:Vincent:12/01/1999:6j6g6rpk: 0637312635: vincentbellemere@orange.fr:EE AB (1):12,5 [4]:non:::oui:OUI:
+Chapelain:Romain:11/05/1999:h2cauqsk: 0770794357: Romain83.manga@dbmail.com:SIN AB (1):12,5 [3]:non:::non:OUI:
+Couillet:Matthieu:23/02/1999:d498sbxn:0762025901: matthieu83400@hotmail.fr:STL AB (1):9 [65]:non:::non:OUI:
+Dubois:Florian_D:20/05/1998:8j3sE:0627541246:floriandubois83@hotmail.fr:STI2D SIN:5 [58]:non:::non:OUI:
+Fiandino:Mathéo:28/05/1998:jrz3hwdpn: 06 78 47 17 56: matheo.fiandino@hotmail.fr:SIN AB (1):12 [8]:non:::non:OUI:
+Ginieys:Alexis:01/03/1999:ftg47rqy3: 0695450868: alexis.ginieys@gmail.com:SIN B (1):14 [6]:non:::non:OUI:
+Mahouachi:Nessim:31/12/1999:vuc4w7iz:0677860790:nmahouachi@gmail.com:SIN B (1):14 [7]:non:::non:OUI:
+Mengual:Jules:01/09/1999:puw6aeec: 0635308420: jules.mengual@icloud.com:SIN AB (1):10,7 [5]:non:::oui:OUI:
+Raspaud:Thomas:26/02/1997:xtp9unfh: 06.28.16.69.12:thomas.berthelot.5@gmail.com:STI2D SIN:12 [24]:non:::non:OUI:
+Remy:Florian_R:04/05/1998:h3Z8y::florian.remi@gmail.com:STI2D SIN:8 [49]:non:::non:OUI:
+Selegue:Gabriel:02/02/1999:Sg299:0695144128:gabrielselegue@hotmail.com:SIN AB (1): 3,1 [97] :non:::non:NON:
+Spite:Amaury:01/04/1999:48ntqtbm: 0630302511: spite.amaury@gmail.com:SIN AB (1):12,6 [41]:non:::non:OUI:
+Turkcan:Morgane:01/12/1998:aw8a3vf3c: 0769280156: morgane.turkcan@free.fr:EE TB (1):13,9 [26]:non:::non:OUI:
