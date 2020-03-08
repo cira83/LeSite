@@ -1,4 +1,9 @@
 <?php
+	function info_name_file() {
+		$nom_script = $_SERVER['SCRIPT_NAME'];
+		echo("<!-- fichier : $nom_script -->");
+	}
+	
 	function estfichier2($nom){// Fichier ou non ?
 		$drap = true;
 		$data = explode(".", $nom);

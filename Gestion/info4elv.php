@@ -28,7 +28,7 @@
 	
 	if($password_OK){
 		echo("<table><tr><td colspan=2><p class=\"titre\">Les notes de $nom</p></td></tr></table>");
-		if($serveur_name == "B800") include("./eleve4allPi.php");
+		if(file_exists("../B800")) include("./eleve4allPi.php");
 		else include("./eleve4all.php");
 	}
 	else{
