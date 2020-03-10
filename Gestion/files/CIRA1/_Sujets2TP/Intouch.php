@@ -4,6 +4,7 @@
 <h1>Raccourcis</h1>
 <ul>
 	<li><a href="#licence" class="no-under">Licence</a></li>
+	<li><a href="#supervision"  class="no-under">Contrôle de la supervision</a></li>
 	<li><a href="#edition"  class="no-under">Edition de la page de garde</a></li>
 	<li><a href="#elements"  class="no-under">Éléments de supervision</a></li>
 	<ul>
@@ -12,7 +13,7 @@
 		<li><a href="#Action"  class="no-under">Action</a></li>
 		<li><a href="#Graphe"  class="no-under">Graphe déroulant</a></li>
 		<li><a href="#Object"  class="no-under">Object prédéfini</a></li>
-		<li><a href="#supervision"  class="no-under">Contrôle de la supervision</a></li>
+		
 	</ul>
 </ul>
 
@@ -31,6 +32,9 @@
 	<li>Redémarrer LINOPC à l’aide de l’application ShutdownOPC qui est sur le bureau de Windows.</li>
 	<img src="Intouch/08.gif">
 </ol>
+
+<h1 id="supervision">Contrôle de la supervision</h1>
+<img src="Intouch/31.gif" width="800px">
 
 <h1 id="edition">Edition de la page de garde</h1>
 <p>Pour lancer l’éditeur de fenêtre, il suffit de cliquer sur [Wonderware Window Maker] dans la barre de menu de Project Organizer.</p>
@@ -84,8 +88,7 @@
 <img src="Intouch/29.gif">
 
 
-<h1 id="supervision">Contrôle de la supervision</h1>
-<img src="Intouch/31.gif" width="800px">
+
 
 <?php
 
