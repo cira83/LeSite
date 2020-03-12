@@ -12,15 +12,20 @@
 		$cor = $_POST[ppt];
 		affiche("Correction : $cor");
 		$active = $_POST[active];
+		$bar= $_POST[xls];
+		affiche("Barème : $bar");
 		affiche("Disponibles : $active");
 		
 		$sujet = urldecode($sujet);
 		$cor = urldecode($cor);
+		$bar = urldecode($bar);
+		
 		
 		$fp = fopen($sujetlink, "w");
 		fprintf($fp, "$sujet");
 		fprintf($fp, "\n$cor");
 		fprintf($fp, "\n$active");
+		fprintf($fp, "\n$bar");
 		fclose($fp);
 	}
 	
@@ -33,14 +38,14 @@
 		$fp = fopen($sujetlink, "r");
 		$i = 0;
 		while(!feof($fp)){
-			$ligne[$i]=fgets($fp);
+			$ligne[$i]=fgets($fp); affiche("Ligne $i : $ligne[$i]");
 			$i++;
 		}
 		fclose($fp);
 	} 
 	
 	$action = "info_sujet.php?file=$sujetlink";	
-	if($ligne[2]=="on") $checked = "checked";
+	if(strpos("_$ligne[2]","on")) $checked = "checked";
 ?>
 <table><form name="envoie fichier" enctype="multipart/form-data" method="post" action="<?php echo("$action&src=1");?>">
 	<tr>
@@ -51,6 +56,10 @@
 		<td><b>Correction</b> : </td>
 		<td><input name="ppt" type="txt" value="<?php echo($ligne[1]);?>" size="80px"></td></td>
 		<td><a href="<?php echo($ligne[1]);?>">__&uarr;__</a></td>
+	</tr><tr>
+		<td><b>Bareme</b> : </td>
+		<td><input name="xls" type="txt" value="<?php echo($ligne[3]);?>" size="80px"></td></td>
+		<td><a href="<?php echo($ligne[3]);?>">__&uarr;__</a></td>
 	</tr><tr>
 		<td><input type="submit"></td>
 		<td>Informations disponibles</td>

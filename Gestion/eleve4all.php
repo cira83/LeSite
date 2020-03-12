@@ -91,14 +91,17 @@
 					//modif du 17/02/2020
 					$link_info = $files."$classe/$lamatiere/_link$lepreuve";
 					$danger = info_sujet_ouvert($link_info);
-					if($danger == "on") {
+					if($danger) {
 						$lien_vers_doc = info_sujet($link_info);
 						$part_correction_sujet = explode("+", $lien_vers_doc);
-						$correction = $lien_vers_doc;
 						$sujet = $part_correction_sujet[0];
 						$correction = $part_correction_sujet[1];
 					}
-					else $correction = "";
+					else {
+						$correction = "";
+						$sujet = "";
+					}
+						
 					//$liens .= $correction;
 					echo("<td $tabnotw><a title=\"$Description\">$lanote ($lecoef)</a></td><td><font size=\"-2\" color=\"blue\">$commentaire</font> $liens</td>");
 					echo("<td>$sujet</td><td>$correction</td><td $tabgphw>$legraphe</td></tr>");

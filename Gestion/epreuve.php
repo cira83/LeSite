@@ -50,6 +50,7 @@
 	$part_correction_sujet = explode("+", $lien_vers_doc);
 	$info_sujet .= "<td width=\"25px\">".$part_correction_sujet[0]."</td>";	
 	$info_sujet .= "<td width=\"25px\">".$part_correction_sujet[1]."</td>";
+	$info_sujet .= "<td width=\"25px\">".$part_correction_sujet[2]."</td>";
 	$info_sujet .= "<td width=\"25px\"><a href=\"./info_sujet.php?file=$nomdufichierlien\" title=\"Infos sujet\"><img src=\"./icon/info_rond.png\" height=\"20px\"></a>";
 	
 	tableau("<b>$mat</b></td><td><a href=\"$fichier\">$epr</a> $info_sujet");
