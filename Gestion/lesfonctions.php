@@ -63,8 +63,11 @@
 		}
 		$info_sujet = "";	
 		if(strlen($ligne[0])>5) $info_sujet .= "<a href=\"$ligne[0]\" target=\"_blank\"><img src=\"./icon/docx2.png\"  height=\"20px\" title=\"Sujet\"></a>";
+		else $info_sujet .= " ";
 		if(strlen($ligne[1])>5) $info_sujet .= "+<a href=\"$ligne[1]\" target=\"_blank\"><img src=\"./icon/pptx2.png\"  height=\"20px\" title=\"Correction\"></a>";
+		else $info_sujet .= "+ ";
 		if(strlen($ligne[3])>5) $info_sujet .= "+<a href=\"$ligne[3]\" target=\"_blank\"><img src=\"./icon/xlsx.png\"  height=\"20px\" title=\"Bareme\"></a>";
+		else $info_sujet .= "+ ";
 
 		return $info_sujet;
 	}
