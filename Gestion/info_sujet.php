@@ -6,15 +6,15 @@
 	$part3 = explode("/", $sujetlink);
 	
 	if($_GET[src]==1){
-		affiche("Modification du fichier info : $sujetlink");
+		//affiche("Modification du fichier info : $sujetlink");
 		$sujet = $_POST[doc];
-		affiche("Sujet : $sujet");
+		//affiche("Sujet : $sujet");
 		$cor = $_POST[ppt];
-		affiche("Correction : $cor");
+		//affiche("Correction : $cor");
 		$active = $_POST[active];
 		$bar= $_POST[xls];
-		affiche("Barème : $bar");
-		affiche("Disponibles : $active");
+		//affiche("Barème : $bar");
+		//affiche("Disponibles : $active");
 		
 		$sujet = urldecode($sujet);
 		$cor = urldecode($cor);

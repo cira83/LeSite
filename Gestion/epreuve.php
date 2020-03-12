@@ -45,7 +45,7 @@
 	
 	//-- Entête de la page ---------------------------------------------------------------------
 	$danger = info_sujet_ouvert($nomdufichierlien);
-	if($danger=="on") $info_sujet = "<td width=\"25px\"><img src=\"./icon/danger.png\" height=\"20px\"></td>";
+	if($danger) $info_sujet = "<td width=\"25px\"><img src=\"./icon/danger.png\" height=\"20px\"></td>";
 	$lien_vers_doc = info_sujet($nomdufichierlien);
 	$part_correction_sujet = explode("+", $lien_vers_doc);
 	$info_sujet .= "<td width=\"25px\">".$part_correction_sujet[0]."</td>";	
