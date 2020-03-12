@@ -32,8 +32,7 @@
 	
 	
 	
-	tableau("$part3[3]</td><td><a href=\"epreuve.php?mat=$part3[3]&epr=$part1[1]\">$part0[0]</a>");
-
+	
 	if(file_exists($sujetlink)) {
 		$fp = fopen($sujetlink, "r");
 		$i = 0;
@@ -43,6 +42,19 @@
 		}
 		fclose($fp);
 	} 
+	
+	$danger = info_sujet_ouvert($sujetlink);
+	if($danger) $info_sujet = "<td width=\"25px\"><img src=\"./icon/danger.png\" height=\"20px\"></td>";
+	$lien_vers_doc = info_sujet($sujetlink);
+	$part_correction_sujet = explode("+", $lien_vers_doc);
+	$info_sujet .= "<td width=\"25px\">".$part_correction_sujet[0]."</td>";	
+	$info_sujet .= "<td width=\"25px\">".$part_correction_sujet[1]."</td>";
+	$info_sujet .= "<td width=\"25px\">".$part_correction_sujet[2]."</td>";
+	$info_sujet .= "<td width=\"25px\"><a href=\"./info_sujet.php?file=$nomdufichierlien\" title=\"Infos sujet\"><img src=\"./icon/info_rond.png\" height=\"20px\"></a>";
+	
+	tableau("$part3[3]</td><td><a href=\"epreuve.php?mat=$part3[3]&epr=$part1[1]\">$part0[0]</a>$info_sujet");
+
+	
 	
 	$action = "info_sujet.php?file=$sujetlink";	
 	if(strpos("_$ligne[2]","on")) $checked = "checked";
