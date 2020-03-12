@@ -38,7 +38,7 @@
 		$fp = fopen($sujetlink, "r");
 		$i = 0;
 		while(!feof($fp)){
-			$ligne[$i]=fgets($fp); affiche("Ligne $i : $ligne[$i]");
+			$ligne[$i]=fgets($fp); //affiche("Ligne $i : $ligne[$i]");
 			$i++;
 		}
 		fclose($fp);
