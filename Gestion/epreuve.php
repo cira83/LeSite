@@ -162,15 +162,13 @@
 		$j = 0;
 		while (!feof($handle)){
 			$ligne[$i] = fgets($handle);
-			$data = explode(":", $ligne[$i]);
+			$data = explode(":", $ligne[$i]); //echo("<!-- $data[3] -->");
 			if($j==0){
 				$listeofname[0]=$data[0];
 				$j++;
 			}
 			$flag = true;
-			for($k=0;$k<count($listeofname);$k++) {
-				if($data[0]==$listeofname[$k]) $flag = false;
-			}
+			for($k=0;$k<count($listeofname);$k++) if($data[0]==$listeofname[$k]) $flag = false;
 			if($flag){
 				$listeofname[$j] = $data[0];
 				$j++;
@@ -182,6 +180,8 @@
 	
 	//afficheliste($listeofname);
 	sort($listeofname); //Classes les noms dans l'ordre alphabétique
+
+	//foreach($listeofname as $case) echo("<!-- $case -->");
 
 	$j = 0;
 	$n = 0;
@@ -223,12 +223,12 @@
 			
 			$pas = nbparticipants($nom);//pour les groupes de plusieurs personnes
 			
-			if($j==0) {//première ligne
+			/*if($j==0) {//première ligne
 				$line1 .= "<table>";
 				//$line2 = "<tr>";//modif du 6 septembre 2017
 			}
-			$j = $j + $pas;
-			
+			$j = $j + $pas;*/
+						
 			//Fichiers
 			$lien_copies_tab = explode(":",lescopies3($nom,$classe,$epr,$repertoire_copies));//Liens vers les copies :+ codes md5
 			$lien_copies = $lien_copies_tab[0];// Les liens vers les copies rendues
@@ -250,28 +250,56 @@
 			//Copie déjà vue		
 			if($drap_dejavu) $photo = photobord($nom,"#f00");
 			
-			
-			
+			$case_participants[$j] = "<td>$photo<br/>$lien_copies<a href=\"$lien\">$nom $note ($coef)</a>$nb2tickets</td>";
+			$case_nb[$j] = $pas; 
+			$nombre_total2participants += $pas; 
+			$j++;
 
-			if($j<=4){//Modif le 27/09/2016
+			/*if($j<=4){//Modif le 27/09/2016
 				$line1 .= "<td>$photo<br/>$lien_copies<a href=\"$lien\">$nom $note ($coef)</a>$nb2tickets</td>";
-				//$line2 .= "<td bgcolor=\"$bgcolor\">$lien_copies<a href=\"$lien\">$nom $note ($coef)</a></td>";
 			}
 			else {
 				$line1 .= "<td>$photo<br/>$lien_copies<a href=\"$lien\">$nom $note ($coef)</a>$nb2tickets</td></tr></table>\n";
-				//$line2 .= "<td bgcolor=\"$bgcolor\">$lien_copies<a href=\"$lien\">$nom $note ($coef)</a></td></tr>\n";
-				//$line1 .= $line2;
-				//$line2 = "";
 				$j = 0;
-			}
+			}*/
 		}
 		else {
 			$listedesnonfait .= "<a href=\"$lien\">".$nom."</a> ";
 		}
 	}
+	
+	$nb2caseoptimum = 6;
+	$nb_total2lignes = intdiv($nombre_total2participants,$nb2caseoptimum);
+	if($nombre_total2participants%$nb2caseoptimum) $nb_total2lignes++; 
+	//je cherche le maximum de participants
+	$max_participant = 0;
+	foreach($case_nb as $lenb) if($lenb>$max_participant) $max_participant=$lenb;
+	
+	$line1 = "<tr>";
+	
+	$lenb = $max_participant;
+	$jj2020 = 0;
+	while($lenb>0){	
+		for($indice_case=0;$indice_case<count($case_nb);$indice_case++) if($case_nb[$indice_case]==$lenb) {
+			$line1.=$case_participants[$indice_case];
+			$jj2020 += $case_nb[$indice_case];
+			$seuil = intdiv($nombre_total2participants,$nb_total2lignes);
+			if($nombre_total2participants%$nb_total2lignes) $seuil++;
 
+			if($jj2020>=$seuil) {
+				$line1.="</tr></table><table><tr>";
+				if($nb_total2lignes>2) {
+					$nb_total2lignes--;
+					$nombre_total2participants = $nombre_total2participants - $jj2020;
+				}
+				$jj2020 = 0;
+			}
+		}
+		$lenb--;
+	}
+	
+	$line1.="</tr></table>";
 	echo($line1);	
-	echo("</table>");
 	
 	$action44 = "./epreuve.php?action=45&mat=$mat&epr=$epr";
 	// desactivé le 13/08/2019 -> $menu_elv = menu_deroulant($leleve,"elv");
