@@ -50,7 +50,6 @@
 	$info_sujet .= "<td width=\"25px\">".$part_correction_sujet[0]."</td>";	
 	$info_sujet .= "<td width=\"25px\">".$part_correction_sujet[1]."</td>";
 	$info_sujet .= "<td width=\"25px\">".$part_correction_sujet[2]."</td>";
-	$info_sujet .= "<td width=\"25px\"><a href=\"./info_sujet.php?file=$nomdufichierlien\" title=\"Infos sujet\"><img src=\"./icon/info_rond.png\" height=\"20px\"></a>";
 	
 	tableau("$part3[3]</td><td><a href=\"epreuve.php?mat=$part3[3]&epr=$part1[1]\">$part0[0]</a>$info_sujet");
 
