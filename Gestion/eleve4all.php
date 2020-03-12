@@ -93,11 +93,15 @@
 					$danger = info_sujet_ouvert($link_info);
 					if($danger == "on") {
 						$lien_vers_doc = info_sujet($link_info);
-						$correction = "$lien_vers_doc";
+						$part_correction_sujet = explode("+", $lien_vers_doc);
+						$correction = $lien_vers_doc;
+						$sujet = $part_correction_sujet[0];
+						$correction = $part_correction_sujet[1];
 					}
 					else $correction = "";
-					$liens .= $correction;
-					echo("<td $tabnotw><a title=\"$Description\">$lanote ($lecoef)</a></td><td><font size=\"-2\" color=\"blue\">$commentaire</font> $liens</td><td $tabgphw>$legraphe</td></tr>");
+					//$liens .= $correction;
+					echo("<td $tabnotw><a title=\"$Description\">$lanote ($lecoef)</a></td><td><font size=\"-2\" color=\"blue\">$commentaire</font> $liens</td>");
+					echo("<td>$sujet</td><td>$correction</td><td $tabgphw>$legraphe</td></tr>");
 					$lanote = "";
 					$lecoef = "";
 				}
