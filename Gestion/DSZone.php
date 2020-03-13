@@ -226,6 +226,7 @@
 			
 			if($part[1]=="txt") {
 				$link = "<a href=\"./DSZone.php?action=51&dir=$dir/$nom17\">";
+				if(strpos("_$nom17", "sessions")) $link = "<a href=\"$dir/$nom17\">";
 				$laliste .= "$br$link$nom17</a>";
 				$br = "<br/>";
 			}
