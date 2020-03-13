@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xl="http://www.w3.org/1999/xlink" version="1.1" viewBox="228 67 223 72" width="223pt" height="6pc" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <metadata> Produced by OmniGraffle 7.2.2 
+    <dc:date>2017-01-12 15:38:30 +0000</dc:date>
+  </metadata>
+  <defs>
+    <font-face font-family="Times" font-size="20" units-per-em="1000" underline-position="-75.68359" underline-thickness="49.316406" slope="0" x-height="460.9375" cap-height="675.78125" ascent="750" descent="-250" font-weight="500">
+      <font-face-src>
+        <font-face-name name="Times-Roman"/>
+      </font-face-src>
+    </font-face>
+    <font-face font-family="Times" font-size="14" units-per-em="1000" underline-position="-75.68359" underline-thickness="49.316406" slope="0" x-height="460.9375" cap-height="675.78125" ascent="750" descent="-250" font-weight="500">
+      <font-face-src>
+        <font-face-name name="Times-Roman"/>
+      </font-face-src>
+    </font-face>
+  </defs>
+  <g stroke="none" stroke-opacity="1" stroke-dasharray="none" fill="none" fill-opacity="1">
+    <title>Canvas 1</title>
+    <rect fill="white" width="959" height="830"/>
+    <g>
+      <title>Layer 1</title>
+      <text transform="translate(233.5 90)" fill="black">
+        <tspan font-family="Times" font-size="20" font-weight="500" x="2.9785156" y="19" textLength="59.04297">H(p) = </tspan>
+      </text>
+      <text transform="translate(303.5 109.5)" fill="black">
+        <tspan font-family="Times" font-size="20" font-weight="500" x=".11816406" y="19" textLength="37.76367">Y(p)</tspan>
+      </text>
+      <text transform="translate(303.5 72)" fill="black">
+        <tspan font-family="Times" font-size="20" font-weight="500" x=".11816406" y="19" textLength="37.76367">X(p)</tspan>
+      </text>
+      <text transform="translate(346.5 90)" fill="black">
+        <tspan font-family="Times" font-size="20" font-weight="500" x="2.8603516" y="19" textLength="21.279297"> = </tspan>
+      </text>
+      <text transform="translate(395.5 72)" fill="black">
+        <tspan font-family="Times" font-size="20" font-weight="500" x="0" y="19" textLength="10">2</tspan>
+      </text>
+      <text transform="translate(373 109.5)" fill="black">
+        <tspan font-family="Times" font-size="20" font-weight="500" x=".20019531" y="19" textLength="64.59961">(1+20p)</tspan>
+      </text>
+      <text transform="translate(438.5 106)" fill="black">
+        <tspan font-family="Times" font-size="14" font-weight="500" x="0" y="14" textLength="7">4</tspan>
+      </text>
+      <path d="M 299.5 103.5 L 323.5 103.5 L 347.5 103.5" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      <path d="M 373.5 103.5 L 405.5 103.5 L 437.5 103.5" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,46 @@
+TD2 EasyReg - Réglage d’un réacteur chimique#TD2
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<link rel="stylesheet" type="text/css" media="screen" href="../../../../../styles.css">
+</head>
+C#<center><img src="http://gatt.fr/Gestion/files/CIRA2/_Copies/_Sujets/TD2/reacteur.png"></center>
+C#<p>La fabrication d’un engrais nécessite l’utilisation d’un réacteur chimique à double enveloppe, permettant :</p><ul><li>Le maintien de la température du mélange réactionnel en régime stabilisé.</li><li>Une évolution contrôlée de la température pendant les changements de phase de la fabrication.</li></ul><p>En fin de fabrication, le produit est soutiré par gravitation, le réacteur est lavé puis à nouveau chargé pour le départ d’un nouveau lot.
+C#Une identification, réalisée lors d’essais à l’eau (c’est à dire avec une charge simulée par de l’eau), a fourni la fonction de transfert suivante: </p> <center><img src="http://gatt.fr/Gestion/files/CIRA2/_Copies/_Sujets/TD2/Easy21.svg"/></center><p>Le système peut être considéré comme approximativement linéaire dans toute la plage de variation de la température, grâce au choix judicieux de la vanne.</p>
+L#
+
+C#<h2>I. Correcteur PID</h2><p>Le technicien décide dans un premier temps de réaliser une monoboucle pilotée par un régulateur P.I.D. série sur lequel il règle Ti = Td = T constante de temps du procédé et de gain A.</p>
+Q#Compléter le schéma TI pour faire apparaître la boucle de régulation.#1
+I#
+Q#Proposer un schéma fonctionnel simplifié de la régulation. On fera apparaître H(p), X(p) et Y(p).#1
+I#
+Q#Calculer T(p), la fonction de transfert en boucle ouverte. La mettre sous une forme simplifiée ; N(p)/D(p).#2
+T#
+L#
+
+Q#D&eacute;terminer à l'aide <a href="../Sujets2TP/EasyRegPhp/index.php" target="blank">d'EasyReg</a> la valeur limite du gain A<sub>osc</sub> du r&eacute;gulateur qui rend le syst&egrave;me oscillant entretenu. On utilisera le plan de Black, avec une constante de temps propos&eacute;e de 20s. On donnera le plan de Black.#1
+I#
+Q#D&eacute;terminer à l'aide d'EasyReg, la valeur de A<sub>5%</sub> pour obtenir un temps de r&eacute;ponse &agrave; 5% minimal.  On donnera la réponse indicielle.#1
+I#
+Q#Donner le trac&eacute; de Black pour A<sub>5%</sub>. On mettra en évidence la valeur de la marge de gain et de la marge de phase.#2
+I#
+L#
+
+C#<h2>II. Régulation cascade</h2><p>Le technicien décide d’implanter une régulation en cascade sur la grandeur intermédiaire (la température de l’enveloppe).</p><p>La fonction de transfert réglante H(p) est décomposable en 2 fonctions de transfert H<sub>1</sub>(p) et H<sub>2</sub>(p).</p><center><img src="http://gatt.fr/Gestion/files/CIRA2/_Copies/_Sujets/TD2/Easy22.svg"/></center><p>Le correcteur P.I.D.série C<sub>2</sub> régule la boucle interne. Le correcteur P.I.D. série C<sub>1</sub> régule la boucle externe.</p>
+Q#Compléter le schéma TI pour faire apparaître la boucle de régulation.#2
+I#
+Q#Proposer un schéma fonctionnel simplifié des boucles de régulation. On fera apparaître C<sub>1</sub>, C<sub>2</sub>, H<sub>2</sub>, H<sub>1</sub>, X<sub>2</sub>, X.#2
+I#
+Q#Déterminer les réglages de C<sub>2</sub> (A<sub>2</sub>, T<sub>i2</sub> et T<sub>d2</sub>) pour que la boucle interne F<sub>2</sub>(p) se comporte comme un système du 1er ordre de gain statique unitaire et de constante de temps = 10s.#1
+T#
+L#
+
+Q#Déterminer la fonction de transfert en boucle ouverte T<sub>1</sub>(p) en fonction de C<sub>1</sub>(p), F<sub>2</sub>(p), H<sub>1</sub>(p).#1
+T#
+Q#Déterminer la fonction de transfert en boucle ouverte T<sub>1</sub>(p) pour T<sub>i1</sub>=T<sub>d1</sub>=20s et un gain A1.#2
+T#
+Q#Déterminer à l'aide d'EasyReg, la valeur de A1<sub>5%</sub>pour obtenir un temps de réponse à 5% minimal. On donnera la réponse indicielle.#1
+I#
+Q#Donner le tracé de Black pour A1<sub>5%</sub>. On mettra en évidence la valeur de la marge de gain et de la marge de phase.#2
+I#
+Q#Comparer les performances de la boucle simple et de la boucle cascade.#1
+T#

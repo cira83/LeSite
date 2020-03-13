@@ -1,0 +1,1 @@
+La boucle simple est beaucoup plus rapide. Le temps de réponse tr5% passe de 160s à 45s.
