@@ -83,26 +83,19 @@
 				foreach($leleve as $txt){//Distribution du sujet à chaque élève
 					$chemin = "./files/$classe/_Copies/$txt/index.htm";
 					if(copy($nomTemporaire, $chemin)){
-						$Message = "Votre fichier $chemin est import&eacute;" ;
+						$Message .= "Votre fichier $chemin est import&eacute;<br>" ;
 						chmod("$chemin",0777);
 					}
-					else $Message = "La sauvegarde vers $chemin a &eacute;chou&eacute; !!" ;
-				}
-				
-				$chemin = "./files/$classe/_Copies/Professeur/index.htm";
-				if(copy($nomTemporaire, $chemin)){
-					$Message = "Votre fichier $chemin est import&eacute;" ;
-					chmod("$chemin",0777);
-				}
-				else $Message = "La sauvegarde vers $chemin a &eacute;chou&eacute; !!" ;			
+					else $Message .= "La sauvegarde vers $chemin a &eacute;chou&eacute; !!<br>" ;
+				}	
 			}
 			else {
 				$chemin = "./files/$classe/_Copies/$lebonnom/index.htm";
 				if(copy($nomTemporaire, $chemin)){
-					$Message = "Votre fichier $chemin est import&eacute;" ;
+					$Message .= "Votre fichier $chemin est import&eacute;<br>" ;
 					chmod("$chemin",0777);
 				}
-				else $Message = "La sauvegarde vers $chemin a &eacute;chou&eacute; !!" ;
+				else $Message .= "La sauvegarde vers $chemin a &eacute;chou&eacute; !!<br>" ;
 			}
 		}
 		else $Message = "Vous n'avez pas choisit de fichier !!";
