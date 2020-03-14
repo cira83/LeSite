@@ -248,7 +248,7 @@
 			$info_session = "($nb2sessions)";
 			if($nb2sessions) $info_session = "<a href=\"$repertoire_DS$nom17/rep/sessions.txt\">($nb2sessions)</a>";
 			$efface = "<a href=\"./DSZone.php?action=111&nom=$nom17\" color=\"red\"><img src=\"./icon/effacer.jpg\" height=\"15px\" align=\"bottom\"></a>";
-			echo("<td $classetd><b><u>$nom17</u></b><br/><a href=\"./copie2DS.php?name=$nom17&file=$nomsujet2DS\"><img src=\"$photo\" height=\"100px\"></a><br/>$info_session $bouton $efface</a></td>");
+			echo("<td $classetd><b><u>$nom17</u></b><br/><a href=\"./copie2DS.php?name=$nom17&file=$nomsujet2DS\" target=\"_blank\"><img src=\"$photo\" height=\"100px\"></a><br/>$info_session $bouton $efface</a></td>");
 			if($i==7){
 				echo("</tr><tr>");
 				$i=0;
