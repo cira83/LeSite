@@ -206,9 +206,10 @@ table.reponse{
 	border-radius:5px;
 	-webkit-border-radius:5px;
 	-moz-border-radius:5px;
-	text-align: left;
+	text-align: center;
 	font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 	color: black;
+	line-height: 5px;
 }
 
 

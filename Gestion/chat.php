@@ -124,33 +124,22 @@
 		
 
 <?php
-		if($pass){
-			echo("<div id=\"parler\">");
-			echo("<form action=\"./chat.php\" method=\"post\">");
-			echo("<center>");
-			echo("<input type=\"text\" name=\"phrase\" size=\"80%\"><input type=\"hidden\" name=\"action\" value=\"1\">");
-			echo("<input type=\"button\" value=\"Sortir\" onclick = \"logout();\">");
-			echo("</center>");
-			echo("</form></div>");
+	echo("<div id=\"parler\">");
+	echo("<form action=\"./chat.php\" method=\"post\">");
+	echo("<center>");
+	echo("<input type=\"text\" name=\"phrase\" size=\"80%\"><input type=\"hidden\" name=\"action\" value=\"1\">");
+	echo("<input type=\"button\" value=\"Sortir\" onclick = \"logout();\">");
+	echo("</center>");
+	echo("</form></div>");
 			
-			if($nom=="Professeur"){
-				echo("<div id=\"professeur\">");
-				echo("<form action=\"./chat.php\" method=\"post\"><input type=\"hidden\" name=\"action\" value=\"2\">");
-				echo("Room $classe  -  ");
-				echo("<input type=\"submit\" value=\"Effacer la discussion\">");
-				echo("</form></div>");
-			}
-		}
-		else {
-			echo("<div id=\"parler\">");
-			echo("<form action=\"./chat.php\" method=\"post\">");
-			echo("<center>");
-			echo("$selection_classe - Nom : <input type=\"text\" name=\"elv\" id=\"elv\"> ");
-			echo("- Mot de passe : <input type=\"password\" name=\"password\" id=\"password\">");
-			echo("<input type=\"button\" onclick=\"login();\" value=\"login\">");
-			echo("</center>");
-			echo("</form></div>");
-		}
+	if($nom=="Professeur"){
+		echo("<div id=\"professeur\">");
+		echo("<form action=\"./chat.php\" method=\"post\"><input type=\"hidden\" name=\"action\" value=\"2\">");
+		echo("Room $classe  -  ");
+		echo("<input type=\"submit\" value=\"Effacer la discussion\">");
+		echo("</form></div>");
+	}
+
 ?>
 		
 </body>
