@@ -34,8 +34,8 @@
 				}
 			}
 			if($last_file) {
-				if($i==0) fprintf($fp, "$eleve$separation$last_file");
-				else fprintf($fp, "\n$eleve$separation$last_file");
+				if($i==0) fprintf($fp, "$eleve$separation <a href=\"./copie2DS.php?name=$eleve&file=./files/CIRA2/_Copies/$eleve/index.htm\" target=\"_blank\">Q$last_file</a>");
+				else fprintf($fp, "\n$eleve$separation <a href=\"./copie2DS.php?name=$eleve&file=./files/CIRA2/_Copies/$eleve/index.htm\" target=\"_blank\">Q$last_file</a>");
 				$i++;
 			}
 			
