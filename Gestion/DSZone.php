@@ -5,7 +5,7 @@
 
 	
 	
-	include("./haut.php");
+	include("./haut_DS.php");
 	
 	
 	//Le 11 novembre 2017
@@ -349,3 +349,10 @@
 
 	include("./bas.php");
 ?>
+
+</td><td valign="top" width="210px"><!-- Partie à droite -->
+	<br><br><br><hr>
+	<div id="news">
+                <input type="submit" name="executer" value="----------" class="button">
+    </div>
+</td></tr></table>
