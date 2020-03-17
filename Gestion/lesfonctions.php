@@ -208,7 +208,7 @@
 		}
 		fclose($fp);
 		
-		if($password=="GHRtE9b7") $reponse = 2;//$password_prof2018 dans lesvariables.php - A modifier dans clef_prof.php aussi
+		if($password=="b7wd5c") $reponse = 2;//$password_prof2018 dans lesvariables.php - A modifier dans clef_prof.php aussi
 		
 		return $reponse;
 	}

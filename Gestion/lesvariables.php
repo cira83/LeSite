@@ -15,6 +15,6 @@
 	$LettreAB[0]="A";$LettreAB[1]="B";$LettreAB[2]="C";$LettreAB[3]="D";$LettreAB[4]="E";$LettreAB[5]="F";//Définitions des lettres pour les questionnaires
 	$ip_candidat = $_SERVER["REMOTE_ADDR"];
 	$date_heure = date("d/m - H")."h".date("i");
-	$password_prof2018 = "GHRtE9b7";
+	$password_prof2018 = "b7wd5c";
 	//$leleve[] Liste des élèves
 ?>
