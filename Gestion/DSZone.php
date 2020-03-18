@@ -275,12 +275,22 @@
 	$repertoire_DS = "./files/$classe/_Copies/";
 	$lesrepertoires = scandir($repertoire_DS);
 	
-	titre_tab("<a href=\"./DSZone.php\"><img src=\"./icon/reload.png\" height=\"20px\"/></a> Les copies");
+	
+	
+	// ------------------------------------------------------------------------------   LES COPIES
+	titre_tab("<a href=\"./DSZone.php\"><img src=\"./icon/reload.png\" height=\"20px\"/></a> Les copies");  
 	$i=0;
 	echo("<table><tr>");
 	foreach($lesrepertoires as $nom17){
 		$nomsujet2DS = "$repertoire_DS$nom17/index.htm";
 		if((file_exists($nomsujet2DS))and($nom17!="_Poubelle")){
+			// Lecture du nom du sujet
+			$fp_sujet1 = fopen($nomsujet2DS, "r");
+			$ligne1 = fgets($fp_sujet1);
+			fclose($fp_sujet1);
+			$part_ligne1 = explode("#", $ligne1);
+			$titre_sujet = $part_ligne1[1];
+			
 			$i++;
 			$photo = "./photos/$nom17.jpg";
 			if(!file_exists($photo)) $photo = "./photos/----.jpg";
@@ -292,7 +302,7 @@
 			$info_session = "($nb2sessions)";
 			if($nb2sessions) $info_session = "<a href=\"$repertoire_DS$nom17/rep/sessions.txt\">($nb2sessions)</a>";
 			$efface = "<a href=\"./DSZone.php?action=111&nom=$nom17\" color=\"red\"><img src=\"./icon/effacer.jpg\" height=\"15px\" align=\"bottom\"></a>";
-			echo("<td $classetd><b><u>$nom17</u></b><br/><a href=\"./copie2DS.php?name=$nom17&file=$nomsujet2DS\" target=\"_blank\"><img src=\"$photo\" height=\"100px\"></a><br/>$info_session $bouton $efface</a></td>");
+			echo("<td $classetd><b><u>$nom17</u></b><br/>$titre_sujet<br/><a href=\"./copie2DS.php?name=$nom17&file=$nomsujet2DS\" target=\"_blank\"><img src=\"$photo\" height=\"100px\"></a><br/>$info_session $bouton $efface</a></td>");
 			if($i==7){
 				echo("</tr><tr>");
 				$i=0;
@@ -302,7 +312,7 @@
 	}
 	echo("</tr></table>");
 	
-	titre_tab("Les sujets");
+	titre_tab("Les sujets");//----------------------------------------------------    LES SUJETS
 		
 	echo("<table><tr><td>");
 	$repertoire_Sujets = "./files/$classe/_Copies/_Sujets";
