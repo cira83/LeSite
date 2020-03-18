@@ -232,12 +232,15 @@
 		
 		foreach($listeDrepondants as $txt){
 			$dossier_rep = "./files/$classe/_Copies/$txt/rep/";
+			$dossier_poubelle = $dossier_rep."Poubelle/";
+			if(!file($dossier_poubelle)) mkdir($dossier_poubelle); //Créé une poubelle par élève 
+			
 			if(file_exists($dossier_rep)){
 				$listeDreponses = scandir($dossier_rep);
 				foreach($listeDreponses as $filename){
 					if(($filename[0]=="I")||($filename[0]=="R")||($filename[0]=="Q")||($filename[0]=="s")) {
 						$avant = "./files/$classe/_Copies/$txt/rep/$filename";
-						$apres = "./files/$classe/_Copies/_Poubelle/$filename";
+						$apres = "$dossier_poubelle$filename";
 						rename($avant, $apres);
 					}
 				}
