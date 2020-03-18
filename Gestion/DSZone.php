@@ -36,6 +36,19 @@
 	lien = './chat.php';
 	window.location.replace(lien);
 }
+
+
+window.requestAnimFrame =
+  window.requestAnimationFrame || // La fonction d'origine que tous les navigateurs finiront par utiliser.
+  window.webkitRequestAnimationFrame || // Pour Chrome et Safari.
+  window.mozRequestAnimationFrame || // Pour Firefox.
+  window.ORequestAnimationFrame || // Pour Opera.
+  window.msRequestAnimationFrame || // Pour Internet Explorer.
+ 
+  function(callback) { // Pour les navigateurs ne supportant la fonction.
+    setTimeout(callback, 1000 / 10);
+  }
+;
 </script>
 
 
@@ -377,6 +390,7 @@
 </td>
 </tr></table>
 <?php
+	//----------------------------------------------------    LES REPONSES
 	titre_tab("Liste des fichiers .txt des répertoires réponses");
 	echo("<table>");
 	$i=0;
@@ -388,7 +402,7 @@
 			$i++;
 			$contenu_case1 .= "<td><b>$nom17</b></td>";
 			$contenu_case2 .= "<td>".file_liste($lesreponses)."</td>";
-			if($i==5){
+			if($i==8){
 				echo("<tr>$contenu_case1</tr>");
 				echo("<tr valign=\"top\">$contenu_case2</tr>");
 				$contenu_case1 = "";
