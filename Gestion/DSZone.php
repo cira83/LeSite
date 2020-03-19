@@ -1,20 +1,24 @@
 <script>
-	function lecture(){
-		les_messages = document.getElementById("les_messages");
-		var xhr = null;
-		var xhr = new XMLHttpRequest();		
 		
-		xhr.onreadystatechange = function() {
-        	if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
-	        	les_messages.innerHTML = xhr.responseText;
-        	}
-    	};
-    
-		xhr.open("GET", "./chatES.php", true);
-		xhr.send(null);
-				
-		requestAnimationFrame(lecture);
-	}
+	function miseajour() {
+        ip = document.getElementById("les_messages");
+         
+        var xhr = null;
+        var xhr = new XMLHttpRequest();
+         
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
+                ip.innerHTML = xhr.responseText;
+            }
+        };
+         
+        xhr.open("GET", "./chatES.php", true);
+        xhr.send(null);         
+    }
+	
+	// Appelle la fonction diminuerCompteur toutes les secondes (1000 millisecondes)
+    setInterval(miseajour, 1000);
+	
 	
 	function logout(){
 		document.cookie = 'elv=';
@@ -37,18 +41,6 @@
 	window.location.replace(lien);
 }
 
-
-window.requestAnimFrame =
-  window.requestAnimationFrame || // La fonction d'origine que tous les navigateurs finiront par utiliser.
-  window.webkitRequestAnimationFrame || // Pour Chrome et Safari.
-  window.mozRequestAnimationFrame || // Pour Firefox.
-  window.ORequestAnimationFrame || // Pour Opera.
-  window.msRequestAnimationFrame || // Pour Internet Explorer.
- 
-  function(callback) { // Pour les navigateurs ne supportant la fonction.
-    setTimeout(callback, 1000 / 10);
-  }
-;
 </script>
 
 
@@ -56,7 +48,7 @@ window.requestAnimFrame =
 	$classe = $_COOKIE["laclasse"]; if($classe=="") $classe="CIRA1";
 	$action44 = "./DSZone.php?action=44";
 	$action = $_GET[action];
-
+	$repertoire_Sujets = "./files/$classe/_Copies/_Sujets";
 	
 	
 	include("./haut_DS.php");
@@ -118,41 +110,28 @@ window.requestAnimFrame =
 	
 	
 	if($action==44){
+		$lebonnom = $_POST[nom];
+		$lebontd = $_POST[td];
+		$nomTemporaire = "$repertoire_Sujets/$lebontd/index.htm";
 		
-		if(!empty($_FILES["fichier_choisi"]["name"])){
-			//nom du fichier choisi:
-			$nomFichier = $_FILES["fichier_choisi"]["name"] ;
-			//nom temporaire sur le serveur:
-			$nomTemporaire = $_FILES["fichier_choisi"]["tmp_name"] ;
-			//type du fichier choisi:
-			$typeFichier = $_FILES["fichier_choisi"]["type"] ;
-			//poids en octets du fichier choisit:
-			$poidsFichier = $_FILES["fichier_choisi"]["size"] ;
-			//code de l'erreur si jamais il y en a une:
-			$codeErreur = $_FILES["fichier_choisi"]["error"] ;
-	
-			//Pour tous et les autres
-			$lebonnom = $_POST[nom];
-			if($lebonnom=="Tous"){
-				foreach($leleve as $txt){//Distribution du sujet à chaque élève
-					$chemin = "./files/$classe/_Copies/$txt/index.htm";
-					if(copy($nomTemporaire, $chemin)){
-						$Message .= "Votre fichier $chemin est import&eacute;<br>" ;
-						chmod("$chemin",0777);
-					}
-					else $Message .= "La sauvegarde vers $chemin a &eacute;chou&eacute; !!<br>" ;
-				}	
-			}
-			else {
-				$chemin = "./files/$classe/_Copies/$lebonnom/index.htm";
+		if($lebonnom=="Tous"){
+			foreach($leleve as $txt){//Distribution du sujet à chaque élève
+				$chemin = "./files/$classe/_Copies/$txt/index.htm";
 				if(copy($nomTemporaire, $chemin)){
-					$Message .= "Votre fichier $chemin est import&eacute;<br>" ;
+					$Message .= "Votre fichier $chemin est importé<br>" ;
 					chmod("$chemin",0777);
 				}
-				else $Message .= "La sauvegarde vers $chemin a &eacute;chou&eacute; !!<br>" ;
+				else $Message .= "La sauvegarde vers $chemin a échouée !!<br>" ;
 			}
 		}
-		else $Message = "Vous n'avez pas choisit de fichier !!";
+		else {
+			$chemin = "./files/$classe/_Copies/$lebonnom/index.htm";
+			if(copy($nomTemporaire, $chemin)){
+				$Message .= "Votre fichier $chemin est importé<br>" ;
+				chmod("$chemin",0777);
+			}
+			else $Message .= "La sauvegarde vers $chemin a échouée !!<br>" ;
+		}		
 		echo("<p>Action 44 : $Message</p>");
 	}
 	
@@ -183,28 +162,39 @@ window.requestAnimFrame =
 		echo("</form>");
 	}
 	
-	if($action==111){
+	if($action==111){//Efface les réponses de nom111 et le sujet - demande de confirmation
 		$nom111 = $_GET[nom];
-		echo("<form method=\"post\" action=\"DSZone.php?action=110&nom=$nom111\">");
-		echo("<table><tr><td>Effacer les réponses de $nom111 ? <input type=\"submit\" value=\"OUI\"> ");
+		$td111 = $_GET[td];
+		echo("<form method=\"post\" action=\"DSZone.php?action=110&nom=$nom111&td=$td111\">");
+		echo("<table><tr><td>Archiver le $td111 de $nom111 ? <input type=\"submit\" value=\"OUI\"> ");
 		echo("<input type=\"button\" value=\"NON\" onclick=\"gotolien('./DSZone.php')\"></td></tr></table>");
 		echo("</form>");
 	}	
 
-	if($action==110){//Efface les réponses de nom111
+	if($action==110){//Efface les réponses de nom111 et le sujet
 		$nom111 = $_GET[nom];
+		$td111 = $_GET[td];
 		$dossier_rep = "./files/$classe/_Copies/$nom111/rep/";
+		$dossier_bak = "./files/$classe/_Copies/$nom111/rep/$td111/"; //echo("<p>$dossier_bak</p>");
 		if(file_exists($dossier_rep)){
 			$listeDreponses = scandir($dossier_rep);
+			if(!file_exists($dossier_bak)) {
+				echo("<p>Création dossier $dossier_bak</p>");
+				mkdir($dossier_bak);
+			}
 			foreach($listeDreponses as $filename){
 				if(($filename[0]=="I")||($filename[0]=="R")||($filename[0]=="Q")||($filename[0]=="s")) {
 					$avant = "./files/$classe/_Copies/$nom111/rep/$filename";
-					$apres = "./files/$classe/_Copies/_Poubelle/$filename";
+					$apres = "$dossier_bak$filename";
 					rename($avant, $apres);
 				}
 			}
+			$avant = "./files/$classe/_Copies/$nom111/index.htm";
+			$apres = $dossier_bak."index.htm";
+			rename($avant, $apres);
 		}
-		$Message = "Réponses  de $nom111 supprimées";
+		$Message = "$td111 de $nom111 archivé";
+
 		echo("<p>Action 110 : $Message</p>");
 	}
 
@@ -314,8 +304,9 @@ window.requestAnimFrame =
 			$nb2sessions = nb2connections($nom17, $classe);
 			$info_session = "($nb2sessions)";
 			if($nb2sessions) $info_session = "<a href=\"$repertoire_DS$nom17/rep/sessions.txt\">($nb2sessions)</a>";
-			$efface = "<a href=\"./DSZone.php?action=111&nom=$nom17\" color=\"red\"><img src=\"./icon/effacer.jpg\" height=\"15px\" align=\"bottom\"></a>";
+			$efface = "<a href=\"./DSZone.php?action=111&nom=$nom17&td=$titre_sujet\" color=\"red\"><img src=\"./icon/effacer.jpg\" height=\"15px\" align=\"bottom\"></a>";
 			echo("<td $classetd><b><u>$nom17</u></b><br/>$titre_sujet<br/><a href=\"./copie2DS.php?name=$nom17&file=$nomsujet2DS\" target=\"_blank\"><img src=\"$photo\" height=\"100px\"></a><br/>$info_session $bouton $efface</a></td>");
+			$Nom_et_sujet[$k] = "$nom17:$titre_sujet:"; $k++; //La liste de nom et du sujet associé
 			if($i==7){
 				echo("</tr><tr>");
 				$i=0;
@@ -326,14 +317,15 @@ window.requestAnimFrame =
 	echo("</tr></table>");
 	
 	titre_tab("Les sujets");//----------------------------------------------------    LES SUJETS
-		
+	echo("<!-- LES SUJETS -->");
 	echo("<table><tr><td>");
-	$repertoire_Sujets = "./files/$classe/_Copies/_Sujets";
 	$lessujets = scandir($repertoire_Sujets);
+	$menu_td = "<select name=\"td\">";
 	foreach($lessujets as $nom01){
 		if(estfichier($nom01)) {
 			$filename = "$repertoire_Sujets/$nom01/index.htm";
 			$repsujet = "$repertoire_Sujets/$nom01";
+			$menu_td .= "<option>$nom01</option>";
 			if(file_exists($filename)){
 				$fp = fopen($filename, "r");
 				$titre2ds = fgets($fp);
@@ -343,13 +335,14 @@ window.requestAnimFrame =
 				echo("<td><a href=\"./devoir.php?name=_Sujets/$nom01&file=$repsujet\" target=\"_blank\"><img src=\"./icon/sujet_mod.png\" height=\"$hauteur\"></a></td>");
 				echo("<td><a href=\"./copie2DS.php?name=_Sujets/$nom01&file2=$repsujet&calc=1\" target=\"_blank\"><img src=\"./icon/sujet.png\" height=\"$hauteur\"></a></td>");
 				echo("<td><a href=\"./sujet2DS.php?name=_Sujets/$nom01&file2=$repsujet&calc=1\" target=\"_blank\"><img src=\"./icon/distrib.png\" height=\"$hauteur\"></a></td>");
-				echo("<td><a href=\"$filename\" target=\"_blank\">Le sujet</a></td></tr><tr><td>\n");
+				echo("</tr><tr><td>\n");
 			}
 			
 		}
 	}
-	
 	echo("</td></tr></table>");
+	$menu_td .= "</select>";
+	
 	
 	//Création du menu pour la liste des répertoires
 	$repertoireDcopies = "./files/$classe/_Copies";
@@ -367,8 +360,9 @@ window.requestAnimFrame =
 	<table>
 		<form name="envoi fichier 2" enctype="multipart/form-data" method="post" action="<?php echo("$action44");?>">
 		<tr><td>Envoi d'un sujet à</td>
-		<td><?php echo("$menu_nom");?></td>
-		<td><input name="fichier_choisi" type="file"></td>
+		<td><?php echo($menu_nom);?></td>
+		<td><?php echo($menu_td);?></td>
+		<!-- <td><input name="fichier_choisi" type="file"></td> -->
 		<td><input name="bouton" value="Envoyer" type="submit">
 		</td>
 		</tr>
@@ -396,7 +390,10 @@ window.requestAnimFrame =
 	$i=0;
 	$contenu_case1 = "";
 	$contenu_case2 = "";
-	foreach($lesrepertoires as $nom17){
+	foreach($Nom_et_sujet as $nom1_sujet1){
+		$part_of1 = explode(":", $nom1_sujet1);
+		$nom17 = $part_of1[0]; 
+
 		$lesreponses = "$repertoire_DS$nom17/rep";
 		if(file_exists($lesreponses)&&($nom17!=".")){
 			$i++;
@@ -425,4 +422,3 @@ window.requestAnimFrame =
 
 <span id="les_messages"></span>
 </td></tr></table>
-<script>requestAnimationFrame(lecture)</script>
