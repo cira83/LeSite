@@ -332,9 +332,9 @@
 				fclose($fp);
 				$hauteur = "30px";
 				echo("<td><font size=\"+1\"><b>$nom01</b> - $titre2ds<font></td>");
-				echo("<td><a href=\"./devoir.php?name=_Sujets/$nom01&file=$repsujet\" target=\"_blank\"><img src=\"./icon/sujet_mod.png\" height=\"$hauteur\"></a></td>");
-				echo("<td><a href=\"./copie2DS.php?name=_Sujets/$nom01&file2=$repsujet&calc=1\" target=\"_blank\"><img src=\"./icon/sujet.png\" height=\"$hauteur\"></a></td>");
-				echo("<td><a href=\"./sujet2DS.php?name=_Sujets/$nom01&file2=$repsujet&calc=1\" target=\"_blank\"><img src=\"./icon/distrib.png\" height=\"$hauteur\"></a></td>");
+				echo("<td><a href=\"./devoir.php?name=_Sujets/$nom01&file=$repsujet\" target=\"_blank\" Title=\"Corriger\"><img src=\"./icon/sujet_mod.png\" height=\"$hauteur\"></a></td>");
+				echo("<td><a href=\"./copie2DS.php?name=_Sujets/$nom01&file2=$repsujet&calc=1\" target=\"_blank\" Title=\"Correction\"><img src=\"./icon/sujet.png\" height=\"$hauteur\"></a></td>");
+				echo("<td><a href=\"./sujet2DS.php?name=_Sujets/$nom01&file2=$repsujet&calc=1\" target=\"_blank\" Title=\"Sujet\"><img src=\"./icon/distrib.png\" height=\"$hauteur\"></a></td>");
 				echo("</tr><tr><td>\n");
 			}
 			
