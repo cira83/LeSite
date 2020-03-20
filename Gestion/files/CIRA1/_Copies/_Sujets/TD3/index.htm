@@ -22,7 +22,7 @@ C#<h1>Refroidissement du moût</h1>
 C#<p>Pour être refroidi le moût passe successivement dans deux échangeurs E1 et E2 :</p> <img src="./files/CIRA1/_Copies/_Sujets/TD3/img/01.png"/>
 C#Bien que l'objectif principal soit le refroidissement du moût, l'échangeur E1 sert à fabriquer de l'eau chaude, eau utilisée dans d'autres unités de la brasserie. L'échangeur E2 permet d'amener le moût en sortie à la température souhaitée. 
 
-C#Le moût chaud à une température aux environs de 100°C pénètre dans l’échangeur E1 par une tuyauterie DN 80 avec un débit maximal de 40 m3/h. Par une autre conduite (DN 80), l’eau froide aux environs de 12°C est amenée à l’échangeur. Le débit d’eau froide, de valeur maximale 800 hL/h (hectolitres par heure), est modulé de manière telle que la température de l’eau chaude à la sortie soit de 80°C. Pour réaliser la boucle de régulation de température de l'eau chaude, on dispose des appareils suivants : <ul><li>Une sonde Pt 100 3 fils, qui capte la température de l'eau chaude, et informe un transmetteur électrique 4 fils fonctionnant en direct, </li><li>Un régulateur, qui reçoit l'information 4 à 20 mA du transmetteur en signal mesure, et émet une commande de 4 à 20 mA, </li><li>Une vanne formée d'un servomoteur à membrane unique à rappel par ressort et d'un corps droit simple siège, équipée d'un positionneur pneumatique (200 à 1 000 mbar) fonctionnant en direct. Cette vanne est ouverte par manque d'air (O.M.A.), </li><li>Des éléments additionnels volontairement ignorés pour cette étude, qui assurent la sécurité de l'installation. </li></ul>
+C#Le moût chaud à une température aux environs de 100°C pénètre dans l’échangeur E1 par une tuyauterie DN 80 avec un débit maximal de 40 m<sup>3</sup>/h. Par une autre conduite (DN 80), l’eau froide aux environs de 12°C est amenée à l’échangeur. Le débit d’eau froide, de valeur maximale 800 hL/h (hectolitres par heure), est modulé de manière telle que la température de l’eau chaude à la sortie soit de 80°C. Pour réaliser la boucle de régulation de température de l'eau chaude, on dispose des appareils suivants : <ul><li>Une sonde Pt 100 3 fils, qui capte la température de l'eau chaude, et informe un transmetteur électrique 4 fils fonctionnant en direct, </li><li>Un régulateur, qui reçoit l'information 4 à 20 mA du transmetteur en signal mesure, et émet une commande de 4 à 20 mA, </li><li>Une vanne formée d'un servomoteur à membrane unique à rappel par ressort et d'un corps droit simple siège, équipée d'un positionneur pneumatique (200 à 1 000 mbar) fonctionnant en direct. Cette vanne est ouverte par manque d'air (O.M.A.), </li><li>Des éléments additionnels volontairement ignorés pour cette étude, qui assurent la sécurité de l'installation. </li></ul>
 L#
 
 C#<h2>Mesure de la température</h2>
@@ -38,12 +38,12 @@ U#
 Q#Dresser le plan de tuyauterie et d'instrumentation (T.I.) de cette boucle fermée simple. #1
 I#./files/CIRA1/_Copies/_Sujets/TD3/img/02.png
 Q#Déterminer le sens d'action du régulateur et le justifier. #1
-T#
+U#
 L#
 
 C#<h2>Réglage de la boucle de régulation</h2>
-C#Le dépouillement de la réponse indicielle du système conduit par la méthode de Victor Broïda permet de constater que les paramètres caractéristiques du modèle correspondant sont les suivants :<ul><li>Gain statique Ks = 1,6 </li><li>Retard = 20 s</li><li>Constante de temps T =  100 s </li></ul>
-C#On utilise un régulateur de type PI série. À l'aide du tableau des réglage vu dans le cours, calculer les valeurs de XP et Ti.
+C#Le dépouillement de la réponse indicielle du système conduit par la méthode de Victor Broïda permet de constater que les paramètres caractéristiques du modèle correspondant sont les suivants :<ul><li>Gain statique Ks = 1,6 </li><li>Retard T = 20 s</li><li>Constante de temps &tau; =  100 s </li></ul>
+Q#On utilise un régulateur de type PI série. À l'aide du tableau des réglage vu dans le cours, calculer les valeurs de Xp et Ti.
 T#
 
 
@@ -53,7 +53,7 @@ Q#Déterminer en pourcentage la valeur de la consigne W de température de moût
 T#
 
 L#
-C#Un essai du régulateur seul est réalisé. Un générateur de courant permet de simuler les variations de la mesure. La consigne est maintenue constante à 50 % ; la mesure est modifiée en échelon. Le régulateur est de type PI série. Un enregistrement de l'évolution de la mesure (X) et de la sortie (Y) du régulateur en fonction du temps est donné question 9) 
+C#Un essai du régulateur seul est réalisé. Un générateur de courant permet de simuler les variations de la mesure. La consigne est maintenue constante à 50 % ; la mesure est modifiée en échelon. Le régulateur est de type PI série. Un enregistrement de l'évolution de la mesure (X) et de la sortie (Y) du régulateur en fonction du temps est donné question 11) 
 Q#Préciser le sens d'action du régulateur. Justifier la réponse. #1
 U#
 Q#Déterminer la valeur Xp la bande proportionnelle du régulateur. #2
@@ -68,7 +68,7 @@ C#<h2>Régulation Cascade</h2>
 C#Sachant que l’unité de fabrication d’eau glycolée alimente de nombreux utilisateurs, la pression en amont de la vanne fluctue fortement, et évidemment perturbe le débit. Afin d'améliorer la régulation de température du moût, on réalise la régulation dont le plan de tuyauterie et d'instrumentation est donné ci-après : <img src="./files/CIRA1/_Copies/_Sujets/TD3/img/04.png"/>
 Q#Donner le nom de cette régulation.#1
 T#
-Q#Le régulateur maître fourni la consigne du régulateur esclave. Donner le nom du régulateur maître.#1
+Q#Le régulateur maître fourni la consigne au régulateur esclave. Donner le nom du régulateur maître.#1
 T#
 Q#La consigne du régulateur FIC peut être configurée en interne ou en externe. Que doit-on choisir ? #1
 T#
@@ -83,7 +83,7 @@ C#FYK est un proportionneur ou relais de proportion, sa sortie s'écrit  S<sub>F
 Q#Préciser vis-à-vis des repères 1, 2 et 3 les grandeurs mesure, consigne, commande.#1
 T#
 
-C#Le débitmètre utilisé pour la bière a une étendue de mesure en entrée de 0 à 90 m<sup>3</sup>/h. Le débitmètre utilisé pour l'eau a une étendue de mesure en entrée de 0 à 25 m<sup>3</sup>/h.On veut faire chuter le degré en alcool de 5° à 4,6°, pour cela, il faut un volume d'eau pour neuf volumes de bière. 
+C#Le débitmètre utilisé pour la bière a une étendue de mesure en entrée de 0 à 90 m<sup>3</sup>/h. Le débitmètre utilisé pour l'eau a une étendue de mesure en entrée de 0 à 25 m<sup>3</sup>/h. On veut faire chuter le degré en alcool de 5° à 4,6°, pour cela, il faut un volume d'eau pour neuf volumes de bière. 
 Q#Déterminer le coefficient K à afficher sur le proportionneur FY.#1
 U#
 
