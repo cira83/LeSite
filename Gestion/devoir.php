@@ -2,6 +2,10 @@
 	include("./security.php");
 	$numero2session = session_id();//Numero de session
 
+	$fait = "&#9679;";
+	$non_fait = "&#9675;";
+
+
 	$nom = $_SESSION['nom'];
 	$password = $_SESSION['password'];
 	$files = "./files/";
@@ -257,6 +261,42 @@
 			fclose($session_fp);
 		}
 	}
+		
+	//Le nombre de question
+	if(file_exists("$repertoire/index.htm")) {
+		$fp_2020 = fopen("$repertoire/index.htm", "r");
+		while(!feof($fp_2020)){
+			$ligne = fgets($fp_2020);
+			$part = explode("#", $ligne);
+			if($part[0]=="Q") {
+				$walli++;
+			}
+		}
+		for($wall=0;$wall<$walli;$wall++) $bulle[$wall]=$non_fait;//Par défaut les questions n'ont pas de réponse
+
+		//Liste des réponses
+		$liste_fichier = scandir($repertoire_rep);
+		foreach($liste_fichier as $reponse) {
+			if(strpos("_$reponse", "I")) {
+				$part1 = explode("I", $reponse);
+				$part2 = explode(".", $part1[1]);
+				$bulle[$part2[0]-1]=$fait;
+			}
+		}
+		
+		//On construit les bulles
+		for($wall=0;$wall<$walli;$wall++) {
+			$le_bon_message .= $bulle[$wall];
+			$wall2++;
+			if($wall2==10) {
+				$le_bon_message .= "<br>";
+				$wall2 = 0;
+			}
+		}
+		fclose($fp_2020);
+	}
+	
+	
 	
 	
 ?>
@@ -291,7 +331,7 @@
 		$fp = fopen($filename, "r");
 		$titre = fgets($fp);
 		$code_rep = explode("#", $titre);
-		echo("<h1>$code_rep[0]</h1>");
+		echo("<table><tr><td><h1>$code_rep[0]</h1></td><td><div class=\"bulles\">$le_bon_message</div></td></tr></table>");
 		$i=0;
 		while(!feof($fp)){
 			$ligne = fgets($fp);
