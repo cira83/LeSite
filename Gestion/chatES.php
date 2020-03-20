@@ -38,6 +38,14 @@
 					$rep_ok .= "$nb_quest:";
 				}
 			}
+			$filename_sujet = "$repertoire/$eleve/index.htm";//le sujet
+			if(file_exists($filename_sujet)){
+				$fp_td = fopen($filename_sujet, "r");
+				$ligne1 = fgets($fp_td);
+				$td_number = explode(" ", $ligne1);
+				$le_nom_du_td = $td_number[0];
+				fclose($fp_td);
+			}
 			$liste2nombre = explode(":", $rep_ok);//liste des réponses disponibles
 			for($ii=0;$ii<$last_file;$ii++) $case_quest[$ii]=$non_fait;
 			foreach($liste2nombre as $nombre) $case_quest[$nombre-1]=$fait;
@@ -53,8 +61,8 @@
 			}
 			
 			if($last_file) {//ecriture du fichier
-				if($i==0) fprintf($fp, "$eleve$separation $ligne2led");
-				else fprintf($fp, "\n$eleve$separation $ligne2led");
+				if($i==0) fprintf($fp, "$eleve $le_nom_du_td$separation $ligne2led");
+				else fprintf($fp, "\n$eleve $le_nom_du_td$separation $ligne2led");
 				$i++;
 			}
 			
@@ -62,6 +70,8 @@
 	}
 	fclose($fp);
 	
+	
+	//Lecture du fichier et création des bulles
 	$fp = fopen($filename,"r");
 	while(!feof($fp)){
 		$ligne = fgets($fp);

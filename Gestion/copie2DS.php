@@ -171,11 +171,28 @@
 	}
 	
 	if(file_exists($sujet2DS)){
+		//Sommaire avec toutes les questions
+		$fp = fopen($sujet2DS, "r");
+		$ligne = fgets($fp);
+		$i=0;
+		while(!feof($fp)){
+			$ligne = fgets($fp);
+			$part = explode("#", $ligne);
+			if($part[0]=="Q") {//Question
+				$i++;
+				if($i==1) $sommaire_td = "<a href=\"#Q$i\"><font size=\"-1\">Q$i</font></a>";
+				else $sommaire_td .= "</td><td><a href=\"#Q$i\"><font size=\"-1\">Q$i</font></a>";
+			}
+		}
+		fclose($fp);
+		ligne2tableau($sommaire_td);
+		//Fin du sommaire
+		
 		$fp = fopen($sujet2DS, "r");
 		$ligne = fgets($fp);
 		$part = explode("#", $ligne);
 		echo("<h1>$part[0]</h1>");
-		if($flag2017>1) echo("<center><p><font size=\"-1\">$flag2017</font></p></center>");//Nombre de sessions ouvertes
+		//if($flag2017>1) echo("<center><p><font size=\"-1\">$flag2017</font></p></center>");//Nombre de sessions ouvertes
 		$_SESSION[points]=0;
 		$i=0;
 		while(!feof($fp)){
@@ -199,7 +216,7 @@
 					
 					$_SESSION[points] = $_SESSION[points] + $part[2];
 				}
-				ligne2tableau("<p class=\"question\"><font color=\"#0000FF\">\n<b>Q$i : </b></font>$part[1]</p> $bareme");
+				ligne2tableau("<p class=\"question\" id=\"Q$i\" ><font color=\"#0000FF\">\n<b>Q$i : </b></font>$part[1]</p> $bareme");
 			}
 			
 			//Réponse sour la forme d'une image
