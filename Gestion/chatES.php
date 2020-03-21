@@ -42,8 +42,8 @@
 			if(file_exists($filename_sujet)){
 				$fp_td = fopen($filename_sujet, "r");
 				$ligne1 = fgets($fp_td);
-				$td_number = explode(" ", $ligne1);
-				$le_nom_du_td = $td_number[0];
+				$td_number = explode("#", $ligne1);
+				$le_nom_du_td = rtrim($td_number[1]);
 				fclose($fp_td);
 			}
 			$liste2nombre = explode(":", $rep_ok);//liste des réponses disponibles
