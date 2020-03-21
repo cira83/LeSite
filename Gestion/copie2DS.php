@@ -191,7 +191,7 @@
 		$fp = fopen($sujet2DS, "r");
 		$ligne = fgets($fp);
 		$part = explode("#", $ligne);
-		echo("<h1>$part[0]</h1>");
+		echo("<h1>$part[1] $part[0]</h1>");
 		//if($flag2017>1) echo("<center><p><font size=\"-1\">$flag2017</font></p></center>");//Nombre de sessions ouvertes
 		$_SESSION[points]=0;
 		$i=0;
