@@ -331,7 +331,7 @@
 		$fp = fopen($filename, "r");
 		$titre = fgets($fp);
 		$code_rep = explode("#", $titre);
-		echo("<table><tr><td><h1>$code_rep[0]</h1></td><td><div class=\"bulles\">$le_bon_message</div></td></tr></table>");
+		echo("<table><tr><td><h1>$code_rep[1] $code_rep[0]</h1></td><td><div class=\"bulles\">$le_bon_message</div></td></tr></table>");
 		$i=0;
 		while(!feof($fp)){
 			$ligne = fgets($fp);
