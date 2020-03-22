@@ -14,7 +14,8 @@
 	$repertoire_Images = "./files/$classe/_Copies/_Sujets/$TAG/img/";
 	
 	$titre = $_POST[titre];
-	
+
+
 	
 ?>
 <script>
@@ -52,6 +53,29 @@
 
 <?php
 	// FONCTIONS
+	function icone4lettre($lettre) {
+		$SUP = "<img src=\"icon/Moins.gif\" title=\"Supprimer\"/>";
+		$C = "<img src=\"icon/C_vert.gif\" title=\"Commentaire\"/>";
+		$Mod = "<img src=\"icon/Editer.gif\" title=\"Mofifier\/>";
+		$Q = "<img src=\"icon/Q_vert.gif\" title=\"Question\"/>";
+		$T = "<img src=\"icon/T_vert.gif\" title=\"R&eacute;ponse courte\"/>";
+		$U = "<img src=\"icon/Ligne.gif\" title=\"R&eacute;ponse longue\"/>";
+		$I = "<img src=\"icon/I_vert.gif\" title=\"R&eacute;ponse image\"/>";
+		$L = "<img src=\"icon/Page.gif\" title=\"Saut de page\"/>";
+		switch($lettre) {
+			case "X": $icone = $SUP; break;
+			case "C": $icone = $C; break;
+			case "M": $icone = $Mod; break;
+			case "Q": $icone = $Q; break;
+			case "T": $icone = $T; break;
+			case "U": $icone = $U; break;
+			case "I": $icone = $I; break;
+			case "L": $icone = $L; break;
+		}
+		return($icone);
+	}
+	
+	
 	function est_image($image) {
 		$type_img = array("jpg","jpeg","gif","png");
 		
@@ -73,22 +97,25 @@
 		$HR = "<hr>";
 		switch($code) {
 			case "C": 
-				echo("<table><tr><td align=\"left\">$contenu</td><td width=\"10px\"><img src=\"icon/C_vert.gif\"/>$HR$SUP$BR$Mod$BR$C$BR$Q$BR$L</td><tr></table>");
+				echo("<table><tr><td align=\"left\">$contenu</td><td width=\"10px\"><img src=\"icon/C_vert.gif\" title=\"Commentaire\"/>$HR$SUP$BR$Mod$BR$C$BR$Q$BR$L</td><tr></table>");
 				break;
 			case "Q": 
-				echo("<table><tr><td align=\"left\"><font color=\"blue\">Q$quest)</font> $contenu</td><td width=\"10px\"><img src=\"icon/Q_vert.gif\"/>$HR$SUP$BR$Mod$BR$C$BR$T$BR$U$BR$I</td><tr></table>");
+				echo("<table><tr><td align=\"left\"><font color=\"blue\">Q$quest)</font> $contenu</td><td width=\"10px\"><img src=\"icon/Q_vert.gif\" title=\"Question\"/>$HR$SUP$BR$Mod$BR$C$BR$T$BR$U$BR$I</td><tr></table>");
 				break;
 			case "T":
-				echo("<table><tr><td align=\"left\">Réponse texte sur une ligne</td><td width=\"10px\"><img src=\"icon/T_vert.gif\"/>$HR$SUP$BR$C$BR$Q$BR$L</td><tr></table>");
+				echo("<table><tr><td align=\"left\">Réponse texte sur une ligne</td><td width=\"10px\"><img src=\"icon/T_vert.gif\" title=\"R&eacute;ponse courte\"/>$HR$SUP$BR$C$BR$Q$BR$L</td><tr></table>");
 				break;
 			case "U":
-				echo("<table><tr><td align=\"left\">Réponse sur plusieurs lignes</td><td width=\"10px\"><img src=\"icon/Ligne.gif\"/>$HR$SUP$BR$C$BR$Q$BR$L</td><tr></table>");
+				echo("<table><tr><td align=\"left\">Réponse sur plusieurs lignes</td><td width=\"10px\"><img src=\"icon/Ligne.gif\" title=\"R&eacute;ponse longue\"/>$HR$SUP$BR$C$BR$Q$BR$L</td><tr></table>");
 				break;
 			case "I":
-				echo("<table><tr><td align=\"left\"><img src=\"$contenu\"></td><td width=\"10px\"><img src=\"icon/I_vert.gif\"/>$HR$SUP$BR$Mod$BR$C$BR$Q$BR$L</td><tr></table>");
+				echo("<table><tr><td align=\"left\"><img src=\"$contenu\"></td><td width=\"10px\"><img src=\"icon/I_vert.gif\" title=\"R&eacute;ponse image\"/>$HR$SUP$BR$Mod$BR$C$BR$Q$BR$L</td><tr></table>");
 				break;
 			case "L":
-				echo("<table><tr><td bgcolor=\"white\">Page $page</td><td width=\"10px\"><img src=\"icon/Page.gif\"/>$HR$SUP$BR$C$BR$Q</td><tr></table>");
+				echo("<table><tr><td bgcolor=\"white\">Page $page</td><td width=\"10px\"><img src=\"icon/Page.gif\" title=\"Saut de page\"/>$HR$SUP$BR$C$BR$Q</td><tr></table>");
+				break;
+			case "X": // Ligne 0
+				echo("<table><tr bgcolor=\"yellow\"><td width=\"30px\">$contenu</td><td width=\"10px\">$C$BR$Mod</td><tr></table>");
 				break;
 		}
 	}
@@ -111,13 +138,19 @@
 		$cible = fopen($chemin_du_sujet, "w");
 		$order   = array("\r\n", "\n", "\r");
 		$replace = '<br/>';
-		$champs1 = str_replace($order, $replace, $champs);
+		$champs1 = str_replace($order, $replace, $champs);// nettoie le champs à ajouter
 		while(!feof($source)){
 			$ligne = fgets($source);
 			$i++;
 			$part = explode("#", $ligne);
-			if($i==$num2ligne) fprintf($cible, "$part[0]#$champs1\n");
-			else fprintf($cible, $ligne);
+			if($num2ligne>1) {
+				if($i==$num2ligne) fprintf($cible, "$part[0]#$champs1\n");
+				else fprintf($cible, $ligne);
+			}
+			else {
+				if($i==1) fprintf($cible, "$champs1\n");
+				else fprintf($cible, $ligne);				
+			}
 		}
 	}
 	
@@ -176,10 +209,11 @@
 	$Deroulant_image .= "</select>";
 	
 	
-	if($action==3) {
+	if($action==3) {//------------------------------------------------------------------- X : Suppression
 		$contenu = lecture($chemin_du_sujet, $num2ligne);
+		$part2ligne = explode("#", $contenu);
 		$message = "<table>";
-		$message .= "<tr><td bgcolor=\"white\">$contenu</td><td>";
+		$message .= "<tr><td bgcolor=\"white\">$part2ligne[1]</td><td>";
 		$message .= "<tr></form></table>";
 		$message .= "<table><form method=\"POST\" action=\"./DSNew.php?action=31&ligne=$num2ligne&TAG=$TAG\">";
 		$message .= "<tr bgcolor=\"red\"><td><b>Supprimer ligne $num2ligne ??</b></td><td><input type=\"submit\"></td><tr></form></table>";
@@ -189,13 +223,15 @@
 		del_ligne($chemin_du_sujet,$num2ligne);
 	}
 	
-	if($action==4) {//Edition
+	if($action==4) {//------------------------------------------------------------------- M : Edition
 		$contenu = lecture($chemin_du_sujet, $num2ligne);
 		$part2ligne = explode("#", $contenu);
+		$icone = icone4lettre($part2ligne[0]);
+		if($num2ligne==1) $part2ligne[1] = $part2ligne[0]."#".$part2ligne[1];
 		
 		$message = "<table><form method=\"POST\" action=\"./DSNew.php?action=41&ligne=$num2ligne&TAG=$TAG\">";
-		$message .= "<tr><td bgcolor=\"white\"><textarea cols=\"130\" rows=\"5\" name=\"Champs\" id=\"Champs\">$part2ligne[1]</textarea></td><td>";
-		$message .= "$Deroulant_image<br><br><input type=\"submit\"><input type=\"hidden\" id=\"tipe\" value=\"$part2ligne[0]\"></td><tr></form></table>";
+		$message .= "<tr><td bgcolor=\"white\"><textarea cols=\"110\" rows=\"5\" name=\"Champs\" id=\"Champs\">$part2ligne[1]</textarea></td><td>";
+		$message .= "$Deroulant_image<br><br>$icone<br><br><input type=\"submit\"><input type=\"hidden\" id=\"tipe\" value=\"$part2ligne[0]\"></td><tr></form></table>";
 		
 		$message .= "<table><tr><td bgcolor=\"#0085cf\"><b>Edition ligne $num2ligne</b></td><tr></table>";
 	}
@@ -228,7 +264,7 @@
 		insert_ligne($chemin_du_sujet, $num2ligne,"L");
 	}
 	
-	if($action==100) {
+	if($action==100) {//------------------------------------------------------------------- CHARGE IMAGES
 		//on vérifie que le champ est bien rempli:
 		if(!empty($_FILES["fichier_choisi"]["name"])){
 			//nom du fichier choisi:
@@ -242,16 +278,19 @@
 			//code de l'erreur si jamais il y en a une:
 			$codeErreur = $_FILES["fichier_choisi"]["error"] ;
 		
-			if(copy($nomTemporaire, $repertoire_Images.$nomFichier)){
-				chmod("$repertoire_Images$nomFichier",0777);
-				$extension = substr(strrchr($nomFichier, '.'), 1);
-				$LDIMAGE = scandir($repertoire_Images);
-				$nbimageplus1 = count($LDIMAGE) - 2;
-				$nomFichier_propre = "$nbimageplus1.$extension";
-				rename("$repertoire_Images$nomFichier", "$repertoire_Images$nomFichier_propre");
-				$message .= "<table><tr><td>Votre fichier <font color=\"blue\">$nomFichier</font> est sauvegardé.</td><tr></table>" ;
+			if(est_image($nomFichier)) {
+				if(copy($nomTemporaire, $repertoire_Images.$nomFichier)){
+					chmod("$repertoire_Images$nomFichier",0777);
+					$extension = substr(strrchr($nomFichier, '.'), 1);
+					$LDIMAGE = scandir($repertoire_Images);
+					$nbimageplus1 = count($LDIMAGE) - 2;
+					$nomFichier_propre = "$nbimageplus1.$extension";
+					rename("$repertoire_Images$nomFichier", "$repertoire_Images$nomFichier_propre");
+					$message .= "<table><tr><td>Votre fichier <font color=\"blue\">$nomFichier</font> est sauvegardé.</td><tr></table>" ;
+				}
+				else $message .= "<table><tr><td>La sauvegarde a échouée !!</td><tr></table>" ;
 			}
-			else $message .= "<table><tr><td>La sauvegarde a échouée !!</td><tr></table>" ;
+			else $message .= "<table><tr><td>Format non supporté</td><tr></table>" ;
 		}
 		else $message .= "<table><tr><td>Pas de fichier choisi !!!</td><tr></table>" ;
 
@@ -264,7 +303,8 @@
 	$ligne = fgets($fp);
 	$i++;
 	$part = explode("#", $ligne);
-	titre_tab("<a href=\"./DSNew.php?TAG=$TAG\"><img src=\"./icon/reload.png\" height=\"20px\"/></a> $TAG $part[0]");
+	//titre_tab("<a href=\"./DSNew.php?TAG=$TAG\"><img src=\"./icon/reload.png\" height=\"20px\"/></a> $TAG $part[0]");
+	ligne($i,"X","<a href=\"./DSNew.php?TAG=$TAG\"><img src=\"./icon/reload.png\" height=\"20px\"/></a></td><td><font size=\"+3\">$TAG $part[0]</font>",$quest,$page,$TAG);// pour ajouter une ligne au tout début
 	echo($message);//informations et edition
 	while(!feof($fp)){
 		$ligne = fgets($fp);
@@ -281,7 +321,8 @@
 
 <!-- Partie à droite -->
 </td><td valign="top" width="210px">
-<b>Images disponibles</b><br><hr>
+<b>Images disponibles</b><br>
+Maxi 750 px<hr>
 <form name="envoie fichier" enctype="multipart/form-data" method="post" action="DSNew.php">
 <input name="td" type="hidden" value="<?php echo($TAG);?>">
 <input name="action" type="hidden" value="100">
