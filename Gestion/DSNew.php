@@ -295,14 +295,17 @@
 	$part = explode("#", $ligne);
 	// Première Ligne avec le Titre
 	ligne($i,"X","<a href=\"./DSZone.php\"><img src=\"./icon/home.png\" height=\"20px\" title=\"Home\"/></a></td><td width=\"30px\"><a href=\"./DSNew.php?TAG=$TAG&action=101\"><img src=\"./icon/reload.png\" height=\"20px\" title=\"Annuler la derni&egrave;re modification\"/></a></td><td><font size=\"+3\">$TAG $part[0]</font>",$quest,$page,$TAG);
-	echo($message);//informations et edition
+	//echo($message);
 	while(!feof($fp)){
 		$ligne = fgets($fp);
 		$i++;
 		$part = explode("#", $ligne);
 		if($part[0]=="Q") $quest++;
 		if($part[0]=="L") $page++;
-		if(in_array($part[0],$lettres)) ligne($i,$part[0],$part[1],$quest,$page,$TAG);
+		if(in_array($part[0],$lettres)) {
+			ligne($i,$part[0],$part[1],$quest,$page,$TAG);
+			if($i==$num2ligne) echo($message);//informations et edition
+		}
 	}
 	fclose($fp);
 	

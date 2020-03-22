@@ -37,6 +37,7 @@
 			//$repertoire_rep .= $part[1];
 			fclose($fp);
 		}
+		$nom = "Correction";
 	}
 	
 	function sujet_ouvert($repertoire){
