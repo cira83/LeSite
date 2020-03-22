@@ -64,7 +64,7 @@
 	// FONCTIONS
 	include("./DSFonctions.php");
 		
-	function ligne($numero,$code,$contenu,$quest,$page,$TAG) {
+	function ligne($numero,$code,$contenu,$coef,$quest,$page,$TAG) {
 		$SUP = "<a href=\"./DSNew.php?action=3&ligne=$numero&TAG=$TAG\" title=\"Supprimer\"><img src=\"icon/Moins.gif\"/></a>";
 		$C = "<a href=\"./DSNew.php?action=5&ligne=$numero&TAG=$TAG\" title=\"Commentaire\"><img src=\"icon/C_vert.gif\"/></a>";
 		$Mod = "<a href=\"./DSNew.php?action=4&ligne=$numero&TAG=$TAG\" title=\"Mofifier\"><img src=\"icon/Editer.gif\"/></a>";
@@ -80,7 +80,7 @@
 				echo("<table><tr><td align=\"left\">$contenu</td><td width=\"10px\"><img src=\"icon/C_vert.gif\" title=\"Commentaire\"/>$HR$SUP$BR$Mod$BR$C$BR$Q$BR$L</td><tr></table>");
 				break;
 			case "Q": 
-				echo("<table><tr><td align=\"left\"><font color=\"blue\">Q$quest)</font> $contenu</td><td width=\"10px\"><img src=\"icon/Q_vert.gif\" title=\"Question\"/>$HR$SUP$BR$Mod$BR$C$BR$T$BR$U$BR$I</td><tr></table>");
+				echo("<table><tr><td align=\"left\"><font color=\"blue\">Q$quest)</font> $contenu</td><td width=\"10px\"><img src=\"icon/Q_vert.gif\" title=\"Question\"/>$BR$coef$HR$SUP$BR$Mod$BR$C$BR$T$BR$U$BR$I</td><tr></table>");
 				break;
 			case "T":
 				echo("<table><tr><td align=\"left\">Réponse texte sur une ligne</td><td width=\"10px\"><img src=\"icon/T_vert.gif\" title=\"R&eacute;ponse courte\"/>$HR$SUP$BR$C$BR$Q$BR$L</td><tr></table>");
@@ -213,6 +213,7 @@
 		$part2ligne = explode("#", $contenu);
 		$icone = icone4lettre($part2ligne[0]);
 		if($num2ligne==1) $part2ligne[1] = $part2ligne[0]."#".$part2ligne[1];
+		if($part2ligne[0]=="Q") $part2ligne[1] = $part2ligne[1]."#".$part2ligne[2];
 		
 		$message = "<table><form method=\"POST\" action=\"./DSNew.php?action=41&ligne=$num2ligne&TAG=$TAG\">";
 		$message .= "<tr><td bgcolor=\"white\"><textarea cols=\"110\" rows=\"5\" name=\"Champs\" id=\"Champs\">$part2ligne[1]</textarea></td><td>";
@@ -294,7 +295,7 @@
 	$i++;
 	$part = explode("#", $ligne);
 	// Première Ligne avec le Titre
-	ligne($i,"X","<a href=\"./DSZone.php\"><img src=\"./icon/home.png\" height=\"20px\" title=\"Home\"/></a></td><td width=\"30px\"><a href=\"./DSNew.php?TAG=$TAG&action=101\"><img src=\"./icon/reload.png\" height=\"20px\" title=\"Annuler la derni&egrave;re modification\"/></a></td><td><font size=\"+3\">$TAG $part[0]</font>",$quest,$page,$TAG);
+	ligne($i,"X","<a href=\"./DSZone.php\"><img src=\"./icon/home.png\" height=\"20px\" title=\"Home\"/></a></td><td width=\"30px\"><a href=\"./DSNew.php?TAG=$TAG&action=101\"><img src=\"./icon/reload.png\" height=\"20px\" title=\"Annuler la derni&egrave;re modification\"/></a></td><td><font size=\"+3\">$TAG $part[0]</font>",$part[1],$quest,$page,$TAG);
 	if($i==$num2ligne) echo($message);
 	while(!feof($fp)){
 		$ligne = fgets($fp);
@@ -303,7 +304,7 @@
 		if($part[0]=="Q") $quest++;
 		if($part[0]=="L") $page++;
 		if(in_array($part[0],$lettres)) {
-			ligne($i,$part[0],$part[1],$quest,$page,$TAG);
+			ligne($i,$part[0],$part[1],$part[2],$quest,$page,$TAG);
 			if($i==$num2ligne) echo($message);//informations et edition
 		}
 	}
