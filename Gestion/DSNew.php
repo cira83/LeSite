@@ -295,7 +295,7 @@
 	$part = explode("#", $ligne);
 	// Première Ligne avec le Titre
 	ligne($i,"X","<a href=\"./DSZone.php\"><img src=\"./icon/home.png\" height=\"20px\" title=\"Home\"/></a></td><td width=\"30px\"><a href=\"./DSNew.php?TAG=$TAG&action=101\"><img src=\"./icon/reload.png\" height=\"20px\" title=\"Annuler la derni&egrave;re modification\"/></a></td><td><font size=\"+3\">$TAG $part[0]</font>",$quest,$page,$TAG);
-	//echo($message);
+	if($i==$num2ligne) echo($message);
 	while(!feof($fp)){
 		$ligne = fgets($fp);
 		$i++;
