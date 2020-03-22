@@ -15,7 +15,7 @@
 	
 	$titre = $_POST[titre];
 
-
+	include("./haut_DS.php");
 	
 ?>
 <script>
@@ -47,43 +47,23 @@
 		document.getElementById('Champs').value = back + new_valeur;
 	}
 
+	function addlien(){
+		back = document.getElementById('Champs').value;
+		lien = document.getElementById('lien').value;
+		texte = document.getElementById('texte').value;
+		new_valeur = "<a href=\""+ lien +"\">" + texte + "</a>";
+		document.getElementById('Champs').value = back + new_valeur;
+	}
+
+
 </script>
 
 
 
 <?php
 	// FONCTIONS
-	function icone4lettre($lettre) {
-		$SUP = "<img src=\"icon/Moins.gif\" title=\"Supprimer\"/>";
-		$C = "<img src=\"icon/C_vert.gif\" title=\"Commentaire\"/>";
-		$Mod = "<img src=\"icon/Editer.gif\" title=\"Mofifier\/>";
-		$Q = "<img src=\"icon/Q_vert.gif\" title=\"Question\"/>";
-		$T = "<img src=\"icon/T_vert.gif\" title=\"R&eacute;ponse courte\"/>";
-		$U = "<img src=\"icon/Ligne.gif\" title=\"R&eacute;ponse longue\"/>";
-		$I = "<img src=\"icon/I_vert.gif\" title=\"R&eacute;ponse image\"/>";
-		$L = "<img src=\"icon/Page.gif\" title=\"Saut de page\"/>";
-		switch($lettre) {
-			case "X": $icone = $SUP; break;
-			case "C": $icone = $C; break;
-			case "M": $icone = $Mod; break;
-			case "Q": $icone = $Q; break;
-			case "T": $icone = $T; break;
-			case "U": $icone = $U; break;
-			case "I": $icone = $I; break;
-			case "L": $icone = $L; break;
-		}
-		return($icone);
-	}
-	
-	
-	function est_image($image) {
-		$type_img = array("jpg","jpeg","gif","png");
+	include("./DSFonctions.php");
 		
-		$part = explode(".",rtrim($image));
-		$ext = $part[count($part)-1];
-		return(in_array($ext,$type_img));
-	}
-	
 	function ligne($numero,$code,$contenu,$quest,$page,$TAG) {
 		$SUP = "<a href=\"./DSNew.php?action=3&ligne=$numero&TAG=$TAG\" title=\"Supprimer\"><img src=\"icon/Moins.gif\"/></a>";
 		$C = "<a href=\"./DSNew.php?action=5&ligne=$numero&TAG=$TAG\" title=\"Commentaire\"><img src=\"icon/C_vert.gif\"/></a>";
@@ -179,8 +159,13 @@
 			if($i!=$num2ligne) fprintf($cible, $ligne);
 		}
 	}
-		
-	include("./haut_DS.php");
+	
+	function undo_modif($chemin_du_sujet)
+	{
+		if(file_exists("$chemin_du_sujet.bak")) 
+			rename("$chemin_du_sujet.bak",$chemin_du_sujet);
+	}
+
 
 	//Création du répertoire
 	$repertoire_du_sujet = $repertoire_Sujets."$TAG";
@@ -232,7 +217,8 @@
 		$message = "<table><form method=\"POST\" action=\"./DSNew.php?action=41&ligne=$num2ligne&TAG=$TAG\">";
 		$message .= "<tr><td bgcolor=\"white\"><textarea cols=\"110\" rows=\"5\" name=\"Champs\" id=\"Champs\">$part2ligne[1]</textarea></td><td>";
 		$message .= "$Deroulant_image<br><br>$icone<br><br><input type=\"submit\"><input type=\"hidden\" id=\"tipe\" value=\"$part2ligne[0]\"></td><tr></form></table>";
-		
+		$message .= "<table><tr><td>+ Lien vers <input type=\"text\" id=\"lien\"> sur texte <input type=\"text\" id=\"texte\">";
+		$message .= " <input type=\"submit\" onclick=\"addlien();\"></td><tr></table>";
 		$message .= "<table><tr><td bgcolor=\"#0085cf\"><b>Edition ligne $num2ligne</b></td><tr></table>";
 	}
 
@@ -296,6 +282,10 @@
 
 	}
 	
+	if($action==101) {//------------------------------------------------------------------- UNDO
+		undo_modif($chemin_du_sujet);
+	}
+	
 	$i=0;
 	$quest=0;
 	$page=0;
@@ -303,8 +293,8 @@
 	$ligne = fgets($fp);
 	$i++;
 	$part = explode("#", $ligne);
-	//titre_tab("<a href=\"./DSNew.php?TAG=$TAG\"><img src=\"./icon/reload.png\" height=\"20px\"/></a> $TAG $part[0]");
-	ligne($i,"X","<a href=\"./DSNew.php?TAG=$TAG\"><img src=\"./icon/reload.png\" height=\"20px\"/></a></td><td><font size=\"+3\">$TAG $part[0]</font>",$quest,$page,$TAG);// pour ajouter une ligne au tout début
+	// Première Ligne avec le Titre
+	ligne($i,"X","<a href=\"./DSZone.php\"><img src=\"./icon/home.png\" height=\"20px\" title=\"Home\"/></a></td><td width=\"30px\"><a href=\"./DSNew.php?TAG=$TAG&action=101\"><img src=\"./icon/reload.png\" height=\"20px\" title=\"Annuler la derni&egrave;re modification\"/></a></td><td><font size=\"+3\">$TAG $part[0]</font>",$quest,$page,$TAG);
 	echo($message);//informations et edition
 	while(!feof($fp)){
 		$ligne = fgets($fp);

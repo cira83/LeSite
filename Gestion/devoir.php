@@ -1,5 +1,6 @@
 <?php
 	include("./security.php");
+	include("./DSFonctions.php");
 	$numero2session = session_id();//Numero de session
 
 	$fait = "&#9679;";
@@ -194,16 +195,19 @@
 			$codeErreur = $_FILES["fichier"]["error"];
 			
 			$ext = extpat($nomFichier);//extension du fichier - ma fonction
-			$cible = "$repertoire_rep/$rep.$ext";
-			if(copy($nomTemporaire, $cible)){
-				$Message = "--> Votre image $nomFichier est sauvegard&eacute;e" ;
-				chmod($cible,0777);
+			if(est_image($nomFichier)) {
+				$cible = "$repertoire_rep/$rep.$ext";
+				if(copy($nomTemporaire, $cible)){
+					$Message = "--> Votre image $nomFichier est sauvegard&eacute;e" ;
+					chmod($cible,0777);
+				}
+				//Sauvegarde du nom du fichier avec l'extension - 16 janvier 2016
+				$filename_reponse_text = "$repertoire_rep/$rep.txt";
+				$fp = fopen($filename_reponse_text, "w");
+				fwrite($fp, "$rep.$ext\n");
+				fclose($fp);
 			}
-			//Sauvegarde du nom du fichier avec l'extension - 16 janvier 2016
-			$filename_reponse_text = "$repertoire_rep/$rep.txt";
-			$fp = fopen($filename_reponse_text, "w");
-			fwrite($fp, "$rep.$ext\n");
-			fclose($fp);
+			else $Message = "--> Mauvais format de fichier !!" ;
 		}
 	}
 
