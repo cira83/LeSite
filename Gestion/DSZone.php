@@ -368,9 +368,33 @@
 		</tr>
 		</form>
 	</table>
+
 <?php
-	titre_tab("Actions sur les fichiers");
+	titre_tab("Création");
 ?>
+<!--                                                           NOUVEAU SUJET -->
+<table><tr>
+<form method="post" action="DSNew.php">
+<td>
+<input type="hidden" value="1" name="action">
+TAG du sujet : <input type="text" name="TAG" size="10px"></td><td>
+Titre du sujet : <input type="text" name="titre" size="50px"></td><td>
+<input name="bouton" value="Nouveau sujet" type="submit">
+</td>
+</form>
+</tr>
+<tr>
+<form method="post" action="DSNew.php">
+<td>
+<input type="hidden" value="2" name="action">
+TAG du sujet : <?php echo($menu_td);?></td><td> 
+</td><td>
+<input name="bouton" value="Editer" type="submit">
+</td></tr>
+</table>
+
+
+<!-- Action sur les fichiers supprimé le 21/03/2020
 <table><tr>
 <td>
 	<form method="post" action="DSZone.php?action=30">
@@ -383,6 +407,9 @@
 	</form>
 </td>
 </tr></table>
+-->
+
+
 <?php
 	//----------------------------------------------------    LES REPONSES
 	titre_tab("Liste des fichiers .txt des répertoires réponses");
@@ -412,13 +439,12 @@
 	echo("</tr>$contenu_case2</tr>");	
 	echo("</table>");
 
-	include("./bas.php");
+	include("./bas_DS.php");
 ?>
 
 
 
 <!-- Partie à droite -->
 </td><td valign="top" width="210px">
-
 <span id="les_messages"></span>
 </td></tr></table>
