@@ -7,6 +7,7 @@
 	
 	if(!$action) $action = $_GET[action];
 	if(!$TAG) $TAG = $_GET[TAG];
+	$pageaafficher = $_GET[page];
 	$requete = "./imagesES.php?TAG=$TAG";
 	$lettres = array("C","Q","I","T","I","U","L");
 	$classe = $_COOKIE["laclasse"]; if($classe=="") $classe="CIRA1";
@@ -69,14 +70,14 @@
 	include("./DSFonctions.php");
 		
 	function ligne($numero,$code,$contenu,$coef,$quest,$page,$TAG,$pageaafficher) {
-		$SUP = "<a href=\"./DSNew.php?action=3&ligne=$numero&TAG=$TAG\" title=\"Supprimer\"><img src=\"icon/Moins.gif\"/></a>";
-		$C = "<a href=\"./DSNew.php?action=5&ligne=$numero&TAG=$TAG\" title=\"Commentaire\"><img src=\"icon/C_vert.gif\"/></a>";
+		$SUP = "<a href=\"./DSNew.php?action=3&ligne=$numero&TAG=$TAG&page=$pageaafficher\" title=\"Supprimer\"><img src=\"icon/Moins.gif\"/></a>";
+		$C = "<a href=\"./DSNew.php?action=5&ligne=$numero&TAG=$TAG&page=$pageaafficher\" title=\"Commentaire\"><img src=\"icon/C_vert.gif\"/></a>";
 		$Mod = "<a href=\"./DSNew.php?action=4&ligne=$numero&TAG=$TAG&page=$pageaafficher\" title=\"Mofifier\"><img src=\"icon/Editer.gif\"/></a>";
-		$Q = "<a href=\"./DSNew.php?action=51&ligne=$numero&TAG=$TAG\" title=\"Question\"><img src=\"icon/Q_vert.gif\"/></a>";
-		$T = "<a href=\"./DSNew.php?action=52&ligne=$numero&TAG=$TAG\" title=\"R&eacute;ponse courte\"><img src=\"icon/T_vert.gif\"/></a>";
-		$U = "<a href=\"./DSNew.php?action=53&ligne=$numero&TAG=$TAG\" title=\"R&eacute;ponse longue\"><img src=\"icon/Ligne.gif\"/></a>";
-		$I = "<a href=\"./DSNew.php?action=54&ligne=$numero&TAG=$TAG\" title=\"R&eacute;ponse image\"><img src=\"icon/I_vert.gif\"/></a>";
-		$L = "<a href=\"./DSNew.php?action=6&ligne=$numero&TAG=$TAG\" title=\"Saut de page\"><img src=\"icon/Page.gif\"/></a>";
+		$Q = "<a href=\"./DSNew.php?action=51&ligne=$numero&TAG=$TAG&page=$pageaafficher\" title=\"Question\"><img src=\"icon/Q_vert.gif\"/></a>";
+		$T = "<a href=\"./DSNew.php?action=52&ligne=$numero&TAG=$TAG&page=$pageaafficher\" title=\"R&eacute;ponse courte\"><img src=\"icon/T_vert.gif\"/></a>";
+		$U = "<a href=\"./DSNew.php?action=53&ligne=$numero&TAG=$TAG&page=$pageaafficher\" title=\"R&eacute;ponse longue\"><img src=\"icon/Ligne.gif\"/></a>";
+		$I = "<a href=\"./DSNew.php?action=54&ligne=$numero&TAG=$TAG&page=$pageaafficher\" title=\"R&eacute;ponse image\"><img src=\"icon/I_vert.gif\"/></a>";
+		$L = "<a href=\"./DSNew.php?action=6&ligne=$numero&TAG=$TAG&page=$pageaafficher\" title=\"Saut de page\"><img src=\"icon/Page.gif\"/></a>";
 		$BR = "<br>";
 		$HR = "<hr>";
 		switch($code) {
@@ -84,7 +85,7 @@
 				echo("<table><tr><td align=\"left\">$contenu</td><td width=\"10px\"><img src=\"icon/C_vert.gif\" title=\"Commentaire\"/>$HR$SUP$BR$Mod$BR$C$BR$Q$BR$L</td><tr></table>");
 				break;
 			case "Q": 
-				echo("<table><tr><td align=\"left\"><font color=\"blue\">Q$quest)</font> $contenu</td><td width=\"10px\"><img src=\"icon/Q_vert.gif\" title=\"Question\"/>$BR$coef$HR$SUP$BR$Mod$BR$C$BR$T$BR$U$BR$I</td><tr></table>");
+				echo("<table><tr><td align=\"left\"><font color=\"blue\"><b>Q$quest)</b></font> $contenu</td><td width=\"10px\"><img src=\"icon/Q_vert.gif\" title=\"Question\"/>$BR$coef$HR$SUP$BR$Mod$BR$C$BR$T$BR$U$BR$I</td><tr></table>");
 				break;
 			case "T":
 				echo("<table><tr><td>Réponse texte sur une ligne</td><td width=\"10px\"><img src=\"icon/T_vert.gif\" title=\"R&eacute;ponse courte\"/>$HR$SUP$BR$C$BR$Q$BR$L</td><tr></table>");
@@ -204,7 +205,7 @@
 		$message = "<table>";
 		$message .= "<tr><td bgcolor=\"white\">$part2ligne[1]</td><td>";
 		$message .= "<tr></form></table>";
-		$message .= "<table><form method=\"POST\" action=\"./DSNew.php?action=31&ligne=$num2ligne&TAG=$TAG\">";
+		$message .= "<table><form method=\"POST\" action=\"./DSNew.php?action=31&ligne=$num2ligne&TAG=$TAG&page=$pageaafficher\">";
 		$message .= "<tr bgcolor=\"red\"><td><b>Supprimer ligne $num2ligne ??</b></td><td><input type=\"submit\"></td><tr></form></table>";
 	}
 
@@ -220,7 +221,7 @@
 		if($num2ligne==1) $part2ligne[1] = $part2ligne[0]."#".$part2ligne[1];
 		if($part2ligne[0]=="Q") $part2ligne[1] = $part2ligne[1]."#".$part2ligne[2];
 		
-		$message = "<table id=\"Edition\"><form method=\"POST\" action=\"./DSNew.php?action=41&ligne=$num2ligne&TAG=$TAG\">";
+		$message = "<table id=\"Edition\"><form method=\"POST\" action=\"./DSNew.php?action=41&ligne=$num2ligne&TAG=$TAG&page=$pageaafficher\">";
 		$message .= "<tr><td bgcolor=\"white\"><textarea cols=\"110\" rows=\"5\" name=\"Champs\" id=\"Champs\">$part2ligne[1]</textarea></td><td>";
 		$message .= "$icone<br>$Deroulant_image<br>$h2<hr><input type=\"submit\"><input type=\"hidden\" id=\"tipe\" value=\"$part2ligne[0]\"></td><tr></form></table>";
 		
@@ -296,19 +297,19 @@
 		undo_modif($chemin_du_sujet);
 	}
 	
-	$pageaafficher = $_GET[page];
+	
 	$i=0;
-	$quest=0;
+	$quest=0; $quest_page=0;
 	$page=0;
 	$fp = fopen($chemin_du_sujet, "r");
 	$ligne = fgets($fp);
 	$i++;
 	$part = explode("#", $ligne);
-	$sur = 0;
+	$sur = 0; $sur_page=0;
 	if($i==$num2ligne) echo($message);
 	$vu_eleve = "</td><td><a href=\"./devoir.php?name=_Sujets/$TAG&file=./files/$classe/_Copies/_Sujets/$TAG\" target=\"_blank\"><img src=\"./icon/sujet_mod.png\" height=\"40px\" title=\"Vu candidat\"/></a>";
 	// Première Ligne avec le Titre
-	ligne($i,"X","<a href=\"./DSZone.php\"><img src=\"./icon/home.png\" height=\"20px\" title=\"Home\"/></a></td><td width=\"30px\"><a href=\"./DSNew.php?TAG=$TAG&action=101\"><img src=\"./icon/reload.png\" height=\"20px\" title=\"Annuler la derni&egrave;re modification\"/></a></td><td><font size=\"+3\">$TAG $part[0]</font>$vu_eleve",$part[1],$quest,$page,$TAG,$pageaafficher);
+	ligne($i,"X","<a href=\"./DSZone.php\"><img src=\"./icon/home.png\" height=\"20px\" title=\"Home\"/></a></td><td width=\"30px\"><a href=\"./DSNew.php?TAG=$TAG&action=101&page=$pageaafficher\"><img src=\"./icon/reload.png\" height=\"20px\" title=\"Annuler la derni&egrave;re modification\"/></a></td><td><font size=\"+3\">$TAG $part[0]</font>$vu_eleve",$part[1],$quest,$page,$TAG,$pageaafficher);
 	if($i==$num2ligne-1) echo($message);
 	
 	if($racourcie) echo($racourcie);
@@ -322,12 +323,17 @@
 		}
 		if($part[0]=="L") $page++;
 		if($pageaafficher==$page) {
+			if($part[0]=="Q") {
+				$quest_page++;
+				$sur_page = $sur_page + $part[2];
+			}
 			if(in_array($part[0],$lettres)) {
 				ligne($i,$part[0],$part[1],$part[2],$quest,$page,$TAG,$pageaafficher);
-				if($i==$num2ligne-1) echo($message);//informations et edition
 			}
 		}
-		if(($part[0]=="L")&&($pageaafficher==$page-1)) ligne($i,$part[0],$part[1],$part[2],$quest,$page,$TAG,$pageaafficher);
+		if($i==$num2ligne-1) echo($message);//informations et edition
+
+		if(($part[0]=="L")&&($pageaafficher==$page-1)) ligne($i,$part[0],$part[1],$part[2],$quest,$page,$TAG,$pageaafficher);//dernière ligne avec numèro de page
 	}
 	fclose($fp);
 	
@@ -343,13 +349,20 @@
 	else $bas2page .= "<td><a href=\"DSNew.php?TAG=$TAG&page=$i\">Page $numero2page</a></td>";
 	$bas2page .= "</tr></table>";
 	echo($bas2page);
+
+	$pageaafficher++; //Pour afficher plus loin
 ?>
 
 <!-- Partie à droite -->
 </td><td valign="top" width="210px">
-<b>Images disponibles</b><br>
-Maxi 750 px<hr>
+<b>Document</b><br>
+Nb de questions : <?php echo($quest); ?><br>
 Nb de points : <?php echo($sur); ?><hr>
+<b>Page <?php echo($pageaafficher); ?></b><br>
+Nb de questions : <?php echo($quest_page); ?><br>
+Nb de points : <?php echo($sur_page); ?><hr>
+<b>Images disponibles</b><br>
+(Largeur Max 750 px)<hr>
 <form name="envoie fichier" enctype="multipart/form-data" method="post" action="DSNew.php">
 <input name="td" type="hidden" value="<?php echo($TAG);?>">
 <input name="action" type="hidden" value="100">

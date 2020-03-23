@@ -3,12 +3,29 @@
 	include("./clef_prof.php");//fourni $Cleprof (C'est le prof) ------
 	
 	$nom2eleve = $_GET[name];
-	$titre_copie = $_COOKIE["elv"];
+	$titre_copie = $_COOKIE["elv"]; 
 	$sujet2DS = $_GET[file];
 	$repertoire_rep = "./files/$classe/_Copies/$nom2eleve/rep";	
 	
+	function lecture_DS_pour_image($numero2question, $sujet2DS) {
+		if(file_exists($sujet2DS)) {//Pour récupérer le titre court 24 fevrier 2017
+			$i=0;
+			$image = "./icon/interro.png";
+			$fp = fopen($sujet2DS, "r");
+			while(!feof($fp)) {
+				$ligne1 = fgets($fp);
+				$part = explode("#", $ligne1);
+				if($part[0]=="Q") $i++;
+				if(($numero2question==$i)&&($part[0]=="I")) $image = $part[1];
+			}
+			fclose($fp);
+		}
+		else $image ="pas de fichier $sujet2DS";
+		return $image;
+	}
 	
-	if(file_exists($sujet2DS)) {//Pour récupérer le titre cours 24 fevrier 2017
+	
+	if(file_exists($sujet2DS)) {//Pour récupérer le titre court 24 fevrier 2017
 		$fp = fopen($sujet2DS, "r");
 		$ligne1 = fgets($fp);
 		$part = explode("#", $ligne1);
@@ -115,15 +132,11 @@
 	function affiche_image($image,$size,$type){
 		//3 mars 2017
 		$nosize = 0;
-		if($size+1<10) $size = 700;//Si pas de taille, alors largeur 700
-		if($size<700) $nosize = 1;//Si plus petit que 700, je mets pas de taille
-		else $size=700;//Si plus grand je mets 700px
+		if($size+1==1) $size = 700;//Si pas de taille, alors largeur 700
+		if($size>700) $size=700;//Si plus grand je mets 700px
 		$ext = explode(".", $image);
-		//if($ext[count($ext)-1]=="svg") $nosize = 1;
-		
-		//if($nosize) $text = "<img src=\"$image\">";
-		//else 
-		$text = "<img src=\"$image\" width=\"$size px\">";
+		if($size==700) $text = "<img src=\"$image\" width=\"$size px\" id=\"2020\">";
+		else $text = "<img src=\"$image\">";
 		if($type) echo("<table><tr><td><a href=\"$image\">$text</a></td></tr></table>");
 		else echo("<table class=\"reponse\"><tr><td><a href=\"$image\">$text</a></td></tr></table>");
 	}
@@ -146,6 +159,8 @@
 		$part = explode("-", $titre);
 		fclose($fpDS);
 	}
+	
+	if($nom2eleve=="Professeur") $nom2eleve = "Correction";
 ?>
 
 <html>
@@ -221,10 +236,12 @@
 			
 			//Réponse sour la forme d'une image
 			if($part[0]=="I") {
-				if(!file_exists("$repertoire_rep/I$i.txt")){// Pas encore de réponse
-					$image_link = "./icon/interro.png";
-					$dimensions = getimagesize($image_link);
-					affiche_image($image_link,$dimensions[0],1);
+				if(!file_exists("$repertoire_rep/I$i.txt")){// Pas encore de réponse image
+					$image_link = lecture_DS_pour_image($i, $sujet2DS);
+					//if(!$image_link) $image_link = "./icon/interro.png";
+					//$dimensions = getimagesize($image_link);
+					echo("<!-- $image_link -->");
+					affiche_image($image_link,10,1);//100<700 pour ne pas mettre width=700
 				}else 
 				{
 					$filetexte16 = fopen("$repertoire_rep/I$i.txt", "r");

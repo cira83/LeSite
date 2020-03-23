@@ -73,7 +73,7 @@
 	
 	<body onload="tailledelafenetre();">
 	<center>
-	<table class="max"><tr><td>	
+	<table class="max"><tr><td valign="top">	
 		<table>
 		<tr>
 			<td><a href="./index.php" title="Appel"><img src="./icon/home.png" height="15px" style="border:solid 4px #fff"></a></td>

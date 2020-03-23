@@ -305,7 +305,7 @@
 			$info_session = "($nb2sessions)";
 			if($nb2sessions) $info_session = "<a href=\"$repertoire_DS$nom17/rep/sessions.txt\">($nb2sessions)</a>";
 			$efface = "<a href=\"./DSZone.php?action=111&nom=$nom17&td=$titre_sujet\" color=\"red\"><img src=\"./icon/effacer.jpg\" height=\"15px\" align=\"bottom\"></a>";
-			echo("<td $classetd><b><u>$nom17</u></b><br/>$titre_sujet<br/><a href=\"./copie2DS.php?name=$nom17&file=$nomsujet2DS\" target=\"_blank\"><img src=\"$photo\" height=\"100px\"></a><br/>$info_session $bouton $efface</a></td>");
+			echo("<td $classetd><b><u>$nom17</u></b><br/>$titre_sujet<br/><a href=\"./copie2DS.php?name=$nom17&file=$nomsujet2DS\" target=\"_blank\"><img src=\"$photo\" height=\"100px\"></a>$info_session $bouton $efface</a></td>");
 			$Nom_et_sujet[$k] = "$nom17:$titre_sujet:"; $k++; //La liste de nom et du sujet associé
 			if($i==7){
 				echo("</tr><tr>");
