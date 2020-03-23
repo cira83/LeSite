@@ -121,8 +121,10 @@ td.C100 {
 }
 
 a {
-	color: #011892;
+	color: blue;
 	font-family: Georgia, "Times New Roman", Times, serif;
+	text-decoration: none;
+	font-variant: small-caps;
 }
 
 
