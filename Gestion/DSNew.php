@@ -3,7 +3,8 @@
 	if($action==1) $TAG = $_POST[TAG];//nouveau sujet
 	else $TAG = $_POST[td];//edition sujet
 	$num2ligne = $_GET[ligne];
-	$champs = $_POST[Champs];
+	
+	$champs = $_POST[Champs]; //$champs = str_replace("%", "p0ur100", $champs);
 	
 	if(!$action) $action = $_GET[action];
 	if(!$TAG) $TAG = $_GET[TAG];
@@ -18,6 +19,18 @@
 
 	include("./haut_DS.php");
 	
+	function add_event($events) {
+		$filename = "./files/_enventDS.txt";
+		$fp = fopen($filename, "a");
+		fwrite($fp, "$events\n");
+		fclose($fp);
+	}
+	
+	function affiche_comment($comment) {
+		echo("<!-- $comment -->");
+	}
+	
+
 ?>
 <script>
 		
@@ -78,26 +91,29 @@
 		$U = "<a href=\"./DSNew.php?action=53&ligne=$numero&TAG=$TAG&page=$pageaafficher\" title=\"R&eacute;ponse longue\"><img src=\"icon/Ligne.gif\"/></a>";
 		$I = "<a href=\"./DSNew.php?action=54&ligne=$numero&TAG=$TAG&page=$pageaafficher\" title=\"R&eacute;ponse image\"><img src=\"icon/I_vert.gif\"/></a>";
 		$L = "<a href=\"./DSNew.php?action=6&ligne=$numero&TAG=$TAG&page=$pageaafficher\" title=\"Saut de page\"><img src=\"icon/Page.gif\"/></a>";
-		$BR = "<br>";
+		$BR = "";//plus besoin, style image changé en Block
 		$HR = "<hr>";
+		$bgcolor = "bgcolor=\"#e0e0e0\"";// Tableau = #c0c0c0
 		switch($code) {
 			case "C": 
-				echo("<table><tr><td align=\"left\">$contenu</td><td width=\"10px\"><img src=\"icon/C_vert.gif\" title=\"Commentaire\"/>$HR$SUP$BR$Mod$BR$C$BR$Q$BR$L</td><tr></table>");
+				echo("<table><tr><td align=\"left\"><i>$contenu</i></td><td width=\"10px\"><img src=\"icon/C_vert.gif\" title=\"Commentaire\"/>$HR$SUP$BR$Mod$BR$C$BR$Q$BR$L</td><tr></table>");
 				break;
 			case "Q": 
 				echo("<table><tr><td align=\"left\"><font color=\"blue\"><b>Q$quest)</b></font> $contenu</td><td width=\"10px\"><img src=\"icon/Q_vert.gif\" title=\"Question\"/>$BR$coef$HR$SUP$BR$Mod$BR$C$BR$T$BR$U$BR$I</td><tr></table>");
 				break;
 			case "T":
-				echo("<table><tr><td>Réponse texte sur une ligne</td><td width=\"10px\"><img src=\"icon/T_vert.gif\" title=\"R&eacute;ponse courte\"/>$HR$SUP$BR$C$BR$Q$BR$L</td><tr></table>");
+				echo("<table><tr><td $bgcolor>Réponse texte sur une ligne</td><td width=\"10px\"><img src=\"icon/T_vert.gif\" title=\"R&eacute;ponse courte\"/>$HR$SUP$BR$C$BR$Q$BR$L</td><tr></table>");
 				break;
 			case "U":
-				echo("<table><tr><td>Réponse sur plusieurs lignes</td><td width=\"10px\"><img src=\"icon/Ligne.gif\" title=\"R&eacute;ponse longue\"/>$HR$SUP$BR$C$BR$Q$BR$L</td><tr></table>");
+				echo("<table><tr><td $bgcolor>Réponse sur plusieurs lignes</td><td width=\"10px\"><img src=\"icon/Ligne.gif\" title=\"R&eacute;ponse longue\"/>$HR$SUP$BR$C$BR$Q$BR$L</td><tr></table>");
 				break;
 			case "I":
-				echo("<table><tr><td align=\"left\"><img src=\"$contenu\"></td><td width=\"10px\"><img src=\"icon/I_vert.gif\" title=\"R&eacute;ponse image\"/>$HR$SUP$BR$Mod$BR$C$BR$Q$BR$L</td><tr></table>");
+				echo("<table><tr><td align=\"center\" $bgcolor><img src=\"$contenu\"></td><td width=\"10px\"><img src=\"icon/I_vert.gif\" title=\"R&eacute;ponse image\"/>$HR$SUP$BR$Mod$BR$C$BR$Q$BR$L</td><tr></table>");
 				break;
 			case "L":
-				echo("<table><tr><td bgcolor=\"white\">Page $page</td><td width=\"10px\"><img src=\"icon/Page.gif\" title=\"Saut de page\"/>$HR$SUP$BR$C$BR$Q</td><tr></table>");
+				$page4link = $page-1;
+				$link4page = "<a href=\"DSNew.php?TAG=$TAG&page=$page4link\">";
+				echo("<table><tr><td bgcolor=\"white\">$link4page Page $page</a></td><td width=\"10px\"><img src=\"icon/Page.gif\" title=\"Saut de page\"/>$HR$SUP$BR$C$BR$Q</td><tr></table>");
 				break;
 			case "X": // Ligne 0
 				echo("<table><tr bgcolor=\"yellow\"><td width=\"30px\">$contenu</td><td width=\"10px\">$C$BR$Mod</td><tr></table>");
@@ -106,6 +122,7 @@
 	}
 	
 	function lecture($filename, $numero) {
+		add_event("lecture($filename, $numero)");
 		$fp = fopen($filename, "r");
 		while(!feof($fp)){
 			$ligne = fgets($fp);
@@ -118,28 +135,34 @@
 	}
 	
 	function ecriture($chemin_du_sujet, $num2ligne,$champs) {
+		add_event("ecriture($chemin_du_sujet, $num2ligne,$champs)");
 		rename($chemin_du_sujet, "$chemin_du_sujet.bak");
 		$source = fopen("$chemin_du_sujet.bak", "r");
 		$cible = fopen($chemin_du_sujet, "w");
 		$order   = array("\r\n", "\n", "\r");
 		$replace = '<br/>';
 		$champs1 = str_replace($order, $replace, $champs);// nettoie le champs à ajouter
+		$champs1 = str_replace("p0ur100","%",$champs1);
+		//$champs1 = $champs;
 		while(!feof($source)){
 			$ligne = fgets($source);
 			$i++;
 			$part = explode("#", $ligne);
 			if($num2ligne>1) {
-				if($i==$num2ligne) fprintf($cible, "$part[0]#$champs1\n");
-				else fprintf($cible, $ligne);
+				if($i==$num2ligne) {
+					fwrite($cible, "$part[0]#$champs1\n");
+				}
+				else fwrite($cible, $ligne);
 			}
 			else {
-				if($i==1) fprintf($cible, "$champs1\n");
-				else fprintf($cible, $ligne);				
+				if($i==1) fwrite($cible, "$champs1\n");
+				else fwrite($cible, $ligne);				
 			}
 		}
 	}
 	
 	function insert_ligne($chemin_du_sujet, $num2ligne,$champs) {
+		add_event("insert_ligne($chemin_du_sujet, $num2ligne,$champs)");
 		rename($chemin_du_sujet, "$chemin_du_sujet.bak");
 		$source = fopen("$chemin_du_sujet.bak", "r");
 		$cible = fopen($chemin_du_sujet, "w");
@@ -147,13 +170,14 @@
 			$ligne = fgets($source);
 			$i++;
 			$part = explode("#", $ligne);
-			if($i==$num2ligne+1) fprintf($cible, "$champs#\n");
-			fprintf($cible, $ligne);
+			if($i==$num2ligne+1) fwrite($cible, "$champs#\n");
+			fwrite($cible, $ligne);
 		}
-		if($i==$num2ligne) fprintf($cible, "\n$champs#");
+		if($i==$num2ligne) fwrite($cible, "\n$champs#");
 	}
 
 	function del_ligne($chemin_du_sujet, $num2ligne) {
+		add_event("del_ligne($chemin_du_sujet, $num2ligne)");
 		rename($chemin_du_sujet, "$chemin_du_sujet.bak");
 		$source = fopen("$chemin_du_sujet.bak", "r");
 		$cible = fopen($chemin_du_sujet, "w");
@@ -161,12 +185,13 @@
 			$ligne = fgets($source);
 			$i++;
 			$part = explode("#", $ligne);
-			if($i!=$num2ligne) fprintf($cible, $ligne);
+			if($i!=$num2ligne) fwrite($cible, $ligne);
 		}
 	}
 	
 	function undo_modif($chemin_du_sujet)
 	{
+		add_event("undo_modif($chemin_du_sujet)");
 		if(file_exists("$chemin_du_sujet.bak")) 
 			rename("$chemin_du_sujet.bak",$chemin_du_sujet);
 	}
@@ -184,8 +209,8 @@
 	$chemin_du_sujet = $repertoire_du_sujet."/index.htm";
 	if(!file_exists($chemin_du_sujet)) {
 		$fp = fopen($chemin_du_sujet, "a");
-		fprintf($fp, "$titre#$TAG\n");
-		fprintf($fp, "C#");
+		fwrite($fp, "$titre#$TAG\n");
+		fwrite($fp, "C#");
 		echo("<p>Sujet créer </p>");
 		fclose($fp);
 	}	
@@ -227,7 +252,7 @@
 		
 		$message .= "<table><tr><td>+ Lien vers <input type=\"text\" id=\"lien\"> sur texte <input type=\"text\" id=\"texte\">";
 		$message .= " <input type=\"submit\" onclick=\"addlien();\"></td><tr></table>";
-		if($part2ligne[0]=="Q") $message .= "<table><tr bgcolor=\"yellow\"><td>Mettre le nombre de points de la question derrière un #</td><tr></table>";
+		if($part2ligne[0]=="Q") $message .= "<table><tr bgcolor=\"yellow\"><td>Mettre le nombre de points de la question après le #</td><tr></table>";
 		//$message .= "<table><tr><td bgcolor=\"#0085cf\"><b>Edition ligne $num2ligne</b></td><tr></table>";
 		
 		$racourcie = "<table><tr><td bgcolor=\"#0085cf\"><b><a href=\"#Edition\">Edition ligne $num2ligne</a></b></td><tr></table>";
@@ -297,6 +322,8 @@
 		undo_modif($chemin_du_sujet);
 	}
 	
+	affiche_comment("action = $action");
+	affiche_comment("champs = $champs");
 	
 	$i=0;
 	$quest=0; $quest_page=0;
@@ -350,7 +377,9 @@
 	$bas2page .= "</tr></table>";
 	echo($bas2page);
 
+	$lien4retour = "DSNew.php?page=$pageaafficher";
 	$pageaafficher++; //Pour afficher plus loin
+	$page++;//Pour afficher plus loin
 ?>
 
 <!-- Partie à droite -->
@@ -358,16 +387,16 @@
 <b>Document</b><br>
 Nb de questions : <?php echo($quest); ?><br>
 Nb de points : <?php echo($sur); ?><hr>
-<b>Page <?php echo($pageaafficher); ?></b><br>
+<b>Page <?php echo("$pageaafficher/$page"); ?></b><br>
 Nb de questions : <?php echo($quest_page); ?><br>
 Nb de points : <?php echo($sur_page); ?><hr>
 <b>Images disponibles</b><br>
 (Largeur Max 750 px)<hr>
-<form name="envoie fichier" enctype="multipart/form-data" method="post" action="DSNew.php">
+<form name="envoie fichier" enctype="multipart/form-data" method="post" action="<?php echo($lien4retour);?>">
 <input name="td" type="hidden" value="<?php echo($TAG);?>">
 <input name="action" type="hidden" value="100">
 <input name="fichier_choisi" type="file"><br>
-<input type="submit"><br><hr>
+<input type="submit" value="Enregistrer"><br><hr>
 </form>
 <span id="images"></span>
 </td></tr></table>

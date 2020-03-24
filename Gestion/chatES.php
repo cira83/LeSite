@@ -52,7 +52,8 @@
 			$ligne2led = "";
 			$kkdoit = 0;
 			for($ii=0;$ii<$last_file;$ii++) {
-				$ligne2led.=$case_quest[$ii];
+				$title_id = $ii+1; 
+				$ligne2led.="<span title=\"$title_id\">$case_quest[$ii]</span>";
 				$kkdoit++;
 				if($kkdoit==10) {
 					$kkdoit = 0;

@@ -23,7 +23,7 @@
 	
 	
 	function est_image($image) {
-		$type_img = array("jpg","jpeg","gif","png");
+		$type_img = array("jpg","jpeg","gif","png","JPG","JPEG","GIF","PNG");
 		
 		$part = explode(".",rtrim($image));
 		$ext = $part[count($part)-1];

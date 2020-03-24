@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xl="http://www.w3.org/1999/xlink" version="1.1" viewBox="483 106 512 375" width="512pt" height="375pt" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <metadata> Produced by OmniGraffle 7.2.1 
+    <dc:date>2017-01-10 07:56:20 +0000</dc:date>
+  </metadata>
+  <defs>
+    <font-face font-family="Helvetica Neue" font-size="10" panose-1="2 0 5 3 0 0 0 2 0 4" units-per-em="1000" underline-position="-100" underline-thickness="50" slope="0" x-height="517" cap-height="714" ascent="951.9958" descent="-212.99744" font-weight="500">
+      <font-face-src>
+        <font-face-name name="HelveticaNeue"/>
+      </font-face-src>
+    </font-face>
+    <font-face font-family="Times" font-size="12" units-per-em="1000" underline-position="-75.68359" underline-thickness="49.316406" slope="0" x-height="460.9375" cap-height="675.78125" ascent="750" descent="-250" font-weight="500">
+      <font-face-src>
+        <font-face-name name="Times-Roman"/>
+      </font-face-src>
+    </font-face>
+  </defs>
+  <g stroke="none" stroke-opacity="1" stroke-dasharray="none" fill="none" fill-opacity="1">
+    <title>Canvas 1</title>
+    <rect fill="white" width="1391" height="938"/>
+    <g>
+      <title>Calque 2</title>
+      <rect x="484" y="107" width="510" height="373" fill="white"/>
+      <rect x="484" y="107" width="510" height="373" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 801.3333 272.80496 L 801.3333 367.30496 C 801.3333 378.48296 754.3333 399.55496 746.3333 380.55496 C 739 400.8883 687.3333 378.48296 687.3333 367.30496 L 687.3333 272.80496 C 687.3333 261.62696 801.3333 261.62696 801.3333 272.80496 Z" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      <path d="M 793 238.3999 L 793 353.8217 C 793 367.47447 771.496 378.55496 745 378.55496 C 718.504 378.55496 697 367.47447 697 353.8217 L 697 238.3999 C 697 224.74716 718.504 213.66667 745 213.66667 C 771.496 213.66667 793 224.74716 793 238.3999" fill="white"/>
+      <path d="M 793 238.3999 L 793 353.8217 C 793 367.47447 771.496 378.55496 745 378.55496 C 718.504 378.55496 697 367.47447 697 353.8217 L 697 238.3999 C 697 224.74716 718.504 213.66667 745 213.66667 C 771.496 213.66667 793 224.74716 793 238.3999" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      <path d="M 640.6432 289.83333 L 640.6432 301.83333 L 640.6432 313.83333" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="633.6432" y="300.89323" width="14" height="17" fill="white"/>
+      <rect x="633.6432" y="300.89323" width="14" height="17" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(638.6432 303.25323)" fill="black">
+        <tspan font-family="Helvetica Neue" font-size="10" font-weight="500" x="0" y="10" textLength="5">s</tspan>
+      </text>
+      <path d="M 553 250.04407 L 625 250.04407 L 697 250.04407" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      <path d="M 625.3333 241.66667 L 639.3333 250.16667 L 625.3333 258.66667 Z" fill="white"/>
+      <path d="M 625.3333 241.66667 L 639.3333 250.16667 L 625.3333 258.66667 Z" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 653.3333 241.66667 L 639.3333 250.16667 L 653.3333 258.66667 Z" fill="white"/>
+      <path d="M 653.3333 241.66667 L 639.3333 250.16667 L 653.3333 258.66667 Z" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 639 225.66667 L 639 237.66667 L 639 249.66667" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="631.8333" y="214.66667" width="14" height="17" fill="white"/>
+      <rect x="631.8333" y="214.66667" width="14" height="17" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(636.8333 217.02667)" fill="black">
+        <tspan font-family="Helvetica Neue" font-size="10" font-weight="500" fill="black" x="0" y="10" textLength="5">s</tspan>
+      </text>
+      <path d="M 567.3333 169.66667 L 678.8958 169.66667 L 680.9167 169.66667 L 680.9167 242.04407 L 680.9167 250.04407" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      <path d="M 624 161 L 638 169.5 L 624 178 Z" fill="white"/>
+      <path d="M 624 161 L 638 169.5 L 624 178 Z" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 652 161 L 638 169.5 L 652 178 Z" fill="white"/>
+      <path d="M 652 161 L 638 169.5 L 652 178 Z" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 637.6667 145 L 637.6667 157 L 637.6667 169" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="630.5" y="134" width="14" height="17" fill="white"/>
+      <rect x="630.5" y="134" width="14" height="17" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(635.5 136.36)" fill="black">
+        <tspan font-family="Helvetica Neue" font-size="10" font-weight="500" fill="black" x="0" y="10" textLength="5">s</tspan>
+      </text>
+      <path d="M 510 155.66667 L 570.3635 155.66667 L 600.5 169.66667 L 570.3635 183.66667 L 510 183.66667 Z" fill="white"/>
+      <path d="M 510 155.66667 L 570.3635 155.66667 L 600.5 169.66667 L 570.3635 183.66667 L 510 183.66667 Z" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(515 162.66667)" fill="black">
+        <tspan font-family="Times" font-size="12" font-weight="500" x=".17675781" y="11" textLength="43.646484">Réactif 1</tspan>
+      </text>
+      <path d="M 596.3958 289.83333 L 641.6458 289.83333 L 686.8958 289.83333" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      <path d="M 511.9531 236.71073 L 572.3166 236.71073 L 602.4531 250.71073 L 572.3166 264.71073 L 511.9531 264.71073 Z" fill="white"/>
+      <path d="M 511.9531 236.71073 L 572.3166 236.71073 L 602.4531 250.71073 L 572.3166 264.71073 L 511.9531 264.71073 Z" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(516.28646 243.04407)" fill="black">
+        <tspan font-family="Times" font-size="12" font-weight="500" x=".17675781" y="11" textLength="43.646484">Réactif 2</tspan>
+      </text>
+      <path d="M 540.33333 276.33333 L 588.7464 276.33333 L 612.9167 290.33333 L 588.7464 304.33333 L 540.33333 304.33333 Z" fill="white"/>
+      <path d="M 540.33333 276.33333 L 588.7464 276.33333 L 612.9167 290.33333 L 588.7464 304.33333 L 540.33333 304.33333 Z" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(545.28646 283.33333)" fill="black">
+        <tspan font-family="Times" font-size="12" font-weight="500" x=".0078125" y="11" textLength="8.666016">V</tspan>
+        <tspan font-family="Times" font-size="12" font-weight="500" x="7.34375" y="11" textLength="26.648438">apeur</tspan>
+      </text>
+      <path d="M 626.6432 281.33333 L 640.6432 289.83333 L 626.6432 298.33333 Z" fill="white"/>
+      <path d="M 626.6432 281.33333 L 640.6432 289.83333 L 626.6432 298.33333 Z" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 654.6432 281.33333 L 640.6432 289.83333 L 654.6432 298.33333 Z" fill="white"/>
+      <path d="M 654.6432 281.33333 L 640.6432 289.83333 L 654.6432 298.33333 Z" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 652 356.5 L 680.3229 356.5 L 708.6458 356.5" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <line x1="672" y1="413.85537" x2="717.9792" y2="382.85537" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <circle cx="647.6432" cy="357" r="15.500025" fill="white"/>
+      <circle cx="647.6432" cy="357" r="15.500025" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(637.1432 350)" fill="black">
+        <tspan font-family="Times" font-size="12" font-weight="500" x=".16992188" y="11" textLength="20.660156">TT1</tspan>
+      </text>
+      <circle cx="674.35915" cy="412.2648" r="15.500025" fill="white"/>
+      <circle cx="674.35915" cy="412.2648" r="15.500025" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(665.0521 404.46046)" fill="black">
+        <tspan font-family="Times" font-size="12" font-weight="500" x=".16992188" y="11" textLength="20.660156">TT2</tspan>
+      </text>
+      <circle cx="789.1667" cy="190.16667" r="15.500025" fill="white"/>
+      <circle cx="789.1667" cy="190.16667" r="15.500025" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 744.6667 364 L 744.1667 262.83333 L 743.6667 161.66667" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      <path d="M 713.3802 364 L 744.0469 364 L 774.7135 364" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      <circle cx="743.3802" cy="156" r="15.500025" fill="white"/>
+      <circle cx="743.3802" cy="156" r="15.500025" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(738 149)" fill="black">
+        <tspan font-family="Times" font-size="12" font-weight="500" x=".16503906" y="11" textLength="10.669922">M</tspan>
+      </text>
+      <path d="M 743.6667 190.33333 L 758.6667 190.33333 L 773.6667 190.33333" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      <text transform="translate(783.3333 182.5)" fill="black">
+        <tspan font-family="Times" font-size="12" font-weight="500" x=".16503906" y="11" textLength="10.669922">SI</tspan>
+      </text>
+      <path d="M 746.1458 380.645 L 745.8646 424.9783 L 745.8646 427.0981 L 919.8021 427.0981" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      <path d="M 877.3333 412.43145 L 937.6968 412.43145 L 967.8333 426.43145 L 937.6968 440.43145 L 877.3333 440.43145 Z" fill="white"/>
+      <path d="M 877.3333 412.43145 L 937.6968 412.43145 L 967.8333 426.43145 L 937.6968 440.43145 L 877.3333 440.43145 Z" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(885.0443 420.0981)" fill="black">
+        <tspan font-family="Times" font-size="12" font-weight="500" x=".49609375" y="11" textLength="40.007812">Produits</tspan>
+      </text>
+      <path d="M 766.3333 311.89844 L 836.8099 311.89844 L 836.8099 324.60917 L 836.8099 399.26823 L 838.9167 399.26823" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 822.8333 419 L 836.8333 427.5 L 822.8333 436 Z" fill="white"/>
+      <path d="M 822.8333 419 L 836.8333 427.5 L 822.8333 436 Z" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 850.8333 419 L 836.8333 427.5 L 850.8333 436 Z" fill="white"/>
+      <path d="M 850.8333 419 L 836.8333 427.5 L 850.8333 436 Z" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 836.5 403 L 836.5 415 L 836.5 427" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="829.3333" y="392" width="14" height="17" fill="white"/>
+      <rect x="829.3333" y="392" width="14" height="17" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(834.3333 394.36)" fill="black">
+        <tspan font-family="Helvetica Neue" font-size="10" font-weight="500" x="0" y="10" textLength="5">s</tspan>
+      </text>
+      <circle cx="835.4453" cy="311.89844" r="15.500025" fill="white"/>
+      <circle cx="835.4453" cy="311.89844" r="15.500025" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(825.5391 304.89844)" fill="black">
+        <tspan font-family="Times" font-size="12" font-weight="500" x=".33496094" y="11" textLength="19.330078">LIC</tspan>
+      </text>
+    </g>
+  </g>
+</svg>

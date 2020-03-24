@@ -171,7 +171,7 @@
 		<title><?php echo("$nom_court $nom2eleve");?></title>
 	</head>
 	<body>	
-			<table><tr><td><font size="+4"><?php echo($nom2eleve);?></font></td></tr></table>
+			<table><tr id="sommaire"><td><font size="+4"><?php echo($nom2eleve);?></font></td></tr></table>
 <?php
 	//echo("<p>$repertoire_rep</p>");
 	$sessions_file_name = "$repertoire_rep/sessions.txt";	
@@ -186,7 +186,7 @@
 	}
 	
 	if(file_exists($sujet2DS)){
-		//Sommaire avec toutes les questions
+		//------------------------------------------------------------------------------  Sommaire avec toutes les questions
 		$fp = fopen($sujet2DS, "r");
 		$ligne = fgets($fp);
 		$i=0;
@@ -195,7 +195,7 @@
 			$part = explode("#", $ligne);
 			if($part[0]=="Q") {//Question
 				$i++;
-				if($i==1) $sommaire_td = "<a href=\"#Q$i\"><font size=\"-1\">Q$i</font></a>";
+				if($i==1) $sommaire_td = "<a href=\"#Q$i\" ><font size=\"-1\">Q$i</font></a>";
 				else $sommaire_td .= "</td><td><a href=\"#Q$i\"><font size=\"-1\">Q$i</font></a>";
 			}
 		}
@@ -231,7 +231,8 @@
 					
 					$_SESSION[points] = $_SESSION[points] + $part[2];
 				}
-				ligne2tableau("<p class=\"question\" id=\"Q$i\" ><font color=\"#0000FF\">\n<b>Q$i : </b></font>$part[1]</p> $bareme");
+				//ligne2tableau("<p class=\"question\" id=\"Q$i\" ><font color=\"#0000FF\">\n<b>Q$i : </b></font>$part[1]</p> $bareme");
+				ligne2tableau("<a id=\"Q$i\" href=\"#sommaire\"><b>Q$i : </b></a> $part[1] $bareme");
 			}
 			
 			//Réponse sour la forme d'une image
