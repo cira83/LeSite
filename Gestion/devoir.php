@@ -14,6 +14,9 @@
 	$nb2pages = 0;
 	
 	$pagenumber = $_GET[page];//numéro de la page
+	$sujet_tag = $_GET[name];//_Sujets/$TAG
+	$touttag = explode("/", $sujet_tag);
+	$TAG = $touttag[1];
 	
 	$action = $_GET[action];
 	$rep = $_POST[rep];
@@ -242,7 +245,7 @@
 		$Message = "--> Votre réponse '$reponse' est sauvegard&eacute;e" ;
 	}
 	
-	if(!file_exists($repertoire_rep)) mkdir($repertoire_rep, 0777);//Création du répertoire réponse si non existant
+	if(!file_exists($repertoire_rep)) mkdir($repertoire_rep, 0777);//-------------------------------------------         Création du répertoire réponse si non existant
 	
 	//Gestion des sessions
 	$date_ext = date("i/G/d/m");
@@ -301,20 +304,21 @@
 		fclose($fp_2020);
 	}
 	
-	
-	
+	if($nom=="Correction") $titredudocument = "$TAG _$nom";
+	else $titredudocument = "$TAG $nom";
+	$titredudocument2 = "$TAG $nom"
 	
 ?>
 <html>
 	<head>
 		<link rel="stylesheet" type="text/css" media="screen" href="styles_sujet.css">
 		<link rel="stylesheet" type="text/css" href="print.css" media="print">
-		<title><?php echo($nom);?></title>
+		<title><?php echo($titredudocument);?></title>
 		<meta name="Description" content="<?php echo($numero2session);?>">
 	</head>
 	<body>
 		<center>	
-		<table><tr><td><font size="+7"><?php echo($nom);?></font></td></tr></table>
+		<table><tr><td><font size="+7"><?php echo($titredudocument2);?></font></td></tr></table>
 
 <?php
 	//Dans le fichier sujet.txt qui est dans le répertoire de l'élève
@@ -336,7 +340,7 @@
 		$fp = fopen($filename, "r");
 		$titre = fgets($fp);
 		$code_rep = explode("#", $titre);
-		echo("<table><tr><td><h1>$code_rep[1] $code_rep[0]</h1></td><td><div class=\"bulles\">$le_bon_message</div></td></tr></table>");
+		echo("<table><tr><td><h1>$code_rep[0]</h1></td><td><div class=\"bulles\">$le_bon_message</div></td></tr></table>");
 		$i=0;
 		while(!feof($fp)){
 			$ligne = fgets($fp);
