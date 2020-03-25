@@ -25,7 +25,7 @@
 	}
 	
 	
-	if(file_exists($sujet2DS)) {//Pour récupérer le titre court 24 fevrier 2017
+	if(file_exists($sujet2DS)) {//-------------------------------------------------------                  Pour récupérer le titre court 24 fevrier 2017
 		$fp = fopen($sujet2DS, "r");
 		$ligne1 = fgets($fp);
 		$part = explode("#", $ligne1);
@@ -35,7 +35,7 @@
 	
 	
 	
-	$sujet = $_GET[file2];//Pour le professeur uniquement 18 fevrier 2017
+	$sujet = $_GET[file2];//-------------------------------------------------------------                  Pour le professeur uniquement 18 fevrier 2017
 	if($sujet&&$Cleprof) {
 		$repertoire_rep = "$sujet/rep212";//pour éviter la fraude
 		$_SESSION[sujet2DS]=$sujet;
@@ -160,7 +160,12 @@
 		fclose($fpDS);
 	}
 	
-	if($nom2eleve=="Professeur") $nom2eleve = "Correction";
+	$nom2eleveimp = $nom2eleve;
+	if($nom2eleve=="Professeur") {
+		$nom2eleve = "Correction";
+		$nom2eleveimp = "_Correction";
+	}
+	
 ?>
 
 <html>
@@ -168,10 +173,10 @@
 		<link rel="stylesheet" type="text/css" media="screen" href="styles_sujet.css">
 		<link rel="stylesheet" type="text/css" href="print.css" media="print">
 		<script type="text/javascript" src="./script.js"></script>
-		<title><?php echo("$nom_court $nom2eleve");?></title>
+		<title><?php echo("$nom_court $nom2eleveimp");?></title>
 	</head>
 	<body>	
-			<table><tr id="sommaire"><td><font size="+4"><?php echo($nom2eleve);?></font></td></tr></table>
+			<table><tr id="sommaire"><td><font size="+4"><?php echo("$nom_court $nom2eleve");?></font></td></tr></table>
 <?php
 	//echo("<p>$repertoire_rep</p>");
 	$sessions_file_name = "$repertoire_rep/sessions.txt";	
@@ -206,7 +211,7 @@
 		$fp = fopen($sujet2DS, "r");
 		$ligne = fgets($fp);
 		$part = explode("#", $ligne);
-		echo("<h1>$part[1] $part[0]</h1>");
+		echo("<h1>$part[0]</h1>");
 		//if($flag2017>1) echo("<center><p><font size=\"-1\">$flag2017</font></p></center>");//Nombre de sessions ouvertes
 		$_SESSION[points]=0;
 		$i=0;

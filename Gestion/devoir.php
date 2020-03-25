@@ -304,9 +304,7 @@
 		fclose($fp_2020);
 	}
 	
-	if($nom=="Correction") $titredudocument = "$TAG _$nom";
-	else $titredudocument = "$TAG $nom";
-	$titredudocument2 = "$TAG $nom"
+	$titredudocument = "$TAG $nom";
 	
 ?>
 <html>
@@ -318,7 +316,7 @@
 	</head>
 	<body>
 		<center>	
-		<table><tr><td><font size="+7"><?php echo($titredudocument2);?></font></td></tr></table>
+		<table><tr><td><font size="+7"><?php echo($titredudocument);?></font></td></tr></table>
 
 <?php
 	//Dans le fichier sujet.txt qui est dans le répertoire de l'élève

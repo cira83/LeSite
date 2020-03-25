@@ -133,7 +133,7 @@
 		$fp = fopen($sujet2DS, "r");
 		$titre_complet = fgets($fp);
 		$part = explode("#", $titre_complet);
-		$titre = $part[0];//pour enlever la référence au répertoire réponse
+		$titre = "$part[1] $part[0]";//pour enlever la référence au répertoire réponse
 		echo("<title>$titre</title>");
 	}
 ?>
