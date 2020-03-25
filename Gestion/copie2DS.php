@@ -7,6 +7,8 @@
 	$sujet2DS = $_GET[file];
 	$repertoire_rep = "./files/$classe/_Copies/$nom2eleve/rep";	
 	
+	include("./DSFonctionsPlus.php");
+
 	function lecture_DS_pour_image($numero2question, $sujet2DS) {
 		if(file_exists($sujet2DS)) {//Pour récupérer le titre court 24 fevrier 2017
 			$i=0;
@@ -192,7 +194,7 @@
 	
 	if(file_exists($sujet2DS)){
 		//------------------------------------------------------------------------------  Sommaire avec toutes les questions
-		$fp = fopen($sujet2DS, "r");
+		/*$fp = fopen($sujet2DS, "r");
 		$ligne = fgets($fp);
 		$i=0;
 		while(!feof($fp)){
@@ -200,11 +202,14 @@
 			$part = explode("#", $ligne);
 			if($part[0]=="Q") {//Question
 				$i++;
-				if($i==1) $sommaire_td = "<a href=\"#Q$i\" ><font size=\"-1\">Q$i</font></a>";
-				else $sommaire_td .= "</td><td><a href=\"#Q$i\"><font size=\"-1\">Q$i</font></a>";
+				if($i==1) $sommaire_td = "<a href=\"#Q$i\" ><font size=\"-2\">Q$i</font></a>";
+				else $sommaire_td .= "</td><td><a href=\"#Q$i\"><font size=\"-2\">Q$i</font></a>";
 			}
 		}
 		fclose($fp);
+		*/
+		
+		$sommaire_td = sommaire_document($sujet2DS);
 		ligne2tableau($sommaire_td);
 		//Fin du sommaire
 		

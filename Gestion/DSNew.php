@@ -65,13 +65,13 @@
 		back = document.getElementById('Champs').value;
 		lien = document.getElementById('lien').value;
 		texte = document.getElementById('texte').value;
-		new_valeur = "<a href=\""+ lien +"\">" + texte + "</a>";
+		new_valeur = "<a href=\""+ lien +"\" target=\"_blank\" >" + texte + "</a>";
 		document.getElementById('Champs').value = back + new_valeur;
 	}
 
-	function addh2(){
+	function addh(lavaleur){
 		back = document.getElementById('Champs').value;
-		document.getElementById('Champs').value = back + "<h2>TITRE</h2>";
+		document.getElementById('Champs').value = back + "<h"+lavaleur+">TITRE</h"+lavaleur+">";
 	}
 
 </script>
@@ -99,7 +99,7 @@
 				echo("<table><tr><td align=\"left\"><i>$contenu</i></td><td width=\"10px\"><img src=\"icon/C_vert.gif\" title=\"Commentaire\"/>$HR$SUP$BR$Mod$BR$C$BR$Q$BR$L</td><tr></table>");
 				break;
 			case "Q": 
-				echo("<table><tr><td align=\"left\"><font color=\"blue\"><b>Q$quest)</b></font> $contenu</td><td width=\"10px\"><img src=\"icon/Q_vert.gif\" title=\"Question\"/>$BR$coef$HR$SUP$BR$Mod$BR$C$BR$T$BR$U$BR$I</td><tr></table>");
+				echo("<table><tr><td align=\"left\"><font color=\"blue\"><b>Q$quest)</b></font> $contenu</td><td width=\"10px\"><img src=\"icon/Q_vert.gif\" title=\"Question\"/><br>$coef$HR$SUP$BR$Mod$BR$C$BR$T$BR$U$BR$I</td><tr></table>");
 				break;
 			case "T":
 				echo("<table><tr><td $bgcolor>Réponse texte sur une ligne</td><td width=\"10px\"><img src=\"icon/T_vert.gif\" title=\"R&eacute;ponse courte\"/>$HR$SUP$BR$C$BR$Q$BR$L</td><tr></table>");
@@ -108,7 +108,10 @@
 				echo("<table><tr><td $bgcolor>Réponse sur plusieurs lignes</td><td width=\"10px\"><img src=\"icon/Ligne.gif\" title=\"R&eacute;ponse longue\"/>$HR$SUP$BR$C$BR$Q$BR$L</td><tr></table>");
 				break;
 			case "I":
-				echo("<table><tr><td align=\"center\" $bgcolor><img src=\"$contenu\"></td><td width=\"10px\"><img src=\"icon/I_vert.gif\" title=\"R&eacute;ponse image\"/>$HR$SUP$BR$Mod$BR$C$BR$Q$BR$L</td><tr></table>");
+				if($contenu=="\n") $amettre = "Réponse image png, jpg ou gif.";
+				else $amettre = "<img src=\"$contenu\">";
+				//$amettre = "Réponse image png, jpg ou gif.";
+				echo("<table><tr><td align=\"center\" $bgcolor>$amettre</td><td width=\"10px\"><img src=\"icon/I_vert.gif\" title=\"R&eacute;ponse image\"/>$HR$SUP$BR$Mod$BR$C$BR$Q$BR$L</td><tr></table>");
 				break;
 			case "L":
 				$page4link = $page-1;
@@ -242,17 +245,18 @@
 		$contenu = lecture($chemin_du_sujet, $num2ligne);
 		$part2ligne = explode("#", $contenu);
 		$icone = icone4lettre($part2ligne[0]);
-		$h2 = "<input type=\"button\"value=\"+ Titre\" onclick=\"addh2();\"> ";
-		if($num2ligne==1) $part2ligne[1] = $part2ligne[0]."#".$part2ligne[1];
+		$h2 = "<input type=\"button\"value=\"+ Titre 2\" onclick=\"addh(2);\"> ";
+		$h3 = "<input type=\"button\"value=\"+ Titre 3\" onclick=\"addh(3);\"> ";
+		if($num2ligne==1) $part2ligne[1] = $part2ligne[0]."#".$part2ligne[1]."#".$part2ligne[2];
 		if($part2ligne[0]=="Q") $part2ligne[1] = $part2ligne[1]."#".$part2ligne[2];
 		
 		$message = "<table id=\"Edition\"><form method=\"POST\" action=\"./DSNew.php?action=41&ligne=$num2ligne&TAG=$TAG&page=$pageaafficher\">";
 		$message .= "<tr><td bgcolor=\"white\"><textarea cols=\"110\" rows=\"5\" name=\"Champs\" id=\"Champs\">$part2ligne[1]</textarea></td><td>";
-		$message .= "$icone<br>$Deroulant_image<br>$h2<hr><input type=\"submit\"><input type=\"hidden\" id=\"tipe\" value=\"$part2ligne[0]\"></td><tr></form></table>";
+		$message .= "$icone<br>$Deroulant_image<br>$h2<br>$h3<hr><input type=\"submit\"><input type=\"hidden\" id=\"tipe\" value=\"$part2ligne[0]\"></td><tr></form></table>";
 		
-		$message .= "<table><tr><td>+ Lien vers <input type=\"text\" id=\"lien\"> sur texte <input type=\"text\" id=\"texte\">";
-		$message .= " <input type=\"submit\" onclick=\"addlien();\"></td><tr></table>";
-		if($part2ligne[0]=="Q") $message .= "<table><tr bgcolor=\"yellow\"><td>Mettre le nombre de points de la question après le #</td><tr></table>";
+		$message .= "<table><tr><td>Lien vers <input type=\"text\" id=\"lien\" size=\"70px\"> sur texte <input type=\"text\" id=\"texte\">";
+		$message .= " <input type=\"submit\" onclick=\"addlien();\" value=\"+ Lien\"></td><tr></table>";
+		if($part2ligne[0]=="Q") $message .= "<table><tr bgcolor=\"yellow\"><td>Mettre le nombre de points de la question après le # (séparateur décimal = .)</td><tr></table>";
 		//$message .= "<table><tr><td bgcolor=\"#0085cf\"><b>Edition ligne $num2ligne</b></td><tr></table>";
 		
 		$racourcie = "<table><tr><td bgcolor=\"#0085cf\"><b><a href=\"#Edition\">Edition ligne $num2ligne</a></b></td><tr></table>";
@@ -299,13 +303,19 @@
 			$poidsFichier = $_FILES["fichier_choisi"]["size"] ;
 			//code de l'erreur si jamais il y en a une:
 			$codeErreur = $_FILES["fichier_choisi"]["error"] ;
-		
+			
+			if(!file_exists($repertoire_Images)) {
+				mkdir($repertoire_Images);
+				$message .= "<table><tr><td>Répertoire image créé.</td><tr></table>";
+			}
+			
 			if(est_image($nomFichier)) {
 				if(copy($nomTemporaire, $repertoire_Images.$nomFichier)){
 					chmod("$repertoire_Images$nomFichier",0777);
 					$extension = substr(strrchr($nomFichier, '.'), 1);
 					$LDIMAGE = scandir($repertoire_Images);
 					$nbimageplus1 = count($LDIMAGE) - 2;
+					if($nbimageplus1<10) $nbimageplus1 = "0$nbimageplus1";//pour commencer par 01, 02 .....
 					$nomFichier_propre = "$nbimageplus1.$extension";
 					rename("$repertoire_Images$nomFichier", "$repertoire_Images$nomFichier_propre");
 					$message .= "<table><tr><td>Votre fichier <font color=\"blue\">$nomFichier</font> est sauvegardé.</td><tr></table>" ;

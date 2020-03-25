@@ -270,17 +270,33 @@
 		}
 	}
 		
-	//Le nombre de question
+	//----------------------------------------------------------------------------         BULLE JAUNE
 	if(file_exists("$repertoire/index.htm")) {
+		$script_name = $_SERVER['SCRIPT_NAME'];
+		$part3 = explode("/", $script_name);
+		$script_name = $part3[count($part3)-1];
+		//$script_name .= "&name=$sujet_tag";
+		$script_name .= "?file=$sujet";
+		
+		
+		echo("<!-- $script_name -->");
+		
 		$fp_2020 = fopen("$repertoire/index.htm", "r");
+		$pagei = 1;
+		$walli = 0;
 		while(!feof($fp_2020)){
 			$ligne = fgets($fp_2020);
 			$part = explode("#", $ligne);
 			if($part[0]=="Q") {
+				$numerodepage[$walli]=$pagei;
 				$walli++;
 			}
+			if($part[0]=="L") $pagei++;
 		}
-		for($wall=0;$wall<$walli;$wall++) $bulle[$wall]=$non_fait;//Par défaut les questions n'ont pas de réponse
+		for($wall=0;$wall<$walli;$wall++) {
+			$numerodelaquestion = $wall+1;
+			$bulle[$wall]="<a href=\"$script_name&page=$numerodepage[$wall]#Q$numerodelaquestion\" title=\"Q$numerodelaquestion\"><font color=\"black\">$non_fait</font></a>";//Par défaut les questions n'ont pas de réponse
+		}
 
 		//Liste des réponses
 		$liste_fichier = scandir($repertoire_rep);
@@ -288,7 +304,8 @@
 			if(strpos("_$reponse", "I")) {
 				$part1 = explode("I", $reponse);
 				$part2 = explode(".", $part1[1]);
-				$bulle[$part2[0]-1]=$fait;
+				//$bulle[$part2[0]-1]=$fait;
+				$bulle[$part2[0]-1] = str_replace($non_fait, $fait, $bulle[$part2[0]-1]);
 			}
 		}
 		
@@ -359,7 +376,7 @@
 					$i++;
 					$bareme = "";
 					if($part[2]) $bareme = "</td><td class=\"pt\">$part[2]";
-					echo("<table><tr><td align=\"left\">\n<font color=\"#0000FF\">Q$i :</font> $part[1] $bareme</td></tr></table>");
+					echo("<table id=\"Q$i\"><tr><td align=\"left\">\n<font color=\"#0000FF\">Q$i :</font> $part[1] $bareme</td></tr></table>");
 				}
 				
 				
