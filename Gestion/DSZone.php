@@ -98,7 +98,7 @@
 		return $nb;
 	}
 	
-	// FIN DES FONCTIONS SPECIFIQUES ___________________________________________________________________________________________________________
+	//  ___________________________________________________________________________________________________________      FIN DES FONCTIONS SPECIFIQUES
 	
 	if($action=="OnOff"){
 		$name17 = $_GET[name];
@@ -138,7 +138,7 @@
 	
 	
 	
-	if($action==30){//Efface les sujets
+	if($action==30){//-----------------------------------------------------------------------------------------     Efface les sujets
 		$poubelle = "./files/$classe/_Copies/_Poubelle";
 		if(!file_exists($poubelle)) {
 			mkdir($poubelle);
@@ -162,7 +162,7 @@
 		echo("</form>");
 	}
 	
-	if($action==111){//Efface les réponses de nom111 et le sujet - demande de confirmation
+	if($action==111){//----------------------------------------------------------------------------------------    Efface les réponses de nom111 et le sujet - demande de confirmation
 		$nom111 = $_GET[nom];
 		$td111 = $_GET[td];
 		echo("<form method=\"post\" action=\"DSZone.php?action=110&nom=$nom111&td=$td111\">");
@@ -171,7 +171,7 @@
 		echo("</form>");
 	}	
 
-	if($action==110){//Efface les réponses de nom111 et le sujet
+	if($action==110){//-------------------------------------------------------------------------------------------------     Déplace les réponses de nom111 et le sujet dans rep/$TAG
 		$nom111 = $_GET[nom];
 		$td111 = $_GET[td];
 		$dossier_rep = "./files/$classe/_Copies/$nom111/rep/";
@@ -224,7 +224,7 @@
 
 
 
-	if($action==32){//Efface les réponses
+	if($action==32){//----------------------------------------------------------------------------------------------          Efface les réponses
 		$repertoireDcopies = "./files/$classe/_Copies";
 		$listeDrepondants = scandir($repertoireDcopies);
 		$poubelle = "./files/$classe/_Copies/_Poubelle";
@@ -280,7 +280,7 @@
 	
 	
 	
-	// ------------------------------------------------------------------------------   LES COPIES
+	// -----------------------------------------------------------------------------------------------------------------------------   LES COPIES
 	titre_tab("<a href=\"./DSZone.php\"><img src=\"./icon/reload.png\" height=\"20px\"/></a> Les copies");  
 	$i=0;
 	echo("<table><tr>");
@@ -305,7 +305,7 @@
 			$info_session = "($nb2sessions)";
 			if($nb2sessions) $info_session = "<a href=\"$repertoire_DS$nom17/rep/sessions.txt\">($nb2sessions)</a>";
 			$efface = "<a href=\"./DSZone.php?action=111&nom=$nom17&td=$titre_sujet\" color=\"red\"><img src=\"./icon/effacer.jpg\" height=\"15px\" align=\"bottom\"></a>";
-			echo("<td $classetd><b><u>$nom17</u></b><br/>$titre_sujet<br/><a href=\"./copie2DS.php?name=$nom17&file=$nomsujet2DS\" target=\"_blank\"><img src=\"$photo\" height=\"100px\"></a>$info_session $bouton $efface</a></td>");
+			echo("<td $classetd><b><u>$nom17</u></b><br/>$titre_sujet<br/><a href=\"./copie2DS.php?name=$nom17&file=$nomsujet2DS\" target=\"_blank\"><img src=\"$photo\" height=\"100px\"></a><br>$info_session $bouton $efface</a></td>");
 			$Nom_et_sujet[$k] = "$nom17:$titre_sujet:"; $k++; //La liste de nom et du sujet associé
 			if($i==7){
 				echo("</tr><tr>");
@@ -316,7 +316,7 @@
 	}
 	echo("</tr></table>");
 	
-	titre_tab("Les sujets");//----------------------------------------------------    LES SUJETS
+	titre_tab("Les sujets");//---------------------------------------------------------------------------------------------------------    LES SUJETS
 	echo("<!-- LES SUJETS -->");
 	echo("<table><tr><td>");
 	$lessujets = scandir($repertoire_Sujets);
@@ -344,7 +344,7 @@
 	$menu_td .= "</select>";
 	
 	
-	//Création du menu pour la liste des répertoires
+	//----------------------------------------------------------------------------------------------------------------------            Création du menu pour la liste des répertoires
 	$repertoireDcopies = "./files/$classe/_Copies";
 	$listeDrepondants = scandir($repertoireDcopies); //echo(count($listeDrepondants));
 	$menu_nom = "<select name=\"nom\">";
@@ -371,8 +371,8 @@
 
 <?php
 	titre_tab("Création");
+	//--------------------------------------------------------------------------------------------------------------------                NOUVEAU SUJET          
 ?>
-<!--                                                           NOUVEAU SUJET -->
 <table><tr>
 <form method="post" action="DSNew.php">
 <td>
@@ -392,23 +392,6 @@ TAG du sujet : <?php echo($menu_td);?></td><td>
 <input name="bouton" value="Editer" type="submit">
 </td></tr>
 </table>
-
-
-<!-- Action sur les fichiers supprimé le 21/03/2020
-<table><tr>
-<td>
-	<form method="post" action="DSZone.php?action=30">
-		<input name="bouton" value="Effacer les sujets (pas les r&eacute;ponses)" type="submit">
-	</form>
-</td>
-<td>
-	<form method="post" action="DSZone.php?action=31">
-		<input name="bouton" value="Effacer les r&eacute;ponses (pas les sujets)" type="submit">
-	</form>
-</td>
-</tr></table>
--->
-
 
 <?php
 	//----------------------------------------------------    LES REPONSES
