@@ -176,7 +176,8 @@
 				}
 			}
 			if($part[0]=="L") {//Saut de page
-			
+				$numero2page++;
+				ligne2tableau("</td><td align=\"center\" bgcolor=\"white\">Page $numero2page</td><td>");
 				if($part[1]!="N") {//L#N# Pas de saut pour le sujet
 					echo("<div class=\"breakafter\"></div>\n");
 					echo("\n<p></p>");
@@ -188,6 +189,8 @@
 		echo("Pas de fichier  $sujet2DS !!");
 	}
 	$nb_points = $_SESSION[points];
-
+	$numero2page++;
+	ligne2tableau("</td><td align=\"center\" bgcolor=\"white\">Page $numero2page</td><td>");
+	
 	if($_GET[calc])  echo("<script type=\"text/javascript\">message(\"$nb_points\");</script>");
 ?>

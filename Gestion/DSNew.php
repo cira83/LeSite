@@ -85,7 +85,7 @@
 	function ligne($numero,$code,$contenu,$coef,$quest,$page,$TAG,$pageaafficher) {
 		$SUP = "<a href=\"./DSNew.php?action=3&ligne=$numero&TAG=$TAG&page=$pageaafficher\" title=\"Supprimer\"><img src=\"icon/Moins.gif\"/></a>";
 		$C = "<a href=\"./DSNew.php?action=5&ligne=$numero&TAG=$TAG&page=$pageaafficher\" title=\"Commentaire\"><img src=\"icon/C_vert.gif\"/></a>";
-		$Mod = "<a href=\"./DSNew.php?action=4&ligne=$numero&TAG=$TAG&page=$pageaafficher\" title=\"Mofifier\"><img src=\"icon/Editer.gif\"/></a>";
+		$Mod = "<a href=\"./DSNew.php?action=4&ligne=$numero&TAG=$TAG&page=$pageaafficher#Q$quest\" title=\"Mofifier\"><img src=\"icon/Editer.gif\"/></a>";
 		$Q = "<a href=\"./DSNew.php?action=51&ligne=$numero&TAG=$TAG&page=$pageaafficher\" title=\"Question\"><img src=\"icon/Q_vert.gif\"/></a>";
 		$T = "<a href=\"./DSNew.php?action=52&ligne=$numero&TAG=$TAG&page=$pageaafficher\" title=\"R&eacute;ponse courte\"><img src=\"icon/T_vert.gif\"/></a>";
 		$U = "<a href=\"./DSNew.php?action=53&ligne=$numero&TAG=$TAG&page=$pageaafficher\" title=\"R&eacute;ponse longue\"><img src=\"icon/Ligne.gif\"/></a>";
@@ -99,7 +99,7 @@
 				echo("<table><tr><td align=\"left\"><i>$contenu</i></td><td width=\"10px\"><img src=\"icon/C_vert.gif\" title=\"Commentaire\"/>$HR$SUP$BR$Mod$BR$C$BR$Q$BR$L</td><tr></table>");
 				break;
 			case "Q": 
-				echo("<table><tr><td align=\"left\"><font color=\"blue\"><b>Q$quest)</b></font> $contenu</td><td width=\"10px\"><img src=\"icon/Q_vert.gif\" title=\"Question\"/><br>$coef$HR$SUP$BR$Mod$BR$C$BR$T$BR$U$BR$I</td><tr></table>");
+				echo("<table id=\"Q$quest\"><tr><td align=\"left\"><font color=\"blue\"><b>Q$quest)</b></font> $contenu</td><td width=\"10px\"><img src=\"icon/Q_vert.gif\" title=\"Question\"/><br><b>$coef</b>$HR$SUP$BR$Mod$BR$C$BR$T$BR$U$BR$I</td><tr></table>");
 				break;
 			case "T":
 				echo("<table><tr><td $bgcolor>Réponse texte sur une ligne</td><td width=\"10px\"><img src=\"icon/T_vert.gif\" title=\"R&eacute;ponse courte\"/>$HR$SUP$BR$C$BR$Q$BR$L</td><tr></table>");
@@ -259,7 +259,7 @@
 		if($part2ligne[0]=="Q") $message .= "<table><tr bgcolor=\"yellow\"><td>Mettre le nombre de points de la question après le # (séparateur décimal = .)</td><tr></table>";
 		//$message .= "<table><tr><td bgcolor=\"#0085cf\"><b>Edition ligne $num2ligne</b></td><tr></table>";
 		
-		$racourcie = "<table><tr><td bgcolor=\"#0085cf\"><b><a href=\"#Edition\">Edition ligne $num2ligne</a></b></td><tr></table>";
+		//$racourcie = "<table><tr><td bgcolor=\"#0085cf\"><b><a href=\"#Edition\">Edition ligne $num2ligne</a></b></td><tr></table>";
 	}
 
 	if($action==41) {
@@ -368,7 +368,7 @@
 				ligne($i,$part[0],$part[1],$part[2],$quest,$page,$TAG,$pageaafficher);
 			}
 		}
-		if($i==$num2ligne-1) echo($message);//informations et edition
+		if($i==$num2ligne) echo($message);//informations et edition
 
 		if(($part[0]=="L")&&($pageaafficher==$page-1)) ligne($i,$part[0],$part[1],$part[2],$quest,$page,$TAG,$pageaafficher);//dernière ligne avec numèro de page
 	}
