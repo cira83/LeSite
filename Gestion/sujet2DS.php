@@ -16,6 +16,7 @@
 		$sujet2DS = "./files/$classe/_Copies/$emplacement/index.htm";
 	}
 	
+	
 	function largeur_svg($image_link){
 		$largeur = 0;
 		$fp = fopen($image_link, "r");
@@ -95,17 +96,14 @@
 	}
 
 	function affiche_image($image,$size,$type){
-		//3 mars 2017
+		//2 mars 2017
 		$nosize = 0;
-		if($size+1<10) $size = 700;//Si pas de taille, alors largeur 700
-		if($size<700) $nosize = 1;//Si plus petit que 700, je mets pas de taille
-		else $size=700;//Si plus grand je mets 700px
+		if($size>700) $nosize = 1;
 		$ext = explode(".", $image);
-		//if($ext[count($ext)-1]=="svg") $nosize = 1;
+		if($ext[count($ext)-1]=="svg") $nosize = 1;
 		
-		//if($nosize) $text = "<img src=\"$image\">";
-		//else 
-		$text = "<img src=\"$image\" width=\"$size px\">";
+		if($nosize) $text = "<img src=\"$image\">";
+		else $text = "<img src=\"$image\" width=\"$size px\">";
 		echo("<table><tr><td><a href=\"$image\">$text</a></td></tr></table>");
 	}
 		
