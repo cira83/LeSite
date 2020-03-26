@@ -75,11 +75,12 @@
 	//Lecture du fichier et création des bulles
 	$fp = fopen($filename,"r");
 	$nb2copies = 0;
+	$ligne = fgets($fp);
 	while(!feof($fp)){
-		$ligne = fgets($fp);
 		$part = explode($separation, $ligne);
 		bulle($part[0],$part[1]);
 		$nb2copies++;
+		$ligne = fgets($fp);
 	}
 	bulle("$nb2copies copies","");
 	fclose($fp);

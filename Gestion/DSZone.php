@@ -53,9 +53,27 @@
 	
 	include("./haut_DS.php");
 	
+	function start($nom, $classe){//---------------------------------------------- passe en mode ON
+		$drap = false;
+		$repertoire = "./files/$classe/_Copies/$nom/rep";
+		if(!file_exists($repertoire)) mkdir($repertoire);
+		$fichier_on = "$repertoire/on.txt";
+		$fichier_off = "$repertoire/off.txt";
+		rename($fichier_off, $fichier_on);
+		if(!file_exists($fichier_on)) {// Création du fichier on
+			$fp = fopen($fichier_off, "w");
+			fclose($fp);
+		}
+		if(file_exists($fichier_on)) {
+			$drap = true;
+			echo("ON pour $nom<br>");
+		}
+		return $drap;
+	}
+
 	
 	//Le 11 novembre 2017
-	function start_stop($nom, $classe){//inversion mode on/off et retour de l'état
+	function start_stop($nom, $classe){//-------------------------------------------  inversion mode on/off et retour de l'état
 		$drap = false;
 		$repertoire = "./files/$classe/_Copies/$nom/rep";
 		if(!file_exists($repertoire)) mkdir($repertoire);
@@ -98,7 +116,26 @@
 		return $nb;
 	}
 	
-	//  ___________________________________________________________________________________________________________      FIN DES FONCTIONS SPECIFIQUES
+	//  ____________________________________________________________________________________________________________________________________      FIN DES FONCTIONS SPECIFIQUES
+	
+	
+	
+	//-------------------------------------------------------------         Création du menu pour la liste des répertoires
+	$repertoireDcopies = "./files/$classe/_Copies";
+	$listeDrepondants = scandir($repertoireDcopies); //echo(count($listeDrepondants));
+	$menu_nom = "<select name=\"nom\">";
+	$menu_nom .= "<option selected>Tous</option>";
+	$u=0;
+	foreach($listeDrepondants as $txt){
+		if(($txt[0]!="_")&&($txt[0]!=".")&&($txt[0]!="-")&&($txt!="rep")) {
+			$menu_nom .= "<option>$txt</option>";
+			$leleve2020[$u]=$txt;
+			$u++;
+		}
+	}
+	$menu_nom .= "</select>";
+	$u=0;
+	
 	
 	if($action=="OnOff"){
 		$name17 = $_GET[name];
@@ -109,28 +146,30 @@
 	
 	
 	
-	if($action==44){
+	if($action==44){//--------------------------------------------------------------------------------------- Distribue les sujets
 		$lebonnom = $_POST[nom];
 		$lebontd = $_POST[td];
 		$nomTemporaire = "$repertoire_Sujets/$lebontd/index.htm";
 		
 		if($lebonnom=="Tous"){
-			foreach($leleve as $txt){//Distribution du sujet à chaque élève
+			foreach($leleve2020 as $txt){//Distribution du sujet à chaque élève
 				$chemin = "./files/$classe/_Copies/$txt/index.htm";
 				if(copy($nomTemporaire, $chemin)){
-					$Message .= "Votre fichier $chemin est importé<br>" ;
+					$Message .= "Votre fichier $chemin est distribué à $txt<br>" ;
 					chmod("$chemin",0777);
 				}
 				else $Message .= "La sauvegarde vers $chemin a échouée !!<br>" ;
+				start($txt, $classe);
 			}
 		}
 		else {
 			$chemin = "./files/$classe/_Copies/$lebonnom/index.htm";
 			if(copy($nomTemporaire, $chemin)){
-				$Message .= "Votre fichier $chemin est importé<br>" ;
+				$Message .= "Votre fichier $chemin est distribué à $lebonnom<br>" ;
 				chmod("$chemin",0777);
 			}
 			else $Message .= "La sauvegarde vers $chemin a échouée !!<br>" ;
+			start($lebonnom, $classe);
 		}		
 		echo("<p>Action 44 : $Message</p>");
 	}
@@ -329,12 +368,13 @@
 			if(file_exists($filename)){
 				$fp = fopen($filename, "r");
 				$titre2ds = fgets($fp);
+				$partiesdunom = explode("#", $titre2ds);
 				fclose($fp);
 				$hauteur = "30px";
-				echo("<td><font size=\"+1\"><b>$nom01</b> - $titre2ds<font></td>");
+				echo("<td><font size=\"+1\"><b>$nom01</b> - $partiesdunom[0] - $partiesdunom[2]<font></td>");
 				echo("<td><a href=\"./devoir.php?name=_Sujets/$nom01&file=$repsujet\" target=\"_blank\" Title=\"Corriger\"><img src=\"./icon/sujet_mod.png\" height=\"$hauteur\"></a></td>");
-				echo("<td><a href=\"./copie2DS.php?name=_Sujets/$nom01&file2=$repsujet&calc=1\" target=\"_blank\" Title=\"Correction\"><img src=\"./icon/sujet.png\" height=\"$hauteur\"></a></td>");
-				echo("<td><a href=\"./sujet2DS.php?name=_Sujets/$nom01&file2=$repsujet&calc=1\" target=\"_blank\" Title=\"Sujet\"><img src=\"./icon/distrib.png\" height=\"$hauteur\"></a></td>");
+				echo("<td><a href=\"./copie2DS.php?name=_Sujets/$nom01&file2=$repsujet\" target=\"_blank\" Title=\"Correction\"><img src=\"./icon/sujet.png\" height=\"$hauteur\"></a></td>");
+				echo("<td><a href=\"./sujet2DS.php?name=_Sujets/$nom01&file2=$repsujet\" target=\"_blank\" Title=\"Sujet\"><img src=\"./icon/distrib.png\" height=\"$hauteur\"></a></td>");
 				echo("</tr><tr><td>\n");
 			}
 			
@@ -343,17 +383,6 @@
 	echo("</td></tr></table>");
 	$menu_td .= "</select>";
 	
-	
-	//----------------------------------------------------------------------------------------------------------------------            Création du menu pour la liste des répertoires
-	$repertoireDcopies = "./files/$classe/_Copies";
-	$listeDrepondants = scandir($repertoireDcopies); //echo(count($listeDrepondants));
-	$menu_nom = "<select name=\"nom\">";
-	$menu_nom .= "<option selected>Tous</option>";
-	$u=0;
-	foreach($listeDrepondants as $txt){
-		if(($txt[0]!="_")&&($txt[0]!=".")&&($txt[0]!="-")&&($txt!="rep")) $menu_nom .= "<option>$txt</option>";
-	}
-	$menu_nom .= "</select>";
 	
 	
 ?>
