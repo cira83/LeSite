@@ -19,7 +19,6 @@
 	// Appelle la fonction diminuerCompteur toutes les secondes (1000 millisecondes)
     setInterval(miseajour, 1000);
 	
-	
 	function logout(){
 		document.cookie = 'elv=';
 		document.cookie = 'password=';
@@ -47,7 +46,7 @@
 <?php
 	$classe = $_COOKIE["laclasse"]; if($classe=="") $classe="CIRA1";
 	$action44 = "./DSZone.php?action=44";
-	$action = $_GET[action];
+
 	$repertoire_Sujets = "./files/$classe/_Copies/_Sujets";
 	
 	
@@ -302,11 +301,18 @@
 		$br = "";
 		foreach($lesrepertoires as $nom17){
 			$part = explode(".", $nom17);
-			
 			if($part[1]=="txt") {
 				$link = "<a href=\"./DSZone.php?action=51&dir=$dir/$nom17\">";
-				if(strpos("_$nom17", "sessions")) $link = "<a href=\"$dir/$nom17\">";
-				$laliste .= "$br$link$nom17</a>";
+				if(strpos("_$nom17", "sessions")) {
+					$link = "<a href=\"$dir/$nom17\">";
+					$fp = fopen("$dir/$nom17", "r");
+					while(!feof($fp)) $ligne2020 = fgets($fp);
+					$part2 = explode(":", $ligne2020);
+					$part3 = explode("/", $part2[1]);
+					fclose($fp);
+					$laliste .= "$br <font color=\"green\">$part3[2]/$part3[3] $part3[1]h$part3[0]</font>";
+				}
+				else $laliste .= "$br$link$nom17</a>";
 				$br = "<br/>";
 			}
 			$bak = $part[0];
@@ -316,8 +322,6 @@
 	
 	$repertoire_DS = "./files/$classe/_Copies/";
 	$lesrepertoires = scandir($repertoire_DS);
-	
-	
 	
 	// -----------------------------------------------------------------------------------------------------------------------------   LES COPIES
 	titre_tab("<a href=\"./DSZone.php\"><img src=\"./icon/reload.png\" height=\"20px\"/></a> Les copies");  
@@ -342,9 +346,12 @@
 			else $classetd =" bgcolor=\"#FF4000\" ";
 			$nb2sessions = nb2connections($nom17, $classe);
 			$info_session = "($nb2sessions)";
+			$hauteur_photo = "60px";
 			if($nb2sessions) $info_session = "<a href=\"$repertoire_DS$nom17/rep/sessions.txt\">($nb2sessions)</a>";
 			$efface = "<a href=\"./DSZone.php?action=111&nom=$nom17&td=$titre_sujet\" color=\"red\"><img src=\"./icon/effacer.jpg\" height=\"15px\" align=\"bottom\"></a>";
-			echo("<td $classetd><b><u>$nom17</u></b><br/>$titre_sujet<br/><a href=\"./copie2DS.php?name=$nom17&file=$nomsujet2DS\" target=\"_blank\"><img src=\"$photo\" height=\"100px\"></a><br>$info_session $bouton $efface</a></td>");
+			echo("<td $classetd><b><u>$nom17</u></b><br/>");
+			echo("<font size=\"-1\">$titre_sujet</font><br/><a href=\"./copie2DS.php?name=$nom17&file=$nomsujet2DS\" target=\"_blank\"><img src=\"$photo\" height=\"$hauteur_photo\"></a>");
+			echo("<br>$info_session $bouton $efface</a></td>");
 			$Nom_et_sujet[$k] = "$nom17:$titre_sujet:"; $k++; //La liste de nom et du sujet associé
 			if($i==7){
 				echo("</tr><tr>");
@@ -354,7 +361,12 @@
 		
 	}
 	echo("</tr></table>");
-	
+?>
+
+
+
+
+<?php
 	titre_tab("Les sujets");//---------------------------------------------------------------------------------------------------------    LES SUJETS
 	echo("<!-- LES SUJETS -->");
 	echo("<table><tr><td>");
@@ -370,8 +382,8 @@
 				$titre2ds = fgets($fp);
 				$partiesdunom = explode("#", $titre2ds);
 				fclose($fp);
-				$hauteur = "30px";
-				echo("<td><font size=\"+1\"><b>$nom01</b> - $partiesdunom[0] - $partiesdunom[2]<font></td>");
+				$hauteur = "15px";
+				echo("<td><font size=\"+1\"><b>$nom01</b> - $partiesdunom[0] - <font color=\"blue\">$partiesdunom[2]</font></font></td>");
 				echo("<td><a href=\"./devoir.php?name=_Sujets/$nom01&file=$repsujet\" target=\"_blank\" Title=\"Corriger\"><img src=\"./icon/sujet_mod.png\" height=\"$hauteur\"></a></td>");
 				echo("<td><a href=\"./copie2DS.php?name=_Sujets/$nom01&file2=$repsujet\" target=\"_blank\" Title=\"Correction\"><img src=\"./icon/sujet.png\" height=\"$hauteur\"></a></td>");
 				echo("<td><a href=\"./sujet2DS.php?name=_Sujets/$nom01&file2=$repsujet\" target=\"_blank\" Title=\"Sujet\"><img src=\"./icon/distrib.png\" height=\"$hauteur\"></a></td>");
@@ -382,9 +394,7 @@
 	}
 	echo("</td></tr></table>");
 	$menu_td .= "</select>";
-	
-	
-	
+
 ?>
 	<table>
 		<form name="envoi fichier 2" enctype="multipart/form-data" method="post" action="<?php echo("$action44");?>">
@@ -399,31 +409,33 @@
 	</table>
 
 <?php
-	titre_tab("Création");
+	titre_tab("Création & Édition");
 	//--------------------------------------------------------------------------------------------------------------------                NOUVEAU SUJET          
 ?>
 <table><tr>
-<form method="post" action="DSNew.php">
-<td>
-<input type="hidden" value="1" name="action">
-TAG du sujet : <input type="text" name="TAG" size="10px"></td><td>
-Titre du sujet : <input type="text" name="titre" size="50px"></td><td>
-<input name="bouton" value="Nouveau sujet" type="submit">
-</td>
-</form>
-</tr>
-<tr>
-<form method="post" action="DSNew.php">
-<td>
-<input type="hidden" value="2" name="action">
-TAG du sujet : <?php echo($menu_td);?></td><td> 
-</td><td>
-<input name="bouton" value="Editer" type="submit">
-</td></tr>
+	<form method="post" action="DSNew.php">
+	<td>
+		<input type="hidden" value="1" name="action">
+		TAG du sujet : <input type="text" name="TAG" size="10px"></td><td>
+		Titre du sujet : <input type="text" name="titre" size="50px"></td><td>
+		<input name="bouton" value="Nouveau sujet" type="submit">
+	</td>
+	</form>
+	</tr>
+	<tr>
+	<form method="post" action="DSNew.php">
+	<td>
+		<input type="hidden" value="2" name="action">
+		TAG du sujet : <?php echo($menu_td);?></td><td> 
+		</td><td>
+		<input name="bouton" value="Editer" type="submit">
+	</td>
+	</tr>
 </table>
 
+
 <?php
-	//----------------------------------------------------    LES REPONSES
+	//----------------------------------------------------------------------------------------    Liste des fichiers .txt des répertoires réponses
 	titre_tab("Liste des fichiers .txt des répertoires réponses");
 	echo("<table>");
 	$i=0;

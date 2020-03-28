@@ -15,8 +15,8 @@
 	
 	$pagenumber = $_GET[page];//numéro de la page
 	$sujet_tag = $_GET[name];//_Sujets/$TAG
-	$touttag = explode("/", $sujet_tag);
-	$TAG = $touttag[1];
+	//$touttag = explode("/", $sujet_tag);
+	
 	
 	$action = $_GET[action];
 	$rep = $_POST[rep];
@@ -26,7 +26,7 @@
 	$sujet = $_GET[file];//Pour le professeur uniquement 01 fevrier 2017
 	include("./clef_prof.php");//fourni $Cleprof (C'est le prof) ------
 	include("./quest_dyn.php");//Questions Dynamiques le 9 octobre 2017 
-	
+	$TAG = TAGdufichier($sujet."/index.htm");//Récupération du TAG
 	
 	if($sujet&&$Cleprof) {
 		$repertoire = "$sujet";

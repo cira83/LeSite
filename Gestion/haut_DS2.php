@@ -15,8 +15,6 @@
 	//$repertoire_copies =  "./files/$classe/_Copies";
 	$file2delete = "Pas de fichier &agrave; supprimer";
 
-	$action = $_GET[action];
-
 	include("./lesfonctions.php");
 	$passwordOK = password($nom,$password,$classe);//=1 eleve, =2 prof
 	
@@ -71,9 +69,6 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8">
 		<link rel="icon" type="image/jpg" href="./icon/favicon.jpg" />
 		<title><?php echo("$titre_page");?></title>
-<?php
-	if($action) echo("<meta http-equiv=\"refresh\" content=\"5;URL=./DSZone.php\">"); 
-?>
 	</head>
 	
 	<body onload="tailledelafenetre();">

@@ -30,4 +30,19 @@
 		return(in_array($ext,$type_img));
 	}
 	
+
+	function TAGdufichier($filename) {
+		$TAG = "TD?";
+		if(file_exists($filename)) {
+			$fp = fopen($filename, "r");
+			$ligne = fgets($fp);
+			$part = explode("#", $ligne);
+			$TAG = $part[1];
+			fclose($fp);
+		}
+		echo("<!-- $filename -->");
+		return $TAG;
+	}
+
+
 ?>
