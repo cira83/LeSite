@@ -6,17 +6,54 @@
 		return(Sn);
 	}
 	
-	
-	
+	function ordonne2string(Sn) {
+		echelY = -3;
+		Yn =  330 + Sn*echelY ;
+		Yn_string = Yn.toString();
+		return(Yn_string);
+	}
+
+	function abscisse2string(X,echelX) {
+		echelX = 5;
+		Xn =  25 + X*echelX ;
+		Xn_string = Xn.toString();
+		return(Xn_string);
+	}
+
 	
 	function dessiner() {//Dessine la courbe
 		var boucle = document.getElementById("boucle");
 		var svg = document.getElementById("graphe");
 		var courbe = document.getElementById("courbe");
 		var id10 = document.getElementById("X10");
+		var cartouche = document.getElementById("cartouche");
 		
-		id10.innerHTML = "20";
-		courbe.setAttribute("points", "20,20 40,25 60,40");
+		X10 = "1";
+		info = "";
+		Sn = 0;
+		Tn = 0;
+		points = "25,330"; //Premier point à 0 0 
+		if(boucle.value=="BO21") {
+			//alert("Boucle Esclave Ouverte");
+			X10 = "100"; // 1 case = 10 sur X = +50
+			echelX = 5;
+			info = "X en réponse à ΔY2=100%";
+			Te = 0.2;
+			Tn = Te + Tn;
+			for(i=0;i<650;i++) {
+				Sn = premier_ordre(100, 100, Sn);
+				Yn_string = ordonne2string(Sn);	
+				Xn_string = abscisse2string(Tn,echelX);	//alert(Xn_string);	
+				points = points + " " + Xn_string + "," + Yn_string; 
+				Tn = Te + Tn;
+			}
+			
+		}
+		
+		
+		cartouche.innerHTML = info;
+		id10.innerHTML = X10;
+		courbe.setAttribute("points", points);
 	}
 	
 	
@@ -33,7 +70,6 @@
 		<link rel="stylesheet" type="text/css" media="screen" href="styles_sujet.css">
 		<link rel="stylesheet" type="text/css" href="print.css" media="print">
 		<title>Process 4</title>
-		<script src="./jsGraphDisplay.1.0.js"></script>
 	</head>
 	<body>
 <!--
@@ -43,10 +79,13 @@
 	
 																									<!-- GRAPHIQUE -->
 	<table class="blanc">
-		<tr><td height="30px"><b>Réponse indicielle (&Delta;Y ou &Delta;W = 100%)</b></td></tr>
+		<tr><td height="30px"><b>Réponse indicielle</b></td></tr>
 		<tr><td>
 			<svg id="graphe" width="700" height="350">
-				<!-- Axes à 20 px du bord -->
+				<!-- 	
+					(0,0) = 25,330 
+					(delta 1 case,delta 1 case) = (+50,-30)
+				-->
 				<line x1="25" y1="330" x2="25" y2="20" style="stroke:rgb(0,0,0);stroke-width:2" id="axe_y"/>
 				<line x1="20" y1="30" x2="680" y2="30" style="stroke:rgb(128,128,128);stroke-width:1" />
 				<line x1="20" y1="60" x2="680" y2="60" style="stroke:rgb(128,128,128);stroke-width:1" />
@@ -82,8 +121,10 @@
 			
 				<text x="20" y="345" fill="black">0</text>
 				<text x="518" y="345" fill="black" id="X10">10</text>
+				
+				<text x="220" y="345" fill="black" id="cartouche"></text>
 			
-				<polyline points="20,20 40,25 60,40 80,120 120,140 200,180" style="fill:none;stroke:red;stroke-width:1" id="courbe"/>
+				<polyline points="" style="fill:none;stroke:red;stroke-width:1" id="courbe"/>
 			
 			</svg>
 		</td></tr>
@@ -99,14 +140,14 @@
 				<select id="boucle" onchange="change_image(this.value);">
 					<option value="BO1">Boucle Simple Ouverte</option>
 					<option value="BF1">Boucle Simple Fermée</option>
-					<option value="BO21">Boucle Esclave Ouverte</option>
+					<option value="BO21" selected>Boucle Esclave Ouverte</option>
 					<option value="BO2">Boucle Maitre Ouverte</option>
 					<option value="BF2">Boucle Cascade Fermée</option>
 				</select>
 				<input type="button" onclick="dessiner();" value="Calculer" />
 			</td></tr>
 		<tr><td>
-			<img src="BO1.svg" id="image"/>
+			<img src="BO21.svg" id="image"/>
 		</td></tr>
 	</table>
 																											<!-- REGLAGES -->	
