@@ -120,10 +120,21 @@ a {
 }
 
 table.blanc{
-	width: 1100px;
-	height: 450px;
+	width: 800px;
+	height: 400px;
 	background-color: #ffffff;
-	border-width: 0px;
+}
+
+table.blanc2{
+	width: 800px;
+	height: 250px;
+	background-color: #ffffff;
+}
+
+table.blanc3{
+	width: 800px;
+	height: 60px;
+	background-color: #ffffff;
 }
 
 table.vide{
