@@ -109,7 +109,7 @@
 
 		if(boucle.value=="BF2O1") {//Boucle esclave fermée
 			echelX = 10*50/X10;
-			info = "Boucle esclave fermée - X2 pour ΔY1=50% - A2="+A2.value+" ; Td2 = "+Td2.value+" ; Ti2 = "+Td2.value;
+			info = "Boucle esclave fermée - X2 pour ΔY1=50% - A2="+A2.value+" ; Td2 = "+Td2.value+" ; Ti2 = "+Ti2.value;
 			Te = 0.1*X10/50;
 			a = tau/Te;
 			Tn = Te + Tn;
@@ -151,35 +151,10 @@
 			}
 		}	
 
-		if(boucle.value=="BO2") {//Boucle Maitre ouverte
-			echelX = 10*50/X10;
-			info = "Boucle maitre ouverte - X2 pour ΔY1=50% - A2="+A2.value+" ; Td2 = "+Td2.value+" ; Ti2 = "+Td2.value;
-			Te = 0.1*X10/50;
-			a = tau/Te;
-			Tn = Te + Tn;
-			Y1 = 50;
-			eps11 = 0;
-			for(i=0;i<650;i++) {
-				Y2 = PID(A2.value,Ti2.value,Td2.value,Te,Y1-X2,eps11,2);
-				eps11=Y1-X2;								
-				Y22 = premier_ordre(a, Y2, Y22);//a, En, Sn_1 a = Tau/Te
-				X2 = premier_ordre(a, Y22, X2); 
-				Y11 = premier_ordre(a, X2, Y11);
-				X1 = premier_ordre(a, Y11, X1);
-								
-				Yn_string = ordonne2string(X1);	
-				Xn_string = abscisse2string(Tn,echelX);
-				points = points + " " + Xn_string + "," + Yn_string; 
-				Tn = Te + Tn;
-			}
-		}	
-
-
-		
 
 		if(boucle.value=="BF2") {//Boucle Maitre fermée Y1 -| |- Y11 -| |- X2 -| |- Y22 -| |- X1
 			echelX = 10*50/X10;
-			info = "Boucle maitre fermée - X1 pour ΔW=50% - A1="+A1.value+" ; Td1="+Td1.value+" ; Ti1="+Td1.value+" - A2="+A2.value+" ; Td2="+Td2.value+" ; Ti2="+Td2.value;;
+			info = "Boucle maitre fermée - X1 pour ΔW=50% - A1="+A1.value+" ; Td1="+Td1.value+" ; Ti1="+Ti1.value+" - A2="+A2.value+" ; Td2="+Td2.value+" ; Ti2="+Ti2.value;
 			Te = 0.1*X10/50;
 			a = tau/Te;
 			Tn = Te + Tn;
@@ -187,7 +162,7 @@
 			W = 50;
 			eps11 = 0;
 			for(i=0;i<650;i++) {
-				Y1 = PID(A1.value,Ti1.value,Td1.value,Te,W-X1,eps22,2); eps22=W-X1;
+				Y1 = PID(A1.value,Ti1.value,Td1.value,Te,W-X1,eps22,1); eps22=W-X1;
 				Y2 = PID(A2.value,Ti2.value,Td2.value,Te,Y1-X2,eps11,2);eps11=Y1-X2;
 												
 				Y22 = premier_ordre(a, Y2, Y22);//a, En, Sn_1 a = Tau/Te
@@ -202,7 +177,29 @@
 			}
 		}			
 		
-		
+		if(boucle.value=="BF1") {//Boucle simple fermée Y1 -| |- Y11 -| |- X2 -| |- Y22 -| |- X1
+			echelX = 10*50/X10;
+			info = "Boucle simple fermée - X1 pour ΔW=50% - A1="+A1.value+" ; Td1="+Td1.value+" ; Ti1="+Ti1.value;
+			Te = 0.1*X10/50;
+			a = tau/Te;
+			Tn = Te + Tn;
+			X1 = 0;
+			W = 50;
+			eps11 = 0;
+			for(i=0;i<650;i++) {
+				Y1 = PID(A1.value,Ti1.value,Td1.value,Te,W-X1,eps22,2); eps22=W-X1;
+												
+				Y22 = premier_ordre(a, Y1, Y22);//a, En, Sn_1 a = Tau/Te
+				X2 = premier_ordre(a, Y22, X2); 
+				Y11 = premier_ordre(a, X2, Y11);
+				X1 = premier_ordre(a, Y11, X1);
+								
+				Yn_string = ordonne2string(X1);	
+				Xn_string = abscisse2string(Tn,echelX);
+				points = points + " " + Xn_string + "," + Yn_string; 
+				Tn = Te + Tn;
+			}
+		}			
 		
 		
 		//---------------------------------------------------- SORTIE DES RESULTATS
@@ -227,6 +224,10 @@
 		<title>Process 4</title>
 	</head>
 	<body>
+
+	<table><tr><td><h1>PROCESS IV</h1></td></tr></table>
+
+
 <!--
 	taille tableau = 800 x 400
 	taille image = 700 x 350
