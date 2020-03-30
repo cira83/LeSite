@@ -217,7 +217,7 @@
 
 </script>
 	
-	
+<!------------------------------------------------------------------------------------------------------------------------------------------------------------------>	
 	<head>
 		<link rel="stylesheet" type="text/css" media="screen" href="styles_sujet.css">
 		<link rel="stylesheet" type="text/css" href="print.css" media="print">
@@ -225,7 +225,7 @@
 	</head>
 	<body>
 
-	<table><tr><td><h1>PROCESS IV</h1></td></tr></table>
+	<table><tr><td width="65px"><img src="LOGO.gif" height="60px" /></td><td><h1>PROCESS IV</h1></td><td width="65px"></td></tr></table>
 
 
 <!--
@@ -289,7 +289,7 @@
 		<tr><td><font size="-1">Temps en s</font></td></tr>
 	</table>
 	<table>
-		<tr><td><hr></td></tr>
+		<tr><td></td></tr>
 	</table>	
 																											<!-- SCHEMA -->	
 	<table class="blanc2">	
