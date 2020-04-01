@@ -470,10 +470,10 @@
 		$lesreponses = "$repertoire_DS$nom17/rep";
 		if(file_exists($lesreponses)&&($nom17!=".")){
 			$i++;
-			$contenu_case1 .= "<td><b>$nom17</b></td>";
+			$contenu_case1 .= "<td><a href=\"./eleve.php?nom=$nom17\"><font color=\"black\" size=\"+1\">$nom17</font></a></td>";
 			$contenu_case2 .= "<td>".file_liste($lesreponses)."</td>";
 			if($i==8){
-				echo("<tr valign=\"top\">$contenu_case1</tr>");
+				echo("<tr valign=\"top\" bgcolor=\"white\">$contenu_case1</tr>");
 				echo("<tr valign=\"top\">$contenu_case2</tr>");
 				$contenu_case1 = "";
 				$contenu_case2 = "";
@@ -481,7 +481,7 @@
 			}
 		}
 	}
-	echo("<tr valign=\"top\">$contenu_case1</tr>");
+	echo("<tr valign=\"top\" bgcolor=\"white\">$contenu_case1</tr>");
 	echo("<tr valign=\"top\">$contenu_case2</tr>");	
 	echo("</table>");
 
