@@ -215,12 +215,20 @@
 		image.setAttribute("src", newimage);
     }
 
+	function export_png() {
+		var svg = document.getElementById("graphe");
+		saveSvgAsPng(svg, "reponse_ind.png");
+	}
+
+
+
 </script>
 	
 <!------------------------------------------------------------------------------------------------------------------------------------------------------------------>	
 	<head>
 		<link rel="stylesheet" type="text/css" media="screen" href="styles_sujet.css">
 		<link rel="stylesheet" type="text/css" href="print.css" media="print">
+		<script type="text/javascript" src="./save-svg-as-png/lib/saveSvgAsPng.js"></script>
 		<title>Process 4</title>
 	</head>
 	<body>
@@ -232,13 +240,17 @@
 	taille tableau = 800 x 400
 	taille image = 700 x 350
 -->	
-	
-																									<!-- GRAPHIQUE -->
+			
 	<table class="blanc">
-		<tr><td height="30px"><b>Réponse indicielle</b></td></tr>
-		<tr><td>
+		<tr height="50px" ><td width="100px">
+			</td><td><b>Réponse indicielle</b>
+		</td><td width="100px">
+			<img src="backup.gif" height="28px" onclick="export_png();" title="Exporter la réponse indicielle"/>
+		</td></tr>
+		
+		<tr><td colspan="3">																											<!-- GRAPHIQUE -->
 			<svg id="graphe" width="700" height="350">
-				<text x="450" y="65" fill="#EEE" id="Session"><?php echo($numero); ?></text>
+				<text x="450" y="65" fill="#DDD" id="Session"><?php echo($numero); ?></text><!-- FILIGRAMME -->
 				<!-- 	
 					(0,0) = 25,330 
 					(delta 1 case,delta 1 case) = (+50,-30)
@@ -341,7 +353,7 @@
 			</td>
 		</tr><tr>
 			<td>
-				<input type="text" id="A1" value="10" size="10px"/>
+				<input type="text" id="A1" value="1" size="10px"/>
 			</td>
 			<td>
 				<input type="text" id="TD1" value="0" size="10px"/>
@@ -350,7 +362,7 @@
 				<input type="text" id="TI1" value="9999" size="10px"/>
 			</td>
 			<td>
-				<input type="text" id="A2" value="10" size="10px"/>
+				<input type="text" id="A2" value="1" size="10px"/>
 			</td>
 			<td>
 				<input type="text" id="TD2" value="0" size="10px"/>

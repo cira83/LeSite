@@ -1,7 +1,30 @@
-<script>
-		
-	function miseajour() {
-        ip = document.getElementById("les_messages");
+<?php
+	$classe = $_COOKIE["laclasse"]; if($classe=="") $classe="CIRA1";
+	$action44 = "./DSZone.php?action=44";
+
+	$repertoire_Sujets = "./files/$classe/_Copies/_Sujets";
+	$repertoire_DS = "./files/$classe/_Copies/";
+	$lesrepertoires = scandir($repertoire_DS);
+	$i = 0;
+	$arrayjava = "var liste2nom = [";
+	foreach($lesrepertoires as $nom01){
+		$nomsujet2DS = "$repertoire_DS$nom01/index.htm";
+		if(file_exists($nomsujet2DS)){
+			if($i) $arrayjava .= ",\"$nom01\"";
+			else $arrayjava .= "\"$nom01\"";
+			$i++;
+		}
+	}
+	
+	$arrayjava .= "];";
+
+?>	
+
+<script>	
+	<?php echo($arrayjava); ?>
+	
+	function miseajour(id_name) {
+        var ip = document.getElementById(id_name);
          
         var xhr = null;
         var xhr = new XMLHttpRequest();
@@ -12,12 +35,18 @@
             }
         };
          
-        xhr.open("GET", "./chatES.php", true);
+        //xhr.open("GET", "./chatES.php", true);
+        chemin = "./DSReponses.php?elv="+id_name;
+        xhr.open("GET", chemin, true);
         xhr.send(null);         
     }
 	
+	function refresh_event() {
+		for(i=0;i<liste2nom.length;i++) miseajour(liste2nom[i]);
+	}
+	
 	// Appelle la fonction diminuerCompteur toutes les secondes (1000 millisecondes)
-    setInterval(miseajour, 1000);
+    setInterval(refresh_event, 1000);
 	
 	function logout(){
 		document.cookie = 'elv=';
@@ -27,30 +56,24 @@
 	}
 	
 	function login(){
-	
-	pwd = document.getElementById('password').value;
-	elv = document.getElementById('elv').value;
-	classe = document.getElementById('classe').value;
+		pwd = document.getElementById('password').value;
+		elv = document.getElementById('elv').value;
+		classe = document.getElementById('classe').value;
+			
+		document.cookie = 'elv='+elv;
+		document.cookie = 'password='+pwd;
+		document.cookie = 'laclasse='+classe;	
 		
-	document.cookie = 'elv='+elv;
-	document.cookie = 'password='+pwd;
-	document.cookie = 'laclasse='+classe;	
-	
-	lien = './chat.php';
-	window.location.replace(lien);
-}
+		lien = './chat.php';
+		window.location.replace(lien);
+	}
 
 </script>
 
 
-<?php
-	$classe = $_COOKIE["laclasse"]; if($classe=="") $classe="CIRA1";
-	$action44 = "./DSZone.php?action=44";
 
-	$repertoire_Sujets = "./files/$classe/_Copies/_Sujets";
-	
-	
-	include("./haut_DS.php");
+<?php
+	include("./haut_DS3.php");
 	
 	function start($nom, $classe){//---------------------------------------------- passe en mode ON
 		$drap = false;
@@ -310,9 +333,9 @@
 					$part2 = explode(":", $ligne2020);
 					$part3 = explode("/", $part2[1]);
 					fclose($fp);
-					$laliste .= "$br <font color=\"green\">$part3[2]/$part3[3] $part3[1]h$part3[0]</font>";
+					$laliste = "<font color=\"green\">$part3[2]/$part3[3] $part3[1]h$part3[0]</font>$br$laliste";
 				}
-				else $laliste .= "$br$link$nom17</a>";
+				else $laliste .= "$br<font size=\"-1\">$link$nom17</a></font>";
 				$br = "<br/>";
 			}
 			$bak = $part[0];
@@ -320,13 +343,12 @@
 		return $laliste;
 	}
 	
-	$repertoire_DS = "./files/$classe/_Copies/";
-	$lesrepertoires = scandir($repertoire_DS);
+
 	
 	// -----------------------------------------------------------------------------------------------------------------------------   LES COPIES
 	titre_tab("<a href=\"./DSZone.php\"><img src=\"./icon/reload.png\" height=\"20px\"/></a> Les copies");  
 	$i=0;
-	echo("<table><tr>");
+	echo("<table><tr valign=\"Bottom\">");
 	foreach($lesrepertoires as $nom17){
 		$nomsujet2DS = "$repertoire_DS$nom17/index.htm";
 		if((file_exists($nomsujet2DS))and($nom17!="_Poubelle")){
@@ -346,15 +368,15 @@
 			else $classetd =" bgcolor=\"#FF4000\" ";
 			$nb2sessions = nb2connections($nom17, $classe);
 			$info_session = "($nb2sessions)";
-			$hauteur_photo = "60px";
+			$hauteur_photo = "80px";
 			if($nb2sessions) $info_session = "<a href=\"$repertoire_DS$nom17/rep/sessions.txt\">($nb2sessions)</a>";
 			$efface = "<a href=\"./DSZone.php?action=111&nom=$nom17&td=$titre_sujet\" color=\"red\"><img src=\"./icon/effacer.jpg\" height=\"15px\" align=\"bottom\"></a>";
 			echo("<td $classetd><b><u>$nom17</u></b><br/>");
 			echo("<font size=\"-1\">$titre_sujet</font><br/><a href=\"./copie2DS.php?name=$nom17&file=$nomsujet2DS\" target=\"_blank\"><img src=\"$photo\" height=\"$hauteur_photo\"></a>");
-			echo("<br>$info_session $bouton $efface</a></td>");
+			echo("<br>$info_session $bouton $efface</a><br><div id=\"$nom17\"></div></td>");
 			$Nom_et_sujet[$k] = "$nom17:$titre_sujet:"; $k++; //La liste de nom et du sujet associé
 			if($i==7){
-				echo("</tr><tr>");
+				echo("</tr><tr valign=\"Bottom\">");
 				$i=0;
 			}
 		}
@@ -451,7 +473,7 @@
 			$contenu_case1 .= "<td><b>$nom17</b></td>";
 			$contenu_case2 .= "<td>".file_liste($lesreponses)."</td>";
 			if($i==8){
-				echo("<tr>$contenu_case1</tr>");
+				echo("<tr valign=\"top\">$contenu_case1</tr>");
 				echo("<tr valign=\"top\">$contenu_case2</tr>");
 				$contenu_case1 = "";
 				$contenu_case2 = "";
@@ -459,16 +481,9 @@
 			}
 		}
 	}
-	echo("</tr>$contenu_case1</tr>");
-	echo("</tr>$contenu_case2</tr>");	
+	echo("<tr valign=\"top\">$contenu_case1</tr>");
+	echo("<tr valign=\"top\">$contenu_case2</tr>");	
 	echo("</table>");
 
 	include("./bas_DS.php");
 ?>
-
-
-
-<!-- Partie à droite -->
-</td><td valign="top" width="210px">
-<span id="les_messages"></span>
-</td></tr></table>
