@@ -25,13 +25,17 @@
 	
 	function miseajour(id_name) {
         var ip = document.getElementById(id_name);
+        var etat = document.getElementById("etat_"+id_name);
          
         var xhr = null;
         var xhr = new XMLHttpRequest();
+        var tab;
          
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
-                ip.innerHTML = xhr.responseText;
+                tab = xhr.responseText.split(":");
+                ip.innerHTML = tab[0];
+                etat.innerHTML = tab[1];
             }
         };
          
@@ -333,7 +337,7 @@
 					$part2 = explode(":", $ligne2020);
 					$part3 = explode("/", $part2[1]);
 					fclose($fp);
-					$laliste = "<font color=\"green\">$part3[2]/$part3[3] $part3[1]h$part3[0]</font>$br$laliste";
+					$laliste = "<font color=\"green\">$part3[2]/$part3[3] $part3[1]h$part3[0]</font>$br<font size=\"-1\">$part2[2]</font>$br$laliste";
 				}
 				else $laliste .= "$br<font size=\"-1\">$link$nom17</a></font>";
 				$br = "<br/>";
@@ -346,7 +350,24 @@
 
 	
 	// -----------------------------------------------------------------------------------------------------------------------------   LES COPIES
-	titre_tab("<a href=\"./DSZone.php\"><img src=\"./icon/reload.png\" height=\"20px\"/></a> Les copies");  
+	titre_tab("<a href=\"./DSZone.php\"><img src=\"./icon/reload.png\" height=\"20px\"/></a> Les copies");
+	$violet_t = "#8d1682";//violet 27min
+	$rouge_t = "#fd0002";//rouge 9min
+	$orange_t = "#ff8b01";//orange 3min
+	$jaune_t = "#ffed02";//jaune 1min
+	$vert_t = "#02fe00";//vert 20s
+	echo("<table><tr>");
+	
+	echo("<td bgcolor=\"black\"></td>");
+	echo("<td bgcolor=\"white\" width=\"35px\"><font size=\"-2\">27 min</font></td><td bgcolor=\"$violet_t\"></td>");
+	echo("<td bgcolor=\"white\" width=\"30px\"><font size=\"-2\">9 min</font></td><td bgcolor=\"$rouge_t\"></td>");
+	echo("<td bgcolor=\"white\" width=\"30px\"><font size=\"-2\">3 min</font></td><td bgcolor=\"$orange_t\"></td>");
+	echo("<td bgcolor=\"white\" width=\"30px\"><font size=\"-2\">1 min</font></td><td bgcolor=\"$jaune_t\"></td>");
+	echo("<td bgcolor=\"white\" width=\"30px\"><font size=\"-2\">20 s</font></td><td bgcolor=\"$vert_t\"></td>");
+	echo("<td bgcolor=\"white\" width=\"10px\"><font size=\"-2\">0</font></td><td bgcolor=\"#CCC\"></td>");
+	echo("</tr></table>");  
+
+
 	$i=0;
 	echo("<table><tr valign=\"Bottom\">");
 	foreach($lesrepertoires as $nom17){
@@ -364,12 +385,12 @@
 			if(!file_exists($photo)) $photo = "./photos/----.jpg";
 			$bouton = bouton_onoff($nom17,$classe);
 			$etatonoff = state_onoff($nom17, $classe);
-			if($etatonoff) $classetd =" bgcolor=\"#01DF74\" ";
+			if($etatonoff) $classetd =" bgcolor=\"#CCC\" ";
 			else $classetd =" bgcolor=\"#FF4000\" ";
 			$nb2sessions = nb2connections($nom17, $classe);
-			$info_session = "($nb2sessions)";
+			$info_session = "<span id=\"etat_$nom17\"></span>";
 			$hauteur_photo = "80px";
-			if($nb2sessions) $info_session = "<a href=\"$repertoire_DS$nom17/rep/sessions.txt\">($nb2sessions)</a>";
+			if($nb2sessions) $info_session = "<span id=\"etat_$nom17\"></span>";
 			$efface = "<a href=\"./DSZone.php?action=111&nom=$nom17&td=$titre_sujet\" color=\"red\"><img src=\"./icon/effacer.jpg\" height=\"15px\" align=\"bottom\"></a>";
 			echo("<td $classetd><b><u>$nom17</u></b><br/>");
 			echo("<font size=\"-1\">$titre_sujet</font><br/><a href=\"./copie2DS.php?name=$nom17&file=$nomsujet2DS\" target=\"_blank\"><img src=\"$photo\" height=\"$hauteur_photo\"></a>");

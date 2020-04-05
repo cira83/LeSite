@@ -17,6 +17,7 @@
 	$sujet_tag = $_GET[name];//_Sujets/$TAG
 	//$touttag = explode("/", $sujet_tag);
 	
+	$ip_adresse = $_SERVER['REMOTE_ADDR'];
 	
 	$action = $_GET[action];
 	$rep = $_POST[rep];
@@ -26,7 +27,7 @@
 	$sujet = $_GET[file];//Pour le professeur uniquement 01 fevrier 2017
 	include("./clef_prof.php");//fourni $Cleprof (C'est le prof) ------
 	include("./quest_dyn.php");//Questions Dynamiques le 9 octobre 2017 
-	$TAG = TAGdufichier($sujet."/index.htm");//Récupération du TAG
+	
 	
 	if($sujet&&$Cleprof) {
 		$repertoire = "$sujet";
@@ -252,7 +253,7 @@
 	$sessions_file_name = "$repertoire_rep/sessions.txt";
 	if(!file_exists($sessions_file_name)) {
 		$session_fp = fopen($sessions_file_name, "w");
-		fwrite($session_fp, "$numero2session:$date_ext");
+		fwrite($session_fp, "$numero2session:$date_ext:$ip_adresse:");
 		fclose($session_fp);
 	}
 	else {
@@ -265,11 +266,16 @@
 		fclose($session_fp);
 		if(!$flag){//Nouveau numéro de session
 			$session_fp = fopen($sessions_file_name, "a");
-			fwrite($session_fp, "\n$numero2session:$date_ext");
+			fwrite($session_fp, "\n$numero2session:$date_ext:$ip_adresse");
 			fclose($session_fp);
 		}
 	}
-		
+	$infos_file_name = "$repertoire_rep/infos.txt";
+	$infos_fp = fopen($infos_file_name, "w");
+	$info_time = time();
+	fwrite($infos_fp, "$info_time");
+	fclose($infos_fp);
+	
 	//----------------------------------------------------------------------------         BULLE JAUNE
 	if(file_exists("$repertoire/index.htm")) {
 		$script_name = $_SERVER['SCRIPT_NAME'];
@@ -321,6 +327,7 @@
 		fclose($fp_2020);
 	}
 	
+	$TAG = TAGdufichier("$repertoire/index.htm");//Récupération du TAG
 	$titredudocument = "$TAG $nom";
 	
 ?>
@@ -333,7 +340,10 @@
 	</head>
 	<body>
 		<center>	
-		<table><tr><td><font size="+7"><?php echo($titredudocument);?></font></td></tr></table>
+		<table>
+			<tr><td width="52px"></td><td><font size="+5"><?php echo($titredudocument);?></font></td><td width="52px">
+			<a href="../tui.image-editor/editor/" target="_blank">
+			<img src="icon/image_editor.png" width="50px" title="Editeur d'image"\></a></td></tr></table>
 
 <?php
 	//Dans le fichier sujet.txt qui est dans le répertoire de l'élève
