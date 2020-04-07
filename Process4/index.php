@@ -27,6 +27,21 @@
 		return(Yn);
 	}
 	
+	function enleve_virgule() {
+		var A1 = document.getElementById("A1");
+		A1.value = A1.value.replace(",",".");
+		var A2 = document.getElementById("A2");
+		A2.value = A2.value.replace(",",".");
+		var Td1 = document.getElementById("TD1");
+		Td1.value = Td1.value.replace(",",".");
+		var Td2 = document.getElementById("TD2");
+		Td2.value = Td2.value.replace(",",".");
+		var Ti1 = document.getElementById("TI1");
+		Ti1.value = Ti1.value.replace(",",".");
+		var Ti2 = document.getElementById("TI2");
+		Ti2.value = Ti2.value.replace(",",".");
+	}
+	
 	
 	function ordonne2string(Sn) {
 		if(Sn>100) Sn = 100;
@@ -45,6 +60,8 @@
 
 	
 	function dessiner() {//Dessine la courbe
+		enleve_virgule();
+		
 		var boucle = document.getElementById("boucle");
 		var svg = document.getElementById("graphe");
 		var courbe = document.getElementById("courbe");
@@ -250,6 +267,7 @@
 		
 		<tr><td colspan="3">																											<!-- GRAPHIQUE -->
 			<svg id="graphe" width="700" height="350">
+				<rect width="700" height="350" style="fill:rgb(255,255,255);stroke-width:0;stroke:rgb(255,255,255)" />
 				<text x="450" y="65" fill="#DDD" id="Session"><?php echo($numero); ?></text><!-- FILIGRAMME -->
 				<!-- 	
 					(0,0) = 25,330 
@@ -290,7 +308,7 @@
 			
 				<text x="20" y="345" fill="black">0</text>
 				<text x="518" y="345" fill="black" id="X10"></text>
-				
+				<text x="300" y="345" fill="black">Temps en s</text>
 				
 				<text x="20" y="25" fill="blue" id="cartouche"></text>
 			
@@ -298,7 +316,7 @@
 			
 			</svg>
 		</td></tr>
-		<tr><td><font size="-1">Temps en s</font></td></tr>
+		<tr><td></td></tr>
 	</table>
 	<table>
 		<tr><td></td></tr>

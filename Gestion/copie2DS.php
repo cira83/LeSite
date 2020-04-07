@@ -168,6 +168,8 @@
 		$nom2eleveimp = "_Correction";
 	}
 	
+	
+	$sommaire_td = bandeau("./files/$classe/_Copies/$nom2eleve");
 ?>
 
 <html>
@@ -178,7 +180,8 @@
 		<title><?php echo("$nom_court $nom2eleveimp");?></title>
 	</head>
 	<body>	
-			<table><tr id="sommaire"><td><font size="+4"><?php echo("$nom_court $nom2eleve");?></font></td></tr></table>
+			<table><tr id="sommaire"><td><font size="+4"><?php echo("$nom_court $nom2eleve");?></font></td>
+			<td width="120px"><?php echo($sommaire_td[1]);?></td></tr></table>
 <?php
 	//echo("<p>$repertoire_rep</p>");
 	$sessions_file_name = "$repertoire_rep/sessions.txt";	
@@ -194,23 +197,9 @@
 	
 	if(file_exists($sujet2DS)){
 		//------------------------------------------------------------------------------  Sommaire avec toutes les questions
-		/*$fp = fopen($sujet2DS, "r");
-		$ligne = fgets($fp);
-		$i=0;
-		while(!feof($fp)){
-			$ligne = fgets($fp);
-			$part = explode("#", $ligne);
-			if($part[0]=="Q") {//Question
-				$i++;
-				if($i==1) $sommaire_td = "<a href=\"#Q$i\" ><font size=\"-2\">Q$i</font></a>";
-				else $sommaire_td .= "</td><td><a href=\"#Q$i\"><font size=\"-2\">Q$i</font></a>";
-			}
-		}
-		fclose($fp);
-		*/
 		
-		$sommaire_td = sommaire_document($sujet2DS);
-		ligne2tableau($sommaire_td);
+		
+		ligne2tableau($sommaire_td[0]);	
 		//Fin du sommaire
 		
 		$fp = fopen($sujet2DS, "r");
@@ -234,7 +223,7 @@
 				$nd2pt = $part[2];
 				$reponsefaite = 0;
 				if(!file_exists("$repertoire_rep/I$i.txt")) $reponsefaite = 1;
-
+				$lettre_elv = lettre($repertoire_rep,$i);
 				if($part[2]) {
 					if(!$reponsefaite) $bareme = "</td><td class=\"pt\">$nd2pt";
 					else $bareme = "</td><td class=\"pas2pt\">$nd2pt";
@@ -242,7 +231,7 @@
 					$_SESSION[points] = $_SESSION[points] + $part[2];
 				}
 				//ligne2tableau("<p class=\"question\" id=\"Q$i\" ><font color=\"#0000FF\">\n<b>Q$i : </b></font>$part[1]</p> $bareme");
-				ligne2tableau("<a id=\"Q$i\" href=\"#sommaire\"><b>Q$i : </b></a> $part[1] $bareme");
+				ligne2tableau("<a id=\"Q$i\" href=\"#sommaire\"><b>Q$i :</b></a> $part[1] $bareme $lettre_elv");
 			}
 			
 			//Réponse sour la forme d'une image
