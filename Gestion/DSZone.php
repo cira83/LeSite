@@ -321,6 +321,49 @@
 	}	
 	
 	
+																	//%%%%%%%%%% Je suis là
+	function file_liste2($dir){
+		$session_file_name = "$dir/sessions.txt";
+		$synthese_session = "./files/_liste2session.txt";
+		
+		$fp_liste = fopen($synthese_session, "a");
+		fwrite($fp_liste, "#$dir:");
+		
+		if(file_exists($session_file_name)) {
+			$fp2020 = fopen($session_file_name, "r");
+			while(!feof($fp2020)) {
+				$ligne = fgets($fp2020);
+				$part = explode(":", $ligne);
+				$part3 = explode("/", $part[1]);
+				$id .= "<font color=\"green\">$part3[2]/$part3[3] $part3[1]h$part3[0]</font>$br<font size=\"-1\">$part2[2]</font><br>$part[0]<br>";
+				fwrite($fp_liste, "$part[0]:");
+			}
+			fclose($fp2020);	
+		}
+		
+		fclose($fp_liste);
+		return "$id";
+	}
+	
+	function analyse_log() {
+		$synthese_session = "./files/_liste2session.txt";
+		$fp_liste = fopen($synthese_session, "r");
+		$ligne = fgets($fp_liste);
+		$elts = explode("#", $ligne);
+		for($i=0;$i<count($elts)-1;$i++) {
+			$codes = explode(":", $elts[$i]);
+			foreach($codes as $code) {
+				for($k=$i+1;$k<count($elts);$k++) {
+					$codes2 = explode(":", $elts[$k]);
+					if(in_array($code, $codes2)&&$code) $jumeau .= "$code<br>";
+				}
+			}
+		}
+		fclose($fp_liste);
+		return $jumeau;
+	}	
+	
+	//-------------------------
 	
 	function file_liste($dir){
 		$lesrepertoires = scandir($dir);
