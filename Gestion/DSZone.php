@@ -84,15 +84,16 @@
 		$repertoire = "./files/$classe/_Copies/$nom/rep";
 		if(!file_exists($repertoire)) mkdir($repertoire);
 		$fichier_on = "$repertoire/on.txt";
-		$fichier_off = "$repertoire/off.txt";
-		rename($fichier_off, $fichier_on);
-		if(!file_exists($fichier_on)) {// Création du fichier on
-			$fp = fopen($fichier_off, "w");
+		if(!file_exists($fichier_on)) {
+			$fp = fopen($fichier_on, "w");
+			$code = rand(1000,9999);//code unique
+			fwrite($fp, "$code");
 			fclose($fp);
+			mkdir("$repertoire/$code");
 		}
 		if(file_exists($fichier_on)) {
 			$drap = true;
-			echo("ON pour $nom<br>");
+			echo("ON pour $nom, code $code<br>");
 		}
 		return $drap;
 	}
@@ -248,7 +249,8 @@
 				mkdir($dossier_bak);
 			}
 			foreach($listeDreponses as $filename){
-				if(($filename[0]=="I")||($filename[0]=="R")||($filename[0]=="Q")||($filename[0]=="s")) {
+				$partiesdunom2020 = explode(".", $filename);
+				if($partiesdunom2020[1]) {// tous les fichiers sauf .. et .
 					$avant = "./files/$classe/_Copies/$nom111/rep/$filename";
 					$apres = "$dossier_bak$filename";
 					rename($avant, $apres);
@@ -318,7 +320,6 @@
 		echo("<p>Action 32 : $Message</p>");
 	}	
 	
-
 	
 	
 	function file_liste($dir){
@@ -391,9 +392,10 @@
 			$info_session = "<span id=\"etat_$nom17\"></span>";
 			$hauteur_photo = "80px";
 			if($nb2sessions) $info_session = "<span id=\"etat_$nom17\"></span>";
+			$imp = "<a href=\"./copie2DS.php?name=$nom17&file=$nomsujet2DS\" target=\"_blank\" title=\"imprimer\"><img src=\"icon/imp.gif\" height=\"13px\"></a>";
 			$efface = "<a href=\"./DSZone.php?action=111&nom=$nom17&td=$titre_sujet\" color=\"red\"><img src=\"./icon/effacer.jpg\" height=\"15px\" align=\"bottom\"></a>";
 			echo("<td $classetd><b><u>$nom17</u></b><br/>");
-			echo("<font size=\"-1\">$titre_sujet</font><br/><a href=\"./copie2DS.php?name=$nom17&file=$nomsujet2DS\" target=\"_blank\"><img src=\"$photo\" height=\"$hauteur_photo\"></a>");
+			echo("<font size=\"-1\">$titre_sujet</font>  $imp<br/><a href=\"./devoir_comp.php?name=$nom17&TAG=$TAG\" target=\"_blank\"><img src=\"$photo\" height=\"$hauteur_photo\"></a>");
 			echo("<br>$info_session $bouton $efface</a><br><div id=\"$nom17\"></div></td>");
 			$Nom_et_sujet[$k] = "$nom17:$titre_sujet:"; $k++; //La liste de nom et du sujet associé
 			if($i==7){
@@ -480,6 +482,12 @@
 <?php
 	//----------------------------------------------------------------------------------------    Liste des fichiers .txt des répertoires réponses
 	titre_tab("Liste des fichiers .txt des répertoires réponses");
+	$synthese_session = "./files/_liste2session.txt";
+	$fp_liste = fopen($synthese_session, "w");
+	fclose($fp_liste);
+
+
+	
 	echo("<table>");
 	$i=0;
 	$contenu_case1 = "";
@@ -492,8 +500,8 @@
 		if(file_exists($lesreponses)&&($nom17!=".")){
 			$i++;
 			$contenu_case1 .= "<td><a href=\"./eleve.php?nom=$nom17\"><font color=\"black\" size=\"+1\">$nom17</font></a></td>";
-			$contenu_case2 .= "<td>".file_liste($lesreponses)."</td>";
-			if($i==8){
+			$contenu_case2 .= "<td>".file_liste2($lesreponses)."</td>";
+			if($i==3){
 				echo("<tr valign=\"top\" bgcolor=\"white\">$contenu_case1</tr>");
 				echo("<tr valign=\"top\">$contenu_case2</tr>");
 				$contenu_case1 = "";
@@ -505,6 +513,9 @@
 	echo("<tr valign=\"top\" bgcolor=\"white\">$contenu_case1</tr>");
 	echo("<tr valign=\"top\">$contenu_case2</tr>");	
 	echo("</table>");
+
+	$pirate = analyse_log();
+	echo("<table><tr><td><font color=\"red\">$pirate</font></td></tr></table>");
 
 	include("./bas_DS.php");
 ?>

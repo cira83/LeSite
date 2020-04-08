@@ -199,7 +199,8 @@
 		//------------------------------------------------------------------------------  Sommaire avec toutes les questions
 		
 		
-		ligne2tableau($sommaire_td[0]);	
+		$rebelote =  sommaire_document($sujet2DS);
+		ligne2tableauOcentre($rebelote,$sommaire_td[0]);
 		//Fin du sommaire
 		
 		$fp = fopen($sujet2DS, "r");

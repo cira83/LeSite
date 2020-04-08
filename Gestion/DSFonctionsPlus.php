@@ -19,6 +19,11 @@ function sommaire_document($sujet2DS){
 		return $sommaire_td;
 }
 
+function ligne2tableauOcentre($texte1,$texte2) {
+	echo("<table><tr><td>$texte1</td></tr>");
+	echo("<tr><td>$texte2</td></tr></table>");
+}
+
 function bandeau($repertoire_elv) {
 	$sujet2DS = "$repertoire_elv/index.htm";
 	if(file_exists($sujet2DS)) {
