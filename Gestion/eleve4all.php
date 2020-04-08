@@ -80,7 +80,7 @@
 					$fichier = $files."$classe/$lamatiere/_$lepreuve";
 					$file_image = str_replace("txt", "png", $fichier);
 					$legraphe = "<img src=\"graphe_elv.php?filename=$file_image&note=$lanote\"/>";
-					if(file_exists("B800.txt")) $legraphe = "<img src=\"$file_image\"/>"; //Pour RaspberryPu seulement
+					if(file_exists("../B800")) $legraphe = "<img src=\"$file_image\"/>"; //Pour RaspberryPu seulement
 										
 					if($lanote!="") $somme_coef += $lecoef;//Ne prendre que les coefs de copies notées
 					
@@ -121,7 +121,7 @@
 			//Moyenne dans la matière
 			$file_image = $files."$classe/_$lamatiere.png";
 			$legraphe = "<img src=\"graphe_elv.php?filename=$file_image&note=$lamoyenne\"/>";
-			if(file_exists("B800.txt")) $legraphe = "<img src=\"$file_image\"/>"; //Pour RaspberryPu seulement
+			if(file_exists("../B800")) $legraphe = "<img src=\"$file_image\"/>"; //Pour RaspberryPu seulement
 			
 			echo("\n<!-- matière --><table class=\"notes\">");
 			if($lamoyenne != "") echo("<tr><td>La moyenne de $font_orange$lamatiere</font> est $lamoyenne ($coefmat) <br/>qui compte pour le semestre $periode </td><td $tabgphw>$legraphe</td></tr>");
@@ -138,7 +138,7 @@
 			$graphe = $files."$classe/_Semestre $semestre.png";
 			//$image_semestre = "</td><td><img src=\"$graphe\" />";
 			$image_semestre = "</td><td><img src=\"graphe_elv.php?filename=$graphe&note=$lamoyennesem\"/>";
-			if(file_exists("B800.txt")) $image_semestre = "</td><td><img src=\"$file_image\"/>"; //Pour RaspberryPu seulement
+			if(file_exists("../B800")) $image_semestre = "</td><td><img src=\"$file_image\"/>"; //Pour RaspberryPu seulement
 			echo("<table class=\"notes\"><tr><td>La moyenne du$font_orange semestre $semestre</font> est de $lamoyennesem ($somme_coef_sem[$i])$image_semestre</td></tr></table>\n");
 		}
 	}
