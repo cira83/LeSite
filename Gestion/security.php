@@ -1,4 +1,9 @@
 <?php
+	function alert2020($texte) {
+		echo("<!-- $texte -->");
+	}
+	
+	
 	function info_name_file() {
 		$nom_script = $_SERVER['SCRIPT_NAME'];
 		echo("<!-- fichier : $nom_script -->");
@@ -46,32 +51,23 @@
 	if($action1==1){
 		echo("<!-- action $action1 -->\n");
 		$elv = $_POST['nom'];
-		$_SESSION['nom'] = $elv;
+		setcookie("nom", $elv,time()+3600*24*8);
 		$classe = $_POST['classe'];
-		$_SESSION['laclasse'] = $classe;
+		setcookie("laclasse", $classe,time()+3600*24*8);
 		$password = $_POST['password'];
-		$_SESSION['password'] = $password;
-		$_SESSION['essai']++;
+		setcookie("password", $password,time()+3600*24*8);
 	} 
 	else {
-		$classe = $_SESSION['laclasse'];
-		if($classe!=$classe_dispo[0]) {
-			$_SESSION['laclasse'] = $classe_dispo[0];
-			$classe = $classe_dispo[0];
-		}
-		$elv = $_SESSION['nom'];
-		$password = $_SESSION['password'];
+		$classe = $_COOKIE['laclasse'];
+		$elv = $_COOKIE['nom'];
+		$password = $_COOKIE['password'];
 	}
-	
-	
-	if($_COOKIE['laclasse']) {
-		$_SESSION['laclasse'] = $_COOKIE['laclasse'];
-		$classe = $_SESSION['laclasse'];
-	}
-	
+
+	alert2020("$password $classe $elv");
 	
 	//MENU DEROULANT CLASSES        -----------------------------------------------------------------------------------------------------
 	$select_classe = "<select name=\"classe\" id=\"classe\" onchange=\"login();\">";
+	$select_classe .= "<option>Selectionner votre classe</option>";
 	foreach($classe_dispo as $classe14){
 		if($classe==$classe14) $select_classe .= "<option selected>$classe14</option>";
 		else $select_classe .= "<option>$classe14</option>";
@@ -107,16 +103,20 @@
 	if(!$bon_password) $password_OK = 0;
 	
 	$prof_login = 0;
-	//Pi SECTION
-	if(file_exists("B800.txt")){
-		echo("<!-- PI VERSION -->\n");
-		//echo("<!-- infos : $classe $elv $password/$bon_password -->\n");
-	}
 	if($password==$prof_password){
 		$password_OK = 1;
 		$prof_login = 1;
 		echo("<!-- prof_login = 1 -->\n");
 	}
+
+	
+	
+	//Pi SECTION
+	if(file_exists("B800.txt")){
+		echo("<!-- PI VERSION -->\n");
+		//echo("<!-- infos : $classe $elv $password/$bon_password -->\n");
+	}
+
 	
 	
 	if($password_OK){
@@ -153,6 +153,6 @@
 
 	
 	
-	echo("<!-- $logfilename $write -->\n");
-	echo("<!-- FIN securité-->\n");
+	
+	alert2020("Fin password");
 ?>

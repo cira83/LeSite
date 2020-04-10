@@ -3,15 +3,25 @@
 	include("../head1.html");
 	if($password_OK) echo("<title>$classe - $elv</title>");
 	else echo("<title>$classe</title>");
-	setcookie("nom", $elv);
-	setcookie("password", $password);
+	$date_fin_cookie = time()+60*60*24*30;//30 jours
+	setcookie("nom", $elv,$date_fin_cookie);
+	setcookie("password", $password,$date_fin_cookie);
 ?>		
-		<script type="text/javascript">
+	<script type="text/javascript">
 		function login(){
+			var date = new Date(Date.now() + 86400000*30);//86400000 = 1 jour
 			classe = document.getElementById('classe').value;
-			document.cookie = 'laclasse='+classe;
+			document.cookie = 'laclasse='+classe+"; expires="+date.toUTCString();
 			location.reload() ;
 		}
+
+		function init(){
+			var date = new Date(Date.now() + 86400000*30);//86400000 = 1 jour
+			classe = document.getElementById('classe').value;
+			document.cookie = 'laclasse='+classe+"; expires="+date.toUTCString();
+		}
+
+
 	</script>
 		
 	</head>
@@ -55,7 +65,7 @@
 			
 			echo("<p class=\"liste\"><a href=\"./cahier4elv.php\" class=\"no-under\">Cahier de texte</a></p>");
 
-			$questionnaire_perso = "$repertoire$classe/_Copies/$elv/index.htm"; 
+			$questionnaire_perso = "$repertoire$classe/_Copies/$elv/rep/index.htm"; 
 			if(file_exists($questionnaire_perso)) echo("<p class=\"liste\"><a href=\"./devoir.php\" class=\"no-under\" target=\"_blank\">Questionnaire personnalisé</a></p>");	
 		
 		}
@@ -68,6 +78,8 @@
 ?>
 
 <!-- <p class="Liste"><a href="https://ecc.orion.education.fr/inscrinetbts/inscription?Unom_schema=t1a230119f&Uuad_pre=A23&Uind_tel=I" target="_blank"><font color="orange">Inscription au BTS |</font></a> Identification : 0831616F</p> -->
+
+<!-- En travaux. Revenez plus tard. Merci. ->
 
 <?php
 	if($prof_login){
