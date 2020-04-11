@@ -108,7 +108,7 @@
 		echo("<p>Action 44 : $Message</p>");
 	}
 
-	if($action==45){//Rangement d'une copie dans le dossier elv  #####
+	if($action==45){//Rangement d'une copie dans le dossier elv 
 		$nom45 = $_POST[elv];
 		$epr45 = explode(".", $epr);
 		//Création du répertoire si nécéssaire
@@ -223,18 +223,12 @@
 																													//CREATION DU TABLEAU
 			
 			$pas = nbparticipants($nom);//pour les groupes de plusieurs personnes
-			
-			/*if($j==0) {//première ligne
-				$line1 .= "<table>";
-				//$line2 = "<tr>";//modif du 6 septembre 2017
-			}
-			$j = $j + $pas;*/
-						
+								
 			//Fichiers
 			$lien_copies_tab = explode(":",lescopies3($nom,$classe,$epr,$repertoire_copies));//Liens vers les copies :+ codes md5
 			$lien_copies = $lien_copies_tab[0];// Les liens vers les copies rendues
 			if($lien_copies) $nb2copies++; //compte le nombre de copie rendue
-			fwrite($mdr_file, "$lien_copies_tab[1]\n");//####
+			fwrite($mdr_file, "$lien_copies_tab[1]\n");//
 			$drap_dejavu = dejavu($lien_copies_tab[1],$liens_vus);
 			$liens_vus .= $lien_copies_tab[1];
 			
@@ -256,13 +250,6 @@
 			$nombre_total2participants += $pas; 
 			$j++;
 
-			/*if($j<=4){//Modif le 27/09/2016
-				$line1 .= "<td>$photo<br/>$lien_copies<a href=\"$lien\">$nom $note ($coef)</a>$nb2tickets</td>";
-			}
-			else {
-				$line1 .= "<td>$photo<br/>$lien_copies<a href=\"$lien\">$nom $note ($coef)</a>$nb2tickets</td></tr></table>\n";
-				$j = 0;
-			}*/
 		}
 		else {
 			$listedesnonfait .= "<a href=\"$lien\">".$nom."</a> ";
@@ -303,18 +290,9 @@
 	echo($line1);	
 	
 	$action44 = "./epreuve.php?action=45&mat=$mat&epr=$epr";
-	// desactivé le 13/08/2019 -> $menu_elv = menu_deroulant($leleve,"elv");
 
 ?>	
-	<!-- 04-04 Ligne importation des notes -->
-	<!-- <table><form name="envoie fichier" enctype="multipart/form-data" method="post" action="<?php echo "$action44";?>">
-		<tr><td>Importation de notes</td>
-		<td><input name="fichier_choisi" type="file"></td>
-		<td><input name="bouton" value="Envoyer le fichier" type="submit">
-		</td>
-		</tr>
-	</form></table>
-	-->
+
 	<!-- 04-04 Ligne importation de fichiers -->
 	<table><form name="envoie fichier" enctype="multipart/form-data" method="post" action="<?php echo "$action44";?>">
 		<tr><td>Rangement du fichier avec un nom valide</td>
@@ -337,13 +315,12 @@
 	$texte_notes = liste2texte($lesnotes);
 	$texte_noms = liste2texte($lesnoms14);
 
-	//$image = "<a href=\"./geo.php?nomfichier=$filesave\">";
-	//$image .= "<img src=\"./graphe.php?notes=$texte_notes&filename=$filesave&noms=$texte_noms\"/></a>".$savefileicon;
-	// Graphe .svg avril 2020
+	// Graphe .svg avril 2020 ###
 	echo("<table><tr><td>");
 	$notes = explode(":", $texte_notes);
 	$noms = explode(":", $texte_noms);
 	echo("<a href=\"./geo.php?nomfichier=$filesave\">");
+	include("grapheSVG_fct.php");
 	include("grapheSVG.php");
 	echo("</a>");	
 	

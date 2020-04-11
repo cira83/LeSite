@@ -193,8 +193,7 @@ function precedent_suivant($liste2nom,$nom){
 </form></table>
 
 <?php 
-	if($serveur_name == "B800") include("./eleve4allPi.php");
-	else include("./eleve4all.php");
+	include("./eleve4all.php");
 ?>
 
 <?php include("./bas.php");?>

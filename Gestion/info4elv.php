@@ -18,18 +18,17 @@
 <center>
 	
 <?php
-	$nom = $_COOKIE['nom'];
-	$password = $_COOKIE['password'];
+	$nom = $elv;
+	$password = $password;
+	$classe = $classe;
 	$files = "./files/";
-	$classe = $_COOKIE['laclasse'];
 	$repertoire_copies =  "./files/$classe/_Copies";
 	
 	include("./lesfonctions.php");
 	
 	if($password_OK){
 		echo("<table><tr><td colspan=2><p class=\"titre\">Les notes de $nom</p></td></tr></table>");
-		if(file_exists("../B800")) include("./eleve4allPi.php");
-		else include("./eleve4all.php");
+		include("./eleve4all.php");
 	}
 	else{
 		echo("<td colspan=2>Vous n'&ecirc;tes pas connect&eacute;(e) !!</td>$logout</tr></table>");

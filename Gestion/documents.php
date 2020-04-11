@@ -3,10 +3,10 @@
 	include("../Dropbox.php");
 	include("../head1.html");
 
-	$nom = $_SESSION['nom'];
-	$password = $_SESSION['password'];
+	$nom = $elv;
+	$password = $password;
+	$classe = $classe;
 	$files = "./files/";
-	$classe = $_SESSION['laclasse'];
 	$repertoire_copies =  "./files/$classe/_Copies";
 
 	$doc_elv_1 = $_GET['doc'];

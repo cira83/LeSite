@@ -1,11 +1,14 @@
 <?php
 	$classe = $_COOKIE["laclasse"]; if($classe=="") $classe="CIRA1";
 	include("./clef_prof.php");//fourni $Cleprof (C'est le prof) ------
+	include("./DS_Securite.php");// function DSMDP($classe, $elv);
 	
 	$nom2eleve = $_GET[name];
 	$titre_copie = $_COOKIE["elv"]; 
 	$sujet2DS = $_GET[file];
-	$repertoire_rep = "./files/$classe/_Copies/$nom2eleve/rep";	
+	$DS_password = DSMDP($classe, $nom2eleve);
+	$repertoire_rep = "./files/$classe/_Copies/$nom2eleve/rep/$DS_password";
+		
 	
 	include("./DSFonctionsPlus.php");
 
@@ -38,7 +41,9 @@
 	
 	
 	$sujet = $_GET[file2];//-------------------------------------------------------------                  Pour le professeur uniquement 18 fevrier 2017
+	$cestleprof = 0;
 	if($sujet&&$Cleprof) {
+		$cestleprof = 1;
 		$repertoire_rep = "$sujet/rep212";//pour éviter la fraude
 		$_SESSION[sujet2DS]=$sujet;
 		$nom2eleve = "Professeur";
@@ -169,7 +174,8 @@
 	}
 	
 	
-	$sommaire_td = bandeau("./files/$classe/_Copies/$nom2eleve");
+	$sommaire_td = bandeau("./files/$classe/_Copies/$nom2eleve",$DS_password);
+	if($cestleprof) $sommaire_td[1] = "";
 ?>
 
 <html>

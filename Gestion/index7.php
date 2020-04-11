@@ -77,15 +77,12 @@
 	}
 ?>
 
-<!-- <p class="Liste"><a href="https://ecc.orion.education.fr/inscrinetbts/inscription?Unom_schema=t1a230119f&Uuad_pre=A23&Uind_tel=I" target="_blank"><font color="orange">Inscription au BTS |</font></a> Identification : 0831616F</p> -->
-
-<!-- En travaux. Revenez plus tard. Merci. ->
+<!-- En travaux. Revenez plus tard. Merci. -->
 
 <?php
 	if($prof_login){
 		echo("<hr><h2>Complément Professeur</h2>");
-		echo("<p class=\"liste\"><a href=\"DSZone.php\" class=\"no-under\">Gestion des questionnaires</a></p>");
-		echo("<p class=\"liste\"><a href=\"index.php\" class=\"no-under\">Gestion Pi</a></p>");
+		echo("<p class=\"liste\"><a href=\"index.php\" class=\"no-under\">Gestion</a></p>");
 
 	}
 	include("../foot1.html");

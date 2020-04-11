@@ -149,30 +149,50 @@
 	$ligne[$i] .= "<td><font color=\"yellow\">$year</font></td>";
 	$tableau .= "<tr>$ligne[$i]</tr>";
 	$tableau .= "</table>";
+
+	echo($tableau);
+
 	
-	
-	//$graphe1 = barregraphe($notes1,$sup,"./files/$classe/_Semestre 1.txt",$leleve);
-	$texte_notes = liste2texte($notes1);
-	$texte_noms = liste2texte($leleve);
-	$filesave = "./files/$classe/_Semestre 1.txt";
-	$graphe1 = "<a href=\"./geo.php?nomfichier=$filesave\">";
-	$graphe1 .= "<img src=\"./graphe.php?notes=$texte_notes&filename=$filesave&noms=$texte_noms\"/></a>";
-	$graphe1 .= "<a href=\"exportxls_sem.php?sem=1&classe=$classe\"><img src=\"./icon/backup.gif\" width=\"49px\" style=\"border:solid 1px #000000;\"></a>";
-	
-	//$graphe2 = barregraphe($notes2,$sup,"./files/$classe/_Semestre 2.txt",$leleve);
-	$texte_notes = liste2texte($notes2);
-	$texte_noms = liste2texte($leleve);
-	$filesave = "./files/$classe/_Semestre 2.txt";
-	$graphe2 = "<a href=\"./geo.php?nomfichier=$filesave\">";
-	$graphe2 .= "<img src=\"./graphe.php?notes=$texte_notes&filename=$filesave&noms=$texte_noms\"/></a>";
-	
-	echo($tableau);	
+	//Éléments de graphique du semestre 1
+	$texte_notes1 = liste2texte($notes1);
+	$texte_noms1 = liste2texte($leleve);
+	$filesave1 = "./files/$classe/_Semestre 1.txt";
+
+	//Éléments de graphique du semestre 2
+	$texte_notes2 = liste2texte($notes2);
+	//$texte_noms2 = $texte_noms1;
+	$filesave2 = "./files/$classe/_Semestre 2.txt";	
 ?>
+
 <table>
 	<tr><td>Semestre 1</td></tr>
-	<tr><td><?php echo($graphe1)?></td></tr>
-	<tr><td>Semestre 2</td></tr>
-	<tr><td><?php echo($graphe2)?></td></tr>
+	<tr><td>
+<?php
+	//###
+	$notes = explode(":", $texte_notes1);
+	$noms = explode(":", $texte_noms1);
+	$filesave = $filesave1;
+	echo("<a href=\"./geo.php?nomfichier=$filesave1\">");
+	include("grapheSVG_fct.php");
+	include("grapheSVG.php");
+	echo("</a>");
+	echo("<a href=\"exportxls_sem.php?sem=1&classe=$classe\"><img src=\"./icon/backup.gif\" width=\"49px\" style=\"border:solid 1px #000000;\"></a>");
+?>
+</td></tr>
+<tr><td>Semestre 2</td></tr>
+<tr><td>
+<?php 
+	//###
+	$notes = explode(":", $texte_notes2);
+	//$noms = explode(":", $texte_noms2);
+	$filesave = $filesave2;
+	echo("<a href=\"./geo.php?nomfichier=$filesave2\">");
+	include("grapheSVG.php");
+	echo("</a>");
+	echo("<a href=\"exportxls_sem.php?sem=2&classe=$classe\"><img src=\"./icon/backup.gif\" width=\"49px\" style=\"border:solid 1px #000000;\"></a>");	
+?>
+	</td></tr>
 </table>
-
-<?php include("./bas.php");?>
+<?php	
+	include("./bas.php");
+?>

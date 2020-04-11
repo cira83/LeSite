@@ -102,30 +102,20 @@
 	$password_OK = $bon_password==$password;
 	if(!$bon_password) $password_OK = 0;
 	
+	//LOGIN DU PROF
 	$prof_login = 0;
 	if($password==$prof_password){
 		$password_OK = 1;
 		$prof_login = 1;
 		echo("<!-- prof_login = 1 -->\n");
-	}
-
-	
-	
-	//Pi SECTION
-	if(file_exists("B800.txt")){
-		echo("<!-- PI VERSION -->\n");
-		//echo("<!-- infos : $classe $elv $password/$bon_password -->\n");
-	}
-
-	
+	}	
 	
 	if($password_OK){
 		$password_in = "<input type=\"hidden\" name=\"password\" value=\"##\">";
 		$submit = "<input type=\"submit\" value=\"Logout\">\n";
 		$select_classe = "<font color=\"yellow\" size=\"+2\">$elv</font><input type=\"hidden\" name=\"classe\" value=\"$classe\">";
 		$select_elv = "<input type=\"hidden\" name=\"nom\" value=\"$elv\">";
-	}
-	
+	}	
 	
 	
 	$invite = "<form action=\"./index7.php\" method=\"post\"><input type=\"hidden\" value=\"1\" name=\"action\">\n";

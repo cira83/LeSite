@@ -41,7 +41,7 @@
 			fclose($fp);
 		}
 		echo("<!-- $filename -->");
-		return $TAG;
+		return trim($TAG);
 	}
 
 

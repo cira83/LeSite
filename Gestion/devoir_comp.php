@@ -1,20 +1,25 @@
 <?php
 	include("./security.php");
 	include("./DSFonctions.php");
+	include("./DS_Securite.php");// function DSMDP($classe, $elv);
+	
+	
 	
 	$numero2session = session_id();//Numero de session
 	$classe = $_COOKIE["laclasse"]; if($classe=="") $classe="CIRA1";
 	
 	$nom_elv = $_GET[name];
-	$fichier_elv = "./files/$classe/_Copies/$nom_elv/index.htm"; //echo("<!-- $fichier_elv -->\n");
-	$rep_elv = "./files/$classe/_Copies/$nom_elv/rep";
+	$DS_password = DSMDP($classe, $nom_elv);
+	$fichier_elv = "./files/$classe/_Copies/$nom_elv/rep/index.htm"; //echo("<!-- $fichier_elv -->\n");
+	$rep_elv = "./files/$classe/_Copies/$nom_elv/rep/$DS_password";
 	
 	$TAG = TAGdufichier($fichier_elv);
+	//$TAG = trim($TAG);
 	$fichier_prof= "./files/$classe/_Copies/_Sujets/$TAG/index.htm"; //echo("<!-- $fichier_prof -->\n");
 	$rep_prof = "./files/$classe/_Copies/_Sujets/$TAG/rep212";
 	$titredudocument = "$TAG $nom_elv";
-
-	$page_choisie = $_GET[page];
+	
+	
 
 //--------------------------------------------------------------------------------------------------------------------------------------------------
 	function ligne_tab_Q($case1,$case2,$case3,$case4,$num_quest) {
@@ -66,7 +71,6 @@
 	}
 
 	function lire_note($filename,$num){
-		$note = "X";
 		if(file_exists($filename)) {
 			$fp = fopen($filename, "r");
 			$note = fgets($fp);
@@ -74,12 +78,40 @@
 		}
 		$icon[0] = "<img src=\"./icon/X.gif\" id=\"N$num\">";
 		$icon[1] = "<img src=\"./icon/X.gif\" id=\"M$num\">";
-		if($note=="A\n") $icon[0] = "<img src=\"./icon/A.gif\" id=\"N$num\">";
-		if($note=="B\n") $icon[0] = "<img src=\"./icon/B.gif\" id=\"N$num\">";
-		if($note=="C\n") $icon[0] = "<img src=\"./icon/C.gif\" id=\"N$num\">";
-		if($note=="D\n") $icon[0] = "<img src=\"./icon/D.gif\" id=\"N$num\">";
+		if($note=="A\n") {
+			$icon[0] = "<img src=\"./icon/A.gif\" id=\"N$num\">";
+			$icon[1] = "<img src=\"./icon/A.gif\" id=\"M$num\">";
+		}
+		if($note=="B\n") {
+			$icon[0] = "<img src=\"./icon/B.gif\" id=\"N$num\">";
+			$icon[1] = "<img src=\"./icon/B.gif\" id=\"M$num\">";
+		}
+		if($note=="C\n") {
+			$icon[0] = "<img src=\"./icon/C.gif\" id=\"N$num\">";
+			$icon[1] = "<img src=\"./icon/C.gif\" id=\"M$num\">";
+		}
+		if($note=="D\n") {
+			$icon[0] = "<img src=\"./icon/D.gif\" id=\"N$num\">";
+			$icon[1] = "<img src=\"./icon/D.gif\" id=\"M$num\">";
+		}
+		
 		return $icon;
 	}
+
+	function calcul_note($filename,$coef) {		
+		$res = 0;
+		if(file_exists($filename)) {
+			$fp = fopen($filename, "r");
+			$note = fgets($fp);
+			fclose($fp);
+		}
+		if($note=="A\n") $res = $coef;
+		if($note=="B\n") $res = 0.75*$coef;
+		if($note=="C\n") $res = 0.35*$coef;
+		if($note=="D\n") $res = 0.05*$coef;
+		return $res;
+	}
+
 
 	function notation($num) {
 		$notation = "<img src=\"./icon/A.gif\" id=\"A$num\" onclick=\"noter(this.id);\"><br>";
@@ -110,8 +142,10 @@
 			$part_elv = explode("#", $ligne_elv);
 			$part_prof = explode("#", $ligne_prof);
 			if($part_elv[0]=="Q") {
-				$num_question++;
-				$content.=ligne_tab_Q("<font color=\"#0000FF\"><b>Q$num_question :</b></font> $part_elv[1]",$part_elv[2],$part_prof[2],"<font color=\"#0000FF\"><b>Q$num_question :</b></font> $part_prof[1]",$num_question);
+				$num_question++;				
+				$note_elv = calcul_note("$rep_elv/N$num_question.txt",$part_elv[2]);
+				
+				$content.=ligne_tab_Q("<font color=\"#0000FF\"><b>Q$num_question :</b></font> $part_elv[1]","<span id=\"E$num_question\">$note_elv</span>","<span id=\"C$num_question\">$part_prof[2]</span>","<font color=\"#0000FF\"><b>Q$num_question :</b></font> $part_prof[1]",$num_question);
 			}
 			if(($part_elv[0]=="T")||($part_elv[0]=="U")){
 				$notation = notation($num_question);
@@ -146,8 +180,8 @@
 		
 	}
 	else {
-		if(!file_exists($fichier_elv)) $content.="<table><tr><td>Il manque le fichier : $fichier_elv.</td></tr></table>";
-		if(!file_exists($fichier_prof)) $content.="<table><tr><td>Il manque le fichier : $fichier_prof.</td></tr></table>";
+		if(!file_exists($fichier_elv)) $content.="<table><tr><td>Il manque le fichier élève : $fichier_elv.</td></tr></table>";
+		if(!file_exists($fichier_prof)) $content.="<table><tr><td>Il manque le fichier prof : $fichier_prof.</td></tr></table>";
 	}
 		
 	$feuille2notes .= "<td>|</td><td><a href=\"DSexport.php?nom=$nom_elv&classe=$classe&last=$num_question\" target=\"_blank\"><img src=\"./icon/backup.gif\" height=\"20px\"></a></td></tr></table>";
@@ -170,6 +204,8 @@
 		</table>
 		<input type="hidden" id="nom_elv" value="<?php echo($nom_elv);?>"/>
 		<input type="hidden" id="classe" value="<?php echo($classe);?>"/>
+		<input type="hidden" id="coderep" value="<?php echo($DS_password);?>"/>
+		
 <?php
 	echo($feuille2notes);
 	echo($content);

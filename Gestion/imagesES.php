@@ -15,5 +15,5 @@
 	$repertoire = "./files/$classe/_Copies/_Sujets/$TAG/img/";
 	$liste_img = scandir($repertoire);
 	foreach($liste_img as $img) //echo("$img<br>");
-	if(est_image($img)) echo("<a href=\"$repertoire$img\"><img src=\"$repertoire$img\" width=\"200px\"/></a>$img<hr>");
+	if(est_image($img)) echo("<a href=\"$repertoire$img\"><img src=\"$repertoire$img\" width=\"200px\"/></a><br>$img<hr>");
 ?>

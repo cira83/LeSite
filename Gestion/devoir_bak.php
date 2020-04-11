@@ -7,10 +7,10 @@
 	$non_fait = "&#9675;";
 
 
-	$nom = $_COOKIE['nom'];
-	$password = $_COOKIE['password'];
+	$nom = $_SESSION['nom'];
+	$password = $_SESSION['password'];
 	$files = "./files/";
-	$classe = $_COOKIE['laclasse'];
+	$classe = $_SESSION['laclasse'];
 	$nb2pages = 0;
 	
 	$pagenumber = $_GET[page];//numéro de la page
@@ -22,41 +22,13 @@
 	$action = $_GET[action];
 	$rep = $_POST[rep];
 	$repertoire = "./files/$classe/_Copies/$nom";
-	
+	$repertoire_rep = "./files/$classe/_Copies/$nom/rep";
 	
 	$sujet = $_GET[file];//Pour le professeur uniquement 01 fevrier 2017
 	include("./clef_prof.php");//fourni $Cleprof (C'est le prof) ------
 	include("./quest_dyn.php");//Questions Dynamiques le 9 octobre 2017 
 	
-
-	include("./DS_Securite.php");
-	$DS_password = DSMDP($classe, $nom);
-	$copie_password = $_COOKIE['code4'];
-	$repertoire_rep = "./files/$classe/_Copies/$nom/rep/$copie_password";
-	$repertoire_rep1 = "./files/$classe/_Copies/$nom/rep";
-	$filename = "$repertoire/rep/index.htm";
-?>
-
-<script>
-	function MDP1semaine(code) {
-		var date = new Date(Date.now() + 86400000*7);//86400000 = 1 jour
-		
-		document.cookie = "code4="+code+"; expires="+date.toUTCString();
-	}
 	
-	function ecritMDP() {
-		code = prompt('Donner le code','');
-		MDP1semaine(code);
-		location.reload() ;
-	}
-
-	function premier(code) {
-		if(code>999) alert("Copier le mot de passe document : " + code);
-		MDP1semaine(code);
-	}	
-</script>	
-
-<?php
 	if($sujet&&$Cleprof) {
 		$repertoire = "$sujet";
 		$repertoire_rep = "$sujet/rep212";//pour éviter la fraude
@@ -66,23 +38,17 @@
 			$fp = fopen($nomdufichier, "r");
 			$ligne1 = fgets($fp);
 			$part = explode("#", $ligne1);
+			//$repertoire_rep .= $part[1];
 			fclose($fp);
 		}
 		$nom = "Correction";
-		$filename = $nomdufichier;
 	}
 	
-	echo("<!-- filename $filename  -->");
-
-	
-	
-	function sujet_ouvert($sujet,$repertoire_rep,$passwordOK){
-		$Message = "";
-		if(!file_exists($sujet)) $Message .= "Pas de sujet $sujet.<br>";
-		if(file_exists(str_replace("index.htm", "off.txt", $sujet)))  $Message .= "Sujet fermé.<br>";
-		if(!$passwordOK) $Message .= "Mauvais mot de passe de candidat.<br>";
-				
-		return $Message;
+	function sujet_ouvert($repertoire){
+		$drap1 = file_exists("$repertoire/index.htm");
+		$drap2 = !file_exists("$repertoire/rep/off.txt");
+		
+		return $drap1&$drap2;
 	}
 
 
@@ -284,13 +250,11 @@
 	
 	//Gestion des sessions
 	$date_ext = date("i/G/d/m");
-	$sessions_file_name = "$repertoire_rep1/sessions.txt";
+	$sessions_file_name = "$repertoire_rep/sessions.txt";
 	if(!file_exists($sessions_file_name)) {
-		echo("<script>premier(\"$DS_password\");</script>");
 		$session_fp = fopen($sessions_file_name, "w");
 		fwrite($session_fp, "$numero2session:$date_ext:$ip_adresse:");
 		fclose($session_fp);
-		$copie_password = $DS_password;
 	}
 	else {
 		$session_fp = fopen($sessions_file_name, "r");
@@ -306,14 +270,14 @@
 			fclose($session_fp);
 		}
 	}
-	$infos_file_name = "$repertoire_rep1/infos.txt";
+	$infos_file_name = "$repertoire_rep/infos.txt";
 	$infos_fp = fopen($infos_file_name, "w");
 	$info_time = time();
 	fwrite($infos_fp, "$info_time");
 	fclose($infos_fp);
 	
 	//----------------------------------------------------------------------------         BULLE JAUNE
-	if(file_exists($filename)) {
+	if(file_exists("$repertoire/index.htm")) {
 		$script_name = $_SERVER['SCRIPT_NAME'];
 		$part3 = explode("/", $script_name);
 		$script_name = $part3[count($part3)-1];
@@ -321,9 +285,9 @@
 		$script_name .= "?file=$sujet";
 		
 		
-		echo("<!-- script_name $script_name -->");
+		echo("<!-- $script_name -->");
 		
-		$fp_2020 = fopen($filename, "r");
+		$fp_2020 = fopen("$repertoire/index.htm", "r");
 		$pagei = 1;
 		$walli = 0;
 		while(!feof($fp_2020)){
@@ -363,7 +327,7 @@
 		fclose($fp_2020);
 	}
 	
-	$TAG = TAGdufichier($filename);//Récupération du TAG
+	$TAG = TAGdufichier("$repertoire/index.htm");//Récupération du TAG
 	$titredudocument = "$TAG $nom";
 	
 ?>
@@ -377,8 +341,8 @@
 	<body>
 		<center>	
 		<table>
-			<tr><td width="52px"></td><td><font size="+5"><?php echo($titredudocument);?></font></td>
-			<td width="52px"><a href="../tui.image-editor/editor/" target="_blank">
+			<tr><td width="52px"></td><td><font size="+5"><?php echo($titredudocument);?></font></td><td width="52px">
+			<a href="../tui.image-editor/editor/" target="_blank">
 			<img src="icon/image_editor.png" width="50px" title="Editeur d'image"\></a></td></tr></table>
 
 <?php
@@ -394,10 +358,9 @@
 	//Code L = Saut de page
 	//Code H ??
 	
-if($DS_password == $copie_password) {	
 	echo("<p><font color=\"#0000FF\">$Message</font></p>");	
-	
-	if(sujet_ouvert($filename,$repertoire_rep,$password_OK)) echo(sujet_ouvert($filename,$repertoire_rep,$password_OK));
+	$filename = "$repertoire/index.htm";
+	if(!sujet_ouvert($repertoire)) echo("Pas de sujet ouvert !!");
 	else {
 		$fp = fopen($filename, "r");
 		$titre = fgets($fp);
@@ -515,12 +478,6 @@ if($DS_password == $copie_password) {
 		echo("<td $color><a href=\"./devoir.php?file=$sujet&page=$pagenumber2\">Page $pagenumber2</a></td>");
 	}
 	echo("</tr></table>");
-}
-else {
-	echo("<p><font color=\"#ff0000\" size=\"+2\">Mauvais mot de passe de sujet.</font></p>");
-	echo("<input type=\"button\" value=\"Cliquer pour donner le mot de passe\" onclick=\"ecritMDP()\">");
-}
-
 	
 ?>	
 		</center>

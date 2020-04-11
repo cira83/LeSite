@@ -25,11 +25,12 @@ function newclasse(lavaleur){
 }
 
 function motdepasse(){
-	
+	var date = new Date(Date.now() + 86400000*30);//86400000 = 1 jour
+
 	elv = document.getElementById('nom').value;
-	document.cookie = 'elv='+elv;
+	document.cookie = 'elv='+elv+"; expires="+date.toUTCString();
 	motdepasse = document.getElementById('pwd').value;
-	document.cookie = 'password='+motdepasse;
+	document.cookie = 'password='+motdepasse+"; expires="+date.toUTCString();
 	
 	location.reload() ;
 }
