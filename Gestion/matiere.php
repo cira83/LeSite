@@ -138,8 +138,13 @@
 	//mars 2018
 	$savefileicon = "<a href=\"exportxls.php?filesave=$filesave&file=$matieres\"><img src=\"./icon/backup.gif\" width=\"49px\" style=\"border:solid 1px #000000;\"></a>";
 	
-	$image .= "<img src=\"./graphe.php?notes=$texte_notes&filename=$filesave&noms=$texte_noms\"/></a>".$savefileicon;
-	echo($image);
+	// Graphe .svg avril 2020
+	$notes = explode(":", $texte_notes);
+	$noms = explode(":", $texte_noms);
+	echo("<a href=\"./geo.php?nomfichier=$filesave\">");
+	include("grapheSVG.php");
+	echo("</a>");
+	
 	
 	include("./bas.php");
 ?>

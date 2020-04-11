@@ -336,11 +336,18 @@
 	
 	$texte_notes = liste2texte($lesnotes);
 	$texte_noms = liste2texte($lesnoms14);
-	$image = "<a href=\"./geo.php?nomfichier=$filesave\">";
-	$image .= "<img src=\"./graphe.php?notes=$texte_notes&filename=$filesave&noms=$texte_noms\"/></a>".$savefileicon;
-	echo("<table><tr><td>$image</td>");
+
+	//$image = "<a href=\"./geo.php?nomfichier=$filesave\">";
+	//$image .= "<img src=\"./graphe.php?notes=$texte_notes&filename=$filesave&noms=$texte_noms\"/></a>".$savefileicon;
+	// Graphe .svg avril 2020
+	echo("<table><tr><td>");
+	$notes = explode(":", $texte_notes);
+	$noms = explode(":", $texte_noms);
+	echo("<a href=\"./geo.php?nomfichier=$filesave\">");
+	include("grapheSVG.php");
+	echo("</a>");	
 	
-		echo("<td><a href=\"./pub_notes.php?filesave=$filesave&file=$epr&moy=$moyenne\">Publier les statistiques</a></td>");
+	echo("</td><td><a href=\"./pub_notes.php?filesave=$filesave&file=$epr&moy=$moyenne\">Publier les statistiques</a></td>");
 
 	echo("</tr></table>");
 

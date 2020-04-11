@@ -18,10 +18,10 @@
 <center>
 	
 <?php
-	$nom = $_SESSION['nom'];
-	$password = $_SESSION['password'];
+	$nom = $_COOKIE['nom'];
+	$password = $_COOKIE['password'];
 	$files = "./files/";
-	$classe = $_SESSION['laclasse'];
+	$classe = $_COOKIE['laclasse'];
 	$repertoire_copies =  "./files/$classe/_Copies";
 	
 	include("./lesfonctions.php");
