@@ -1,8 +1,9 @@
 <?php
+	session_start();
+    
 	function alert2020($texte) {
 		echo("<!-- $texte -->");
 	}
-	
 	
 	function info_name_file() {
 		$nom_script = $_SERVER['SCRIPT_NAME'];
@@ -38,18 +39,14 @@
 		return $classe_text;
 	}	
 
-
 	//Partie connexion sécurisé - V00
-	session_start();
 	$prof_password = "b7wd5c";//Mot du passe du professeur
 	$classe_text = les_classes();// echo($classe_text);
 	$classe_dispo = explode(":", $classe_text); 
 	$repertoire = "./files/";
-	echo("<!-- Partie sécurité -->\n");
 	
 	$action1 = $_POST['action']; 
 	if($action1==1){
-		echo("<!-- action $action1 -->\n");
 		$elv = $_POST['nom'];
 		setcookie("nom", $elv,time()+3600*24*8);
 		$classe = $_POST['classe'];
@@ -62,8 +59,6 @@
 		$elv = $_COOKIE['nom'];
 		$password = $_COOKIE['password'];
 	}
-
-	alert2020("$password $classe $elv");
 	
 	//MENU DEROULANT CLASSES        -----------------------------------------------------------------------------------------------------
 	$select_classe = "<select name=\"classe\" id=\"classe\" onchange=\"login();\">";
@@ -107,7 +102,6 @@
 	if($password==$prof_password){
 		$password_OK = 1;
 		$prof_login = 1;
-		echo("<!-- prof_login = 1 -->\n");
 	}	
 	
 	if($password_OK){
@@ -121,7 +115,6 @@
 	$invite = "<form action=\"./index7.php\" method=\"post\"><input type=\"hidden\" value=\"1\" name=\"action\">\n";
 	$invite .= "<table><tr><td align=\"left\">$select_classe $select_elv $password_in</td><td align=\"right\">$submit</td></tr></table>";
 	$invite .= "</form>";
-	//echo("<!-- infos : $classe $elv $password/$bon_password -->\n");
 	
 	
 	//FICHIER LOG        -----------------------------------------------------------------------------------------------------------
@@ -139,10 +132,5 @@
 		fclose($fp);
 		$write = "MaJ";
 	}
-	
 
-	
-	
-	
-	alert2020("Fin password");
 ?>

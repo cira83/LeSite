@@ -7,6 +7,7 @@
 	$lesrepertoires = scandir($repertoire_DS);
 	$i = 0;
 	$arrayjava = "var liste2nom = [";
+    //Liste des sujets disponibles
 	foreach($lesrepertoires as $nom01){
 		$nomsujet2DS = "$repertoire_DS$nom01/rep/index.htm";
 		if(file_exists($nomsujet2DS)){
@@ -229,8 +230,7 @@
 		return $deroulant;
 	}
 		
-	//  ____________________________________________________________________________________________________________________________________      FIN DES FONCTIONS 
-	
+	//  ________________________________________________________________________________________      FIN DES FONCTIONS 
 	
 	//-------------------------------------------------------------         Création du menu pour la liste des répertoires
 	$repertoireDcopies = "./files/$classe/_Copies";
@@ -255,7 +255,7 @@
 		start_stop($name17, $classe);
 	}
 	
-	
+	if($creation_repertoire) affiche($creation_repertoire);
 	
 	
 	if($action==44){//--------------------------------------------------------------------------------------- Distribue les sujets
@@ -265,6 +265,7 @@
 		
 		if($lebonnom=="Tous"){
 			foreach($leleve2020 as $txt){//Distribution du sujet à chaque élève
+                if(!file_exists("./files/$classe/_Copies/$txt/rep"))  mkdir("./files/$classe/_Copies/$txt/rep");
 				$chemin = "./files/$classe/_Copies/$txt/rep/index.htm";
 				if(copy($nomTemporaire, $chemin)){
 					$Message .= "Votre fichier $chemin est distribué à $txt<br>" ;
@@ -275,6 +276,7 @@
 			}
 		}
 		else {
+            if(!file_exists("./files/$classe/_Copies/$txt/rep"))  mkdir("./files/$classe/_Copies/$txt/rep");
 			$chemin = "./files/$classe/_Copies/$lebonnom/rep/index.htm";
 			if(copy($nomTemporaire, $chemin)){
 				$Message .= "Votre fichier $chemin est distribué à $lebonnom<br>" ;
@@ -297,13 +299,13 @@
 	}	
 
 	if($action==110){//-------------------------------------------------------------------------------------------------     Déplace les réponses de nom111 et le sujet dans rep/$TAG
-		$nom111 = $_GET[nom];
+		$nom111 = $_GET[nom]; //###
 		$td111 = $_GET[td];
 		$DS_password = DSMDP($classe, $nom111);
 		
 		$dossier_rep = "./files/$classe/_Copies/$nom111/rep/$DS_password";
 		$dossier_bak = "./files/$classe/_Copies/$nom111/rep/$td111 $DS_password/";
-		rename($dossier_rep, $dossier_bak);
+		if(file_exists($dossier_rep)) rename($dossier_rep, $dossier_bak);
 		
 		$dossier_rep = "./files/$classe/_Copies/$nom111/rep";
 		if(file_exists($dossier_rep)){
@@ -322,7 +324,7 @@
 			}
 			$avant = "./files/$classe/_Copies/$nom111/rep/index.htm";
 			$apres = $dossier_bak."index.htm";
-			rename($avant, $apres);
+			if(file_exists($avant)) rename($avant, $apres);
 		}
 		$Message = "$td111 de $nom111 archivé";
 
@@ -520,7 +522,7 @@
 
 <?php
 	//----------------------------------------------------------------------------------------    Liste des fichiers .txt des répertoires réponses
-	titre_tab("Informations de connexion");
+	titre_tab("Informations");
 
 	$synthese_session = "./files/_liste2session.txt";
 	$fp_liste = fopen($synthese_session, "w");
@@ -534,12 +536,12 @@
 		$part_of1 = explode(":", $nom1_sujet1);
 		$nom17 = $part_of1[0]; 
 		$code2DS = DSMDP($classe, $nom17);
-		$code2DS = "<font color=\"#ffffff\">$code2DS</font>";
+		$code2DS = "<font color=\"#000000\" title=\"$code2DS\">----</font>";
 		
 		$lesreponses = "$repertoire_DS$nom17/rep";
 		if(file_exists($lesreponses)&&($nom17!=".")){
 			$i++;
-			$contenu_case1 .= "<td><a href=\"./eleve.php?nom=$nom17\"><font color=\"black\" size=\"+1\">$nom17</font></a> $code2DS</td>";
+			$contenu_case1 .= "<td><font color=\"black\" size=\"+1\">$nom17</font> $code2DS </td>";
 			$contenu_case2 .= "<td>".file_liste2($lesreponses)."</td>";
 			if($i==3){
 				echo("<tr valign=\"top\" bgcolor=\"white\">$contenu_case1</tr>");

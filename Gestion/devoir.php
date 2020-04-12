@@ -25,7 +25,6 @@
 	
 	
 	$sujet = $_GET[file];//Pour le professeur uniquement 01 fevrier 2017
-	include("./clef_prof.php");//fourni $Cleprof (C'est le prof) ------
 	include("./quest_dyn.php");//Questions Dynamiques le 9 octobre 2017 
 	
 
@@ -35,6 +34,9 @@
 	$repertoire_rep = "./files/$classe/_Copies/$nom/rep/$copie_password";
 	$repertoire_rep1 = "./files/$classe/_Copies/$nom/rep";
 	$filename = "$repertoire/rep/index.htm";
+
+    
+
 ?>
 
 <script>
@@ -57,7 +59,8 @@
 </script>	
 
 <?php
-	if($sujet&&$Cleprof) {
+    $prof_login = strpos($sujet,"Sujet"); //C'est le prof qui corrige le sujet
+	if($prof_login) {
 		$repertoire = "$sujet";
 		$repertoire_rep = "$sujet/rep212";//pour éviter la fraude
 		$_SESSION[sujet2DS]=$sujet;
@@ -71,17 +74,13 @@
 		$nom = "Correction";
 		$filename = $nomdufichier;
 	}
-	
-	echo("<!-- filename $filename  -->");
-
-	
-	
+		
 	function sujet_ouvert($sujet,$repertoire_rep,$passwordOK){
 		$Message = "";
 		if(!file_exists($sujet)) $Message .= "Pas de sujet $sujet.<br>";
 		if(file_exists(str_replace("index.htm", "off.txt", $sujet)))  $Message .= "Sujet fermé.<br>";
 		if(!$passwordOK) $Message .= "Mauvais mot de passe de candidat.<br>";
-				
+		//Si Message alors y'a un problème		
 		return $Message;
 	}
 
@@ -215,6 +214,8 @@
 		return $bout2texte;
 	}
 	
+    //--------------------------------------------------------------------------------------       FIN DES FONCTIONS
+    
 	if($action>0){
 		$fileonoff = "./files/$classe/_Copies/$nom/rep/off.txt";
 		if(file_exists($fileonoff)) {
@@ -320,9 +321,6 @@
 		//$script_name .= "&name=$sujet_tag";
 		$script_name .= "?file=$sujet";
 		
-		
-		echo("<!-- script_name $script_name -->");
-		
 		$fp_2020 = fopen($filename, "r");
 		$pagei = 1;
 		$walli = 0;
@@ -393,7 +391,12 @@
 	//Code D = Question dynamique !!
 	//Code L = Saut de page
 	//Code H ??
-	
+ 	
+    echo("<!-- script_name $script_name -->");
+    echo("<!-- filename $filename  -->");
+    echo("<!-- repertoire_rep $repertoire_rep  -->");
+
+$_SESSION[sujet2DS] = $filename;	
 if($DS_password == $copie_password) {	
 	echo("<p><font color=\"#0000FF\">$Message</font></p>");	
 	

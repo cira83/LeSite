@@ -1,6 +1,5 @@
 <?php
 	$classe = $_COOKIE["laclasse"]; if($classe=="") $classe="CIRA1";
-	include("./clef_prof.php");//fourni $Cleprof (C'est le prof) ------
 	include("./DS_Securite.php");// function DSMDP($classe, $elv);
 	
 	$nom2eleve = $_GET[name];
@@ -164,7 +163,7 @@
 		$fp = fopen($sujet2DS, "r");
 		$titre = fgets($fp);
 		$part = explode("-", $titre);
-		fclose($fpDS);
+		fclose($fp);
 	}
 	
 	$nom2eleveimp = $nom2eleve;
@@ -311,8 +310,9 @@
 			}
 			
 		}
-		fclose($fpDS);
-	}else{
+		fclose($fp);
+	}
+    else{
 		echo("Pas de fichier  $sujet2DS !!");
 	}
 	$nb_points = $_SESSION[points];

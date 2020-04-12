@@ -62,6 +62,40 @@
 	}
 	$historique_select .= "<select name=\"histo\" onchange=\"redirect(this.value);\" style=\"max-width:150px;\"></select>";
 	if(!$passwordOK) $historique_select="";
+
+
+	function creation_repertoire_elv($classe) {
+       	$Message = "";
+        $drap = 0;
+        $repertoire = "./files/$classe/_Copies/";
+        $fileclasse = "./files/$classe.txt";
+        if(file_exists($fileclasse)) {
+            $fp = fopen($fileclasse,"r");
+            while(!feof($fp)) {
+                 $ligne = fgets($fp);
+                 $part = explode(":", $ligne);
+                 $nom = $part[0];
+                 $repertoire_elv = "$repertoire$nom";
+                 if(!file_exists($repertoire_elv)) {
+                    mkdir($repertoire_elv);
+                    $drap = 1;
+                    $Message .= "Création repertoire de $nom<br>";
+                }
+                if(!file_exists($repertoire_elv."/rep")) {
+                    mkdir($repertoire_elv."/rep");
+                    $drap = "creation_repertoire_elv";
+                    $Message .= "Création repertoire rep de $nom<br>";
+                }
+             }
+            fclose($fp);
+        }
+        return($Message);
+    }
+
+    //Ajoute les dossiers élèves manquant dans _Copies
+    $creation_repertoire = 0;
+    $creation_repertoire = creation_repertoire_elv($classe);
+
 ?>
 <!--                                  DEBUT DU FICHIER                         -->
 <script type="text/javascript" src="./script.js"></script>
@@ -72,7 +106,8 @@
 		<link rel="icon" type="image/jpg" href="./icon/favicon.jpg" />
 		<title><?php echo("$titre_page");?></title>
 <?php
-	if($action) echo("<meta http-equiv=\"refresh\" content=\"5;URL=./DSZone.php\">"); 
+	if(($action)||($creation_repertoire)) echo("<meta http-equiv=\"refresh\" content=\"5;URL=./DSZone.php\">\n"); 
+
 ?>
 	</head>
 	

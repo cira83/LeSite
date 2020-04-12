@@ -67,14 +67,9 @@
 
 			$questionnaire_perso = "$repertoire$classe/_Copies/$elv/rep/index.htm"; 
 			if(file_exists($questionnaire_perso)) echo("<p class=\"liste\"><a href=\"./devoir.php\" class=\"no-under\" target=\"_blank\">Questionnaire personnalisé</a></p>");	
-		
 		}
 	}
-	else echo("<p class=\"liste\">Pas de TP pour les $classe</p>");
 	
-	if(($classe=="Visiteur")&&$password_OK){
-		echo("<a href=\"https://docs.google.com/forms/d/e/1FAIpQLSfY9BOlWK11bAI7-3yU3C0sFIbdHpKJ0WBNvtPG6Z0O3sGoDQ/viewform?usp=pp_url\" class=\"no-under\">Questionnaire futur CIRA ?</a>");	
-	}
 ?>
 
 <!-- En travaux. Revenez plus tard. Merci. -->
