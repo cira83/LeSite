@@ -1,4 +1,5 @@
 <?php
+	//Version Portable
 	include("./security.php");
 	include("../head1.html");
 	if($password_OK) echo("<title>$classe - $elv</title>");
